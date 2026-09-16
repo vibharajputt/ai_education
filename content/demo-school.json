@@ -1,0 +1,92 @@
+{
+  "collection": {
+    "id": "demo-school-col",
+    "title": "Demo School Question Bank",
+    "description": "Curated exemplar questions covering high-frequency CBSE Class 11 and 12 STEM concepts.",
+    "scopeLabel": "5 sample questions across Physics & Chemistry — Class 11–12",
+    "filters": {
+      "subject": ["Physics", "Chemistry"],
+      "difficulty": ["easy", "medium", "hard"]
+    }
+  },
+  "items": [
+    {
+      "id": "phy-11-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Motion in a Plane",
+      "concepts": ["Projectile Motion", "Range Formula"],
+      "body": "A projectile is fired horizontally with a speed $v_0$ from the top of a cliff of height $h$. Find the expression for the horizontal distance $R$ travelled before striking the ground.",
+      "latex": "R = v_0 \\sqrt{\\frac{2h}{g}}",
+      "images": [],
+      "tags": ["kinematics", "projectile", "cbse"],
+      "difficulty": "medium",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {}
+    },
+    {
+      "id": "phy-11-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "concepts": ["Conservative Forces", "Potential Energy"],
+      "body": "State the work-energy theorem for a variable force. Show that for a conservative force field, the mechanical energy $E = K + U$ remains conserved throughout motion.",
+      "latex": "\\Delta K = \\int_{x_i}^{x_f} F(x) \\, dx = -\\Delta U \\implies \\Delta(K + U) = 0",
+      "images": [],
+      "tags": ["work-energy", "conservation", "derivation"],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2022,
+      "metadata": {}
+    },
+    {
+      "id": "chem-12-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Kinetics",
+      "concepts": ["Arrhenius Equation", "Activation Energy"],
+      "body": "The rate constant for a first order reaction doubles when the temperature increases from $300\\text{ K}$ to $310\\text{ K}$. Calculate the activation energy $E_a$ of the reaction ($R = 8.314\\text{ J K}^{-1}\\text{ mol}^{-1}$).",
+      "latex": "\\ln\\left(\\frac{k_2}{k_1}\\right) = \\frac{E_a}{R}\\left(\\frac{1}{T_1} - \\frac{1}{T_2}\\right)",
+      "images": [],
+      "tags": ["kinetics", "arrhenius", "numericals"],
+      "difficulty": "hard",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2024,
+      "metadata": {}
+    },
+    {
+      "id": "phy-12-003",
+      "kind": "concept",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electromagnetic Induction",
+      "concepts": ["Faraday's Law", "Lenz's Law"],
+      "body": "Faraday's law states that the magnitude of induced electromotive force (EMF) in a circuit is proportional to the time rate of change of magnetic flux through the circuit. Lenz's law gives the polarity.",
+      "latex": "\\mathcal{E} = -\\frac{d\\Phi_B}{dt}",
+      "images": [],
+      "tags": ["electromagnetism", "flux", "core-concept"],
+      "difficulty": "easy",
+      "metadata": {}
+    },
+    {
+      "id": "chem-11-004",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Redox Reactions",
+      "concepts": ["Oxidation", "Reduction"],
+      "body": "**OIL RIG**: Oxidation Is Loss of electrons, Reduction Is Gain of electrons. Alternatively: **LEO the lion says GER** (Loss of Electrons = Oxidation, Gain of Electrons = Reduction).",
+      "images": [],
+      "tags": ["redox", "mnemonics", "quick-recall"],
+      "difficulty": "easy",
+      "metadata": {}
+    }
+  ]
+}

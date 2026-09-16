@@ -1,0 +1,4 @@
+{
+  "invalidKey": "This JSON intentionally violates ContentFileSchema for testing error states.",
+  "items": []
+}

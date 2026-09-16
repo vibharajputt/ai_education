@@ -1,0 +1,75 @@
+import type { ReactNode } from 'react';
+import { Skeleton } from './Skeleton';
+import { EmptyState } from './EmptyState';
+import { ErrorState } from './ErrorState';
+
+type Status = 'loading' | 'empty' | 'error' | 'success';
+
+interface StateShellProps {
+  status: Status;
+  error?: Error | null;
+  onRetry?: () => void;
+  emptyTitle?: string;
+  emptyDescription?: string;
+  emptyIcon?: ReactNode;
+  emptyAction?: { label: string; onClick: () => void };
+  children?: ReactNode;
+  /** Number of skeleton lines when loading. Default 4. */
+  skeletonLines?: number;
+  className?: string;
+}
+
+/**
+ * Composes the three required states (loading / empty / error) that every
+ * module must implement (AGENTS.md non-negotiable rule).
+ *
+ * Usage:
+ *   <StateShell status={loading ? 'loading' : items.length === 0 ? 'empty' : error ? 'error' : 'success'} error={error} onRetry={reload}>
+ *     {items.map(…)}
+ *   </StateShell>
+ */
+export function StateShell({
+  status,
+  error,
+  onRetry,
+  emptyTitle = 'No content yet',
+  emptyDescription,
+  emptyIcon,
+  emptyAction,
+  children,
+  skeletonLines = 4,
+  className = '',
+}: StateShellProps) {
+  if (status === 'loading') {
+    return (
+      <div className={`p-6 ${className}`}>
+        <Skeleton lines={skeletonLines} />
+      </div>
+    );
+  }
+
+  if (status === 'error') {
+    return (
+      <ErrorState
+        error={error ?? undefined}
+        retry={onRetry}
+        className={className}
+      />
+    );
+  }
+
+  if (status === 'empty') {
+    return (
+      <EmptyState
+        icon={emptyIcon}
+        title={emptyTitle}
+        description={emptyDescription}
+        action={emptyAction}
+        className={className}
+      />
+    );
+  }
+
+  // status === 'success'
+  return <>{children}</>;
+}

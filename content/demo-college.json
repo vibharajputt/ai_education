@@ -1,0 +1,87 @@
+{
+  "collection": {
+    "id": "demo-college-col",
+    "title": "Demo Interview & Aptitude Prep",
+    "description": "High-impact technical interview problems and behavioral frameworks for undergraduate engineering students.",
+    "scopeLabel": "5 sample interview questions across CS & Management",
+    "filters": {
+      "subject": ["Computer Science", "Systems Design", "Behavioral"],
+      "difficulty": ["easy", "medium", "hard"]
+    }
+  },
+  "items": [
+    {
+      "id": "cs-algo-001",
+      "kind": "interview-q",
+      "track": "college",
+      "subject": "Computer Science",
+      "chapter": "Data Structures & Algorithms",
+      "concepts": ["Two Pointers", "Time Complexity"],
+      "body": "Given a sorted array of integers, design an algorithm to find two numbers that sum up to a specific target value. What is the asymptotic time and space complexity?",
+      "latex": "O(N) \\text{ time, } O(1) \\text{ extra space}",
+      "images": [],
+      "tags": ["algorithms", "arrays", "faang"],
+      "difficulty": "easy",
+      "metadata": {
+        "company": "Amazon, Google",
+        "expectedTimeMinutes": 15
+      }
+    },
+    {
+      "id": "cs-sys-002",
+      "kind": "interview-q",
+      "track": "college",
+      "subject": "Systems Design",
+      "chapter": "Distributed Systems",
+      "concepts": ["CAP Theorem", "Consistent Hashing"],
+      "body": "Explain the trade-offs described by the CAP theorem. Why cannot a distributed data store simultaneously provide Consistency, Availability, and Partition tolerance in the presence of network partitions?",
+      "images": [],
+      "tags": ["distributed-systems", "architecture", "system-design"],
+      "difficulty": "medium",
+      "metadata": {
+        "expectedTimeMinutes": 25
+      }
+    },
+    {
+      "id": "cs-db-003",
+      "kind": "interview-q",
+      "track": "college",
+      "subject": "Computer Science",
+      "chapter": "Database Management Systems",
+      "concepts": ["ACID Properties", "Isolation Levels"],
+      "body": "Contrast **Read Committed** and **Repeatable Read** transaction isolation levels. Describe a scenario that causes a *Phantom Read* anomaly under Repeatable Read in ANSI SQL standard.",
+      "images": [],
+      "tags": ["databases", "sql", "transactions"],
+      "difficulty": "hard",
+      "metadata": {
+        "expectedTimeMinutes": 20
+      }
+    },
+    {
+      "id": "mgmt-beh-004",
+      "kind": "tip",
+      "track": "college",
+      "subject": "Behavioral",
+      "chapter": "STAR Framework",
+      "concepts": ["Behavioral Interviews", "Leadership Principles"],
+      "body": "Structure every behavioral answer using **STAR**:\n- **S**ituation: Context and problem background (15% time)\n- **T**ask: Your specific responsibility or hurdle (15% time)\n- **A**ction: The step-by-step engineering decisions YOU made (50% time)\n- **R**esult: Quantifiable impact, metrics, and learnings (20% time)",
+      "images": [],
+      "tags": ["soft-skills", "star-method", "interview-strategy"],
+      "difficulty": "easy",
+      "metadata": {}
+    },
+    {
+      "id": "cs-viva-005",
+      "kind": "viva",
+      "track": "college",
+      "subject": "Computer Science",
+      "chapter": "Operating Systems",
+      "concepts": ["Deadlock", "Banker's Algorithm"],
+      "body": "What are the four Coffman conditions necessary for a deadlock to occur in a multiprogramming system? How does prevention differ from deadlock avoidance?",
+      "images": [],
+      "tags": ["operating-systems", "viva", "concurrency"],
+      "difficulty": "medium",
+      "metadata": {}
+    }
+  ]
+}
