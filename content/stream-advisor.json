@@ -1,0 +1,583 @@
+{
+  "collection": {
+    "id": "stream-advisor-col",
+    "title": "Class 10 Stream Selection Guidance Instrument",
+    "description": "15-question psychometric instrument assessing Aptitude, Interest, and Work-Style for Class 10 students entering Class 11.",
+    "scopeLabel": "15-Question Aptitude & Interest Assessment — Class 10 Stream Selection",
+    "filters": {
+      "category": ["Aptitude", "Interest", "Work-Style"]
+    }
+  },
+  "items": [
+    {
+      "id": "sa-q-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Aptitude Assessment",
+      "concepts": ["Mathematical Reasoning", "Problem Solving"],
+      "body": "Question 1 of 15 (Aptitude): When faced with a complex numerical puzzle or physics formula derivation, how do you typically react?",
+      "images": [],
+      "tags": ["aptitude", "math", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "qIndex": 1,
+        "category": "Aptitude",
+        "options": [
+          {
+            "id": "opt-1a",
+            "text": "I thrive on it! I love manipulating equations and finding precise logical solutions.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 3, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-1b",
+            "text": "I prefer applying math to financial data, percentages, graphs, and business scenarios.",
+            "weights": { "pcm": 1, "pcb": 0, "commerce_math": 4, "commerce_nomath": 2, "humanities": 1 }
+          },
+          {
+            "id": "opt-1c",
+            "text": "I prefer understanding biological systems, living organisms, and medical concepts over abstract math.",
+            "weights": { "pcm": 0, "pcb": 4, "commerce_math": 0, "commerce_nomath": 1, "humanities": 1 }
+          },
+          {
+            "id": "opt-1d",
+            "text": "I prefer reading essays, analyzing history, debating social issues, or creative writing.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Interest Assessment",
+      "concepts": ["Scientific Curiosity", "Biology"],
+      "body": "Question 2 of 15 (Interest): What kind of documentaries or articles captivate your attention the most?",
+      "images": [],
+      "tags": ["interest", "biology", "genetics"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 2,
+        "category": "Interest",
+        "options": [
+          {
+            "id": "opt-2a",
+            "text": "Space exploration, quantum mechanics, artificial intelligence, and robotics breakthroughs.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 1, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-2b",
+            "text": "Human anatomy, medical discoveries, genetics, neuroscience, and wildlife conservation.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 1 }
+          },
+          {
+            "id": "opt-2c",
+            "text": "Stock market trends, startup founder stories, global trade, and economic policies.",
+            "weights": { "pcm": 1, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-2d",
+            "text": "World history, geopolitics, psychology, literature analysis, and social reforms.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-003",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Work-Style Assessment",
+      "concepts": ["Analytical Thinking", "Data Analysis"],
+      "body": "Question 3 of 15 (Work-Style): Which type of school assignment or project do you enjoy completing the most?",
+      "images": [],
+      "tags": ["work-style", "projects"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 3,
+        "category": "Work-Style",
+        "options": [
+          {
+            "id": "opt-3a",
+            "text": "Building a working physics model, coding an app, or proving geometry theorems.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 2, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-3b",
+            "text": "Dissecting plant specimens, drawing biological diagrams, or conducting chemistry titrations.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-3c",
+            "text": "Creating a business plan, managing a budget, or auditing financial balance sheets.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-3d",
+            "text": "Writing a detailed research paper, conducting surveys, or preparing for Model UN debates.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 1, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-004",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Aptitude Assessment",
+      "concepts": ["Abstract Reasoning", "Logarithms"],
+      "body": "Question 4 of 15 (Aptitude): How comfortable are you with abstract mathematical concepts (Calculus, Trigonometry, Vectors)?",
+      "images": [],
+      "tags": ["aptitude", "math"],
+      "difficulty": "medium",
+      "metadata": {
+        "qIndex": 4,
+        "category": "Aptitude",
+        "options": [
+          {
+            "id": "opt-4a",
+            "text": "Very comfortable! Mathematics is one of my strongest and most enjoyable subjects.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 4, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-4b",
+            "text": "Moderately comfortable, but I prefer applied statistics over heavy calculus.",
+            "weights": { "pcm": 2, "pcb": 2, "commerce_math": 3, "commerce_nomath": 2, "humanities": 1 }
+          },
+          {
+            "id": "opt-4c",
+            "text": "I can handle basic math, but I struggle with advanced abstract derivations.",
+            "weights": { "pcm": 0, "pcb": 2, "commerce_math": 1, "commerce_nomath": 4, "humanities": 3 }
+          },
+          {
+            "id": "opt-4d",
+            "text": "I strongly dislike heavy math and prefer subjects focused on language, art, or social sciences.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 2, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-005",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Interest Assessment",
+      "concepts": ["Career Aspirations", "Medicine"],
+      "body": "Question 5 of 15 (Interest): Imagine your ideal long-term career environment. Where do you picture yourself?",
+      "images": [],
+      "tags": ["interest", "career"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 5,
+        "category": "Interest",
+        "options": [
+          {
+            "id": "opt-5a",
+            "text": "Engineering lab, tech firm, architecture firm, or research & development center.",
+            "weights": { "pcm": 4, "pcb": 0, "commerce_math": 1, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-5b",
+            "text": "Hospital, medical clinic, biotechnology lab, pharmacy, or veterinary facility.",
+            "weights": { "pcm": 0, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-5c",
+            "text": "Corporate boardroom, investment bank, accounting firm, or e-commerce startup.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-5d",
+            "text": "Civil services office, law court, journalism media house, design studio, or university.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-006",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Work-Style Assessment",
+      "concepts": ["Memorization vs Logic"],
+      "body": "Question 6 of 15 (Work-Style): What learning style suits you best when preparing for exams?",
+      "images": [],
+      "tags": ["work-style", "learning"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 6,
+        "category": "Work-Style",
+        "options": [
+          {
+            "id": "opt-6a",
+            "text": "Solving numerical problems and practicing step-by-step formula applications.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 3, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-6b",
+            "text": "Memorizing terminology, structural diagrams, flowcharts, and biological processes.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 1, "humanities": 1 }
+          },
+          {
+            "id": "opt-6c",
+            "text": "Understanding rules, formulas for accounting, market trends, and business case studies.",
+            "weights": { "pcm": 1, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-6d",
+            "text": "Reading long chapters, forming arguments, writing detailed answers, and critical analysis.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-007",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Aptitude Assessment",
+      "concepts": ["Logical Analysis", "Law & Civics"],
+      "body": "Question 7 of 15 (Aptitude): How do you perform in subjects requiring argumentative writing, history dates, or civics laws?",
+      "images": [],
+      "tags": ["aptitude", "humanities"],
+      "difficulty": "medium",
+      "metadata": {
+        "qIndex": 7,
+        "category": "Aptitude",
+        "options": [
+          {
+            "id": "opt-7a",
+            "text": "Excellently! I express thoughts fluently and retain historical timelines effortlessly.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 1, "commerce_nomath": 2, "humanities": 4 }
+          },
+          {
+            "id": "opt-7b",
+            "text": "I perform well if it relates to economics, business regulations, or commerce laws.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 3, "commerce_nomath": 4, "humanities": 2 }
+          },
+          {
+            "id": "opt-7c",
+            "text": "I prefer science facts and medical terms over history or literature essays.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-7d",
+            "text": "I prefer logical formulas and physics derivations over subjective writing.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 1, "commerce_nomath": 0, "humanities": 0 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-008",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Interest Assessment",
+      "concepts": ["Technology", "Coding"],
+      "body": "Question 8 of 15 (Interest): How interested are you in computer programming, software development, or engineering logic?",
+      "images": [],
+      "tags": ["interest", "tech", "coding"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 8,
+        "category": "Interest",
+        "options": [
+          {
+            "id": "opt-8a",
+            "text": "Extremely interested! I want to study Computer Science, AI, or Engineering.",
+            "weights": { "pcm": 4, "pcb": 0, "commerce_math": 2, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-8b",
+            "text": "I like tech tools, but I prefer bioinformatics, medical tech, or healthcare applications.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-8c",
+            "text": "I am interested in fintech, data analytics, e-commerce platforms, or business IT.",
+            "weights": { "pcm": 1, "pcb": 0, "commerce_math": 4, "commerce_nomath": 2, "humanities": 0 }
+          },
+          {
+            "id": "opt-8d",
+            "text": "I prefer digital media, design, psychology, animation, or content creation over coding.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-009",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Work-Style Assessment",
+      "concepts": ["Problem Solving", "Lab Work"],
+      "body": "Question 9 of 15 (Work-Style): Which environment sounds most engaging for your practical lab work?",
+      "images": [],
+      "tags": ["work-style", "lab"],
+      "difficulty": "medium",
+      "metadata": {
+        "qIndex": 9,
+        "category": "Work-Style",
+        "options": [
+          {
+            "id": "opt-9a",
+            "text": "Physics lab verifying circuit laws, optics, and mechanics equations.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-9b",
+            "text": "Biology lab observing microscopic slides, plant tissue, or animal anatomy.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-9c",
+            "text": "Computer lab working on Excel spreadsheets, financial models, or business simulations.",
+            "weights": { "pcm": 1, "pcb": 0, "commerce_math": 4, "commerce_nomath": 3, "humanities": 0 }
+          },
+          {
+            "id": "opt-9d",
+            "text": "Language lab, art studio, geography mapping room, or psychology survey center.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-010",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Aptitude Assessment",
+      "concepts": ["Financial Acumen"],
+      "body": "Question 10 of 15 (Aptitude): How easily do you understand business news, money management, or profit/loss calculations?",
+      "images": [],
+      "tags": ["aptitude", "commerce", "finance"],
+      "difficulty": "medium",
+      "metadata": {
+        "qIndex": 10,
+        "category": "Aptitude",
+        "options": [
+          {
+            "id": "opt-10a",
+            "text": "Very easily! I naturally grasp financial concepts, profit margins, and economic trends.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-10b",
+            "text": "I understand financial numbers if supported by strong mathematical models and statistics.",
+            "weights": { "pcm": 2, "pcb": 0, "commerce_math": 4, "commerce_nomath": 1, "humanities": 0 }
+          },
+          {
+            "id": "opt-10c",
+            "text": "I understand social policy impacts on economy, but dislike pure bookkeeping.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 1, "commerce_nomath": 2, "humanities": 4 }
+          },
+          {
+            "id": "opt-10d",
+            "text": "I prefer focusing on pure natural sciences or medical research.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-011",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Interest Assessment",
+      "concepts": ["Competitive Exams", "JEE vs NEET vs CUET"],
+      "body": "Question 11 of 15 (Interest): Which national level competitive entrance exam aligns best with your target goals?",
+      "images": [],
+      "tags": ["interest", "exams"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 11,
+        "category": "Interest",
+        "options": [
+          {
+            "id": "opt-11a",
+            "text": "JEE Main / JEE Advanced / BITSAT (Engineering & Physical Sciences).",
+            "weights": { "pcm": 4, "pcb": 0, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-11b",
+            "text": "NEET UG / Nursing / Biotechnology Entrance (Medical & Life Sciences).",
+            "weights": { "pcm": 0, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-11c",
+            "text": "CA Foundation / CS / IPMAT / CLAT / CUET Commerce.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-11d",
+            "text": "UPSC Civil Services / NIDA / NIFT / CLAT Law / CUET Arts & Humanities.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-012",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Work-Style Assessment",
+      "concepts": ["Decision Making"],
+      "body": "Question 12 of 15 (Work-Style): When making key decisions, what influences your thinking the most?",
+      "images": [],
+      "tags": ["work-style", "decisions"],
+      "difficulty": "medium",
+      "metadata": {
+        "qIndex": 12,
+        "category": "Work-Style",
+        "options": [
+          {
+            "id": "opt-12a",
+            "text": "Rigorous mathematical proof, logical consistency, and empirical evidence.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 2, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-12b",
+            "text": "Observational evidence, biological impact, and human empathy/wellbeing.",
+            "weights": { "pcm": 0, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 1 }
+          },
+          {
+            "id": "opt-12c",
+            "text": "Cost-benefit analysis, profitability, market efficiency, and risk calculation.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 0 }
+          },
+          {
+            "id": "opt-12d",
+            "text": "Ethical considerations, historical precedent, social justice, and human narrative.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-013",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Aptitude Assessment",
+      "concepts": ["Memory & Recall"],
+      "body": "Question 13 of 15 (Aptitude): How is your ability to retain extensive factual details, botanical names, or medical terminology?",
+      "images": [],
+      "tags": ["aptitude", "memory"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 13,
+        "category": "Aptitude",
+        "options": [
+          {
+            "id": "opt-13a",
+            "text": "Excellent! I have strong memory retention for detailed factual information.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 1, "commerce_nomath": 2, "humanities": 3 }
+          },
+          {
+            "id": "opt-13b",
+            "text": "Good, but I prefer understanding underlying mathematical principles rather than memorizing.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 3, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-13c",
+            "text": "I retain financial rules and tax regulations easily when applied to accounts.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-13d",
+            "text": "I retain dates, philosophical concepts, and literary themes very well.",
+            "weights": { "pcm": 0, "pcb": 1, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-014",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Interest Assessment",
+      "concepts": ["Extracurricular Activities"],
+      "body": "Question 14 of 15 (Interest): Which school club or extracurricular activity would you actively lead?",
+      "images": [],
+      "tags": ["interest", "clubs"],
+      "difficulty": "easy",
+      "metadata": {
+        "qIndex": 14,
+        "category": "Interest",
+        "options": [
+          {
+            "id": "opt-14a",
+            "text": "Robotics Club, Astronomy Club, or Science Exhibition Team.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 1, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-14b",
+            "text": "Eco Club, Health & Red Cross Society, or Biology Olympiad Circle.",
+            "weights": { "pcm": 0, "pcb": 4, "commerce_math": 0, "commerce_nomath": 0, "humanities": 1 }
+          },
+          {
+            "id": "opt-14c",
+            "text": "Entrepreneurship Cell, Finance Club, or School Festhill Management Committee.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-14d",
+            "text": "Debating Society, Editorial Board, Dramatics Club, or MUN Club.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    },
+    {
+      "id": "sa-q-015",
+      "kind": "question",
+      "track": "school",
+      "subject": "Career Guidance",
+      "chapter": "Work-Style Assessment",
+      "concepts": ["Stress Management"],
+      "body": "Question 15 of 15 (Work-Style): How do you handle intense exam preparation workload?",
+      "images": [],
+      "tags": ["work-style", "stamina"],
+      "difficulty": "medium",
+      "metadata": {
+        "qIndex": 15,
+        "category": "Work-Style",
+        "options": [
+          {
+            "id": "opt-15a",
+            "text": "I maintain focus by systematically solving numerical problems and practice papers.",
+            "weights": { "pcm": 4, "pcb": 1, "commerce_math": 3, "commerce_nomath": 0, "humanities": 0 }
+          },
+          {
+            "id": "opt-15b",
+            "text": "I manage through disciplined study of vast biological diagrams and theory revisions.",
+            "weights": { "pcm": 1, "pcb": 4, "commerce_math": 0, "commerce_nomath": 1, "humanities": 1 }
+          },
+          {
+            "id": "opt-15c",
+            "text": "I stay organized with structured timetables, spreadsheets, and business case revisions.",
+            "weights": { "pcm": 1, "pcb": 0, "commerce_math": 4, "commerce_nomath": 4, "humanities": 1 }
+          },
+          {
+            "id": "opt-15d",
+            "text": "I focus through comprehensive reading, essay drafting, and group discussions.",
+            "weights": { "pcm": 0, "pcb": 0, "commerce_math": 0, "commerce_nomath": 1, "humanities": 4 }
+          }
+        ]
+      }
+    }
+  ]
+}

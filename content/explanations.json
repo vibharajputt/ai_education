@@ -1,0 +1,1916 @@
+[
+  {
+    "itemId": "pyq-2015-0001",
+    "type": "solution",
+    "body": "This is a mock step-by-step solution for the question.",
+    "steps": [
+      {
+        "label": "Step 1: Formula",
+        "body": "Use relevant physics equation."
+      },
+      {
+        "label": "Step 2: Calculation",
+        "body": "Substitute values and compute."
+      }
+    ],
+    "keyPoints": [
+      "Check units",
+      "State final answer clearly"
+    ],
+    "markingBreakdown": [
+      {
+        "point": "Correct formula and working",
+        "marks": 3
+      }
+    ],
+    "diagramNote": "Diagram showing ray path optional.",
+    "commonMistakes": [
+      "Forgetting to convert units to SI"
+    ],
+    "sources": [
+      "NCERT Official Textbook"
+    ],
+    "summary": "This is a mock step-by-step solution for the question....",
+    "formulasUsed": [
+      "v = u + at"
+    ],
+    "insufficient_context": false
+  },
+  {
+    "itemId": "q-sv-001",
+    "type": "solution",
+    "body": "This is a mock step-by-step solution for the question.",
+    "steps": [
+      {
+        "label": "Step 1: Formula",
+        "body": "Use relevant physics equation."
+      },
+      {
+        "label": "Step 2: Calculation",
+        "body": "Substitute values and compute."
+      }
+    ],
+    "keyPoints": [
+      "Check units",
+      "State final answer clearly"
+    ],
+    "markingBreakdown": [
+      {
+        "point": "Correct formula and working",
+        "marks": 3
+      }
+    ],
+    "diagramNote": "Diagram showing ray path optional.",
+    "commonMistakes": [
+      "Forgetting to convert units to SI"
+    ],
+    "sources": [
+      "NCERT Official Textbook"
+    ],
+    "summary": "This is a mock step-by-step solution for the question....",
+    "formulasUsed": [
+      "v = u + at"
+    ],
+    "insufficient_context": false
+  },
+  {
+    "itemId": "q-sv-001",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 1 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-002",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 2 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-003",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 3 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-004",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 4 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-005",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 5 (5 Marks)."
+  },
+  {
+    "itemId": "q-sv-006",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 6 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-007",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 7 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-008",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 8 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-009",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 9 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-010",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 10 (5 Marks)."
+  },
+  {
+    "itemId": "q-sv-011",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 11 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-012",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 12 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-013",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 13 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-014",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 14 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-015",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 15 (5 Marks)."
+  },
+  {
+    "itemId": "q-sv-016",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 16 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-017",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 17 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-018",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 18 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-019",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 19 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-020",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 20 (5 Marks)."
+  },
+  {
+    "itemId": "q-sv-021",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 21 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-022",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 22 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-023",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 23 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-024",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 24 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-025",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 25 (5 Marks)."
+  },
+  {
+    "itemId": "q-sv-026",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 26 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-027",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 27 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-028",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 28 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-029",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 29 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-030",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 30 (5 Marks)."
+  },
+  {
+    "itemId": "q-sv-031",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 31 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-032",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 32 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-033",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 33 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-034",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 34 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-035",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 35 (5 Marks)."
+  },
+  {
+    "itemId": "q-sv-036",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 36 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-037",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 37 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-038",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 38 (2 Marks)."
+  },
+  {
+    "itemId": "q-sv-039",
+    "type": "solution",
+    "body": "For a convex lens forming a real image equal to the size of the object, the object is placed at **2F1** (distance $2f = 50\\text{ cm} \\implies f = 25\\text{ cm}$). Power of the lens $P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ D}$.",
+    "steps": [
+      {
+        "label": "Step 1: Position of Needle",
+        "body": "Since magnification $m = -1$ (equal size, real), $v = 50\\text{ cm}$ and $u = -50\\text{ cm}$. Needle is placed $50\\text{ cm}$ in front of the lens."
+      },
+      {
+        "label": "Step 2: Focal Length",
+        "body": "Using lens formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u} = \\frac{1}{50} - \\left(-\\frac{1}{50}\\right) = \\frac{2}{50} \\implies f = 25\\text{ cm} = 0.25\\text{ m}$."
+      },
+      {
+        "label": "Step 3: Power Calculation",
+        "body": "$P = \\frac{1}{f(\\text{in m})} = \\frac{1}{0.25} = +4.0\\text{ Dioptres}$."
+      }
+    ],
+    "keyPoints": [
+      "Real image of same size is formed at 2F2 when object is at 2F1.",
+      "Power is positive for convex lens."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "Stating correct position of needle at 50 cm in front of lens",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of focal length f = 25 cm",
+        "marks": 1
+      },
+      {
+        "criterion": "Correct calculation of power +4.0 D with unit",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Ray diagram showing two rays starting from top of object passing through optical center O and principal focus F2, meeting at 2F2.",
+    "commonMistakes": [
+      "Forgetting to convert focal length from cm to meters before calculating power.",
+      "Omitting the + sign for convex lens power."
+    ],
+    "requiredKeywords": [
+      "2F1",
+      "optical center",
+      "focal length",
+      "Dioptres",
+      "real image"
+    ],
+    "examinerNote": "CBSE examiners strictly deduct 0.5 marks if unit \"D\" or sign \"+\" is missing in the final power statement.",
+    "summary": "Verified solution for Question 39 (3 Marks)."
+  },
+  {
+    "itemId": "q-sv-040",
+    "type": "solution",
+    "body": "According to Ohm's Law, current $I$ flowing through a conductor is directly proportional to potential difference $V$ across its ends ($V = IR$). The slope of $V-I$ graph gives resistance $R$.",
+    "steps": [
+      {
+        "label": "Step 1: Statement of Ohm Law",
+        "body": "State $V \\propto I$ at constant temperature."
+      },
+      {
+        "label": "Step 2: Mathematical Expression",
+        "body": "$V = IR$, where $R$ is constant resistance."
+      }
+    ],
+    "keyPoints": [
+      "Temperature must remain constant.",
+      "V-I graph is a straight line passing through origin."
+    ],
+    "markingBreakdown": [
+      {
+        "criterion": "State Ohm Law with constant temperature condition",
+        "marks": 1
+      },
+      {
+        "criterion": "Write V = IR and define symbols",
+        "marks": 1
+      }
+    ],
+    "diagramNote": "Circuit diagram with ammeter in series, voltmeter in parallel, battery, rheostat, and key.",
+    "commonMistakes": [
+      "Forgetting to mention \"at constant temperature\"."
+    ],
+    "requiredKeywords": [
+      "proportional",
+      "constant temperature",
+      "resistance",
+      "voltmeter"
+    ],
+    "examinerNote": "Omitting \"constant temperature\" leads to direct 1 mark deduction in CBSE marking schemes.",
+    "summary": "Verified solution for Question 40 (5 Marks)."
+  }
+]

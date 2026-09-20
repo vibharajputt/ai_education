@@ -1,0 +1,41 @@
+[
+  {
+    "id": "analysis-sample-resume-01",
+    "artifactType": "resume",
+    "targetSpec": "Senior Software Engineer Role requiring React, TypeScript, Node.js, System Design",
+    "result": {
+      "structure": [
+        "Contact Info",
+        "Experience",
+        "Projects",
+        "Skills"
+      ],
+      "findings": [
+        {
+          "severity": "high",
+          "location": "Helped team fix bugs.",
+          "issue": "Vague responsibility description without metrics.",
+          "suggestion": "Specify the types of bugs resolved and performance impact achieved."
+        }
+      ],
+      "scores": {
+        "impact": 65,
+        "clarity": 70,
+        "technical": 60
+      },
+      "extractedEntities": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Acme Corp"
+      ],
+      "rewrites": [
+        {
+          "original": "Helped team fix bugs.",
+          "improved": "Resolved 20+ critical frontend bugs, reducing user drop-off by 15%.",
+          "why": "Adds concrete metrics and business impact."
+        }
+      ]
+    }
+  }
+]

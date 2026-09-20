@@ -34,6 +34,24 @@ export function ModuleHost() {
     );
   }
 
+  React.useEffect(() => {
+    if (moduleConfig) {
+      try {
+        localStorage.setItem(
+          'ai_edu_last_visited_module',
+          JSON.stringify({
+            track: track || 'school',
+            id: moduleConfig.id,
+            title: moduleConfig.title,
+            timestamp: Date.now(),
+          })
+        );
+      } catch (e) {
+        // ignore storage quota errors
+      }
+    }
+  }, [moduleConfig, track]);
+
   const ViewComponent = moduleConfig.view;
 
   return (

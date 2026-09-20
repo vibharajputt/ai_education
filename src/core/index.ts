@@ -36,3 +36,6 @@ export {
 
 export type { ExplainRequest, ExplainStreamChunk } from './aiClient';
 export { explainItem, explainItemFull } from './aiClient';
+
+export * from './progress';
+

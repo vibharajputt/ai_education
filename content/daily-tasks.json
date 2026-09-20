@@ -1,0 +1,74 @@
+{
+  "collection": {
+    "id": "daily-tasks-col",
+    "title": "Daily Adaptive Learning Tasks & Study-Plan Streak Tracker",
+    "description": "Daily task manager featuring automated study plan schedules, streak counter integration, and adaptive difficulty based on your Elo concept mastery.",
+    "scopeLabel": "Daily Adaptive Learning Tasks & Study-Plan Streak Tracker",
+    "filters": {
+      "difficultyTier": ["Easy Focus", "Standard Practice", "Advanced Challenge"],
+      "status": ["Pending", "Completed"]
+    }
+  },
+  "items": [
+    {
+      "id": "dt-task-001",
+      "kind": "tip",
+      "track": "college",
+      "subject": "STEM & Practice",
+      "chapter": "Day 1 Routine",
+      "concepts": ["Daily Practice", "Elo Mastery"],
+      "body": "Daily Task 1: Complete 10-Question Daily Quiz in Weak Topics.",
+      "images": [],
+      "tags": ["daily-task", "quiz", "day1"],
+      "difficulty": "easy",
+      "metadata": {
+        "dayNumber": 1,
+        "estimatedMins": 15,
+        "difficultyTier": "Easy Focus",
+        "targetModule": "quiz",
+        "taskTitle": "Daily Warm-Up Quiz (10 Questions)",
+        "taskDescription": "Take a 10-question practice set in your lowest Elo rating concept tags to maintain daily streak momentum."
+      }
+    },
+    {
+      "id": "dt-task-002",
+      "kind": "tip",
+      "track": "college",
+      "subject": "STEM & Practice",
+      "chapter": "Day 1 Routine",
+      "concepts": ["Spaced Repetition", "FSRS"],
+      "body": "Daily Task 2: Clear FSRS Spaced Repetition Queue.",
+      "images": [],
+      "tags": ["daily-task", "fsrs", "day1"],
+      "difficulty": "medium",
+      "metadata": {
+        "dayNumber": 1,
+        "estimatedMins": 20,
+        "difficultyTier": "Standard Practice",
+        "targetModule": "progress",
+        "taskTitle": "FSRS Revision Queue Clear",
+        "taskDescription": "Review and re-test all items marked due for revision today in the Spaced Repetition queue."
+      }
+    },
+    {
+      "id": "dt-task-003",
+      "kind": "tip",
+      "track": "college",
+      "subject": "STEM & Practice",
+      "chapter": "Day 2 Routine",
+      "concepts": ["Timed Paper", "Exam Simulation"],
+      "body": "Daily Task 3: Generate and solve a 25-Question Practice Worksheet.",
+      "images": [],
+      "tags": ["daily-task", "worksheet", "day2"],
+      "difficulty": "hard",
+      "metadata": {
+        "dayNumber": 2,
+        "estimatedMins": 45,
+        "difficultyTier": "Advanced Challenge",
+        "targetModule": "sheet-generator",
+        "taskTitle": "Worksheet Practice Paper Test",
+        "taskDescription": "Generate a printable A4 practice worksheet mixing physics numericals and organic mechanisms."
+      }
+    }
+  ]
+}

@@ -1,0 +1,1742 @@
+{
+  "collection": {
+    "id": "viva-col",
+    "title": "Class 10 Practical Science Viva Voce Prep",
+    "description": "Exemplar viva voce question bank for CBSE Class 10 practical experiments featuring model answers, difficulty filters, and interactive Quiz Me practice mode.",
+    "scopeLabel": "96 Practical Viva Questions across 8 CBSE Science Experiments — Class 10",
+    "filters": {
+      "expTag": ["Exp 1", "Exp 2", "Exp 3", "Exp 4", "Exp 5", "Exp 6", "Exp 7", "Exp 8"],
+      "difficulty": ["easy", "medium", "hard"]
+    }
+  },
+  "items": [
+    {
+      "id": "viva-exp1-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Gas Test", "Carbon Dioxide", "Lime Water"],
+      "body": "What gas is liberated when dilute HCl reacts with sodium carbonate?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "Carbon dioxide gas (CO₂) is liberated with brisk effervescence.",
+        "examinerTip": "Always mention 'brisk effervescence' along with the chemical formula CO₂."
+      }
+    },
+    {
+      "id": "viva-exp1-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Milkiness Test", "Calcium Carbonate"],
+      "body": "Why does lime water turn milky when CO₂ gas is passed through it?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "Because CO₂ reacts with lime water [Ca(OH)₂] to form an insoluble white precipitate of calcium carbonate (CaCO₃).",
+        "examinerTip": "Give the balanced equation: Ca(OH)₂ + CO₂ → CaCO₃↓ + H₂O."
+      }
+    },
+    {
+      "id": "viva-exp1-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Excess CO2", "Calcium Bicarbonate"],
+      "body": "What happens if CO₂ gas is passed through lime water for a prolonged time?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "The milky white solution becomes clear transparent again because insoluble CaCO₃ converts into water-soluble calcium hydrogen carbonate [Ca(HCO₃)₂].",
+        "examinerTip": "Equation: CaCO₃ + H₂O + CO₂ → Ca(HCO₃)₂ (soluble)."
+      }
+    },
+    {
+      "id": "viva-exp1-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Bicarbonate vs Carbonate"],
+      "body": "How do Na₂CO₃ and NaHCO₃ differ in their molar gas yield when reacted with excess HCl?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "1 mole of Na₂CO₃ requires 2 moles of HCl to yield 1 mole of CO₂, while 1 mole of NaHCO₃ requires only 1 mole of HCl to yield 1 mole of CO₂.",
+        "examinerTip": "Check stoichometric coefficients in balanced equations."
+      }
+    },
+    {
+      "id": "viva-exp1-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Chemical Formula", "Washing Soda"],
+      "body": "What is the chemical formula and common name of Na₂CO₃·10H₂O?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "The common name is Washing Soda, and its formula is hydrated Sodium Carbonate decahydrate (Na₂CO₃·10H₂O).",
+        "examinerTip": "Anhydrous Na₂CO₃ is called soda ash."
+      }
+    },
+    {
+      "id": "viva-exp1-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Baking Soda", "Antacid"],
+      "body": "Why is NaHCO₃ used as an active ingredient in antacid tablets?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "Because NaHCO₃ is a mild non-corrosive basic salt that neutralizes excess hydrochloric acid in the stomach.",
+        "examinerTip": "Mention mild basic nature so it does not irritate tissues."
+      }
+    },
+    {
+      "id": "viva-exp1-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["CO2 Fire Extinguisher"],
+      "body": "Why does CO₂ extinguish a burning candle flame?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "CO₂ is denser than air and does not support combustion; it blankets the fuel, cutting off oxygen supply.",
+        "examinerTip": "Mention non-supporter of combustion property."
+      }
+    },
+    {
+      "id": "viva-exp1-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Thistle Funnel", "Safety Technique"],
+      "body": "Why must the lower end of the thistle funnel dip below the liquid level in the test tube?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "To prevent the evolved CO₂ gas from escaping back through the thistle funnel into the atmosphere instead of going through the delivery tube.",
+        "examinerTip": "Forming a liquid seal is crucial."
+      }
+    },
+    {
+      "id": "viva-exp1-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Other Acids", "Sulphuric Acid"],
+      "body": "Can dilute H₂SO₄ be substituted for dilute HCl in this carbonate experiment?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "Yes, dilute H₂SO₄ also reacts with Na₂CO₃ to liberate CO₂ and form soluble Na₂SO₄.",
+        "examinerTip": "Note: avoid using H₂SO₄ with insoluble carbonates like CaCO₃ due to surface coating."
+      }
+    },
+    {
+      "id": "viva-exp1-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Identification Test"],
+      "body": "How do you distinguish between CO₂ gas and SO₂ gas in the lab?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "Both turn lime water milky, but SO₂ turns acidified potassium dichromate paper from orange to green, whereas CO₂ has no effect.",
+        "examinerTip": "SO₂ also has a pungent choking sulfur smell."
+      }
+    },
+    {
+      "id": "viva-exp1-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Salt Nature"],
+      "body": "Is Na₂CO₃ an acidic, basic, or neutral salt?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "It is a basic salt because it is formed by the reaction of a strong base (NaOH) with a weak acid (H₂CO₃).",
+        "examinerTip": "Salt of Strong Base + Weak Acid = Basic Salt (pH > 7)."
+      }
+    },
+    {
+      "id": "viva-exp1-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Thermal Decomposition"],
+      "body": "What chemical change occurs when solid NaHCO₃ is heated strongly?",
+      "images": [],
+      "tags": ["viva", "exp1", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 1,
+        "expTag": "Exp 1",
+        "modelAnswer": "It decomposes into sodium carbonate, water vapor, and carbon dioxide gas: 2NaHCO₃ → Na₂CO₃ + H₂O + CO₂.",
+        "examinerTip": "This reaction causes cake dough to rise in baking."
+      }
+    },
+    {
+      "id": "viva-exp2-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["pH Definition", "Logarithmic Scale"],
+      "body": "What does 'pH' stand for and what does it measure?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "'pH' stands for 'potenz' (power in German) of Hydrogen. It measures the concentration of H⁺ ions in a solution.",
+        "examinerTip": "pH = -log₁₀[H⁺]."
+      }
+    },
+    {
+      "id": "viva-exp2-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Universal Indicator"],
+      "body": "What is a universal indicator and how does it differ from litmus paper?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "Universal indicator is a mixture of several organic dyes that shows a continuous range of different colors over pH 1 to 14, whereas litmus only indicates acidic or basic state.",
+        "examinerTip": "Universal indicator gives relative strength, litmus gives binary acid/base test."
+      }
+    },
+    {
+      "id": "viva-exp2-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Lemon Juice pH"],
+      "body": "Why is the pH of lemon juice around 2.2?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "Lemon juice contains high concentrations of citric acid and ascorbic acid (Vitamin C).",
+        "examinerTip": "Citric acid is a tricarboxylic organic acid."
+      }
+    },
+    {
+      "id": "viva-exp2-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["pH Scale Limits"],
+      "body": "Can a solution have a negative pH value?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "Yes, extremely concentrated strong acids (e.g. 2M or 12M HCl) have [H⁺] > 1 M, resulting in negative pH values (e.g., -log(2) = -0.3).",
+        "examinerTip": "pH scale is not strictly bounded between 0 and 14."
+      }
+    },
+    {
+      "id": "viva-exp2-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Distilled Water pH"],
+      "body": "What is the pH of pure distilled water at 25°C?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "It is exactly 7.0 (neutral) because [H⁺] = [OH⁻] = 10⁻⁷ M.",
+        "examinerTip": "K_w = 10⁻¹⁴ at 25°C."
+      }
+    },
+    {
+      "id": "viva-exp2-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Tooth Decay pH"],
+      "body": "At what pH level does tooth enamel start decaying in the mouth?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "Tooth enamel (calcium hydroxyapatite) begins to corrode when mouth pH drops below 5.5 due to acid-producing bacteria.",
+        "examinerTip": "Toothpaste is basic to neutralize this acid."
+      }
+    },
+    {
+      "id": "viva-exp2-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Soil pH"],
+      "body": "How do farmers treat overly acidic soil with low pH?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "They add quicklime (CaO), slaked lime [Ca(OH)₂], or chalk (CaCO₃) to neutralize excessive soil acidity.",
+        "examinerTip": "Liming soil restores optimal agricultural pH (~6.5-7.5)."
+      }
+    },
+    {
+      "id": "viva-exp2-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Dilution vs pH"],
+      "body": "What happens to the pH of an acidic solution when it is diluted with water?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "The pH increases towards 7 because [H⁺] ion concentration decreases upon dilution.",
+        "examinerTip": "It never exceeds 7 no matter how much water is added."
+      }
+    },
+    {
+      "id": "viva-exp2-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Strong vs Weak Acid"],
+      "body": "Why does 0.1M HCl have a lower pH (~1) than 0.1M CH₃COOH (~3)?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "HCl is a strong acid that completely dissociates into H⁺ ions, whereas CH₃COOH is a weak acid that dissociates only partially (~1%).",
+        "examinerTip": "Higher [H⁺] concentration directly translates to lower numerical pH value."
+      }
+    },
+    {
+      "id": "viva-exp2-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Acid Rain pH"],
+      "body": "What is the threshold pH value below which rain is classified as Acid Rain?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "Rainfall with a pH less than 5.6 is classified as Acid Rain due to dissolved SO₂ and NO₂ gases.",
+        "examinerTip": "Normal rain has pH ~5.6 due to dissolved CO₂ forming H₂CO₃."
+      }
+    },
+    {
+      "id": "viva-exp2-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Phenolphthalein"],
+      "body": "What color does phenolphthalein indicator turn in NaOH solution and in HCl solution?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "Phenolphthalein turns deep pink/magenta in basic NaOH solution, and remains colorless in acidic HCl solution.",
+        "examinerTip": "Synthetic indicator widely used in acid-base titrations."
+      }
+    },
+    {
+      "id": "viva-exp2-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Methyl Orange"],
+      "body": "What is the color of methyl orange indicator in acidic and basic solutions?",
+      "images": [],
+      "tags": ["viva", "exp2", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 2,
+        "expTag": "Exp 2",
+        "modelAnswer": "Methyl orange is red in acidic medium (pH < 3.1) and yellow in basic/neutral medium (pH > 4.4).",
+        "examinerTip": "Original color in bottle is orange."
+      }
+    },
+    {
+      "id": "viva-exp3-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Metal + Acid Reaction"],
+      "body": "Write the balanced chemical equation for the reaction of Zinc with dilute HCl.",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Zn (s) + 2HCl (aq) → ZnCl₂ (aq) + H₂ (g)↑.",
+        "examinerTip": "State symbols (s, aq, g) show good chemistry rigor."
+      }
+    },
+    {
+      "id": "viva-exp3-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Metal + Base Reaction", "Sodium Zincate"],
+      "body": "What product is formed when Zinc reacts with hot concentrated NaOH solution?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Sodium Zincate (Na₂ZnO₂) and Hydrogen gas are formed: Zn + 2NaOH → Na₂ZnO₂ + H₂↑.",
+        "examinerTip": "This demonstrates the amphoteric chemical nature of Zinc."
+      }
+    },
+    {
+      "id": "viva-exp3-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Pop Sound Test"],
+      "body": "Why does Hydrogen gas burn with a characteristic 'pop' sound?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Because Hydrogen rapidly combines with atmospheric Oxygen in a mini-explosive combustion reaction: 2H₂ + O₂ → 2H₂O + Energy.",
+        "examinerTip": "The pop sound is the acoustic shockwave of rapid expansion."
+      }
+    },
+    {
+      "id": "viva-exp3-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Copper + Acid"],
+      "body": "Why does Copper metal NOT liberate H₂ gas when treated with dilute HCl?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Because Copper lies below Hydrogen in the reactivity series and cannot reduce H⁺ ions to H₂ gas.",
+        "examinerTip": "E° of Cu²⁺/Cu (+0.34V) is more positive than H⁺/H₂ (0.00V)."
+      }
+    },
+    {
+      "id": "viva-exp3-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Nitric Acid Exception"],
+      "body": "Why is H₂ gas NOT evolved when metals react with dilute Nitric Acid (HNO₃)?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "HNO₃ is a strong oxidizing agent. It oxidizes the evolved H₂ into H₂O and itself gets reduced to nitrogen oxides (NO, NO₂).",
+        "examinerTip": "Only Magnesium (Mg) and Manganese (Mn) liberate H₂ with extremely dilute 1% HNO₃."
+      }
+    },
+    {
+      "id": "viva-exp3-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Olfactory Indicators"],
+      "body": "What are olfactory indicators? Give two examples.",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Substances whose odor changes in acidic or basic media. Examples: Onion extract, Clove oil, Vanilla essence.",
+        "examinerTip": "Their characteristic smell disappears in basic medium (NaOH)."
+      }
+    },
+    {
+      "id": "viva-exp3-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Curd in Brass Vessels"],
+      "body": "Why should sour substances like curd and lemon juice never be kept in copper or brass vessels?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Organic acids in curd react with copper/brass to form toxic, poisonous metal salts that cause food poisoning.",
+        "examinerTip": "Tin coating (Kalai) prevents this chemical attack."
+      }
+    },
+    {
+      "id": "viva-exp3-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Amphoteric Oxides"],
+      "body": "What are amphoteric oxides? Give two examples.",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Metal oxides that react with both acids and bases to produce salt and water. Examples: Aluminium oxide (Al₂O₃) and Zinc oxide (ZnO).",
+        "examinerTip": "ZnO + 2HCl → ZnCl₂ + H₂O; ZnO + 2NaOH → Na₂ZnO₂ + H₂O."
+      }
+    },
+    {
+      "id": "viva-exp3-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Dry HCl Gas"],
+      "body": "Why does dry HCl gas not turn dry blue litmus paper red?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Acids manifest acidic properties only in the presence of water due to formation of hydronium ions (H₃O⁺). Dry HCl gas lacks free H⁺ ions.",
+        "examinerTip": "HCl + H₂O → H₃O⁺ + Cl⁻."
+      }
+    },
+    {
+      "id": "viva-exp3-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Base Definition"],
+      "body": "What is the difference between a base and an alkali?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "All alkalis are water-soluble bases (e.g. NaOH, KOH), but not all bases are soluble in water (e.g. Cu(OH)₂, Fe(OH)₃).",
+        "examinerTip": "All alkalis are bases, but all bases are not alkalis."
+      }
+    },
+    {
+      "id": "viva-exp3-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Neutralization Heat"],
+      "body": "Why is acid-base neutralization reaction always exothermic?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "Because H⁺ ions and OH⁻ ions combine to form stable covalent H₂O molecules, releasing ~57.1 kJ/mol of heat energy.",
+        "examinerTip": "Heat of neutralization for strong acid + strong base is constant (-57.1 kJ)."
+      }
+    },
+    {
+      "id": "viva-exp3-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Acid Dilution Rule"],
+      "body": "Why should water never be added directly into concentrated acid during dilution?",
+      "images": [],
+      "tags": ["viva", "exp3", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 3,
+        "expTag": "Exp 3",
+        "modelAnswer": "The dilution is highly exothermic. Adding water to acid generates intense localized steam that splashes corrosive acid out of the beaker.",
+        "examinerTip": "Rule: Always add Acid to Water slowly with constant stirring."
+      }
+    },
+    {
+      "id": "viva-exp4-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Exothermic Reaction", "Slaking of Lime"],
+      "body": "What type of reaction occurs when water is added to quicklime (CaO)?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "A highly exothermic combination reaction forming slaked lime [Ca(OH)₂].",
+        "examinerTip": "CaO + H₂O → Ca(OH)₂ + Heat."
+      }
+    },
+    {
+      "id": "viva-exp4-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Decomposition", "Ferrous Sulphate"],
+      "body": "What color change is observed when green FeSO₄ crystals are heated?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Green FeSO₄·7H₂O first turns white upon losing water of crystallization, then turns reddish-brown ferric oxide (Fe₂O₃) with evolution of SO₂ and SO₃ gases.",
+        "examinerTip": "2FeSO₄ → Fe₂O₃ + SO₂ + SO₃."
+      }
+    },
+    {
+      "id": "viva-exp4-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Displacement Reaction", "Copper Sulphate"],
+      "body": "Why does the blue color of CuSO₄ fade when iron nails are placed in it?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "More reactive Iron displaces Copper from CuSO₄ to form light-green ferrous sulphate (FeSO₄) solution.",
+        "examinerTip": "Fe + CuSO₄ (blue) → FeSO₄ (green) + Cu (red-brown deposit)."
+      }
+    },
+    {
+      "id": "viva-exp4-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Double Displacement", "Precipitation"],
+      "body": "What is a double displacement reaction? Give the BaCl₂ + Na₂SO₄ example.",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "A reaction in which two compounds exchange ions to form two new compounds, one of which is an insoluble precipitate (BaSO₄).",
+        "examinerTip": "BaCl₂ + Na₂SO₄ → BaSO₄↓ (white ppt) + 2NaCl."
+      }
+    },
+    {
+      "id": "viva-exp4-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Thermal Decomposition", "Lead Nitrate"],
+      "body": "What gas produces brown fumes when Lead Nitrate [Pb(NO₃)₂] powder is heated?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Nitrogen Dioxide gas (NO₂) produces characteristic brown fumes.",
+        "examinerTip": "2Pb(NO₃)₂ → 2PbO (yellow) + 4NO₂↑ (brown) + O₂↑."
+      }
+    },
+    {
+      "id": "viva-exp4-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Photolytic Decomposition", "Silver Chloride"],
+      "body": "Why is Silver Chloride (AgCl) stored in dark amber-colored bottles?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Because AgCl undergoes photolytic decomposition in sunlight into grey silver metal and chlorine gas: 2AgCl → 2Ag + Cl₂.",
+        "examinerTip": "Used in black-and-white photography."
+      }
+    },
+    {
+      "id": "viva-exp4-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Redox", "Oxidation and Reduction"],
+      "body": "In the reaction CuO + H₂ → Cu + H₂O, identify the substance oxidized and reduced.",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Hydrogen (H₂) is oxidized to H₂O (gains oxygen). Copper oxide (CuO) is reduced to Cu (loses oxygen).",
+        "examinerTip": "CuO acts as the oxidizing agent; H₂ acts as the reducing agent."
+      }
+    },
+    {
+      "id": "viva-exp4-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Rancidity"],
+      "body": "What is rancidity and how is it prevented in packaged potato chips?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Rancidity is the slow oxidation of fats and oils producing unpleasant smell and taste. Packaged food is flushed with unreactive Nitrogen gas.",
+        "examinerTip": "Nitrogen acts as an inert atmosphere preventing atmospheric oxygen contact."
+      }
+    },
+    {
+      "id": "viva-exp4-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Corrosion", "Rusting"],
+      "body": "What chemical formula represents rust on iron objects?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Hydrated Ferric Oxide: Fe₂O₃·xH₂O.",
+        "examinerTip": "Requires both oxygen (O₂) and moisture (H₂O) simultaneously."
+      }
+    },
+    {
+      "id": "viva-exp4-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Endothermic Reaction"],
+      "body": "Give one example of an endothermic decomposition reaction.",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Decomposition of limestone (CaCO₃) upon heating to form quicklime (CaO) and CO₂.",
+        "examinerTip": "CaCO₃ + Heat → CaO + CO₂."
+      }
+    },
+    {
+      "id": "viva-exp4-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Respiration Exothermic"],
+      "body": "Why is cellular respiration considered an exothermic process?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "Because glucose reacts with oxygen in body cells to release energy (ATP) along with CO₂ and H₂O.",
+        "examinerTip": "C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energy."
+      }
+    },
+    {
+      "id": "viva-exp4-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Precipitate Color"],
+      "body": "What is the color of the precipitate formed when Lead Nitrate reacts with Potassium Iodide?",
+      "images": [],
+      "tags": ["viva", "exp4", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 4,
+        "expTag": "Exp 4",
+        "modelAnswer": "A bright yellow precipitate of Lead Iodide (PbI₂) is formed: Pb(NO₃)₂ + 2KI → PbI₂↓ + 2KNO₃.",
+        "examinerTip": "Famous golden rain precipitation experiment."
+      }
+    },
+    {
+      "id": "viva-exp5-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Reactivity Series Order"],
+      "body": "Arrange Al, Zn, Fe, and Cu in order of decreasing chemical reactivity.",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Aluminium (Al) > Zinc (Zn) > Iron (Fe) > Copper (Cu).",
+        "examinerTip": "Aluminium is most reactive; Copper is least reactive among the four."
+      }
+    },
+    {
+      "id": "viva-exp5-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Aluminium Oxide Protective Layer"],
+      "body": "Why does Aluminium metal react slowly initially despite being very reactive?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Because Aluminium forms a tough, non-porous protective oxide film (Al₂O₃) on its surface when exposed to air.",
+        "examinerTip": "Cleaning with sandpaper removes this oxide barrier."
+      }
+    },
+    {
+      "id": "viva-exp5-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Thermite Reaction"],
+      "body": "What is the Thermite process used for joining railway tracks?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Reduction of iron oxide (Fe₂O₃) by aluminium powder: Fe₂O₃ + 2Al → Al₂O₃ + 2Fe (molten). Heat generated melts iron to weld tracks.",
+        "examinerTip": "Exothermic displacement reaction producing liquid metal."
+      }
+    },
+    {
+      "id": "viva-exp5-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Galvanization"],
+      "body": "What metal coating is applied during galvanization to prevent iron rusting?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "A thin sacrificial layer of Zinc metal is applied onto iron objects.",
+        "examinerTip": "Zinc oxidizes preferentially even if the surface coating is scratched."
+      }
+    },
+    {
+      "id": "viva-exp5-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Liquid Metals"],
+      "body": "Name one metal that is liquid at room temperature and one non-metal liquid at room temperature.",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Liquid metal: Mercury (Hg). Liquid non-metal: Bromine (Br₂).",
+        "examinerTip": "Gallium and Caesium melt just above room temp (~30°C)."
+      }
+    },
+    {
+      "id": "viva-exp5-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Anodizing"],
+      "body": "What is anodizing of aluminium objects?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "An electrochemical process that thickens the natural protective aluminium oxide layer by making aluminium the anode during electrolysis of dilute H₂SO₄.",
+        "examinerTip": "Thickened oxide layer accepts colorful decorative dyes."
+      }
+    },
+    {
+      "id": "viva-exp5-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Aqua Regia"],
+      "body": "What is Aqua Regia and what is the ratio of its constituent concentrated acids?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "A freshly prepared mixture of Concentrated HCl and Concentrated HNO₃ in a 3:1 ratio.",
+        "examinerTip": "Capable of dissolving noble metals like Gold and Platinum."
+      }
+    },
+    {
+      "id": "viva-exp5-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Amalgam"],
+      "body": "What is an amalgam?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "An alloy in which one of the component metals is Mercury (e.g. Sodium amalgam Na-Hg, Dental amalgam).",
+        "examinerTip": "Used as reducing agents and tooth fillings."
+      }
+    },
+    {
+      "id": "viva-exp5-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Roasting vs Calcination"],
+      "body": "Differentiate between roasting and calcination in metallurgy.",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Roasting heats sulfide ores in excess air (2ZnS + 3O₂ → 2ZnO + 2SO₂); Calcination heats carbonate ores in limited/no air (ZnCO₃ → ZnO + CO₂).",
+        "examinerTip": "Roasting = Sulfide ores + O₂; Calcination = Carbonate ores - O₂."
+      }
+    },
+    {
+      "id": "viva-exp5-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Ionic Compound Properties"],
+      "body": "Why do ionic compounds (like NaCl) have high melting points?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Because a large amount of energy is required to break strong electrostatic forces of attraction between oppositely charged ions in the 3D crystal lattice.",
+        "examinerTip": "Conducts electricity in molten/aqueous state, but not in solid state."
+      }
+    },
+    {
+      "id": "viva-exp5-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Cinnabar Ore"],
+      "body": "Name the primary ore of Mercury metal and write its formula.",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Cinnabar, chemical formula Mercuric Sulfide (HgS).",
+        "examinerTip": "Heated in air directly to yield Mercury metal: 2HgS + 3O₂ → 2HgO + 2SO₂; 2HgO → 2Hg + O₂."
+      }
+    },
+    {
+      "id": "viva-exp5-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Brass vs Bronze"],
+      "body": "What are the constituent elements of Brass and Bronze alloys?",
+      "images": [],
+      "tags": ["viva", "exp5", "chemistry"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 5,
+        "expTag": "Exp 5",
+        "modelAnswer": "Brass: Copper (Cu) + Zinc (Zn). Bronze: Copper (Cu) + Tin (Sn).",
+        "examinerTip": "Solder alloy is Lead (Pb) + Tin (Sn)."
+      }
+    },
+    {
+      "id": "viva-exp6-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Ohm's Law Statement"],
+      "body": "State Ohm's Law.",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Electric current (I) flowing through a conductor is directly proportional to potential difference (V) across its ends, provided temperature and physical conditions remain constant.",
+        "examinerTip": "V ∝ I ⟹ V = IR."
+      }
+    },
+    {
+      "id": "viva-exp6-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Ammeter vs Voltmeter Connection"],
+      "body": "Why is an ammeter always connected in series and a voltmeter in parallel?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Ammeter has very low resistance so it measures total current without altering circuit resistance. Voltmeter has very high resistance so it draws negligible current when measuring potential difference.",
+        "examinerTip": "Ideal ammeter resistance = 0; Ideal voltmeter resistance = ∞."
+      }
+    },
+    {
+      "id": "viva-exp6-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Slope of V-I Graph"],
+      "body": "What does the slope of a V-I graph represent when V is plotted on Y-axis and I on X-axis?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "The slope (ΔV/ΔI) represents the electrical resistance (R) of the conductor.",
+        "examinerTip": "If I is on Y-axis and V on X-axis, slope represents conductance (1/R)."
+      }
+    },
+    {
+      "id": "viva-exp6-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Resistance Factors"],
+      "body": "State four factors on which the resistance of a conductor depends.",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "1. Length of conductor (L); 2. Area of cross-section (A); 3. Nature of material (Resistivity ρ); 4. Temperature.",
+        "examinerTip": "R = ρ L / A."
+      }
+    },
+    {
+      "id": "viva-exp6-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Resistivity Unit"],
+      "body": "What is resistivity (specific resistance) and what is its SI unit?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Resistivity is the resistance of a conductor of unit length (1m) and unit cross-sectional area (1m²). Its SI unit is Ohm-meter (Ω·m).",
+        "examinerTip": "Resistivity depends only on material and temperature, NOT on dimensions."
+      }
+    },
+    {
+      "id": "viva-exp6-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Rheostat Function"],
+      "body": "What is the function of a rheostat in an electrical circuit?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "A rheostat is a variable resistor used to adjust or control current in a circuit without changing voltage source.",
+        "examinerTip": "Works by varying effective length of high-resistance wire."
+      }
+    },
+    {
+      "id": "viva-exp6-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Non-Ohmic Conductors"],
+      "body": "Give two examples of non-Ohmic conductors that do not follow Ohm's Law.",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Semiconductor Diodes, Transistors, Filament bulbs at high temperatures, Electrolytes.",
+        "examinerTip": "Their V-I graph is curved rather than a straight line."
+      }
+    },
+    {
+      "id": "viva-exp6-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Temperature Effect on Metals"],
+      "body": "How does resistance of a metallic wire change when its temperature increases?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Resistance increases with temperature because thermal vibrations of metal ions increase, increasing electron collision frequency.",
+        "examinerTip": "Alloys like Manganin and Constantan have near-zero temperature coefficient of resistance."
+      }
+    },
+    {
+      "id": "viva-exp6-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Least Count"],
+      "body": "How do you calculate the Least Count of an ammeter having 0-1A range with 20 divisions?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Least Count = Total Range / Total Divisions = 1.0 A / 20 = 0.05 A per division.",
+        "examinerTip": "Least count is the minimum value readable on the instrument scale."
+      }
+    },
+    {
+      "id": "viva-exp6-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Heating Effect"],
+      "body": "Why should current NOT be passed continuously through the resistance wire for long durations?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Continuous current heats up the wire due to Joule heating (H = I²Rt), which increases its resistance and causes deviations from Ohm's Law.",
+        "examinerTip": "Remove key between readings to maintain constant temperature."
+      }
+    },
+    {
+      "id": "viva-exp6-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Wire Dimensions"],
+      "body": "If a resistance wire is stretched to double its length, what happens to its resistance?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Resistance increases 4 times (4R). Stretching doubles length (L' = 2L) and halves area (A' = A/2), so R' = ρ(2L)/(A/2) = 4(ρL/A) = 4R.",
+        "examinerTip": "Volume remains constant during stretching: A·L = A'·L'."
+      }
+    },
+    {
+      "id": "viva-exp6-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Standard Resistance Material"],
+      "body": "Why are standard resistance coils made of alloys like Manganin or Constantan instead of copper?",
+      "images": [],
+      "tags": ["viva", "exp6", "physics"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 6,
+        "expTag": "Exp 6",
+        "modelAnswer": "Because Manganin and Constantan have very high resistivity and negligible temperature coefficient of resistance.",
+        "examinerTip": "Their resistance stays constant even when warm."
+      }
+    },
+    {
+      "id": "viva-exp7-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Series Equivalent Formula"],
+      "body": "What is the equivalent resistance when two resistors R₁ and R₂ are connected in series?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "R_s = R₁ + R₂. The equivalent resistance is greater than the individual largest resistance.",
+        "examinerTip": "Current (I) remains constant through series components."
+      }
+    },
+    {
+      "id": "viva-exp7-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Parallel Equivalent Formula"],
+      "body": "What is the equivalent resistance when two resistors R₁ and R₂ are connected in parallel?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "1/R_p = 1/R₁ + 1/R₂ ⟹ R_p = (R₁ R₂) / (R₁ + R₂). Equivalent resistance is smaller than the individual smallest resistance.",
+        "examinerTip": "Voltage (V) remains constant across parallel branches."
+      }
+    },
+    {
+      "id": "viva-exp7-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Domestic Wiring"],
+      "body": "Why are domestic household appliances connected in parallel rather than in series?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "1. Each appliance gets full supply voltage (220V); 2. Each appliance operates independently with its own switch; 3. Total resistance is minimized.",
+        "examinerTip": "In series, if one bulb fuses, the entire household circuit breaks."
+      }
+    },
+    {
+      "id": "viva-exp7-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Identical Resistors Parallel"],
+      "body": "What is the total resistance of 'n' identical resistors each of resistance 'R' connected in parallel?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "Equivalent resistance R_p = R / n.",
+        "examinerTip": "For 'n' identical in series, R_s = nR."
+      }
+    },
+    {
+      "id": "viva-exp7-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Ratio Rs to Rp"],
+      "body": "What is the ratio of maximum resistance (R_s) to minimum resistance (R_p) for 'n' identical resistors?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "R_s / R_p = (n R) / (R / n) = n².",
+        "examinerTip": "For 2 resistors, ratio is 4:1."
+      }
+    },
+    {
+      "id": "viva-exp7-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Joule Heating"],
+      "body": "State Joule's Law of Heating and give its mathematical expression.",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "Heat produced in a conductor is directly proportional to square of current (I²), resistance (R), and time (t): H = I²Rt Joules.",
+        "examinerTip": "Alternative forms: H = VIt = (V²/R)t."
+      }
+    },
+    {
+      "id": "viva-exp7-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Fuse Wire"],
+      "body": "What properties should an electric fuse wire possess?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "High electrical resistivity and low melting point (e.g. Lead-Tin alloy).",
+        "examinerTip": "Fuse is connected in series with live wire."
+      }
+    },
+    {
+      "id": "viva-exp7-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Power Formula"],
+      "body": "What is electrical power and what are its three common mathematical formulas?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "Power is rate of electrical energy consumption. Formulas: P = VI, P = I²R, P = V²/R.",
+        "examinerTip": "SI unit = Watt (W) = 1 Joule/second."
+      }
+    },
+    {
+      "id": "viva-exp7-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Commercial Unit Energy"],
+      "body": "Convert 1 kilowatt-hour (kWh) into Joules.",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ Joules (3.6 MJ).",
+        "examinerTip": "1 kWh is commonly called 1 Unit of electricity."
+      }
+    },
+    {
+      "id": "viva-exp7-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Series Current Division"],
+      "body": "In a series circuit of 5Ω and 10Ω resistors connected to 15V battery, what is the current through the 10Ω resistor?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "Total R = 15Ω. Total I = 15V/15Ω = 1 A. Current is same (1 A) through both resistors in series.",
+        "examinerTip": "Same current flows through all series components."
+      }
+    },
+    {
+      "id": "viva-exp7-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Parallel Voltage Division"],
+      "body": "In a parallel circuit of 6Ω and 12Ω connected to 12V battery, what is the voltage across the 6Ω resistor?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "Voltage is 12 V. In parallel, voltage across each branch equals the source battery voltage.",
+        "examinerTip": "Branch current I₁ = 12/6 = 2A; I₂ = 12/12 = 1A."
+      }
+    },
+    {
+      "id": "viva-exp7-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Galvanometer Conversion"],
+      "body": "How can a sensitive galvanometer be converted into an ammeter?",
+      "images": [],
+      "tags": ["viva", "exp7", "physics"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 7,
+        "expTag": "Exp 7",
+        "modelAnswer": "By connecting a very low resistance wire (called a Shunt) in parallel with the galvanometer coil.",
+        "examinerTip": "To convert to voltmeter, connect high resistance in series."
+      }
+    },
+    {
+      "id": "viva-exp8-001",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Stomata Definition"],
+      "body": "What are stomata and where are they predominantly located on a dicot leaf?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "Stomata are microscopic pores on leaf surfaces. In dicots, they are predominantly located on the lower epidermis (hypostomatic).",
+        "examinerTip": "In monocots, stomata are equally distributed on both surfaces (amphistomatic)."
+      }
+    },
+    {
+      "id": "viva-exp8-002",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Guard Cell Mechanism"],
+      "body": "Explain how guard cells control the opening and closing of stomatal pores.",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "When water flows into guard cells, they become turgid and swell; their thick inner walls curve outwards, opening the pore. When guard cells lose water, they become flaccid and close the pore.",
+        "examinerTip": "Driven by K⁺ ion accumulation and osmotic water influx."
+      }
+    },
+    {
+      "id": "viva-exp8-003",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Stain Used"],
+      "body": "Why is Safranine stain used when preparing the leaf peel mount?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "Safranine stains plant cell walls and nuclei red/pink, creating sharp contrast for clear microscopic visualization.",
+        "examinerTip": "It specifically stains lignified and suberized cell walls."
+      }
+    },
+    {
+      "id": "viva-exp8-004",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Glycerine Function"],
+      "body": "What is the role of glycerine in mounting the specimen on a glass slide?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "Glycerine acts as a mounting medium that prevents the peel specimen from drying out under light illumination and improves optical clarity.",
+        "examinerTip": "Has a refractive index close to glass."
+      }
+    },
+    {
+      "id": "viva-exp8-005",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Chloroplast in Guard Cells"],
+      "body": "Do epidermal cells contain chloroplasts? How do guard cells differ?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "General epidermal cells do NOT contain chloroplasts and are colorless. Guard cells ARE specialized epidermal cells that contain prominent green chloroplasts.",
+        "examinerTip": "Guard cells produce glucose via photosynthesis to alter turgor pressure."
+      }
+    },
+    {
+      "id": "viva-exp8-006",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Transpiration Definition"],
+      "body": "What is transpiration and what is its dual importance to plants?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "Transpiration is loss of water vapor from aerial parts of plants. Importance: 1. Creates transpirational pull for ascent of sap; 2. Cools leaf surfaces.",
+        "examinerTip": "Described as a 'necessary evil' by Curtis."
+      }
+    },
+    {
+      "id": "viva-exp8-007",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Guard Cell Shape"],
+      "body": "What is the shape of guard cells in dicot plants versus monocot grasses?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "hard",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "In dicots, guard cells are Kidney-shaped or Bean-shaped. In monocot grasses, guard cells are Dumbbell-shaped.",
+        "examinerTip": "Classic practical viva comparison question."
+      }
+    },
+    {
+      "id": "viva-exp8-008",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Potometer"],
+      "body": "What instrument is used to measure the rate of transpiration in plants?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "Ganong's Potometer.",
+        "examinerTip": "Measures water intake rate by tracking air bubble movement."
+      }
+    },
+    {
+      "id": "viva-exp8-009",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Cobalt Chloride Paper"],
+      "body": "What color change occurs on blue Cobalt Chloride paper during transpiration test?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "Dry blue Cobalt Chloride paper turns Pink when it absorbs transpired water vapor.",
+        "examinerTip": "Pink color confirms presence of water moisture."
+      }
+    },
+    {
+      "id": "viva-exp8-010",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Sublingual / Sunken Stomata"],
+      "body": "What are sunken stomata and which ecological group of plants possesses them?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "Stomata located deep inside pits or grooves to minimize water loss. Possessed by Xerophytic desert plants (e.g. Nerium, Opuntia).",
+        "examinerTip": "Adaptation for water conservation in arid habitats."
+      }
+    },
+    {
+      "id": "viva-exp8-011",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["CO2 Absorption KOH"],
+      "body": "Why is KOH (Potassium Hydroxide) placed inside the bell jar during photosynthesis experiments?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "easy",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "KOH absorbs all carbon dioxide gas inside the enclosed space: 2KOH + CO₂ → K₂CO₃ + H₂O.",
+        "examinerTip": "Used in Moll's half-leaf experiment to prove CO₂ is essential for photosynthesis."
+      }
+    },
+    {
+      "id": "viva-exp8-012",
+      "kind": "viva",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Destarch Leaf"],
+      "body": "How and why is a potted plant destarched before photosynthesis experiments?",
+      "images": [],
+      "tags": ["viva", "exp8", "biology"],
+      "difficulty": "medium",
+      "metadata": {
+        "expNumber": 8,
+        "expTag": "Exp 8",
+        "modelAnswer": "By keeping the potted plant in a completely dark room for 48-72 hours. This ensures all existing starch in leaves is consumed by respiration.",
+        "examinerTip": "Prevents false-positive iodine starch test results."
+      }
+    }
+  ]
+}

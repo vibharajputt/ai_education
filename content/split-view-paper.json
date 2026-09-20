@@ -1,0 +1,1250 @@
+{
+  "collection": {
+    "id": "split-view-paper-col",
+    "title": "Class 10 CBSE Exemplar Board Exam Paper",
+    "description": "40-Question complete paper with verified explanations, mark-wise answer coach, and keyword checklists.",
+    "scopeLabel": "40 Questions across Class 10 STEM — CBSE Board Paper",
+    "filters": {
+      "subject": [
+        "Physics",
+        "Chemistry",
+        "Biology",
+        "Mathematics"
+      ],
+      "difficulty": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "q-sv-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Light Reflection and Refraction",
+      "concepts": [
+        "Core Concept 1"
+      ],
+      "body": "Question 1: [CBSE 2016 Board] State and derive the fundamental principle of Light Reflection and Refraction. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2016,
+      "metadata": {
+        "repeatCount": 3,
+        "siblingYears": [
+          2016,
+          2018,
+          2020
+        ]
+      }
+    },
+    {
+      "id": "q-sv-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Electricity",
+      "concepts": [
+        "Core Concept 2"
+      ],
+      "body": "Question 2: [CBSE 2017 Board] State and derive the fundamental principle of Electricity. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2017,
+      "metadata": {
+        "repeatCount": 4,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022
+        ]
+      }
+    },
+    {
+      "id": "q-sv-003",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Magnetic Effects",
+      "concepts": [
+        "Core Concept 3"
+      ],
+      "body": "Question 3: [CBSE 2018 Board] State and derive the fundamental principle of Magnetic Effects. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2018,
+      "metadata": {
+        "repeatCount": 5,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-004",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Chemical Reactions",
+      "concepts": [
+        "Core Concept 4"
+      ],
+      "body": "Question 4: [CBSE 2019 Board] State and derive the fundamental principle of Chemical Reactions. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2019,
+      "metadata": {
+        "repeatCount": 6,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-005",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": [
+        "Core Concept 5"
+      ],
+      "body": "Question 5: [CBSE 2020 Board] State and derive the fundamental principle of Acids, Bases and Salts. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2020,
+      "metadata": {
+        "repeatCount": 7,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-006",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Life Processes",
+      "concepts": [
+        "Core Concept 6"
+      ],
+      "body": "Question 6: [CBSE 2021 Board] State and derive the fundamental principle of Life Processes. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2021,
+      "metadata": {
+        "repeatCount": 8,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-007",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Real Numbers",
+      "concepts": [
+        "Core Concept 7"
+      ],
+      "body": "Question 7: [CBSE 2022 Board] State and derive the fundamental principle of Real Numbers. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2022,
+      "metadata": {
+        "repeatCount": 2,
+        "siblingYears": [
+          2016,
+          2018
+        ]
+      }
+    },
+    {
+      "id": "q-sv-008",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Polynomials",
+      "concepts": [
+        "Core Concept 8"
+      ],
+      "body": "Question 8: [CBSE 2023 Board] State and derive the fundamental principle of Polynomials. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {
+        "repeatCount": 3,
+        "siblingYears": [
+          2016,
+          2018,
+          2020
+        ]
+      }
+    },
+    {
+      "id": "q-sv-009",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Quadratic Equations",
+      "concepts": [
+        "Core Concept 9"
+      ],
+      "body": "Question 9: [CBSE 2024 Board] State and derive the fundamental principle of Quadratic Equations. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2024,
+      "metadata": {
+        "repeatCount": 4,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022
+        ]
+      }
+    },
+    {
+      "id": "q-sv-010",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Triangles",
+      "concepts": [
+        "Core Concept 10"
+      ],
+      "body": "Question 10: [CBSE 2015 Board] State and derive the fundamental principle of Triangles. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2015,
+      "metadata": {
+        "repeatCount": 5,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-011",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Trigonometry",
+      "concepts": [
+        "Core Concept 11"
+      ],
+      "body": "Question 11: [CBSE 2016 Board] State and derive the fundamental principle of Trigonometry. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2016,
+      "metadata": {
+        "repeatCount": 6,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-012",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Light Reflection and Refraction",
+      "concepts": [
+        "Core Concept 12"
+      ],
+      "body": "Question 12: [CBSE 2017 Board] State and derive the fundamental principle of Light Reflection and Refraction. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2017,
+      "metadata": {
+        "repeatCount": 7,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-013",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": [
+        "Core Concept 13"
+      ],
+      "body": "Question 13: [CBSE 2018 Board] State and derive the fundamental principle of Electricity. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2018,
+      "metadata": {
+        "repeatCount": 8,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-014",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Magnetic Effects",
+      "concepts": [
+        "Core Concept 14"
+      ],
+      "body": "Question 14: [CBSE 2019 Board] State and derive the fundamental principle of Magnetic Effects. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2019,
+      "metadata": {
+        "repeatCount": 2,
+        "siblingYears": [
+          2016,
+          2018
+        ]
+      }
+    },
+    {
+      "id": "q-sv-015",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Chemical Reactions",
+      "concepts": [
+        "Core Concept 15"
+      ],
+      "body": "Question 15: [CBSE 2020 Board] State and derive the fundamental principle of Chemical Reactions. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2020,
+      "metadata": {
+        "repeatCount": 3,
+        "siblingYears": [
+          2016,
+          2018,
+          2020
+        ]
+      }
+    },
+    {
+      "id": "q-sv-016",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": [
+        "Core Concept 16"
+      ],
+      "body": "Question 16: [CBSE 2021 Board] State and derive the fundamental principle of Acids, Bases and Salts. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2021,
+      "metadata": {
+        "repeatCount": 4,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022
+        ]
+      }
+    },
+    {
+      "id": "q-sv-017",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Life Processes",
+      "concepts": [
+        "Core Concept 17"
+      ],
+      "body": "Question 17: [CBSE 2022 Board] State and derive the fundamental principle of Life Processes. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2022,
+      "metadata": {
+        "repeatCount": 5,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-018",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Real Numbers",
+      "concepts": [
+        "Core Concept 18"
+      ],
+      "body": "Question 18: [CBSE 2023 Board] State and derive the fundamental principle of Real Numbers. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {
+        "repeatCount": 6,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-019",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Polynomials",
+      "concepts": [
+        "Core Concept 19"
+      ],
+      "body": "Question 19: [CBSE 2024 Board] State and derive the fundamental principle of Polynomials. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2024,
+      "metadata": {
+        "repeatCount": 7,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-020",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Quadratic Equations",
+      "concepts": [
+        "Core Concept 20"
+      ],
+      "body": "Question 20: [CBSE 2015 Board] State and derive the fundamental principle of Quadratic Equations. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2015,
+      "metadata": {
+        "repeatCount": 8,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-021",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Triangles",
+      "concepts": [
+        "Core Concept 21"
+      ],
+      "body": "Question 21: [CBSE 2016 Board] State and derive the fundamental principle of Triangles. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2016,
+      "metadata": {
+        "repeatCount": 2,
+        "siblingYears": [
+          2016,
+          2018
+        ]
+      }
+    },
+    {
+      "id": "q-sv-022",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Trigonometry",
+      "concepts": [
+        "Core Concept 22"
+      ],
+      "body": "Question 22: [CBSE 2017 Board] State and derive the fundamental principle of Trigonometry. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2017,
+      "metadata": {
+        "repeatCount": 3,
+        "siblingYears": [
+          2016,
+          2018,
+          2020
+        ]
+      }
+    },
+    {
+      "id": "q-sv-023",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Light Reflection and Refraction",
+      "concepts": [
+        "Core Concept 23"
+      ],
+      "body": "Question 23: [CBSE 2018 Board] State and derive the fundamental principle of Light Reflection and Refraction. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2018,
+      "metadata": {
+        "repeatCount": 4,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022
+        ]
+      }
+    },
+    {
+      "id": "q-sv-024",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Electricity",
+      "concepts": [
+        "Core Concept 24"
+      ],
+      "body": "Question 24: [CBSE 2019 Board] State and derive the fundamental principle of Electricity. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2019,
+      "metadata": {
+        "repeatCount": 5,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-025",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Magnetic Effects",
+      "concepts": [
+        "Core Concept 25"
+      ],
+      "body": "Question 25: [CBSE 2020 Board] State and derive the fundamental principle of Magnetic Effects. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2020,
+      "metadata": {
+        "repeatCount": 6,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-026",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions",
+      "concepts": [
+        "Core Concept 26"
+      ],
+      "body": "Question 26: [CBSE 2021 Board] State and derive the fundamental principle of Chemical Reactions. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2021,
+      "metadata": {
+        "repeatCount": 7,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-027",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": [
+        "Core Concept 27"
+      ],
+      "body": "Question 27: [CBSE 2022 Board] State and derive the fundamental principle of Acids, Bases and Salts. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2022,
+      "metadata": {
+        "repeatCount": 8,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-028",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Life Processes",
+      "concepts": [
+        "Core Concept 28"
+      ],
+      "body": "Question 28: [CBSE 2023 Board] State and derive the fundamental principle of Life Processes. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {
+        "repeatCount": 2,
+        "siblingYears": [
+          2016,
+          2018
+        ]
+      }
+    },
+    {
+      "id": "q-sv-029",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Real Numbers",
+      "concepts": [
+        "Core Concept 29"
+      ],
+      "body": "Question 29: [CBSE 2024 Board] State and derive the fundamental principle of Real Numbers. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2024,
+      "metadata": {
+        "repeatCount": 3,
+        "siblingYears": [
+          2016,
+          2018,
+          2020
+        ]
+      }
+    },
+    {
+      "id": "q-sv-030",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Polynomials",
+      "concepts": [
+        "Core Concept 30"
+      ],
+      "body": "Question 30: [CBSE 2015 Board] State and derive the fundamental principle of Polynomials. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2015,
+      "metadata": {
+        "repeatCount": 4,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022
+        ]
+      }
+    },
+    {
+      "id": "q-sv-031",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Quadratic Equations",
+      "concepts": [
+        "Core Concept 31"
+      ],
+      "body": "Question 31: [CBSE 2016 Board] State and derive the fundamental principle of Quadratic Equations. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2016,
+      "metadata": {
+        "repeatCount": 5,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-032",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Triangles",
+      "concepts": [
+        "Core Concept 32"
+      ],
+      "body": "Question 32: [CBSE 2017 Board] State and derive the fundamental principle of Triangles. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2017,
+      "metadata": {
+        "repeatCount": 6,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-033",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Trigonometry",
+      "concepts": [
+        "Core Concept 33"
+      ],
+      "body": "Question 33: [CBSE 2018 Board] State and derive the fundamental principle of Trigonometry. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2018,
+      "metadata": {
+        "repeatCount": 7,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-034",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Light Reflection and Refraction",
+      "concepts": [
+        "Core Concept 34"
+      ],
+      "body": "Question 34: [CBSE 2019 Board] State and derive the fundamental principle of Light Reflection and Refraction. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2019,
+      "metadata": {
+        "repeatCount": 8,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-035",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Electricity",
+      "concepts": [
+        "Core Concept 35"
+      ],
+      "body": "Question 35: [CBSE 2020 Board] State and derive the fundamental principle of Electricity. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2020,
+      "metadata": {
+        "repeatCount": 2,
+        "siblingYears": [
+          2016,
+          2018
+        ]
+      }
+    },
+    {
+      "id": "q-sv-036",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Magnetic Effects",
+      "concepts": [
+        "Core Concept 36"
+      ],
+      "body": "Question 36: [CBSE 2021 Board] State and derive the fundamental principle of Magnetic Effects. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2021,
+      "metadata": {
+        "repeatCount": 3,
+        "siblingYears": [
+          2016,
+          2018,
+          2020
+        ]
+      }
+    },
+    {
+      "id": "q-sv-037",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Chemical Reactions",
+      "concepts": [
+        "Core Concept 37"
+      ],
+      "body": "Question 37: [CBSE 2022 Board] State and derive the fundamental principle of Chemical Reactions. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "physics"
+      ],
+      "difficulty": "easy",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2022,
+      "metadata": {
+        "repeatCount": 4,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022
+        ]
+      }
+    },
+    {
+      "id": "q-sv-038",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": [
+        "Core Concept 38"
+      ],
+      "body": "Question 38: [CBSE 2023 Board] State and derive the fundamental principle of Acids, Bases and Salts. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "chemistry"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {
+        "repeatCount": 5,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-039",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": [
+        "Core Concept 39"
+      ],
+      "body": "Question 39: [CBSE 2024 Board] State and derive the fundamental principle of Life Processes. Calculate the required quantitative value when parameters are given.",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "biology"
+      ],
+      "difficulty": "easy",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2024,
+      "metadata": {
+        "repeatCount": 6,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    },
+    {
+      "id": "q-sv-040",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Real Numbers",
+      "concepts": [
+        "Core Concept 40"
+      ],
+      "body": "Question 40: [CBSE 2015 Board] State and derive the fundamental principle of Real Numbers. Calculate the required quantitative value when parameters are given.",
+      "latex": "P = \\frac{V^2}{R} = I^2 R, \\quad E = P \\times t",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class10",
+        "mathematics"
+      ],
+      "difficulty": "hard",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2015,
+      "metadata": {
+        "repeatCount": 7,
+        "siblingYears": [
+          2016,
+          2018,
+          2020,
+          2022,
+          2024
+        ]
+      }
+    }
+  ]
+}

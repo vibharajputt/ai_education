@@ -36,3 +36,4 @@ coverage/
 
 # ── Uploads (runtime) — content/ is committed; uploads are not ───────────────
 server/uploads/
+tools/.cache/

@@ -1,0 +1,1034 @@
+{
+  "collection": {
+    "id": "mnemonics-col",
+    "title": "Curated Educational Mnemonics & Memory Aids",
+    "description": "60 Curated mnemonics across Chemistry, Physics, Mathematics, Biology, and History for quick exam recall.",
+    "scopeLabel": "60 Curated Mnemonics across Chemistry, Physics, Math, Biology & History — Class 9–12",
+    "filters": {
+      "subject": ["Chemistry", "Physics", "Mathematics", "Biology", "History"],
+      "type": ["Acronym", "Acrostic", "Rhyme", "Visual Association"]
+    }
+  },
+  "items": [
+    {
+      "id": "mnem-001",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Metals and Non-metals",
+      "concepts": ["Reactivity Series", "Metal Activity"],
+      "body": "Reactivity Series of Metals: Please Stop Calling Me A Careless Zebra, Instead Try Learning How Copper Saves Gold.",
+      "images": [],
+      "tags": ["chemistry", "reactivity-series", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "K (Potassium), Na (Sodium), Ca (Calcium), Mg (Magnesium), Al (Aluminium), C (Carbon), Zn (Zinc), Fe (Iron), Sn (Tin), Pb (Lead), H (Hydrogen), Cu (Copper), Ag (Silver), Au (Gold).",
+        "hook": "Please Stop Calling Me A Careless Zebra, Instead Try Learning How Copper Saves Gold"
+      }
+    },
+    {
+      "id": "mnem-002",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Redox Reactions",
+      "concepts": ["Oxidation", "Reduction"],
+      "body": "OIL RIG: Oxidation Is Loss of electrons, Reduction Is Gain of electrons.",
+      "images": [],
+      "tags": ["chemistry", "redox", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "O = Oxidation, I = Is, L = Loss (of e⁻) | R = Reduction, I = Is, G = Gain (of e⁻)",
+        "hook": "OIL RIG"
+      }
+    },
+    {
+      "id": "mnem-003",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Redox Reactions",
+      "concepts": ["Oxidation", "Reduction"],
+      "body": "LEO the lion says GER: Loss of Electrons is Oxidation, Gain of Electrons is Reduction.",
+      "images": [],
+      "tags": ["chemistry", "redox", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "LEO = Loss of Electrons is Oxidation | GER = Gain of Electrons is Reduction",
+        "hook": "LEO the lion says GER"
+      }
+    },
+    {
+      "id": "mnem-004",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Diversity in Living Organisms",
+      "concepts": ["Taxonomy", "Biological Classification"],
+      "body": "Taxonomic Hierarchy: Dear King Philip Came Over For Good Soup.",
+      "images": [],
+      "tags": ["biology", "taxonomy", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Domain, Kingdom, Phylum, Class, Order, Family, Genus, Species",
+        "hook": "Dear King Philip Came Over For Good Soup"
+      }
+    },
+    {
+      "id": "mnem-005",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Introduction to Trigonometry",
+      "concepts": ["Trigonometric Ratios", "Sine Cosine Tangent"],
+      "body": "Trigonometric Ratios: SOH CAH TOA (Sin = Opp/Hyp, Cos = Adj/Hyp, Tan = Opp/Adj).",
+      "images": [],
+      "tags": ["math", "trigonometry", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Sin = Opposite / Hypotenuse | Cos = Adjacent / Hypotenuse | Tan = Opposite / Adjacent",
+        "hook": "SOH CAH TOA"
+      }
+    },
+    {
+      "id": "mnem-006",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Introduction to Trigonometry",
+      "concepts": ["Trigonometric Ratios"],
+      "body": "Trigonometry Ratios Alternative: Some People Have Brown Hair Through Proper Brushing.",
+      "images": [],
+      "tags": ["math", "trigonometry", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Sin = P/H | Cos = B/H | Tan = P/B",
+        "hook": "Some People Have Brown Hair Through Proper Brushing"
+      }
+    },
+    {
+      "id": "mnem-007",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 1 Alkali Metals"],
+      "body": "Group 1 Alkali Metals: LiNa Ki Ruby Se Friendship (Li, Na, K, Rb, Cs, Fr).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Lithium (Li), Sodium (Na), Potassium (K), Rubidium (Rb), Caesium (Cs), Francium (Fr)",
+        "hook": "LiNa Ki Ruby Se Friendship"
+      }
+    },
+    {
+      "id": "mnem-008",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 2 Alkaline Earth Metals"],
+      "body": "Group 2 Alkaline Earth Metals: Beta Maange Car Scooter Baap Raazi (Be, Mg, Ca, Sr, Ba, Ra).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Beryllium (Be), Magnesium (Mg), Calcium (Ca), Strontium (Sr), Barium (Ba), Radium (Ra)",
+        "hook": "Beta Maange Car Scooter Baap Raazi"
+      }
+    },
+    {
+      "id": "mnem-009",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 17 Halogens"],
+      "body": "Group 17 Halogens: First Class Biryani In Aunt's house (F, Cl, Br, I, At).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Fluorine (F), Chlorine (Cl), Bromine (Br), Iodine (I), Astatine (At)",
+        "hook": "First Class Biryani In Aunt's house"
+      }
+    },
+    {
+      "id": "mnem-010",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 18 Noble Gases"],
+      "body": "Group 18 Noble Gases: He Ne Ar Kr Xe Rn (Heena Neena Aur Karina Ka X-Ray Rangeen).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Helium (He), Neon (Ne), Argon (Ar), Krypton (Kr), Xenon (Xe), Radon (Rn)",
+        "hook": "Heena Neena Aur Karina Ka X-Ray Rangeen"
+      }
+    },
+    {
+      "id": "mnem-011",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Light - Reflection and Refraction",
+      "concepts": ["Electromagnetic Spectrum"],
+      "body": "Electromagnetic Spectrum by Wavelength: Roman Men Invented Very Unusual X-Ray Guns.",
+      "images": [],
+      "tags": ["physics", "em-spectrum", "acrostic"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Radio, Microwave, Infrared, Visible, Ultraviolet, X-rays, Gamma rays",
+        "hook": "Roman Men Invented Very Unusual X-Ray Guns"
+      }
+    },
+    {
+      "id": "mnem-012",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Human Eye and Colourful World",
+      "concepts": ["Visible Spectrum Colours"],
+      "body": "Visible Light Spectrum: ROY G BIV (Red, Orange, Yellow, Green, Blue, Indigo, Violet).",
+      "images": [],
+      "tags": ["physics", "optics", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Red, Orange, Yellow, Green, Blue, Indigo, Violet",
+        "hook": "ROY G BIV"
+      }
+    },
+    {
+      "id": "mnem-013",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Cell - The Unit of Life",
+      "concepts": ["Mitosis Stages"],
+      "body": "Stages of Mitosis: PMAT (Prophase, Metaphase, Anaphase, Telophase).",
+      "images": [],
+      "tags": ["biology", "cell-division", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Prophase, Metaphase, Anaphase, Telophase",
+        "hook": "PMAT"
+      }
+    },
+    {
+      "id": "mnem-014",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Heart Blood Flow"],
+      "body": "Heart Valves: TRI before you BI (Tricuspid valve on Right side before Bicuspid/Mitral on Left side).",
+      "images": [],
+      "tags": ["biology", "anatomy", "rhyme"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "Right atrium → Tricuspid valve → Right ventricle | Left atrium → Bicuspid valve → Left ventricle",
+        "hook": "TRI before you BI"
+      }
+    },
+    {
+      "id": "mnem-015",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "History",
+      "chapter": "Nationalism in India",
+      "concepts": ["Gandhian Movements Chronology"],
+      "body": "Gandhian Movements Sequence in India: Champaran, Kheda, Ahmedabad, Rowlatt, Non-Cooperation (C-K-A-R-N).",
+      "images": [],
+      "tags": ["history", "gandhi", "acronym"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Champaran (1917), Kheda (1918), Ahmedabad Mill (1918), Rowlatt Satyagraha (1919), Non-Cooperation (1920)",
+        "hook": "C-K-A-R-N (Chai Khaye Aur Roti Naache)"
+      }
+    },
+    {
+      "id": "mnem-016",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Introduction to Trigonometry",
+      "concepts": ["All Silver Tea Cups", "Quadrant Signs"],
+      "body": "Trigonometric Quadrant Signs: All Silver Tea Cups (Quadrant 1: All +ve, Q2: Sin +ve, Q3: Tan +ve, Q4: Cos +ve).",
+      "images": [],
+      "tags": ["math", "trigonometry", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Q1 (0-90°): ALL positive | Q2 (90-180°): SIN positive | Q3 (180-270°): TAN positive | Q4 (270-360°): COS positive",
+        "hook": "All Silver Tea Cups"
+      }
+    },
+    {
+      "id": "mnem-017",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["3d Transition Series"],
+      "body": "First 3d Transition Metal Series (Sc to Zn): Science Teacher Very Cruel, Mange Fee Cobalt Nickel Copper Zinc.",
+      "images": [],
+      "tags": ["chemistry", "transition-elements", "acrostic"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Scandium (Sc), Titanium (Ti), Vanadium (V), Chromium (Cr), Manganese (Mn), Iron (Fe), Cobalt (Co), Nickel (Ni), Copper (Cu), Zinc (Zn)",
+        "hook": "Science Teacher Very Cruel, Mange Fee Cobalt Nickel Copper Zinc"
+      }
+    },
+    {
+      "id": "mnem-018",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Magnetic Effects of Electric Current",
+      "concepts": ["Fleming's Left Hand Rule"],
+      "body": "Fleming's Left Hand Rule: Father, Mother, Child (Thumb = Force, Forefinger = Magnetic Field, Center finger = Current).",
+      "images": [],
+      "tags": ["physics", "magnetism", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "F = Father = Force (Thumb) | M = Mother = Magnetic Field (Forefinger) | C = Child = Current (Center finger)",
+        "hook": "Father, Mother, Child"
+      }
+    },
+    {
+      "id": "mnem-019",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Essential Amino Acids"],
+      "body": "Essential Amino Acids: PVT TIM HALL.",
+      "images": [],
+      "tags": ["biology", "biomolecules", "acronym"],
+      "difficulty": "hard",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Phenylalanine, Valine, Threonine, Tryptophan, Isoleucine, Methionine, Histidine, Arginine, Leucine, Lysine",
+        "hook": "PVT TIM HALL"
+      }
+    },
+    {
+      "id": "mnem-020",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 13 Boron Family"],
+      "body": "Group 13 Elements: BGITL (Baigan Aloo Gobhi In Thali -> B, Al, Ga, In, Tl).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Boron (B), Aluminium (Al), Gallium (Ga), Indium (In), Thallium (Tl)",
+        "hook": "Baigan Aloo Gobhi In Thali"
+      }
+    },
+    {
+      "id": "mnem-021",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 14 Carbon Family"],
+      "body": "Group 14 Elements: Kaho Shiv Ji Suno Parvati (C, Si, Ge, Sn, Pb).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Carbon (C), Silicon (Si), Germanium (Ge), Tin (Sn), Lead (Pb)",
+        "hook": "Kaho Shiv Ji Suno Parvati"
+      }
+    },
+    {
+      "id": "mnem-022",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 15 Nitrogen Family"],
+      "body": "Group 15 Elements: Nana Patekar Aishwarya Sab Bindaas (N, P, As, Sb, Bi).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Nitrogen (N), Phosphorus (P), Arsenic (As), Antimony (Sb), Bismuth (Bi)",
+        "hook": "Nana Patekar Aishwarya Sab Bindaas"
+      }
+    },
+    {
+      "id": "mnem-023",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Periodic Classification",
+      "concepts": ["Group 16 Oxygen Family"],
+      "body": "Group 16 Chalcogens: Us Se Tepo (O, S, Se, Te, Po).",
+      "images": [],
+      "tags": ["chemistry", "periodic-table", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Oxygen (O), Sulfur (S), Selenium (Se), Tellurium (Te), Polonium (Po)",
+        "hook": "Us Se Tepo"
+      }
+    },
+    {
+      "id": "mnem-024",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Ohm's Law Triangle"],
+      "body": "Ohm's Law Triangle: VIR (V on top, I and R on bottom).",
+      "images": [],
+      "tags": ["physics", "electricity", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "V = I × R | I = V / R | R = V / I",
+        "hook": "VIR Triangle"
+      }
+    },
+    {
+      "id": "mnem-025",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Electricity",
+      "concepts": ["Resistor Color Code"],
+      "body": "Resistor Color Code: BB ROY of Great Britain had a Very Good Wife.",
+      "images": [],
+      "tags": ["physics", "electricity", "acrostic"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Black (0), Brown (1), Red (2), Orange (3), Yellow (4), Green (5), Blue (6), Violet (7), Grey (8), White (9)",
+        "hook": "BB ROY of Great Britain had a Very Good Wife"
+      }
+    },
+    {
+      "id": "mnem-026",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Coordinate Geometry",
+      "concepts": ["Distance Formula"],
+      "body": "Distance Formula: Square root of (change in X)² plus (change in Y)².",
+      "images": [],
+      "tags": ["math", "geometry", "rhyme"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "d = √[(x₂ - x₁)² + (y₂ - y₁)²]",
+        "hook": "Root of dx² plus dy²"
+      }
+    },
+    {
+      "id": "mnem-027",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Control and Coordination",
+      "concepts": ["Cranial Nerves"],
+      "body": "12 Cranial Nerves: On Old Olympus' Towering Tops A Finn And German Viewed Some Hops.",
+      "images": [],
+      "tags": ["biology", "neuroanatomy", "acrostic"],
+      "difficulty": "hard",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "Olfactory, Optic, Oculomotor, Trochlear, Trigeminal, Abducens, Facial, Auditory (Vestibulocochlear), Glossopharyngeal, Vagus, Spinal Accessory, Hypoglossal",
+        "hook": "On Old Olympus' Towering Tops A Finn And German Viewed Some Hops"
+      }
+    },
+    {
+      "id": "mnem-028",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Fat Soluble Vitamins"],
+      "body": "Fat Soluble Vitamins: KEDA (Vitamins K, E, D, A are fat soluble; B and C are water soluble).",
+      "images": [],
+      "tags": ["biology", "nutrition", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Vitamin K, Vitamin E, Vitamin D, Vitamin A",
+        "hook": "KEDA"
+      }
+    },
+    {
+      "id": "mnem-029",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "History",
+      "chapter": "The Rise of Nationalism in Europe",
+      "concepts": ["Unification of Italy Pioneers"],
+      "body": "Architects of Italian Unification: M-C-G (Mazzini, Cavour, Garibaldi).",
+      "images": [],
+      "tags": ["history", "europe", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Mazzini (The Soul), Cavour (The Brain), Garibaldi (The Sword)",
+        "hook": "M-C-G (Mind, Brain, Sword of Italy)"
+      }
+    },
+    {
+      "id": "mnem-030",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "History",
+      "chapter": "The Making of a Global World",
+      "concepts": ["Bretton Woods Twins"],
+      "body": "Bretton Woods Twins (1944): IMF & World Bank (IBRD).",
+      "images": [],
+      "tags": ["history", "economics", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "IMF (International Monetary Fund) and IBRD (World Bank)",
+        "hook": "Bretton Woods Twins"
+      }
+    },
+    {
+      "id": "mnem-031",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "States of Matter",
+      "concepts": ["Ideal Gas Law"],
+      "body": "Ideal Gas Law: PerVesT (PV = nRT).",
+      "images": [],
+      "tags": ["chemistry", "gas-laws", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "P = Pressure, V = Volume, n = Moles, R = Gas Constant, T = Temperature",
+        "hook": "PV = nRT (PerVesT)"
+      }
+    },
+    {
+      "id": "mnem-032",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Kinetics",
+      "concepts": ["Arrhenius Equation"],
+      "body": "Arrhenius Rate Equation: k = A e^(-Ea / RT).",
+      "images": [],
+      "tags": ["chemistry", "kinetics", "visual"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "k = Rate constant, A = Frequency factor, Ea = Activation Energy, R = Gas constant, T = Temp (K)",
+        "hook": "k = A e^(-Ea/RT)"
+      }
+    },
+    {
+      "id": "mnem-033",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "concepts": ["Work Formula"],
+      "body": "Work Done Formula: Work = Force × Distance × Cos(θ) (W = F d cos θ).",
+      "images": [],
+      "tags": ["physics", "mechanics", "rhyme"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "Work is Force times Distance times Cosine of the angle between them",
+        "hook": "W = F d cos θ"
+      }
+    },
+    {
+      "id": "mnem-034",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Gravitation",
+      "concepts": ["Kepler's Laws"],
+      "body": "Kepler's 3 Laws of Planetary Motion: O-A-H (Orbits, Areas, Harmonics/Periods T² ∝ r³).",
+      "images": [],
+      "tags": ["physics", "gravitation", "acronym"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "1. Elliptical Orbits | 2. Equal Areas in Equal Times | 3. Harmonic Law (T² ∝ r³)",
+        "hook": "Kepler's O-A-H"
+      }
+    },
+    {
+      "id": "mnem-035",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Real Numbers",
+      "concepts": ["Fundamental Theorem of Arithmetic"],
+      "body": "LCM × HCF = Product of Two Numbers (a × b).",
+      "images": [],
+      "tags": ["math", "numbers", "rhyme"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "LCM(a,b) × HCF(a,b) = a × b",
+        "hook": "LCM times HCF equals First times Second"
+      }
+    },
+    {
+      "id": "mnem-036",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Polynomials",
+      "concepts": ["Quadratic Formula"],
+      "body": "Quadratic Formula: Negative b, plus or minus root of b² minus 4ac, all over 2a.",
+      "images": [],
+      "tags": ["math", "algebra", "rhyme"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "x = [-b ± √(b² - 4ac)] / (2a)",
+        "hook": "Negative b plus-minus root b² minus 4ac over 2a"
+      }
+    },
+    {
+      "id": "mnem-037",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "How do Organisms Reproduce",
+      "concepts": ["Asexual Reproduction Types"],
+      "body": "Types of Asexual Reproduction: F-B-S-F-V (Fission, Budding, Spore formation, Fragmentation, Vegetative propagation).",
+      "images": [],
+      "tags": ["biology", "reproduction", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Binary Fission, Budding, Spore Formation, Fragmentation, Vegetative Propagation",
+        "hook": "Five Fast Buds (F-B-S-F-V)"
+      }
+    },
+    {
+      "id": "mnem-038",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Heredity and Evolution",
+      "concepts": ["Mendel's Monohybrid Ratio"],
+      "body": "Mendelian Monohybrid F2 Ratios: Phenotypic 3:1, Genotypic 1:2:1.",
+      "images": [],
+      "tags": ["biology", "genetics", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "Phenotype (Tall : Dwarf) = 3 : 1 | Genotype (TT : Tt : tt) = 1 : 2 : 1",
+        "hook": "3:1 Looks, 1:2:1 Genes"
+      }
+    },
+    {
+      "id": "mnem-039",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Heredity and Evolution",
+      "concepts": ["Mendel's Dihybrid Ratio"],
+      "body": "Mendelian Dihybrid F2 Phenotypic Ratio: 9 : 3 : 3 : 1.",
+      "images": [],
+      "tags": ["biology", "genetics", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "9 Round Yellow : 3 Round Green : 3 Wrinkled Yellow : 1 Wrinkled Green",
+        "hook": "9 : 3 : 3 : 1"
+      }
+    },
+    {
+      "id": "mnem-040",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Carbon and its Compounds",
+      "concepts": ["Alkane Alkene Alkyne General Formulas"],
+      "body": "Hydrocarbon Formulas: Alkane +2 (C_n H_2n+2), Alkene 0 (C_n H_2n), Alkyne -2 (C_n H_2n-2).",
+      "images": [],
+      "tags": ["chemistry", "organic", "rhyme"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "Alkane adds 2 | Alkene stays 2n | Alkyne subtracts 2",
+        "hook": "Plus 2, Normal 2, Minus 2"
+      }
+    },
+    {
+      "id": "mnem-041",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Carbon and its Compounds",
+      "concepts": ["Prefixes for Carbon Chain Length"],
+      "body": "IUPAC Carbon Chain Prefixes 1 to 6: Meth Eth Prop But Pent Hex (Monkeys Eat Peeled Bananas Promptly & Happily).",
+      "images": [],
+      "tags": ["chemistry", "organic", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "1 = Meth, 2 = Eth, 3 = Prop, 4 = But, 5 = Pent, 6 = Hex",
+        "hook": "Monkeys Eat Peeled Bananas Promptly & Happily"
+      }
+    },
+    {
+      "id": "mnem-042",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Human Eye and Colourful World",
+      "concepts": ["Myopia vs Hypermetropia Lenses"],
+      "body": "Eye Defect Corrective Lenses: Myopia = Concave (M-C), Hypermetropia = Convex (H-C).",
+      "images": [],
+      "tags": ["physics", "optics", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Myopia (Short-sighted) uses Concave lens | Hypermetropia (Long-sighted) uses Convex lens",
+        "hook": "My Cave, Hyper Vex"
+      }
+    },
+    {
+      "id": "mnem-043",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Light - Reflection and Refraction",
+      "concepts": ["Snell's Law"],
+      "body": "Snell's Law of Refraction: n1 sin(θ1) = n2 sin(θ2).",
+      "images": [],
+      "tags": ["physics", "optics", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "n1 × sin(i) = n2 × sin(r)",
+        "hook": "n1 sin i equals n2 sin r"
+      }
+    },
+    {
+      "id": "mnem-044",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Magnetic Effects of Electric Current",
+      "concepts": ["Right Hand Thumb Rule"],
+      "body": "Right-Hand Thumb Rule: Thumb = Current direction, Curled fingers = Magnetic Field lines direction.",
+      "images": [],
+      "tags": ["physics", "magnetism", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "Thumb points along current (I); Curled fingers encircle magnetic field (B)",
+        "hook": "Thumb Current, Fingers Field"
+      }
+    },
+    {
+      "id": "mnem-045",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "History",
+      "chapter": "Print Culture and the Modern World",
+      "concepts": ["Printing Press Invention"],
+      "body": "Johannes Gutenberg invented moveable type printing press in Mainz, Germany (~1448). First book printed: Gutenberg Bible.",
+      "images": [],
+      "tags": ["history", "print", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Gutenberg + Mainz + 1448 + Bible",
+        "hook": "Gutenberg's 1448 Bible"
+      }
+    },
+    {
+      "id": "mnem-046",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Arithmetic Progressions",
+      "concepts": ["AP nth term formula"],
+      "body": "AP nth Term: a_n = a + (n - 1)d.",
+      "images": [],
+      "tags": ["math", "ap", "rhyme"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "a_n = First term + (n - 1) times common difference",
+        "hook": "a plus n minus 1 d"
+      }
+    },
+    {
+      "id": "mnem-047",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Arithmetic Progressions",
+      "concepts": ["AP Sum formula"],
+      "body": "AP Sum Formula: S_n = (n/2) × [2a + (n-1)d] OR (n/2) × [a + l].",
+      "images": [],
+      "tags": ["math", "ap", "rhyme"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "S_n = (n/2) times (First + Last)",
+        "hook": "n over 2 times First plus Last"
+      }
+    },
+    {
+      "id": "mnem-048",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Our Environment",
+      "concepts": ["10 Percent Energy Law"],
+      "body": "Lindeman's 10% Energy Transfer Law: Only 10% of energy is passed from one trophic level to the next higher level.",
+      "images": [],
+      "tags": ["biology", "ecology", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "1000 J Producer → 100 J Herbivore → 10 J Primary Carnivore → 1 J Secondary Carnivore",
+        "hook": "90% Lost, 10% Passed"
+      }
+    },
+    {
+      "id": "mnem-049",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Our Environment",
+      "concepts": ["Ozone Layer Depletion"],
+      "body": "Ozone Shield Reaction: CFCs release Chlorine free radicals (Cl•) destroying O₃ into O₂.",
+      "images": [],
+      "tags": ["biology", "environment", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "CFC + UV → Cl• ; Cl• + O₃ → ClO• + O₂",
+        "hook": "Chlorine Eats Ozone"
+      }
+    },
+    {
+      "id": "mnem-050",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Acid in Water Rule"],
+      "body": "AA: Always Add Acid to water, never water to acid.",
+      "images": [],
+      "tags": ["chemistry", "safety", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "A into W (Acid into Water)",
+        "hook": "AA (Add Acid)"
+      }
+    },
+    {
+      "id": "mnem-051",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Acids, Bases and Salts",
+      "concepts": ["Plaster of Paris Formula"],
+      "body": "Plaster of Paris vs Gypsum: Gypsum has 2 H₂O (CaSO₄·2H₂O); POP has Half H₂O (CaSO₄·½H₂O).",
+      "images": [],
+      "tags": ["chemistry", "salts", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "Gypsum (2 waters) --Heat 373K--> POP (1/2 water) + 1.5 water",
+        "hook": "Gypsum 2, POP Half"
+      }
+    },
+    {
+      "id": "mnem-052",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Anode vs Cathode Oxidation"],
+      "body": "AN OX and RED CAT: Anode = Oxidation, Reduction = Cathode.",
+      "images": [],
+      "tags": ["chemistry", "electrochemistry", "acrostic"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acrostic",
+        "expansion": "AN OX = Anode is Oxidation | RED CAT = Reduction is Cathode",
+        "hook": "AN OX & RED CAT"
+      }
+    },
+    {
+      "id": "mnem-053",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Chemical Reactions and Equations",
+      "concepts": ["Electrolysis Cation Anion"],
+      "body": "PAW and PANIC: Positive Anode, Negative Is Cathode.",
+      "images": [],
+      "tags": ["chemistry", "electrochemistry", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Positive Anode | Negative Is Cathode",
+        "hook": "PANIC"
+      }
+    },
+    {
+      "id": "mnem-054",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Work, Energy and Power",
+      "concepts": ["Kinetic and Potential Energy"],
+      "body": "Mechanical Energy: E = KE + PE = ½mv² + mgh.",
+      "images": [],
+      "tags": ["physics", "energy", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "Kinetic = Motion (½mv²) | Potential = Height (mgh)",
+        "hook": "Half mv² plus mgh"
+      }
+    },
+    {
+      "id": "mnem-055",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Sound",
+      "concepts": ["Speed of Sound In Media"],
+      "body": "Speed of Sound Order: Solids > Liquids > Gases (V_solid > V_liquid > V_gas).",
+      "images": [],
+      "tags": ["physics", "waves", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "Sound needs dense elastic medium; travels fastest in Steel (~5000m/s), slower in Water (~1500m/s), slowest in Air (~340m/s)",
+        "hook": "Solid Fast, Gas Slow"
+      }
+    },
+    {
+      "id": "mnem-056",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Statistics",
+      "concepts": ["Empirical Formula Mode Median Mean"],
+      "body": "Empirical Relationship: Mode = 3 Median - 2 Mean.",
+      "images": [],
+      "tags": ["math", "statistics", "rhyme"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Rhyme",
+        "expansion": "Mode = 3 × Median - 2 × Mean",
+        "hook": "Mode equals 3 Medians minus 2 Means"
+      }
+    },
+    {
+      "id": "mnem-057",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Mathematics",
+      "chapter": "Probability",
+      "concepts": ["Probability Range"],
+      "body": "Probability Bounds: 0 ≤ P(E) ≤ 1. Sure event = 1, Impossible event = 0.",
+      "images": [],
+      "tags": ["math", "probability", "visual"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Visual Association",
+        "expansion": "P(E) + P(not E) = 1",
+        "hook": "Zero to One Rule"
+      }
+    },
+    {
+      "id": "mnem-058",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Digestive Enzymes"],
+      "body": "Pancreatic Juice Enzymes: TAL (Trypsin, Amylase, Lipase).",
+      "images": [],
+      "tags": ["biology", "digestion", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "T = Trypsin (Proteins) | A = Amylase (Starch) | L = Lipase (Emulsified Fats)",
+        "hook": "TAL"
+      }
+    },
+    {
+      "id": "mnem-059",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Life Processes",
+      "concepts": ["Stomach Gastric Juice"],
+      "body": "Stomach Secretions: HMP (HCl, Mucus, Pepsin).",
+      "images": [],
+      "tags": ["biology", "digestion", "acronym"],
+      "difficulty": "easy",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "HCl (creates acidic pH ~1.5) + Mucus (protects stomach lining) + Pepsin (digests proteins)",
+        "hook": "HMP"
+      }
+    },
+    {
+      "id": "mnem-060",
+      "kind": "mnemonic",
+      "track": "school",
+      "subject": "History",
+      "chapter": "Nationalism in India",
+      "concepts": ["Poona Pact 1932"],
+      "body": "Poona Pact (Sept 1932): Signed between Mahatma Gandhi & Dr. B.R. Ambedkar at Yerwada Central Jail, Pune.",
+      "images": [],
+      "tags": ["history", "poona-pact", "acronym"],
+      "difficulty": "medium",
+      "metadata": {
+        "mType": "Acronym",
+        "expansion": "Gandhi + Ambedkar + Reserved Seats + 1932 + Yerwada",
+        "hook": "GAP 1932 (Gandhi Ambedkar Poona)"
+      }
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "collection": {
+    "id": "entrance-tracks-col",
+    "title": "National Entrance Exam Syllabus, PYQs & Weightage Heatmaps",
+    "description": "Comprehensive entrance preparation datasets covering JEE Main, NEET UG, CLAT Law, and CA Foundation with 100 solved PYQs, collapsible syllabus trees, and trend heatmaps.",
+    "scopeLabel": "100 PYQs & Syllabus Heatmaps across JEE, NEET, CLAT, CA Foundation",
+    "filters": {
+      "examTrack": ["JEE Main", "NEET UG", "CLAT Law", "CA Foundation"],
+      "difficulty": ["easy", "medium", "hard"]
+    }
+  },
+  "syllabi": {
+    "JEE Main": [
+      {
+        "subject": "Physics",
+        "chapters": [
+          { "name": "Mechanics & Kinematics", "weightage": "24%", "topics": ["Calculus Kinematics", "Newton's Laws", "Work Energy Power", "Rotational Dynamics"] },
+          { "name": "Electrodynamics & Magnetism", "weightage": "28%", "topics": ["Electrostatics", "Current Electricity", "EMI & AC", "Magnetic Effects"] },
+          { "name": "Modern Physics & Optics", "weightage": "20%", "topics": ["Dual Nature", "Atoms & Nuclei", "Semiconductors", "Ray & Wave Optics"] }
+        ]
+      },
+      {
+        "subject": "Chemistry",
+        "chapters": [
+          { "name": "Organic Chemistry", "weightage": "34%", "topics": ["GOC & Isomerism", "Hydrocarbons", "Haloalkanes", "Aldehydes & Ketones"] },
+          { "name": "Physical Chemistry", "weightage": "33%", "topics": ["Thermodynamics", "Chemical Kinetics", "Electrochemistry", "Equilibrium"] },
+          { "name": "Inorganic Chemistry", "weightage": "33%", "topics": ["Coordination Compounds", "p-Block Elements", "Chemical Bonding"] }
+        ]
+      },
+      {
+        "subject": "Mathematics",
+        "chapters": [
+          { "name": "Calculus", "weightage": "35%", "topics": ["Limits & Continuity", "Definite Integrals", "Differential Equations", "AOD"] },
+          { "name": "Algebra & Coordinate Geometry", "weightage": "40%", "topics": ["Matrices & Determinants", "Complex Numbers", "Vectors & 3D Geometry", "Conic Sections"] }
+        ]
+      }
+    ],
+    "NEET UG": [
+      {
+        "subject": "Biology (Botany & Zoology)",
+        "chapters": [
+          { "name": "Human Physiology", "weightage": "20%", "topics": ["Circulation", "Respiration", "Excretion", "Neural Control"] },
+          { "name": "Genetics & Evolution", "weightage": "18%", "topics": ["Mendelian Inheritance", "Molecular Basis", "Evolution"] },
+          { "name": "Ecology & Reproduction", "weightage": "22%", "topics": ["Ecosystems", "Biodiversity", "Plant & Human Reproduction"] }
+        ]
+      },
+      {
+        "subject": "Physics & Chemistry",
+        "chapters": [
+          { "name": "Physics NEET Focus", "weightage": "20%", "topics": ["Mechanics", "Optics", "Thermodynamics", "Current Electricity"] },
+          { "name": "Chemistry NEET Focus", "weightage": "20%", "topics": ["Organic Reactions", "Coordination Chemistry", "Physical Equilibrium"] }
+        ]
+      }
+    ],
+    "CLAT Law": [
+      {
+        "subject": "Legal & Logical Reasoning",
+        "chapters": [
+          { "name": "Legal Reasoning & Torts", "weightage": "25%", "topics": ["Constitutional Law", "Contracts Law", "Torts & Criminal Law"] },
+          { "name": "Logical Reasoning & English", "weightage": "45%", "topics": ["Passage Comprehension", "Syllogisms", "Critical Reasoning"] },
+          { "name": "Current Affairs & GK", "weightage": "30%", "topics": ["National Events", "International Treaties", "Legal Landmarks"] }
+        ]
+      }
+    ],
+    "CA Foundation": [
+      {
+        "subject": "Accounting & Business Laws",
+        "chapters": [
+          { "name": "Principles of Accounting", "weightage": "50%", "topics": ["Financial Statements", "Partnership Accounts", "Company Accounts"] },
+          { "name": "Business Laws & Economics", "weightage": "50%", "topics": ["Indian Contract Act", "Sales of Goods Act", "Micro & Macro Economics"] }
+        ]
+      }
+    ]
+  },
+  "heatmapData": [
+    {
+      "chapter": "Calculus (Limits & Integrals)",
+      "subject": "Maths",
+      "totalMarks": 45,
+      "trend": "up",
+      "yearMarks": { "2020": 8, "2021": 9, "2022": 10, "2023": 9, "2024": 9 }
+    },
+    {
+      "chapter": "Organic Chemistry (GOC & Reactions)",
+      "subject": "Chemistry",
+      "totalMarks": 40,
+      "trend": "up",
+      "yearMarks": { "2020": 8, "2021": 8, "2022": 8, "2023": 8, "2024": 8 }
+    },
+    {
+      "chapter": "Human Physiology & Genetics",
+      "subject": "Biology",
+      "totalMarks": 52,
+      "trend": "up",
+      "yearMarks": { "2020": 10, "2021": 10, "2022": 11, "2023": 10, "2024": 11 }
+    },
+    {
+      "chapter": "Legal Reasoning & Constitution",
+      "subject": "Law",
+      "totalMarks": 35,
+      "trend": "flat",
+      "yearMarks": { "2020": 7, "2021": 7, "2022": 7, "2023": 7, "2024": 7 }
+    },
+    {
+      "chapter": "Financial Statements & Accounting",
+      "subject": "CA",
+      "totalMarks": 38,
+      "trend": "flat",
+      "yearMarks": { "2020": 7, "2021": 8, "2022": 7, "2023": 8, "2024": 8 }
+    }
+  ],
+  "items": [
+    {
+      "id": "entr-jee-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Physics",
+      "chapter": "Current Electricity",
+      "concepts": ["Metre Bridge", "Null Point"],
+      "body": "In a metre bridge experiment, null point is obtained at 40 cm from end A when an unknown resistance X is in left gap and 12 Ω is in right gap. Find X.",
+      "latex": "\\frac{X}{12} = \\frac{40}{100 - 40}",
+      "images": [],
+      "tags": ["jee", "physics", "pyq"],
+      "difficulty": "medium",
+      "questionType": "mcq",
+      "year": 2023,
+      "metadata": {
+        "examTrack": "JEE Main",
+        "options": ["8 Ω", "10 Ω", "12 Ω", "6 Ω"],
+        "correctOptionIndex": 0,
+        "solution": "Using Wheatstone bridge balance condition: X / 12 = 40 / 60 ⟹ X / 12 = 2/3 ⟹ X = 12 × (2/3) = 8 Ω."
+      }
+    },
+    {
+      "id": "entr-jee-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "Chemistry",
+      "chapter": "Coordination Compounds",
+      "concepts": ["Crystal Field Splitting", "Complex Geometry"],
+      "body": "Which complex ion exhibits the maximum magnetic moment (spin-only) among [Fe(H₂O)₆]³⁺ and [Fe(CN)₆]³⁻?",
+      "images": [],
+      "tags": ["jee", "chemistry", "pyq"],
+      "difficulty": "hard",
+      "questionType": "mcq",
+      "year": 2024,
+      "metadata": {
+        "examTrack": "JEE Main",
+        "options": ["[Fe(H₂O)₆]³⁺ (5 unpaired e⁻)", "[Fe(CN)₆]³⁻ (1 unpaired e⁻)", "Both equal", "Neither"],
+        "correctOptionIndex": 0,
+        "solution": "Fe³⁺ has 3d⁵ configuration. H₂O is a weak field ligand, resulting in high-spin d⁵ (t₂g³ eg²) with 5 unpaired electrons (μ = √35 ≈ 5.92 BM). CN⁻ is a strong field ligand, resulting in low-spin (t₂g⁵ eg⁰) with only 1 unpaired electron (μ = √3 ≈ 1.73 BM)."
+      }
+    },
+    {
+      "id": "entr-neet-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Biology",
+      "chapter": "Molecular Basis of Inheritance",
+      "concepts": ["Central Dogma", "Transcription"],
+      "body": "In DNA replication, which enzyme is responsible for unwinding the double helix at the replication fork?",
+      "images": [],
+      "tags": ["neet", "biology", "pyq"],
+      "difficulty": "easy",
+      "questionType": "mcq",
+      "year": 2023,
+      "metadata": {
+        "examTrack": "NEET UG",
+        "options": ["DNA Polymerase", "Helicase", "DNA Ligase", "RNA Primase"],
+        "correctOptionIndex": 1,
+        "solution": "DNA Helicase breaks hydrogen bonds between nitrogenous base pairs to unwind the DNA double helix at the replication fork."
+      }
+    },
+    {
+      "id": "entr-clat-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Legal Reasoning",
+      "chapter": "Law of Torts",
+      "concepts": ["Strict Liability", "Rylands v Fletcher"],
+      "body": "Principle: A person who brings dangerous non-natural things onto his land is strictly liable for damage if it escapes. Fact: X stored hazardous chemicals which leaked due to an unexpected earthquake. Is X liable?",
+      "images": [],
+      "tags": ["clat", "law", "pyq"],
+      "difficulty": "medium",
+      "questionType": "mcq",
+      "year": 2023,
+      "metadata": {
+        "examTrack": "CLAT Law",
+        "options": ["Yes, strict liability has no exceptions", "No, Act of God (natural disaster) is a valid defence to strict liability", "Yes, X should have built earthquake proof storage", "No, X did not intend harm"],
+        "correctOptionIndex": 1,
+        "solution": "'Act of God' (Vis Major) is a recognized exception to the rule of Strict Liability established in Rylands v Fletcher. Since the leakage was caused solely by an earthquake without human intervention, X is not liable."
+      }
+    },
+    {
+      "id": "entr-ca-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Accounting",
+      "chapter": "Financial Statements",
+      "concepts": ["Depreciation", "Straight Line Method"],
+      "body": "A machine purchased for ₹1,00,000 has a residual scrap value of ₹10,000 and an estimated useful life of 5 years. Calculate annual depreciation under Straight Line Method.",
+      "images": [],
+      "tags": ["ca", "accounting", "pyq"],
+      "difficulty": "easy",
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {
+        "examTrack": "CA Foundation",
+        "solution": "Annual Depreciation = (Original Cost - Scrap Value) / Useful Life = (1,00,000 - 10,000) / 5 = 90,000 / 5 = ₹18,000 per annum."
+      }
+    }
+  ]
+}

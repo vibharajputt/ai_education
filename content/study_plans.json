@@ -1,0 +1,53 @@
+[
+  {
+    "id": "plan-cbse12-physics-01",
+    "goal": "Score 95%+ in Class 12 Physics CBSE Board Exam",
+    "deadline": "2026-03-15",
+    "hoursPerDay": 4,
+    "plan": {
+      "days": [
+        {
+          "date": "Day 1",
+          "blocks": [
+            {
+              "topic": "Electrostatics",
+              "minutes": 120,
+              "activity": "Concept review",
+              "itemIds": []
+            },
+            {
+              "topic": "Current Electricity",
+              "minutes": 120,
+              "activity": "Problem solving",
+              "itemIds": []
+            }
+          ]
+        },
+        {
+          "date": "Day 2",
+          "blocks": [
+            {
+              "topic": "Magnetic Effects of Current",
+              "minutes": 120,
+              "activity": "Derivations",
+              "itemIds": []
+            },
+            {
+              "topic": "Optics",
+              "minutes": 120,
+              "activity": "Ray diagrams practice",
+              "itemIds": []
+            }
+          ]
+        }
+      ],
+      "assumptions": [
+        "4 hours of dedicated study per day"
+      ],
+      "riskNotes": [
+        "Complex optics ray diagrams require extra visual revision"
+      ],
+      "dropped": []
+    }
+  }
+]

@@ -106,38 +106,47 @@ export function TopBar() {
             <div
               id="search-results-list"
               role="listbox"
-              className="absolute left-0 right-0 top-full mt-1.5 max-h-80 overflow-y-auto rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2 shadow-xl z-50"
+              className="absolute left-0 right-0 top-full mt-1.5 max-h-80 overflow-y-auto rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2 shadow-xl z-50 divide-y divide-[var(--color-border)]"
             >
-              <div className="text-[11px] font-semibold text-[var(--color-text-muted)] px-2.5 py-1 uppercase tracking-wider">
-                Modules Matching "{searchQuery}"
-              </div>
               {searchResults.length === 0 ? (
                 <div className="p-4 text-center text-xs text-[var(--color-text-muted)]">
                   No modules match your query.
                 </div>
               ) : (
-                searchResults.map((m) => {
-                  const targetTrack = m.track === 'both' ? 'school' : m.track;
+                (['A', 'B', 'C'] as const).map((tierKey) => {
+                  const tierModules = searchResults.filter((m) => m.tier === tierKey);
+                  if (tierModules.length === 0) return null;
                   return (
-                    <button
-                      key={m.id}
-                      type="button"
-                      onClick={() => handleSelectModule(targetTrack, m.id)}
-                      className="w-full text-left p-2.5 rounded-md hover:bg-[var(--color-surface-hover)] flex items-start justify-between gap-3 transition-colors group focus-visible:outline-none focus-visible:bg-[var(--color-surface-hover)]"
-                    >
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-semibold text-xs sm:text-sm text-[var(--color-text)] group-hover:text-[var(--color-accent)] truncate">
-                            {m.title}
-                          </span>
-                          <Badge label={m.tier} variant="tier" />
-                        </div>
-                        <p className="text-xs text-[var(--color-text-muted)] truncate mt-0.5">
-                          {m.scopeLabel}
-                        </p>
+                    <div key={tierKey} className="py-1.5 first:pt-0 last:pb-0">
+                      <div className="text-[10px] font-bold text-[var(--color-text-muted)] px-2.5 py-1 uppercase tracking-wider flex items-center justify-between">
+                        <span>Tier {tierKey} Modules</span>
+                        <span className="text-[9px] font-semibold opacity-75">{tierModules.length} match{tierModules.length > 1 ? 'es' : ''}</span>
                       </div>
-                      <Badge label={m.track} variant="track" />
-                    </button>
+                      {tierModules.map((m) => {
+                        const targetTrack = m.track === 'both' ? 'school' : m.track;
+                        return (
+                          <button
+                            key={m.id}
+                            type="button"
+                            onClick={() => handleSelectModule(targetTrack, m.id)}
+                            className="w-full text-left p-2.5 rounded-md hover:bg-[var(--color-surface-hover)] flex items-start justify-between gap-3 transition-colors group focus-visible:outline-none focus-visible:bg-[var(--color-surface-hover)]"
+                          >
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-1.5">
+                                <span className="font-semibold text-xs sm:text-sm text-[var(--color-text)] group-hover:text-[var(--color-accent)] truncate">
+                                  {m.title}
+                                </span>
+                                <Badge label={m.tier} variant="tier" />
+                              </div>
+                              <p className="text-xs text-[var(--color-text-muted)] truncate mt-0.5">
+                                {m.scopeLabel}
+                              </p>
+                            </div>
+                            <Badge label={m.track} variant="track" />
+                          </button>
+                        );
+                      })}
+                    </div>
                   );
                 })
               )}

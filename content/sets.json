@@ -1,0 +1,26 @@
+[
+  {
+    "id": "set-physics-mock-01",
+    "title": "Class 9 Physics Practice Worksheet 1",
+    "scopeLabel": "3 Questions across Motion and Laws of Motion",
+    "orderedItemIds": [
+      "comp9-ntse-001",
+      "comp9-ntse-002",
+      "comp9-ntse-003"
+    ],
+    "rationale": "Balanced practice covering speed, acceleration, and momentum.",
+    "coverageReport": {
+      "totalCount": 3,
+      "totalMarks": 10,
+      "difficultyBreakdown": {
+        "easy": 1,
+        "medium": 1,
+        "hard": 1
+      },
+      "chapterBreakdown": {
+        "Motion": 2,
+        "Laws of Motion": 1
+      }
+    }
+  }
+]

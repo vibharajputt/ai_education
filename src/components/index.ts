@@ -14,3 +14,5 @@ export { ProgressRing } from './ProgressRing';
 export { StatTile } from './StatTile';
 export { MarkdownRenderer } from './MarkdownRenderer';
 export { DynamicIcon } from './DynamicIcon';
+export { UploadArtifactSection } from './UploadArtifactSection';
+

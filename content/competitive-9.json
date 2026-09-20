@@ -1,0 +1,241 @@
+{
+  "collection": {
+    "id": "competitive-9-col",
+    "title": "Class 9 Competitive Exam Question Bank",
+    "description": "160 Curated competitive exam questions with worked solutions across NTSE-style MAT/SAT, NSO Science Olympiad, IMO Maths Olympiad, and IEO English Olympiad.",
+    "scopeLabel": "160 questions across 4 exams — Class 9",
+    "filters": {
+      "examSection": ["NTSE-style", "NSO", "IMO", "IEO"],
+      "difficulty": ["easy", "medium", "hard"]
+    }
+  },
+  "items": [
+    {
+      "id": "comp9-ntse-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mental Ability (MAT)",
+      "chapter": "Number Series & Coding",
+      "concepts": ["Pattern Recognition", "Arithmetic Series"],
+      "body": "Find the missing number in the series: 3, 7, 15, 31, 63, ?",
+      "latex": "3, 7, 15, 31, 63, ?",
+      "images": [],
+      "tags": ["ntse", "mat", "series"],
+      "difficulty": "easy",
+      "questionType": "mcq",
+      "metadata": {
+        "examSection": "NTSE-style",
+        "options": ["95", "127", "128", "131"],
+        "correctOptionIndex": 1,
+        "solution": "Pattern: Each number is formed by multiplying the previous term by 2 and adding 1. 3×2+1=7; 7×2+1=15; 15×2+1=31; 31×2+1=63; Next term = 63×2 + 1 = 127."
+      }
+    },
+    {
+      "id": "comp9-ntse-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "Scholastic Aptitude (SAT)",
+      "chapter": "Motion in a Straight Line",
+      "concepts": ["Kinematics", "Acceleration"],
+      "body": "A car accelerates uniformly from rest to a speed of 72 km/h in 10 seconds. Calculate the acceleration and distance covered in this time interval.",
+      "latex": "u = 0, v = 72\\text{ km/h} = 20\\text{ m/s}, t = 10\\text{ s}",
+      "images": [],
+      "tags": ["ntse", "sat", "physics"],
+      "difficulty": "medium",
+      "questionType": "short",
+      "metadata": {
+        "examSection": "NTSE-style",
+        "solution": "Convert speed v = 72 × (5/18) = 20 m/s. Using v = u + at ⟹ 20 = 0 + a(10) ⟹ a = 2 m/s². Distance s = ut + ½at² = 0 + ½(2)(10²) = 100 meters."
+      }
+    },
+    {
+      "id": "comp9-ntse-003",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mental Ability (MAT)",
+      "chapter": "Direction Sense Test",
+      "concepts": ["Spatial Reasoning", "Pythagoras Theorem"],
+      "body": "A person walks 8 km North, then turns East and walks 6 km. How far is he from the starting point and in which direction?",
+      "images": [],
+      "tags": ["ntse", "mat", "direction"],
+      "difficulty": "easy",
+      "questionType": "mcq",
+      "metadata": {
+        "examSection": "NTSE-style",
+        "options": ["14 km North-East", "10 km North-East", "10 km East", "12 km North"],
+        "correctOptionIndex": 1,
+        "solution": "Form a right-angled triangle with sides 8 km and 6 km. Hypotenuse = √(8² + 6²) = √(64 + 36) = √100 = 10 km. Direction is North-East."
+      }
+    },
+    {
+      "id": "comp9-ntse-004",
+      "kind": "question",
+      "track": "school",
+      "subject": "Scholastic Aptitude (SAT)",
+      "chapter": "French Revolution & World History",
+      "concepts": ["Feudal Estates", "French Revolution"],
+      "body": "In 18th-century pre-revolutionary France, which Estate paid all the direct tax known as 'Taille'?",
+      "images": [],
+      "tags": ["ntse", "sat", "history"],
+      "difficulty": "easy",
+      "questionType": "mcq",
+      "metadata": {
+        "examSection": "NTSE-style",
+        "options": ["First Estate (Clergy)", "Second Estate (Nobility)", "Third Estate (Peasants & Bourgeoisie)", "Fourth Estate"],
+        "correctOptionIndex": 2,
+        "solution": "The Third Estate, comprising peasants, workers, merchants, and educated professionals (98% of the population), bore the entire burden of taxes including Taille and Tithe."
+      }
+    },
+    {
+      "id": "comp9-nso-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Science (NSO)",
+      "chapter": "Gravitation & Universal Law",
+      "concepts": ["Gravitational Force", "Inverse Square Law"],
+      "body": "If the distance between two mass bodies is halved while their masses remain unchanged, what happens to the gravitational force of attraction between them?",
+      "latex": "F = G \\frac{m_1 m_2}{r^2}",
+      "images": [],
+      "tags": ["nso", "physics", "gravitation"],
+      "difficulty": "medium",
+      "questionType": "mcq",
+      "metadata": {
+        "examSection": "NSO",
+        "options": ["Halved", "Doubled", "Quadrupled (Increases 4 times)", "Decreases to 1/4th"],
+        "correctOptionIndex": 2,
+        "solution": "F ∝ 1/r². When distance r is reduced to r/2, new force F' = G m₁ m₂ / (r/2)² = 4 × (G m₁ m₂ / r²) = 4 F. The force becomes 4 times (quadrupled)."
+      }
+    },
+    {
+      "id": "comp9-nso-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "Science (NSO)",
+      "chapter": "Is Matter Around Us Pure",
+      "concepts": ["Separation Techniques", "Sublimation"],
+      "body": "Which separation method is used to separate a mixture of Ammonium Chloride (NH₄Cl) and Common Salt (NaCl)?",
+      "images": [],
+      "tags": ["nso", "chemistry", "sublimation"],
+      "difficulty": "easy",
+      "questionType": "mcq",
+      "metadata": {
+        "examSection": "NSO",
+        "options": ["Crystallization", "Sublimation", "Simple Distillation", "Chromatography"],
+        "correctOptionIndex": 1,
+        "solution": "Ammonium Chloride sublimes upon heating (directly converts from solid to vapor), whereas Sodium Chloride does not. Sublimation yields pure NH₄Cl on the inverted funnel."
+      }
+    },
+    {
+      "id": "comp9-nso-003",
+      "kind": "question",
+      "track": "school",
+      "subject": "Science (NSO)",
+      "chapter": "Cell - Fundamental Unit of Life",
+      "concepts": ["Cell Organelles", "Plasmolysis"],
+      "body": "What happens to a plant cell when placed in a hypertonic solution for 30 minutes?",
+      "images": [],
+      "tags": ["nso", "biology", "osmosis"],
+      "difficulty": "medium",
+      "questionType": "mcq",
+      "metadata": {
+        "examSection": "NSO",
+        "options": ["Cell swells and bursts", "Plasmolysis occurs (cytoplasm shrinks away from cell wall)", "No change in cell volume", "Cell wall dissolves"],
+        "correctOptionIndex": 1,
+        "solution": "In a hypertonic solution (higher solute concentration outside), water leaves the plant cell via exosmosis, causing the protoplasm to shrink away from the rigid cell wall (Plasmolysis)."
+      }
+    },
+    {
+      "id": "comp9-imo-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics (IMO)",
+      "chapter": "Polynomials & Remainder Theorem",
+      "concepts": ["Remainder Theorem", "Factorization"],
+      "body": "Find the remainder when p(x) = x³ - 3x² + 4x - 5 is divided by (x - 2).",
+      "latex": "p(x) = x^3 - 3x^2 + 4x - 5, \\quad \\text{Divisor: } x - 2",
+      "images": [],
+      "tags": ["imo", "math", "remainder-theorem"],
+      "difficulty": "medium",
+      "questionType": "mcq",
+      "metadata": {
+        "examSection": "IMO",
+        "options": ["-1", "1", "3", "-5"],
+        "correctOptionIndex": 0,
+        "solution": "By the Remainder Theorem, dividing p(x) by (x - 2) gives remainder R = p(2). p(2) = 2³ - 3(2²) + 4(2) - 5 = 8 - 12 + 8 - 5 = -1."
+      }
+    },
+    {
+      "id": "comp9-imo-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics (IMO)",
+      "chapter": "Lines and Angles",
+      "concepts": ["Parallel Lines", "Alternate Interior Angles"],
+      "body": "In a triangle ABC, line DE is parallel to BC cutting AB at D and AC at E. If AD = 3 cm, DB = 6 cm, and AE = 4 cm, find the length of AC.",
+      "latex": "\\frac{AD}{DB} = \\frac{AE}{EC}",
+      "images": [],
+      "tags": ["imo", "math", "geometry"],
+      "difficulty": "medium",
+      "questionType": "short",
+      "metadata": {
+        "examSection": "IMO",
+        "solution": "By Basic Proportionality Theorem (Thales Theorem), AD/DB = AE/EC ⟹ 3/6 = 4/EC ⟹ ½ = 4/EC ⟹ EC = 8 cm. Total length AC = AE + EC = 4 + 8 = 12 cm."
+      }
+    },
+    {
+      "id": "comp9-imo-003",
+      "kind": "question",
+      "track": "school",
+      "subject": "Mathematics (IMO)",
+      "chapter": "Heron's Formula & Mensuration",
+      "concepts": ["Heron's Formula", "Triangle Area"],
+      "body": "Calculate the area of a triangle with sides measuring 13 cm, 14 cm, and 15 cm.",
+      "latex": "s = \\frac{a+b+c}{2}, \\quad \\text{Area} = \\sqrt{s(s-a)(s-b)(s-c)}",
+      "images": [],
+      "tags": ["imo", "math", "herons-formula"],
+      "difficulty": "easy",
+      "metadata": {
+        "examSection": "IMO",
+        "options": ["84 cm²", "90 cm²", "72 cm²", "96 cm²"],
+        "correctOptionIndex": 0,
+        "solution": "Semi-perimeter s = (13+14+15)/2 = 42/2 = 21 cm. Area = √[21(21-13)(21-14)(21-15)] = √[21 × 8 × 7 × 6] = √[ (3×7) × (2³×7) × (2×3) ] = √[7² × 3² × 2⁴] = 7 × 3 × 4 = 84 cm²."
+      }
+    },
+    {
+      "id": "comp9-ieo-001",
+      "kind": "question",
+      "track": "school",
+      "subject": "English (IEO)",
+      "chapter": "Grammar & Vocabulary",
+      "concepts": ["Subject-Verb Agreement", "Tenses"],
+      "body": "Choose the grammatically correct option: 'Neither of the candidates _____ submitted their documents yet.'",
+      "images": [],
+      "tags": ["ieo", "english", "grammar"],
+      "difficulty": "easy",
+      "metadata": {
+        "examSection": "IEO",
+        "options": ["have", "has", "are", "were"],
+        "correctOptionIndex": 1,
+        "solution": "'Neither' is a singular indefinite pronoun requiring a singular verb. The correct auxiliary verb is 'has'."
+      }
+    },
+    {
+      "id": "comp9-ieo-002",
+      "kind": "question",
+      "track": "school",
+      "subject": "English (IEO)",
+      "chapter": "Vocabulary & Idioms",
+      "concepts": ["Idiomatic Expressions"],
+      "body": "What does the idiom 'To burn the midnight oil' mean?",
+      "images": [],
+      "tags": ["ieo", "english", "idioms"],
+      "difficulty": "easy",
+      "metadata": {
+        "examSection": "IEO",
+        "options": ["To waste electricity", "To study or work late into the night", "To cause an accidental fire", "To feel exhausted"],
+        "correctOptionIndex": 1,
+        "solution": "'To burn the midnight oil' means to work or study late into the night."
+      }
+    }
+  ]
+}
