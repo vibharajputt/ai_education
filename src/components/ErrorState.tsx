@@ -4,6 +4,7 @@ import type { LoaderError } from '@core/loaders';
 interface ErrorStateProps {
   title?: string;
   detail?: string;
+  message?: string;
   error?: Error | LoaderError | null;
   retry?: () => void;
   className?: string;
@@ -12,11 +13,12 @@ interface ErrorStateProps {
 export function ErrorState({
   title = 'Something went wrong',
   detail,
+  message: msgProp,
   error,
   retry,
   className = '',
 }: ErrorStateProps) {
-  const message = detail ?? error?.message ?? 'An unexpected error occurred.';
+  const message = detail ?? msgProp ?? error?.message ?? 'An unexpected error occurred.';
 
   return (
     <div

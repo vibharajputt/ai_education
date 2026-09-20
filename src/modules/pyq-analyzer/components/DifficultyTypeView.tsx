@@ -1,231 +1,258 @@
-import React, { useState } from 'react';
-import { ChapterStats } from '../types';
-import { BarChart2, PieChart } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import type { ContentItem } from '@core/types';
+import type { ChapterDifficultyDist, ChapterTypeDist } from '../types';
+import { Card } from '@components/Card';
+import {
+  Gauge,
+  Brain,
+} from 'lucide-react';
 
 interface DifficultyTypeViewProps {
-  stats: ChapterStats[];
+  difficultyDist: ChapterDifficultyDist[];
+  typeDist: ChapterTypeDist[];
+  items: ContentItem[];
 }
 
-export const DifficultyTypeView: React.FC<DifficultyTypeViewProps> = ({ stats }) => {
-  const [selectedSubject, setSelectedSubject] = useState<'All' | 'Science' | 'Mathematics'>('All');
+export function DifficultyTypeView({
+  difficultyDist,
+  typeDist,
+  items,
+}: DifficultyTypeViewProps) {
+  const [subjectFilter, setSubjectFilter] = useState<'all' | 'Science' | 'Mathematics'>('all');
 
-  const filteredStats = stats.filter(
-    (s) => selectedSubject === 'All' || s.subject === selectedSubject
-  );
+  const filteredDiff = useMemo(() => {
+    if (subjectFilter === 'all') return difficultyDist;
+    return difficultyDist.filter((d) => d.subject === subjectFilter);
+  }, [difficultyDist, subjectFilter]);
 
-  // Overall sums for compact summary breakdown
-  const totals = filteredStats.reduce(
-    (acc, curr) => {
-      acc.easy += curr.easyCount;
-      acc.medium += curr.mediumCount;
-      acc.hard += curr.hardCount;
-      acc.conceptual += curr.conceptualCount;
-      acc.numerical += curr.numericalCount;
-      acc.diagram += curr.diagramCount;
-      acc.application += curr.applicationCount;
-      acc.total += curr.totalQuestions;
-      return acc;
-    },
-    {
-      easy: 0,
-      medium: 0,
-      hard: 0,
-      conceptual: 0,
-      numerical: 0,
-      diagram: 0,
-      application: 0,
-      total: 0,
+  const filteredType = useMemo(() => {
+    if (subjectFilter === 'all') return typeDist;
+    return typeDist.filter((t) => t.subject === subjectFilter);
+  }, [typeDist, subjectFilter]);
+
+  const summaryStats = useMemo(() => {
+    const total = items.length || 1;
+    let easy = 0, medium = 0, hard = 0;
+    let conceptual = 0, numerical = 0, diagram = 0, application = 0;
+
+    for (const it of items) {
+      if (it.difficulty === 'easy') easy++;
+      else if (it.difficulty === 'medium') medium++;
+      else if (it.difficulty === 'hard') hard++;
+
+      const cog = ((it.metadata || {}) as Record<string, unknown>).cognitiveType;
+      if (cog === 'conceptual') conceptual++;
+      else if (cog === 'numerical') numerical++;
+      else if (cog === 'diagram') diagram++;
+      else if (cog === 'application') application++;
     }
-  );
 
-  const totalAll = totals.total || 1;
+    return {
+      easyPct: Math.round((easy / total) * 100),
+      mediumPct: Math.round((medium / total) * 100),
+      hardPct: Math.round((hard / total) * 100),
+      conceptualPct: Math.round((conceptual / total) * 100),
+      numericalPct: Math.round((numerical / total) * 100),
+      diagramPct: Math.round((diagram / total) * 100),
+      applicationPct: Math.round((application / total) * 100),
+      total,
+    };
+  }, [items]);
 
   return (
     <div className="space-y-6">
-      {/* Subject Filter Bar */}
-      <div className="flex items-center justify-between p-3.5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)]">
-        <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
-          <BarChart2 className="w-4 h-4 text-[var(--color-accent)]" />
-          <span>Difficulty & Question Nature Distribution</span>
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <Card className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)]">
+          <div className="text-xs text-[var(--color-text-muted)] font-medium">Easy Questions</div>
+          <div className="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 mt-1">
+            {summaryStats.easyPct}%
+          </div>
+          <div className="text-[11px] text-[var(--color-text-muted)] mt-0.5">Direct formula & definitions</div>
+        </Card>
 
-        <div className="flex items-center gap-1">
-          {(['All', 'Science', 'Mathematics'] as const).map((sub) => (
-            <button
-              key={sub}
-              type="button"
-              onClick={() => setSelectedSubject(sub)}
-              className={`px-3 py-1 rounded-lg text-xs font-semibold transition-colors ${
-                selectedSubject === sub
-                  ? 'bg-[var(--color-accent)] text-white'
-                  : 'bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
-              }`}
-            >
-              {sub}
-            </button>
-          ))}
-        </div>
+        <Card className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)]">
+          <div className="text-xs text-[var(--color-text-muted)] font-medium">Moderate Questions</div>
+          <div className="text-xl font-extrabold text-amber-600 dark:text-amber-400 mt-1">
+            {summaryStats.mediumPct}%
+          </div>
+          <div className="text-[11px] text-[var(--color-text-muted)] mt-0.5">Multi-step derivations</div>
+        </Card>
+
+        <Card className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)]">
+          <div className="text-xs text-[var(--color-text-muted)] font-medium">Hard / High-Cognition</div>
+          <div className="text-xl font-extrabold text-rose-600 dark:text-rose-400 mt-1">
+            {summaryStats.hardPct}%
+          </div>
+          <div className="text-[11px] text-[var(--color-text-muted)] mt-0.5">Application & proofs</div>
+        </Card>
+
+        <Card className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)]">
+          <div className="text-xs text-[var(--color-text-muted)] font-medium">Numerical & Diagram</div>
+          <div className="text-xl font-extrabold text-indigo-600 dark:text-indigo-400 mt-1">
+            {summaryStats.numericalPct + summaryStats.diagramPct}%
+          </div>
+          <div className="text-[11px] text-[var(--color-text-muted)] mt-0.5">Visual & quantitative focus</div>
+        </Card>
       </div>
 
-      {/* Two Compact Print/Screenshot Readable Charts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Chart 1: Difficulty Breakdown */}
-        <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] space-y-4 shadow-sm print:break-inside-avoid">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)] flex items-center gap-1.5">
-              <PieChart className="w-4 h-4 text-emerald-500" />
-              1. Difficulty Level Distribution
-            </h3>
-            <span className="text-xs text-[var(--color-text-muted)] font-medium">
-              {totals.total} Total Questions
-            </span>
-          </div>
-
-          {/* Compact Stacked Proportion Bar (No load animation) */}
-          <div className="w-full h-5 rounded-lg overflow-hidden flex bg-[var(--color-surface-subtle)] border border-[var(--color-border)]">
-            <div
-              style={{ width: `${(totals.easy / totalAll) * 100}%` }}
-              className="bg-emerald-500 text-white text-[10px] font-extrabold flex items-center justify-center"
-              title={`Easy: ${totals.easy}`}
-            >
-              {Math.round((totals.easy / totalAll) * 100)}%
-            </div>
-            <div
-              style={{ width: `${(totals.medium / totalAll) * 100}%` }}
-              className="bg-amber-500 text-white text-[10px] font-extrabold flex items-center justify-center"
-              title={`Moderate: ${totals.medium}`}
-            >
-              {Math.round((totals.medium / totalAll) * 100)}%
-            </div>
-            <div
-              style={{ width: `${(totals.hard / totalAll) * 100}%` }}
-              className="bg-rose-500 text-white text-[10px] font-extrabold flex items-center justify-center"
-              title={`Hard: ${totals.hard}`}
-            >
-              {Math.round((totals.hard / totalAll) * 100)}%
-            </div>
-          </div>
-
-          {/* Legend Table */}
-          <div className="grid grid-cols-3 gap-2 text-center text-xs pt-1">
-            <div className="p-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-              <div className="text-emerald-700 dark:text-emerald-300 font-bold">Easy</div>
-              <div className="text-sm font-black text-[var(--color-text)]">{totals.easy}</div>
-            </div>
-            <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20">
-              <div className="text-amber-700 dark:text-amber-300 font-bold">Moderate</div>
-              <div className="text-sm font-black text-[var(--color-text)]">{totals.medium}</div>
-            </div>
-            <div className="p-2 rounded-lg bg-rose-500/10 border border-rose-500/20">
-              <div className="text-rose-700 dark:text-rose-300 font-bold">Hard</div>
-              <div className="text-sm font-black text-[var(--color-text)]">{totals.hard}</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Chart 2: Question Type Nature Breakdown */}
-        <div className="p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] space-y-4 shadow-sm print:break-inside-avoid">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)] flex items-center gap-1.5">
-              <PieChart className="w-4 h-4 text-sky-500" />
-              2. Question Nature Breakdown
-            </h3>
-            <span className="text-xs text-[var(--color-text-muted)] font-medium">
-              4 Cognitive Categories
-            </span>
-          </div>
-
-          {/* Compact Stacked Proportion Bar */}
-          <div className="w-full h-5 rounded-lg overflow-hidden flex bg-[var(--color-surface-subtle)] border border-[var(--color-border)]">
-            <div
-              style={{ width: `${(totals.conceptual / totalAll) * 100}%` }}
-              className="bg-sky-500 text-white text-[10px] font-extrabold flex items-center justify-center"
-              title={`Conceptual: ${totals.conceptual}`}
-            >
-              {Math.round((totals.conceptual / totalAll) * 100)}%
-            </div>
-            <div
-              style={{ width: `${(totals.numerical / totalAll) * 100}%` }}
-              className="bg-purple-500 text-white text-[10px] font-extrabold flex items-center justify-center"
-              title={`Numerical: ${totals.numerical}`}
-            >
-              {Math.round((totals.numerical / totalAll) * 100)}%
-            </div>
-            <div
-              style={{ width: `${(totals.diagram / totalAll) * 100}%` }}
-              className="bg-indigo-500 text-white text-[10px] font-extrabold flex items-center justify-center"
-              title={`Diagram: ${totals.diagram}`}
-            >
-              {Math.round((totals.diagram / totalAll) * 100)}%
-            </div>
-            <div
-              style={{ width: `${(totals.application / totalAll) * 100}%` }}
-              className="bg-teal-500 text-white text-[10px] font-extrabold flex items-center justify-center"
-              title={`Application: ${totals.application}`}
-            >
-              {Math.round((totals.application / totalAll) * 100)}%
-            </div>
-          </div>
-
-          {/* Legend Grid */}
-          <div className="grid grid-cols-4 gap-2 text-center text-xs pt-1">
-            <div className="p-1.5 rounded-lg bg-sky-500/10 border border-sky-500/20">
-              <div className="text-sky-700 dark:text-sky-300 font-bold text-[11px]">Concept</div>
-              <div className="text-sm font-black text-[var(--color-text)]">{totals.conceptual}</div>
-            </div>
-            <div className="p-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20">
-              <div className="text-purple-700 dark:text-purple-300 font-bold text-[11px]">Numeric</div>
-              <div className="text-sm font-black text-[var(--color-text)]">{totals.numerical}</div>
-            </div>
-            <div className="p-1.5 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
-              <div className="text-indigo-700 dark:text-indigo-300 font-bold text-[11px]">Diagram</div>
-              <div className="text-sm font-black text-[var(--color-text)]">{totals.diagram}</div>
-            </div>
-            <div className="p-1.5 rounded-lg bg-teal-500/10 border border-teal-500/20">
-              <div className="text-teal-700 dark:text-teal-300 font-bold text-[11px]">Apply</div>
-              <div className="text-sm font-black text-[var(--color-text)]">{totals.application}</div>
-            </div>
-          </div>
-        </div>
+      <div className="flex items-center gap-2 p-3 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)]">
+        <button
+          type="button"
+          onClick={() => setSubjectFilter('all')}
+          className={
+            'px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors ' +
+            (subjectFilter === 'all'
+              ? 'bg-[var(--color-accent)] text-white shadow-sm'
+              : 'bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]')
+          }
+        >
+          All Subjects ({difficultyDist.length} Chapters)
+        </button>
+        <button
+          type="button"
+          onClick={() => setSubjectFilter('Science')}
+          className={
+            'px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors ' +
+            (subjectFilter === 'Science'
+              ? 'bg-[var(--color-accent)] text-white shadow-sm'
+              : 'bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]')
+            }
+        >
+          Science (13)
+        </button>
+        <button
+          type="button"
+          onClick={() => setSubjectFilter('Mathematics')}
+          className={
+            'px-3.5 py-1.5 text-xs font-semibold rounded-lg transition-colors ' +
+            (subjectFilter === 'Mathematics'
+              ? 'bg-[var(--color-accent)] text-white shadow-sm'
+              : 'bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]')
+          }
+        >
+          Mathematics (14)
+        </button>
       </div>
 
-      {/* Per-Chapter Distribution Matrix Table */}
-      <div className="w-full overflow-x-auto rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm">
-        <table className="w-full text-left border-collapse min-w-[700px] text-xs">
-          <thead>
-            <tr className="border-b border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] font-semibold uppercase tracking-wider">
-              <th className="py-3 px-3.5 min-w-[220px]">Chapter</th>
-              <th className="py-3 px-2 text-center">Subject</th>
-              <th className="py-3 px-2 text-center text-emerald-600 dark:text-emerald-400">Easy</th>
-              <th className="py-3 px-2 text-center text-amber-600 dark:text-amber-400">Med</th>
-              <th className="py-3 px-2 text-center text-rose-600 dark:text-rose-400">Hard</th>
-              <th className="py-3 px-2 text-center text-sky-600 dark:text-sky-400">Conceptual</th>
-              <th className="py-3 px-2 text-center text-purple-600 dark:text-purple-400">Numerical</th>
-              <th className="py-3 px-2 text-center text-indigo-600 dark:text-indigo-400">Diagram</th>
-              <th className="py-3 px-2 text-center text-teal-600 dark:text-teal-400">Application</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-[var(--color-border)] font-medium">
-            {filteredStats.map((row) => (
-              <tr key={row.chapter} className="hover:bg-[var(--color-surface-subtle)]/50 transition-colors">
-                <td className="py-2.5 px-3.5 font-semibold text-[var(--color-text)]">{row.chapter}</td>
-                <td className="py-2.5 px-2 text-center">
-                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)]">
-                    {row.subject}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <Card className="p-5 border border-[var(--color-border)] space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--color-border)]">
+            <div className="flex items-center gap-2">
+              <Gauge className="w-4 h-4 text-emerald-500" />
+              <h3 className="text-sm font-bold text-[var(--color-text)]">
+                Difficulty Breakdown per Chapter
+              </h3>
+            </div>
+            <div className="flex items-center gap-3 text-[11px] font-medium text-[var(--color-text-muted)]">
+              <span className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Easy
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" /> Medium
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" /> Hard
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-3 overflow-y-auto max-h-[600px] pr-2">
+            {filteredDiff.map((row) => (
+              <div key={row.chapter} className="space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-semibold text-[var(--color-text)] truncate max-w-[240px]">
+                    {row.chapter}
                   </span>
-                </td>
-                <td className="py-2.5 px-2 text-center font-bold text-emerald-600 dark:text-emerald-400">{row.easyCount}</td>
-                <td className="py-2.5 px-2 text-center font-bold text-amber-600 dark:text-amber-400">{row.mediumCount}</td>
-                <td className="py-2.5 px-2 text-center font-bold text-rose-600 dark:text-rose-400">{row.hardCount}</td>
-                <td className="py-2.5 px-2 text-center font-bold text-sky-600 dark:text-sky-400">{row.conceptualCount}</td>
-                <td className="py-2.5 px-2 text-center font-bold text-purple-600 dark:text-purple-400">{row.numericalCount}</td>
-                <td className="py-2.5 px-2 text-center font-bold text-indigo-600 dark:text-indigo-400">{row.diagramCount}</td>
-                <td className="py-2.5 px-2 text-center font-bold text-teal-600 dark:text-teal-400">{row.applicationCount}</td>
-              </tr>
+                  <span className="text-[11px] text-[var(--color-text-muted)] shrink-0 font-mono">
+                    {row.total} qs ({row.easy}E / {row.medium}M / {row.hard}H)
+                  </span>
+                </div>
+
+                <div className="h-3.5 w-full bg-[var(--color-surface-subtle)] rounded-full overflow-hidden flex border border-[var(--color-border)]">
+                  <div
+                    style={{ width: row.easyPct + '%' }}
+                    className="bg-emerald-500 h-full transition-all"
+                    title={'Easy: ' + row.easyPct + '% (' + row.easy + ')'}
+                  />
+                  <div
+                    style={{ width: row.mediumPct + '%' }}
+                    className="bg-amber-500 h-full transition-all"
+                    title={'Medium: ' + row.mediumPct + '% (' + row.medium + ')'}
+                  />
+                  <div
+                    style={{ width: row.hardPct + '%' }}
+                    className="bg-rose-500 h-full transition-all"
+                    title={'Hard: ' + row.hardPct + '% (' + row.hard + ')'}
+                  />
+                </div>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </Card>
+
+        <Card className="p-5 border border-[var(--color-border)] space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-[var(--color-border)]">
+            <div className="flex items-center gap-2">
+              <Brain className="w-4 h-4 text-indigo-500" />
+              <h3 className="text-sm font-bold text-[var(--color-text)]">
+                Cognitive Type Breakdown per Chapter
+              </h3>
+            </div>
+            <div className="flex flex-wrap items-center gap-2 text-[11px] font-medium text-[var(--color-text-muted)]">
+              <span className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block" /> Concept
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block" /> Numeric
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-teal-500 inline-block" /> Diagram
+              </span>
+              <span className="flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block" /> App
+              </span>
+            </div>
+          </div>
+
+          <div className="space-y-3 overflow-y-auto max-h-[600px] pr-2">
+            {filteredType.map((row) => (
+              <div key={row.chapter} className="space-y-1.5">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-semibold text-[var(--color-text)] truncate max-w-[240px]">
+                    {row.chapter}
+                  </span>
+                  <span className="text-[11px] text-[var(--color-text-muted)] shrink-0 font-mono">
+                    {row.total} qs
+                  </span>
+                </div>
+
+                <div className="h-3.5 w-full bg-[var(--color-surface-subtle)] rounded-full overflow-hidden flex border border-[var(--color-border)]">
+                  <div
+                    style={{ width: row.conceptualPct + '%' }}
+                    className="bg-sky-500 h-full transition-all"
+                    title={'Conceptual: ' + row.conceptualPct + '%'}
+                  />
+                  <div
+                    style={{ width: row.numericalPct + '%' }}
+                    className="bg-purple-500 h-full transition-all"
+                    title={'Numerical: ' + row.numericalPct + '%'}
+                  />
+                  <div
+                    style={{ width: row.diagramPct + '%' }}
+                    className="bg-teal-500 h-full transition-all"
+                    title={'Diagram: ' + row.diagramPct + '%'}
+                  />
+                  <div
+                    style={{ width: row.applicationPct + '%' }}
+                    className="bg-orange-500 h-full transition-all"
+                    title={'Application: ' + row.applicationPct + '%'}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
       </div>
     </div>
   );
-};
+}

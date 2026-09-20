@@ -1,16 +1,15 @@
-// src/modules/resume-analyzer/config.ts
 import React from 'react';
 import type { ModuleConfig } from '@core/registry';
 
 export const resumeAnalyzerConfig: ModuleConfig = {
   id: 'resume-analyzer',
-  title: 'AI Resume & ATS Analyzer',
+  title: 'Resume & ATS Forensic Auditor',
   track: 'college',
   classLevels: [],
-  icon: 'FileCheck',
+  icon: 'FileCheck2',
   tier: 'A',
-  scopeLabel: 'ATS Score, Line-by-Line Findings, Rewrites & JD Gap Analysis',
-  dataSource: 'artifact_analyses.json',
+  scopeLabel: 'Forensic Resume & ATS Audit with Line-by-Line Rewrites',
+  dataSource: 'resume-analyzer.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({
       default: m.ResumeAnalyzerModule,
@@ -18,5 +17,5 @@ export const resumeAnalyzerConfig: ModuleConfig = {
   ),
   searchable: true,
   description:
-    'Live AI-augmented resume parser & ATS optimizer with line-by-line quoted findings, bullet point diff rewrites, and target job description gap analysis.',
+    'Forensic resume evaluation with non-generic line citations, 5-factor ATS scoring, bullet rewrites, and JD skill-gap mapping.',
 };

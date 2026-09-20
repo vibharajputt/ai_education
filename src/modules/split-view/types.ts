@@ -1,27 +1,24 @@
-export interface MarkingCriterion {
-  criterion: string;
-  marks: number;
-  completed?: boolean;
+import type { ContentItem, Explanation, ExplanationStep, MarkingBreakdown } from '@core/types';
+
+export interface DiagramGuidance {
+  required: boolean;
+  title?: string;
+  description: string;
+  labelsToInclude: string[];
+  placeholderFigure?: string;
 }
 
-export interface AnswerCoachData {
-  markingBreakdown: MarkingCriterion[];
+export interface VerifiedExplanationExtended extends Explanation {
+  modelAnswer: string;
   requiredKeywords: string[];
-  diagramNote?: string;
-  commonMistakes: string[];
-  examinerNote?: string;
+  diagramGuidance?: DiagramGuidance;
+  examinerPerspective: string;
+  repeatYearsCount?: number;
+  siblingQuestions?: ContentItem[];
 }
 
-export interface SplitViewExplanation {
-  itemId: string;
-  type: string;
-  body: string;
-  steps?: Array<{ label: string; body: string }>;
-  keyPoints?: string[];
-  markingBreakdown: MarkingCriterion[];
-  diagramNote?: string;
-  commonMistakes: string[];
-  requiredKeywords: string[];
-  examinerNote?: string;
-  summary: string;
+export interface SplitViewPreference {
+  dividerRatio: number;
+  scrollSync: boolean;
+  highlightKeywords: boolean;
 }

@@ -6,7 +6,10 @@ import { ErrorState } from './ErrorState';
 type Status = 'loading' | 'empty' | 'error' | 'success';
 
 interface StateShellProps {
-  status: Status;
+  status?: Status;
+  state?: Status | string;
+  title?: string;
+  message?: string;
   error?: Error | null;
   onRetry?: () => void;
   emptyTitle?: string;
@@ -30,6 +33,9 @@ interface StateShellProps {
  */
 export function StateShell({
   status,
+  state,
+  title,
+  message,
   error,
   onRetry,
   emptyTitle = 'No content yet',
@@ -40,7 +46,11 @@ export function StateShell({
   skeletonLines = 4,
   className = '',
 }: StateShellProps) {
-  if (status === 'loading') {
+  const effectiveStatus = (status || state || 'success') as Status;
+  const effectiveEmptyTitle = title || emptyTitle;
+  const effectiveEmptyDesc = message || emptyDescription;
+
+  if (effectiveStatus === 'loading') {
     return (
       <div className={`p-6 ${className}`}>
         <Skeleton lines={skeletonLines} />
@@ -48,22 +58,24 @@ export function StateShell({
     );
   }
 
-  if (status === 'error') {
+  if (effectiveStatus === 'error') {
     return (
       <ErrorState
         error={error ?? undefined}
+        title={title}
+        message={message}
         retry={onRetry}
         className={className}
       />
     );
   }
 
-  if (status === 'empty') {
+  if (effectiveStatus === 'empty') {
     return (
       <EmptyState
         icon={emptyIcon}
-        title={emptyTitle}
-        description={emptyDescription}
+        title={effectiveEmptyTitle}
+        description={effectiveEmptyDesc}
         action={emptyAction}
         className={className}
       />

@@ -1,5 +1,6 @@
+// src/app/Sidebar.tsx
 import React from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { REGISTRY } from '@core/registry';
 import type { Track } from '@core/types';
 import { Badge } from '@components/Badge';
@@ -18,7 +19,6 @@ export function Sidebar({
   className = '',
 }: SidebarProps) {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const filteredModules = REGISTRY.filter(
     (m) => m.track === currentTrack || m.track === 'both'
@@ -34,16 +34,16 @@ export function Sidebar({
         <div
           role="tablist"
           aria-label="Audience Track"
-          className="grid grid-cols-2 gap-1 p-1 bg-[var(--color-surface-subtle)] rounded-lg border border-[var(--color-border)]"
+          className="grid grid-cols-2 gap-1 p-1 bg-[var(--color-surface-subtle)] rounded-xl border border-[var(--color-border)]"
         >
           <button
             type="button"
             role="tab"
             aria-selected={currentTrack === 'school'}
             onClick={() => onTrackChange('school')}
-            className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-md text-xs font-semibold transition-all ${
+            className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-bold transition-all ${
               currentTrack === 'school'
-                ? 'bg-[var(--color-bg)] text-[var(--color-text)] shadow-xs border border-[var(--color-border)]'
+                ? 'bg-blue-600 text-white shadow-xs'
                 : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
             }`}
           >
@@ -55,9 +55,9 @@ export function Sidebar({
             role="tab"
             aria-selected={currentTrack === 'college'}
             onClick={() => onTrackChange('college')}
-            className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-md text-xs font-semibold transition-all ${
+            className={`flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-bold transition-all ${
               currentTrack === 'college'
-                ? 'bg-[var(--color-bg)] text-[var(--color-text)] shadow-xs border border-[var(--color-border)]'
+                ? 'bg-purple-600 text-white shadow-xs'
                 : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
             }`}
           >
@@ -68,10 +68,10 @@ export function Sidebar({
       </div>
 
       {/* Modules List Header */}
-      <div className="px-4 py-2 text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center justify-between">
-        <span>Modules ({filteredModules.length})</span>
-        <span className="text-[10px] font-normal normal-case">
-          {currentTrack === 'school' ? 'Class 9–12' : 'Undergrad'}
+      <div className="px-4 py-2.5 text-[11px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center justify-between">
+        <span>Active Modules ({filteredModules.length})</span>
+        <span className="text-[10px] font-semibold normal-case px-2 py-0.5 rounded-full bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)]">
+          {currentTrack === 'school' ? 'Class 9–12' : 'Undergrad Tech'}
         </span>
       </div>
 
@@ -86,9 +86,9 @@ export function Sidebar({
               key={module.id}
               to={path}
               aria-current={isActive ? 'page' : undefined}
-              className={`group flex items-start gap-3 px-3 py-2.5 rounded-lg text-xs transition-colors ${
+              className={`group flex items-start gap-3 px-3 py-2.5 rounded-xl text-xs transition-colors ${
                 isActive
-                  ? 'bg-[var(--color-accent-subtle)] text-[var(--color-accent)] font-semibold'
+                  ? 'bg-[var(--color-accent-subtle)] text-[var(--color-accent)] font-bold shadow-xs'
                   : 'text-[var(--color-text)] hover:bg-[var(--color-surface-hover)]'
               }`}
             >

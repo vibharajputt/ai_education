@@ -1,39 +1,62 @@
-import { ContentItem } from '@core/types';
-
-export type ViewTab = 'heatmap' | 'repeat' | 'difficulty' | 'browser';
+import type { ContentItem } from '@core/types';
 
 export interface ChapterHeatmapRow {
   chapter: string;
   subject: string;
-  yearMarks: Record<number, number>; // year -> total marks
-  yearCounts: Record<number, number>; // year -> question count
+  yearMarks: Record<number, number>;
+  yearCounts: Record<number, number>;
   totalMarks: number;
-  totalCount: number;
-  trend: 'up' | 'flat' | 'down';
-  trendRatio: number;
+  totalQuestions: number;
+  trend: 'up' | 'down' | 'steady';
+  avgMarksRecent: number;
+  avgMarksPast: number;
 }
 
-export interface ConceptRepeatItem {
+export interface ConceptRanking {
   concept: string;
   subject: string;
   chapter: string;
-  yearsAppeared: number[];
-  appearanceCount: number;
-  totalMarks: number;
+  appearedYears: number[];
+  distinctYearsCount: number;
   avgMarks: number;
+  totalQuestions: number;
   repeatScore: number;
-  siblingQuestions: ContentItem[];
+  questions: ContentItem[];
 }
 
-export interface ChapterStats {
+export interface ChapterDifficultyDist {
   chapter: string;
   subject: string;
-  easyCount: number;
-  mediumCount: number;
-  hardCount: number;
-  conceptualCount: number;
-  numericalCount: number;
-  diagramCount: number;
-  applicationCount: number;
-  totalQuestions: number;
+  total: number;
+  easy: number;
+  medium: number;
+  hard: number;
+  easyPct: number;
+  mediumPct: number;
+  hardPct: number;
 }
+
+export interface ChapterTypeDist {
+  chapter: string;
+  subject: string;
+  total: number;
+  conceptual: number;
+  numerical: number;
+  diagram: number;
+  application: number;
+  conceptualPct: number;
+  numericalPct: number;
+  diagramPct: number;
+  applicationPct: number;
+}
+
+export function getItemYear(item: ContentItem): number | undefined {
+  if (item.kind === 'question') return item.year;
+  return (item.metadata?.year as number) ?? undefined;
+}
+
+export function getItemMarks(item: ContentItem): number | undefined {
+  if (item.kind === 'question') return item.marks;
+  return (item.metadata?.marks as number) ?? undefined;
+}
+

@@ -1,150 +1,236 @@
 import React, { useState } from 'react';
-import { AnswerCoachData } from '../types';
-import { CheckSquare, Square, Tag, Image, AlertTriangle, ChevronDown, ChevronUp, Award, HelpCircle } from 'lucide-react';
+import type { VerifiedExplanationExtended } from '../types';
+import { Card } from '@components/Card';
+import {
+  CheckSquare,
+  Square,
+  Key,
+  AlertTriangle,
+  Eye,
+  Info,
+  ChevronDown,
+  ChevronUp,
+  Image as ImageIcon,
+  Sparkles,
+} from 'lucide-react';
 
 interface AnswerCoachPanelProps {
-  coachData: AnswerCoachData;
-  totalMarks?: number;
+  explanation: VerifiedExplanationExtended;
+  highlightKeywords: boolean;
+  onToggleHighlightKeywords: () => void;
 }
 
-export const AnswerCoachPanel: React.FC<AnswerCoachPanelProps> = ({ coachData, totalMarks = 3 }) => {
+export function AnswerCoachPanel({
+  explanation,
+  highlightKeywords,
+  onToggleHighlightKeywords,
+}: AnswerCoachPanelProps) {
   const [checkedItems, setCheckedItems] = useState<Record<number, boolean>>({});
-  const [showExaminerNote, setShowExaminerNote] = useState<boolean>(false);
+  const [isExaminerOpen, setIsExaminerOpen] = useState(false);
 
-  const toggleCheck = (idx: number) => {
-    setCheckedItems((prev) => ({ ...prev, [idx]: !prev[idx] }));
+  const toggleCheck = (index: number) => {
+    setCheckedItems((prev) => ({ ...prev, [index]: !prev[index] }));
   };
 
-  const completedMarks = coachData.markingBreakdown.reduce((sum, item, idx) => {
-    return checkedItems[idx] ? sum + item.marks : sum;
+  const totalMarks = explanation.markingBreakdown.reduce((acc, m) => acc + m.marks, 0);
+  const earnedMarks = explanation.markingBreakdown.reduce((acc, m, idx) => {
+    return acc + (checkedItems[idx] ? m.marks : 0);
   }, 0);
 
   return (
-    <div className="space-y-4 p-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-sm">
-      {/* Header Badge */}
-      <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-3">
+    <div className="space-y-5 pt-4 border-t border-[var(--color-border)]">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Award className="w-5 h-5 text-[var(--color-accent)]" />
-          <h3 className="text-sm font-black text-[var(--color-text)] uppercase tracking-wide">
-            Examiner Answer Coach
-          </h3>
+          <div className="p-1.5 rounded-lg bg-[var(--color-accent-subtle)] text-[var(--color-accent)]">
+            <Sparkles className="w-4 h-4" />
+          </div>
+          <div>
+            <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--color-text)]">
+              Answer Coach Panel
+            </h3>
+            <p className="text-[11px] text-[var(--color-text-muted)]">
+              Self-audit rubric, mandatory keywords, and examiner insights
+            </p>
+          </div>
         </div>
-        <div className="px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 text-xs font-bold border border-emerald-500/30">
-          Earned: {completedMarks} / {totalMarks} Marks
-        </div>
+
+        <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-[var(--color-surface-subtle)] text-[var(--color-text)] border border-[var(--color-border)]">
+          Audit Score: {earnedMarks}/{totalMarks}m
+        </span>
       </div>
 
-      {/* 1. Mark-wise Breakdown Checklist */}
-      <div className="space-y-2">
-        <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center justify-between">
-          <span>Mark-wise Scheme Checklist</span>
-          <span className="text-[11px] font-normal">Check off as you write</span>
+      {/* 1. Mark-Wise Breakdown Checklist */}
+      <Card className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)] space-y-3">
+        <div className="flex items-center justify-between text-xs font-bold text-[var(--color-text)]">
+          <span className="flex items-center gap-1.5">
+            <CheckSquare className="w-4 h-4 text-[var(--color-accent)]" />
+            Mark-Wise Checklist (What Earns Each Mark)
+          </span>
+          <span className="text-[11px] text-[var(--color-text-muted)] font-normal">
+            Click to audit your own answer
+          </span>
         </div>
 
-        <div className="space-y-1.5">
-          {coachData.markingBreakdown.map((item, idx) => {
+        <div className="space-y-2">
+          {explanation.markingBreakdown.map((item, idx) => {
             const isChecked = Boolean(checkedItems[idx]);
             return (
               <div
                 key={idx}
                 onClick={() => toggleCheck(idx)}
-                className={`p-2.5 rounded-lg border text-xs cursor-pointer transition-all flex items-start gap-2.5 ${
-                  isChecked
-                    ? 'bg-emerald-500/10 border-emerald-500/40 text-[var(--color-text)]'
-                    : 'bg-[var(--color-surface-subtle)] border-[var(--color-border)] text-[var(--color-text-muted)] hover:border-[var(--color-accent)]/50'
-                }`}
+                className={
+                  'flex items-start gap-2.5 p-2.5 rounded-lg text-xs cursor-pointer transition-colors border ' +
+                  (isChecked
+                    ? 'bg-emerald-500/10 border-emerald-500/30 text-[var(--color-text)]'
+                    : 'bg-[var(--color-surface-subtle)] border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]')
+                }
               >
                 <button type="button" className="mt-0.5 shrink-0 text-[var(--color-accent)]">
                   {isChecked ? (
                     <CheckSquare className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   ) : (
-                    <Square className="w-4 h-4" />
+                    <Square className="w-4 h-4 text-[var(--color-text-muted)]" />
                   )}
                 </button>
-                <div className="flex-1 min-w-0">
-                  <span className={`font-medium ${isChecked ? 'line-through opacity-80' : ''}`}>
-                    {item.criterion}
+                <div className="flex-1 flex items-start justify-between gap-2">
+                  <span className={isChecked ? 'font-medium' : ''}>{item.criterion}</span>
+                  <span className="font-bold text-[11px] shrink-0 px-2 py-0.5 rounded bg-[var(--color-surface)] border border-[var(--color-border)]">
+                    +{item.marks}m
                   </span>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-[var(--color-surface)] font-bold text-[11px] shrink-0 border border-[var(--color-border)]">
-                  +{item.marks} M
-                </span>
               </div>
             );
           })}
         </div>
-      </div>
+      </Card>
 
       {/* 2. Required Keywords */}
-      {coachData.requiredKeywords && coachData.requiredKeywords.length > 0 && (
-        <div className="space-y-1.5 pt-1">
-          <div className="text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)] flex items-center gap-1.5">
-            <Tag className="w-3.5 h-3.5 text-sky-500" />
-            Mandatory Keywords
+      <Card className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)] space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--color-text)]">
+            <Key className="w-4 h-4 text-amber-500" />
+            Mandatory Board Keywords ({explanation.requiredKeywords.length})
           </div>
-          <div className="flex flex-wrap gap-1.5">
-            {coachData.requiredKeywords.map((kw) => (
-              <span
-                key={kw}
-                className="px-2.5 py-0.5 rounded-md bg-sky-500/15 text-sky-700 dark:text-sky-300 font-bold text-xs border border-sky-500/30"
-              >
-                #{kw}
-              </span>
-            ))}
-          </div>
+          <button
+            type="button"
+            onClick={onToggleHighlightKeywords}
+            className={
+              'text-[11px] font-semibold px-2.5 py-1 rounded-md transition-colors ' +
+              (highlightKeywords
+                ? 'bg-amber-500 text-white shadow-sm'
+                : 'bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] border border-[var(--color-border)]')
+            }
+          >
+            {highlightKeywords ? 'Highlights Active' : 'Highlight in Model Answer'}
+          </button>
         </div>
-      )}
 
-      {/* 3. Diagram Guidance */}
-      {coachData.diagramNote && (
-        <div className="p-3 rounded-lg bg-purple-500/10 border border-purple-500/30 text-xs space-y-1">
-          <div className="font-bold text-purple-700 dark:text-purple-300 flex items-center gap-1.5">
-            <Image className="w-4 h-4" />
-            Diagram Requirement
+        <div className="flex flex-wrap gap-1.5">
+          {explanation.requiredKeywords.map((kw) => (
+            <span
+              key={kw}
+              className={
+                'text-xs px-2.5 py-1 rounded-full font-medium transition-colors border ' +
+                (highlightKeywords
+                  ? 'bg-amber-500/20 text-amber-800 dark:text-amber-200 border-amber-500/40 font-bold'
+                  : 'bg-[var(--color-surface-subtle)] text-[var(--color-text)] border-[var(--color-border)]')
+              }
+            >
+              {kw}
+            </span>
+          ))}
+        </div>
+      </Card>
+
+      {/* 3. Diagram Guidance (Lazy-loaded aspect ratio placeholder) */}
+      {explanation.diagramGuidance && (
+        <Card className="p-4 bg-[var(--color-surface)] border border-[var(--color-border)] space-y-3">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-[var(--color-text)]">
+            <ImageIcon className="w-4 h-4 text-indigo-500" />
+            Diagram Directive: {explanation.diagramGuidance.required ? 'Mandatory Diagram Required' : 'No Diagram Required'}
           </div>
-          <p className="text-[var(--color-text)] font-medium leading-relaxed">
-            {coachData.diagramNote}
+
+          <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+            {explanation.diagramGuidance.description}
           </p>
-        </div>
+
+          {explanation.diagramGuidance.required && (
+            <div className="space-y-2.5">
+              {explanation.diagramGuidance.placeholderFigure && (
+                <div className="w-full aspect-[16/9] max-h-[220px] rounded-xl overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface-subtle)] flex items-center justify-center shadow-inner">
+                  <img
+                    src={explanation.diagramGuidance.placeholderFigure}
+                    alt={explanation.diagramGuidance.title || 'Diagram schematic'}
+                    loading="lazy"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              )}
+
+              <div className="p-2.5 rounded-lg bg-[var(--color-surface-subtle)] border border-[var(--color-border)] space-y-1.5">
+                <span className="text-[11px] font-bold text-[var(--color-text)] block">
+                  Mandatory Labels to Include:
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {explanation.diagramGuidance.labelsToInclude.map((lbl) => (
+                    <span
+                      key={lbl}
+                      className="text-[11px] px-2 py-0.5 rounded bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] font-medium"
+                    >
+                      ✓ {lbl}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+        </Card>
       )}
 
-      {/* 4. Common Mistakes */}
-      {coachData.commonMistakes && coachData.commonMistakes.length > 0 && (
-        <div className="p-3 rounded-lg bg-rose-500/10 border border-rose-500/30 text-xs space-y-1.5">
-          <div className="font-bold text-rose-700 dark:text-rose-300 flex items-center gap-1.5">
+      {/* 4. Common Mistakes & Point Deductions */}
+      {explanation.commonMistakes && explanation.commonMistakes.length > 0 && (
+        <div className="p-4 rounded-xl bg-rose-500/5 border border-rose-500/20 space-y-2.5">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-rose-600 dark:text-rose-400">
             <AlertTriangle className="w-4 h-4" />
-            Common Student Deductions & Traps
+            Common Student Mistakes & Typical Point Deductions
           </div>
-          <ul className="list-disc list-inside space-y-1 text-[var(--color-text)] font-medium">
-            {coachData.commonMistakes.map((m, i) => (
-              <li key={i}>{m}</li>
+          <ul className="text-xs space-y-1.5 text-[var(--color-text-muted)] pl-1">
+            {explanation.commonMistakes.map((mistake, idx) => (
+              <li key={idx} className="flex items-start gap-2">
+                <span className="text-rose-500 font-bold shrink-0">•</span>
+                <span>{mistake}</span>
+              </li>
             ))}
           </ul>
         </div>
       )}
 
-      {/* 5. Collapsible "How an Examiner Reads This" Note */}
-      {coachData.examinerNote && (
-        <div className="border-t border-[var(--color-border)] pt-3">
-          <button
-            type="button"
-            onClick={() => setShowExaminerNote((prev) => !prev)}
-            className="w-full flex items-center justify-between p-2 rounded-lg bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] text-xs font-bold text-[var(--color-text)] transition-colors"
-          >
-            <span className="flex items-center gap-1.5">
-              <HelpCircle className="w-4 h-4 text-amber-500" />
-              How an Examiner Reads This
-            </span>
-            {showExaminerNote ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-          </button>
+      {/* 5. How an Examiner Reads This (Collapsible Note) */}
+      <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden">
+        <button
+          type="button"
+          onClick={() => setIsExaminerOpen(!isExaminerOpen)}
+          className="w-full p-3.5 flex items-center justify-between text-left text-xs font-bold text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] transition-colors"
+        >
+          <span className="flex items-center gap-2">
+            <Eye className="w-4 h-4 text-purple-500" />
+            How an Examiner Reads This (Grading Psychology)
+          </span>
+          {isExaminerOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+        </button>
 
-          {showExaminerNote && (
-            <div className="mt-2 p-3 rounded-lg bg-amber-500/10 border border-amber-500/30 text-xs text-[var(--color-text)] font-medium leading-relaxed">
-              {coachData.examinerNote}
-            </div>
-          )}
-        </div>
-      )}
+        {isExaminerOpen && (
+          <div className="p-4 pt-1 border-t border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-xs leading-relaxed text-[var(--color-text-muted)] animate-in fade-in duration-150">
+            <p>{explanation.examinerPerspective}</p>
+          </div>
+        )}
+      </div>
+
+      {/* Always Visible Disclaimer */}
+      <div className="flex items-center justify-center gap-1.5 pt-3 pb-1 text-[11px] text-[var(--color-text-muted)]">
+        <Info className="w-3.5 h-3.5 shrink-0 text-[var(--color-accent)]" />
+        <span>AI-generated verification reference — verify official solutions with your teacher.</span>
+      </div>
     </div>
   );
-};
+}

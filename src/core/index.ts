@@ -34,8 +34,38 @@ export {
   getItemDataSource,
 } from './loaders';
 
-export type { ExplainRequest, ExplainStreamChunk } from './aiClient';
+export type { AssistRequest, AssistRequest as ExplainRequest, ExplainStreamChunk } from './aiClient';
 export { explainItem, explainItemFull } from './aiClient';
 
-export * from './progress';
+export type {
+  AttemptRecord,
+  ItemReviewState,
+  ConceptMastery,
+  MasteryStatus,
+  UserStats,
+  ProgressStoreState,
+  FSRSGrade,
+  SwotStats,
+} from './progress';
+export {
+  CURRENT_SCHEMA_VERSION,
+  ELO_CONFIG,
+  FSRS_CONFIG,
+  getInitialState,
+  ratingToMasteryPercent,
+  calculateNewElo,
+  determineFSRSGrade,
+  calculateNextReview,
+  recalculateUserStats,
+  loadStore,
+  saveStore,
+  recordAttempt,
+  recordBatchAttempts,
+  resetProgressStore,
+  getDueItems,
+  getAccuracyTrend,
+  getTimeTrend,
+  getSwotStatistics,
+  useProgressStore,
+} from './progress';
 

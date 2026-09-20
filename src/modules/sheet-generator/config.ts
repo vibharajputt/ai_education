@@ -1,22 +1,20 @@
 // src/modules/sheet-generator/config.ts
 import React from 'react';
-import type { ModuleConfig } from '@core/registry';
+import type { ModuleConfig } from '@core';
 
 export const sheetGeneratorConfig: ModuleConfig = {
   id: 'sheet-generator',
-  title: 'Worksheet & Practice Paper Generator',
+  title: 'Practice Worksheet Generator',
   track: 'both',
-  classLevels: ['9', '10', '11', '12'],
-  icon: 'FileText',
+  classLevels: ['10', '11', '12'],
+  icon: 'Printer',
   tier: 'B',
-  scopeLabel: 'Custom Chapter Mix, Printable A4 Worksheets, Coverage Report & Answer Keys',
-  dataSource: 'pyq-10th.json',
+  scopeLabel: 'Custom Printable Exam Worksheets with A4 Print Layout & Separate Solution Keys',
+  dataSource: 'pyq/class10.json',
   view: React.lazy(() =>
-    import('./index').then((m) => ({
-      default: m.SheetGeneratorModule,
-    }))
+    import('./index').then((m) => ({ default: m.SheetGeneratorModule })),
   ),
   searchable: true,
   description:
-    'Generate customized, printable A4 practice worksheets with chapter coverage reports, difficulty mixes, and separate answer key pages.',
+    'Custom question set generator with multi-chapter coverage, A4 printable styling, and detached solution keys.',
 };

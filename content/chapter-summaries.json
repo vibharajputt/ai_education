@@ -1,0 +1,77 @@
+{
+  "collection": {
+    "id": "chapter-summaries-col",
+    "title": "One-Page High-Density Chapter Summaries",
+    "description": "Comprehensive one-page formula sheets, key concepts, and exam weightage summaries.",
+    "scopeLabel": "2 Condensed STEM Chapter Summaries for Class 12 Boards",
+    "filters": {
+      "subject": [
+        "Physics",
+        "Chemistry"
+      ],
+      "difficulty": [
+        "easy",
+        "medium"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "cs-phy-12-001",
+      "subject": "Physics",
+      "chapter": "Dual Nature of Radiation and Matter",
+      "concepts": [
+        "Photoelectric Effect",
+        "Einstein Equation",
+        "de Broglie Wavelength"
+      ],
+      "body": "**Chapter Summary: Dual Nature**\n1. Photoelectric Equation: $K_{\\max} = h\\nu - \\phi_0 = eV_0$\n2. Work Function: $\\phi_0 = h\\nu_0 = \\frac{hc}{\\lambda_0}$\n3. de Broglie Wavelength: $\\lambda = \\frac{h}{p} = \\frac{h}{\\sqrt{2mE}} = \\frac{1.227}{\\sqrt{V}}\\,\\text{nm}$ (for electron)\n4. Davisson-Germer experiment establishes wave nature of electrons.",
+      "latex": "K_{\\max} = h\\nu - \\phi_0, \\quad \\lambda = \\frac{h}{\\sqrt{2mqV}}",
+      "images": [],
+      "tags": [
+        "summary",
+        "dual-nature",
+        "physics-12",
+        "cheat-sheet"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "weightageMarks": 6,
+        "highFrequencyQuestionTypes": [
+          "Graph analysis of stopping potential vs frequency",
+          "Calculations of de Broglie wavelength"
+        ]
+      },
+      "kind": "concept",
+      "track": "school"
+    },
+    {
+      "id": "cs-chem-12-001",
+      "subject": "Chemistry",
+      "chapter": "Biomolecules",
+      "concepts": [
+        "Carbohydrates",
+        "Proteins",
+        "Nucleic Acids",
+        "Vitamins"
+      ],
+      "body": "**Chapter Summary: Biomolecules**\n1. Carbohydrates: Glucose (aldotetrose/aldohexose), Cyclic structure (pyranose), Glycosidic linkage in disaccharides (Maltose: $\\alpha$-1,4; Lactose: $\\beta$-1,4; Sucrose: $\\alpha$-1, $\\beta$-2).\n2. Proteins: Amino acids (zwitter ion), Peptide linkage, Primary/Secondary ($\\alpha$-helix, $\\beta$-pleated)/Tertiary/Quaternary structures. Denaturation disrupts 2° & 3° structures without altering 1°.\n3. Nucleic acids: Nucleoside = Base + Sugar; Nucleotide = Base + Sugar + Phosphate. DNA: A=T, G≡C (double helix).",
+      "images": [],
+      "tags": [
+        "summary",
+        "biomolecules",
+        "chemistry-12"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "weightageMarks": 7,
+        "keyReactions": [
+          "Glucose with HI -> n-Hexane",
+          "Glucose with HNO3 -> Saccharic acid"
+        ]
+      },
+      "kind": "concept",
+      "track": "school"
+    }
+  ]
+}

@@ -1,148 +1,89 @@
 // src/core/aiClient.ts
 // Live AI client — real AI calls happen server-side only (AGENTS.md).
+//
+// EXACTLY TWO live AI paths exist:
+//   1. POST /api/assist        — SSE streaming: simplify, hindi, why, ask
+//   2. POST /api/analyze-resume — Resume upload and critique
+//
+// Any other live AI call is a bug.
 
 import type { Track } from './types';
 
-export interface ExplainRequest {
+export class RateLimitError extends Error {
+  retryAfterSeconds: number;
+  constructor(message: string, retryAfterSeconds: number = 60) {
+    super(message);
+    this.name = 'RateLimitError';
+    this.retryAfterSeconds = retryAfterSeconds;
+  }
+}
+
+export class GatewayError extends Error {
+  code?: string;
+  constructor(message: string, code?: string) {
+    super(message);
+    this.name = 'GatewayError';
+    this.code = code;
+  }
+}
+
+export interface AssistRequest {
   itemId: string;
-  itemBody: string;
-  track: Track;
+  itemBody?: string;
+  track?: Track;
+  mode?: 'simplify' | 'hindi' | 'why' | 'ask';
+  question?: string;
+  history?: Array<{ role: 'user' | 'assistant'; content: string }>;
 }
 
 export interface ExplainStreamChunk {
   delta: string;
   done: boolean;
-}
-
-export interface AssistRequest {
-  itemId: string;
-  explanationId?: string;
-  mode: 'simplify' | 'hindi' | 'why' | 'ask';
-  question?: string;
-  history?: Array<{ role: 'user' | 'assistant' | 'system'; content: string }>;
-}
-
-export interface AssistStreamChunk {
-  delta: string;
-  done: boolean;
-  error?: { code: string; message: string; retryAfter?: number };
+  error?: { code: string; message: string };
 }
 
 /**
- * Calls POST /api/explain and streams response as text deltas.
+ * Calls POST /api/assist and streams SSE events as text deltas.
  */
 export async function* explainItem(
-  request: ExplainRequest,
-  signal?: AbortSignal,
-): AsyncGenerator<ExplainStreamChunk> {
-  const apiBase = import.meta.env.VITE_API_BASE_URL ?? '';
-  try {
-    const response = await fetch(`${apiBase}/api/explain`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request),
-      signal,
-    });
-
-    if (response.ok && response.body) {
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) {
-          yield { delta: '', done: true };
-          break;
-        }
-        yield { delta: decoder.decode(value, { stream: true }), done: false };
-      }
-      return;
-    }
-  } catch {
-    if (signal?.aborted) return;
-  }
-
-  // Fallback demo stream
-  const mockChunks = [
-    `### AI Explanation Walkthrough\n\n`,
-    `**Track**: ${request.track.toUpperCase()}\n\n`,
-    `#### 1. Concept Analysis\n`,
-    `Breaking down the item prompt: "${request.itemBody.slice(0, 100)}..."\n\n`,
-    `#### 2. Strategic Solution Path\n`,
-    `- Identify governing formulas.\n`,
-    `- Execute mathematical progression.\n\n`,
-    `#### 3. Key Takeaway\n`,
-    `Always write the general governing formula first before substituting specific values.`,
-  ];
-
-  for (const chunk of mockChunks) {
-    if (signal?.aborted) return;
-    yield { delta: chunk, done: false };
-    await new Promise((resolve) => setTimeout(resolve, 30));
-  }
-  yield { delta: '', done: true };
-}
-
-/**
- * Helper to collect full explanation stream into a single string.
- */
-export async function explainItemFull(
-  request: ExplainRequest,
-  signal?: AbortSignal,
-): Promise<string> {
-  let fullText = '';
-  for await (const chunk of explainItem(request, signal)) {
-    fullText += chunk.delta;
-  }
-  return fullText;
-}
-
-/**
- * Calls POST /api/assist (SSE streaming) with AbortSignal support.
- */
-export async function* assistStreamItem(
   request: AssistRequest,
   signal?: AbortSignal,
-): AsyncGenerator<AssistStreamChunk> {
-  const apiBase = import.meta.env.VITE_API_BASE_URL ?? '';
-
+): AsyncGenerator<ExplainStreamChunk> {
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
   try {
     const response = await fetch(`${apiBase}/api/assist`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(request),
+      body: JSON.stringify({
+        itemId: request.itemId,
+        mode: request.mode ?? 'simplify',
+        question: request.question,
+        history: request.history ?? [],
+      }),
       signal,
     });
 
     if (response.status === 429) {
-      const retryHeader = response.headers.get('Retry-After');
-      const retryAfter = retryHeader ? parseInt(retryHeader, 10) : 30;
-      yield {
-        delta: '',
-        done: true,
-        error: {
-          code: 'RATE_LIMIT_EXCEEDED',
-          message: 'Too many requests. Please wait before trying again.',
-          retryAfter,
-        },
-      };
-      return;
-    }
-
-    if (response.status === 500) {
       const errJson = await response.json().catch(() => ({}));
-      yield {
-        delta: '',
-        done: true,
-        error: {
-          code: errJson?.error?.code || 'GATEWAY_ERROR',
-          message: errJson?.error?.message || 'AI Assistant is temporarily unavailable. Please try again.',
-        },
-      };
-      return;
+      const resetHeader = response.headers.get('X-RateLimit-Reset');
+      const retryAfter =
+        errJson?.error?.retryAfterSeconds ||
+        (resetHeader ? parseInt(resetHeader, 10) : 60);
+      throw new RateLimitError(
+        errJson?.error?.message || `Rate limit exceeded. Please wait ${retryAfter}s.`,
+        retryAfter,
+      );
     }
 
-    if (response.ok && response.body) {
+    if (!response.ok) {
+      const errJson = await response.json().catch(() => ({}));
+      throw new GatewayError(
+        errJson?.error?.message || `Server error (${response.status})`,
+        errJson?.error?.code || 'SERVER_ERROR',
+      );
+    }
+
+    if (response.body) {
       const reader = response.body.getReader();
       const decoder = new TextDecoder();
       let buffer = '';
@@ -159,43 +100,73 @@ export async function* assistStreamItem(
           if (line.startsWith('data: ')) {
             try {
               const data = JSON.parse(line.slice(6));
-              if (data.chunk) {
-                yield { delta: data.chunk, done: false };
-              }
-              if (data.done) {
-                yield { delta: '', done: true };
+              if (data.error) {
+                yield { delta: '', done: true, error: data.error };
                 return;
               }
+              yield { delta: data.delta || '', done: data.done || false, error: data.error };
+              if (data.done) return;
             } catch {
-              // Ignore line parse errors
+              // Ignore malformed intermediate chunk
             }
           }
         }
       }
-      yield { delta: '', done: true };
       return;
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
     if (signal?.aborted) return;
+    if (err instanceof RateLimitError || err instanceof GatewayError) {
+      throw err;
+    }
+    // Network disconnection or fetch failure
+    throw new GatewayError(
+      'Unable to connect to AI server. Please check your internet connection and try again.',
+      'NETWORK_ERROR',
+    );
+  }
+}
+
+
+/**
+ * Helper to collect full explanation stream into a single string.
+ */
+export async function explainItemFull(
+  request: AssistRequest,
+  signal?: AbortSignal,
+): Promise<string> {
+  let fullText = '';
+  for await (const chunk of explainItem(request, signal)) {
+    fullText += chunk.delta;
+  }
+  return fullText;
+}
+
+/**
+ * Uploads a resume document (PDF/DOCX) to POST /api/analyze-resume for in-memory analysis.
+ */
+export async function analyzeResumeFile(
+  file: File,
+  jobDescription?: string,
+  signal?: AbortSignal,
+): Promise<Record<string, unknown>> {
+  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+  const formData = new FormData();
+  formData.append('resume', file);
+  if (jobDescription) {
+    formData.append('jobDescription', jobDescription);
   }
 
-  // Graceful Fallback Stream for dev/demo when backend server process is offline
-  let mockContent = '';
-  if (request.mode === 'simplify') {
-    mockContent = `### Simplified Explanation\n\n1. **Core Idea**: Think of a convex lens as a magnifying glass that focuses light rays to a single point.\n2. **The Key Rule**: When an object is placed at distance $2f$, the image is formed at equal size on the opposite side at $2f$.\n3. **Power Formula**: Power is simply the inverse of focal length in meters ($P = 1/f$).`;
-  } else if (request.mode === 'hindi') {
-    mockContent = `### हिंदी अनुवाद एवं सरल व्याख्या\n\n1. **मुख्य नियम**: जब कोई वस्तु उत्तल लेंस के सामने $2f = 50\\text{ cm}$ की दूरी पर रखी जाती है, तो उसका वास्तविक एवं उल्टा प्रतिबिंब $50\\text{ cm}$ दूरी (2F2) पर ही बनता है।\n2. **फोकस दूरी (Focal Length)**: $f = 25\\text{ cm} = 0.25\\text{ m}$।\n3. **लेंस की क्षमता (Power)**: $P = +4.0\\text{ D}$ (डायोप्टर)।`;
-  } else if (request.mode === 'why') {
-    mockContent = `### Conceptual Rationale (Why This Step?)\n\n- **Why Magnification $m = -1$?** A real and inverted image of identical size means magnitude of magnification $|m| = 1$. Since real images are inverted, $m = -1$.\n- **Why positive Power?** Convex lenses converge light rays, so their focal length is positive by sign convention. Hence, Power is $+4.0\\text{ D}$.`;
-  } else {
-    mockContent = `### Direct Answer to Student Query\n\nRegarding your question: "${request.question || 'Explain step'}"\n\nBased on the verified solution, we apply the standard formula $\\frac{1}{f} = \\frac{1}{v} - \\frac{1}{u}$ to isolate $f$. Substituting $v = +50\\text{ cm}$ and $u = -50\\text{ cm}$ yields $f = +25\\text{ cm}$.`;
+  const response = await fetch(`${apiBase}/api/analyze-resume`, {
+    method: 'POST',
+    body: formData,
+    signal,
+  });
+
+  if (!response.ok) {
+    const errJson = await response.json().catch(() => ({}));
+    throw new Error(errJson.error?.message || `Resume analysis failed with status ${response.status}`);
   }
 
-  const words = mockContent.split(' ');
-  for (const word of words) {
-    if (signal?.aborted) return;
-    yield { delta: word + ' ', done: false };
-    await new Promise((resolve) => setTimeout(resolve, 35));
-  }
-  yield { delta: '', done: true };
+  return response.json();
 }

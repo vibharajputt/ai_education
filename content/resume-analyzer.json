@@ -1,0 +1,76 @@
+{
+  "collection": {
+    "id": "resume-analyzer-col",
+    "title": "Tech Resume Rubrics & Exemplars",
+    "description": "Forensic analysis of software engineering resumes with line-by-line rewrites and scoring rubrics.",
+    "scopeLabel": "2 Forensic Resume Audits & Rewrites for College Tech Placements",
+    "filters": {
+      "subject": [
+        "Career & Placement"
+      ],
+      "difficulty": [
+        "easy",
+        "medium"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "res-audit-001",
+      "subject": "Career & Placement",
+      "chapter": "Software Engineer Resume Audit",
+      "concepts": [
+        "Action Verbs",
+        "Quantified Impact",
+        "ATS Optimization"
+      ],
+      "body": "**Resume Finding: Lack of Metric Quantification**: Bullet points under \"Experience\" describe duties rather than measurable business/technical outcomes.",
+      "images": [],
+      "tags": [
+        "resume",
+        "ats",
+        "action-verbs",
+        "career"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "location": "Experience section: \"Worked on frontend features using React\"",
+        "rewriteOriginal": "Worked on frontend features using React",
+        "rewriteImproved": "Architected and shipped 6 responsive React modules, reducing page load latency by 32% for 45k monthly active users",
+        "rationale": "Replaces passive verb \"worked\" with active leadership verb and quantifies impact.",
+        "rubricScore": {
+          "impact": 62,
+          "clarity": 78,
+          "atsReadability": 85
+        }
+      },
+      "kind": "tip",
+      "track": "college"
+    },
+    {
+      "id": "res-audit-002",
+      "subject": "Career & Placement",
+      "chapter": "Tech Stack Presentation",
+      "concepts": [
+        "Skill Grouping",
+        "Keywords"
+      ],
+      "body": "**Resume Finding: Cluttered Skills Matrix**: Skills listed as an unorganized 20-word comma-separated string without categorization.",
+      "images": [],
+      "tags": [
+        "resume",
+        "skills",
+        "formatting"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "location": "Skills section: \"Java, C++, Python, SQL, Git, Linux, Docker, React, HTML, CSS, Figma, Agile\"",
+        "rewriteOriginal": "Java, C++, Python, SQL, Git, Linux, Docker, React, HTML, CSS, Figma, Agile",
+        "rewriteImproved": "Languages: Java, C++, Python | Frameworks: React, Node.js | Infrastructure: Docker, Linux, Git",
+        "rationale": "Categorized skills allow ATS parsers and hiring managers to scan proficiencies in under 3 seconds."
+      },
+      "kind": "tip",
+      "track": "college"
+    }
+  ]
+}

@@ -4,6 +4,8 @@ interface SplitPaneProps {
   left: React.ReactNode;
   right: React.ReactNode;
   initialRatio?: number; // 0 to 1, default 0.5
+  ratio?: number; // controlled ratio
+  onRatioChange?: (ratio: number) => void;
   minRatio?: number;
   maxRatio?: number;
   className?: string;
@@ -13,11 +15,14 @@ export function SplitPane({
   left,
   right,
   initialRatio = 0.5,
+  ratio: controlledRatio,
+  onRatioChange,
   minRatio = 0.25,
   maxRatio = 0.75,
   className = '',
 }: SplitPaneProps) {
-  const [ratio, setRatio] = useState(initialRatio);
+  const [internalRatio, setInternalRatio] = useState(initialRatio);
+  const ratio = controlledRatio !== undefined ? controlledRatio : internalRatio;
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -34,7 +39,8 @@ export function SplitPane({
       const rect = containerRef.current.getBoundingClientRect();
       const newRatio = (e.clientX - rect.left) / rect.width;
       if (newRatio >= minRatio && newRatio <= maxRatio) {
-        setRatio(newRatio);
+        setInternalRatio(newRatio);
+        onRatioChange?.(newRatio);
       }
     };
 

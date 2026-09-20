@@ -3,19 +3,19 @@ import type { ModuleConfig } from '@core/registry';
 
 export const splitViewConfig: ModuleConfig = {
   id: 'split-view',
-  title: 'Split-Screen Paper & Answer Coach',
+  title: 'Exam Paper Split-Screen',
   track: 'school',
-  classLevels: ['10', '11', '12'],
-  icon: 'Split',
+  classLevels: ['10', '12'],
+  icon: 'Columns',
   tier: 'A',
-  scopeLabel: '40 Questions across Class 10 STEM — CBSE Board Paper',
-  dataSource: 'split-view-paper.json',
+  scopeLabel: '40 Board Exam Questions with Verified Step Breakdown — Class 10/12',
+  dataSource: 'pyq/class10.json',
   view: React.lazy(() =>
-    import('./index').then((m) => ({
+    import('./index.tsx').then((m) => ({
       default: m.SplitViewModule,
     }))
   ),
   searchable: true,
   description:
-    'Product signature split-screen workspace with resizable divider, scroll sync, mark-wise Answer Coach, and keyboard shortcuts.',
+    'Full board examination question paper side-by-side with verified marking breakdowns, diagram directives, and examiner answer coach.',
 };

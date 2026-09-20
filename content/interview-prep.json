@@ -1,109 +1,121 @@
 {
   "collection": {
     "id": "interview-prep-col",
-    "title": "College Interview Question Bank & STAR Coach",
-    "description": "120 Role-specific interview questions with model answers and STAR behavioral frameworks across SDE, Data Science, and Analyst career tracks.",
-    "scopeLabel": "120 Role-Specific & STAR Behavioral Questions for SDE, Data & Analyst",
+    "title": "College Placement Interview Coach",
+    "description": "Targeted technical & behavioral interview questions with answer framing blueprints and rubric breakdown.",
+    "scopeLabel": "4 Tech & Behavioral Interview Scenarios for Engineering Students",
     "filters": {
-      "role": ["SDE", "Data Science", "Analyst", "Behavioral (STAR)"],
-      "difficulty": ["easy", "medium", "hard"]
+      "subject": [
+        "Computer Science",
+        "Career & Behavioral"
+      ],
+      "difficulty": [
+        "easy",
+        "medium",
+        "hard"
+      ]
     }
   },
   "items": [
     {
-      "id": "int-sde-001",
-      "kind": "interview-q",
-      "track": "college",
+      "id": "iq-swe-001",
       "subject": "Computer Science",
-      "chapter": "Data Structures & Algorithms",
-      "concepts": ["Two Pointers", "Array Manipulation"],
-      "body": "SDE Role: How do you find two numbers in a sorted array that add up to a target sum in O(N) time and O(1) extra space?",
+      "chapter": "System Design",
+      "concepts": [
+        "Rate Limiting",
+        "Token Bucket",
+        "Distributed Systems"
+      ],
+      "body": "How would you design a scalable distributed rate limiter supporting millions of requests per second with microsecond latencies?",
       "images": [],
-      "tags": ["sde", "dsa", "two-pointers"],
-      "difficulty": "medium",
-      "metadata": {
-        "role": "SDE",
-        "category": "Data Structures",
-        "modelAnswer": "Use the Two-Pointer approach. Initialize left pointer at index 0 and right pointer at N-1. Calculate currentSum = arr[left] + arr[right]. If currentSum == target, return [left, right]. If currentSum < target, increment left pointer. If currentSum > target, decrement right pointer. This runs in O(N) time and O(1) space.",
-        "starFramework": null
-      }
-    },
-    {
-      "id": "int-sde-002",
-      "kind": "interview-q",
-      "track": "college",
-      "subject": "System Design",
-      "chapter": "Web Scalability",
-      "concepts": ["Caching", "Redis", "CDN"],
-      "body": "SDE Role: Explain the difference between Cache-Aside (Lazy Loading) and Write-Through caching strategies.",
-      "images": [],
-      "tags": ["sde", "system-design", "caching"],
+      "tags": [
+        "system-design",
+        "rate-limiter",
+        "redis",
+        "concurrency"
+      ],
       "difficulty": "hard",
       "metadata": {
-        "role": "SDE",
         "category": "System Design",
-        "modelAnswer": "In Cache-Aside, the application first reads from cache; on a cache miss, it reads from database, populates the cache, and returns data. In Write-Through, data is written to the cache and database simultaneously, ensuring cache consistency at the cost of higher write latency.",
-        "starFramework": null
-      }
+        "framework": "Token Bucket / Sliding Window Counter with Redis and Lua scripts",
+        "evalCriteria": "Evaluates concurrency handling, clock drift, redis clustering, and fail-open policies."
+      },
+      "kind": "interview-q",
+      "track": "college"
     },
     {
-      "id": "int-data-001",
-      "kind": "interview-q",
-      "track": "college",
-      "subject": "Data Science",
-      "chapter": "Machine Learning",
-      "concepts": ["Bias-Variance Tradeoff", "Overfitting"],
-      "body": "Data Role: What is the Bias-Variance Tradeoff and how do regularization techniques (L1 vs L2) mitigate it?",
+      "id": "iq-swe-002",
+      "subject": "Computer Science",
+      "chapter": "Data Structures & Algorithms",
+      "concepts": [
+        "LRU Cache",
+        "Doubly Linked List",
+        "Hash Map"
+      ],
+      "body": "Explain how you implement an LRU (Least Recently Used) cache with $O(1)$ get and put time complexity.",
       "images": [],
-      "tags": ["data", "ml", "bias-variance"],
+      "tags": [
+        "dsa",
+        "lru-cache",
+        "hashmap",
+        "linked-list"
+      ],
       "difficulty": "medium",
       "metadata": {
-        "role": "Data Science",
-        "category": "Machine Learning",
-        "modelAnswer": "Bias is error from erroneous assumptions (underfitting); Variance is error from sensitivity to small fluctuations in training data (overfitting). L1 (Lasso) regularization adds |w| penalty driving irrelevant weights to 0 (feature selection). L2 (Ridge) adds w² penalty shrinking weights smoothly.",
-        "starFramework": null
-      }
+        "category": "Data Structures",
+        "idealAnswer": "Combine a Hash Map (for O(1) key lookups) with a Doubly Linked List (for O(1) node eviction and head-promotions)."
+      },
+      "kind": "interview-q",
+      "track": "college"
     },
     {
-      "id": "int-ana-001",
-      "kind": "interview-q",
-      "track": "college",
-      "subject": "Business Analytics",
-      "chapter": "SQL & Metrics",
-      "concepts": ["Cohort Analysis", "Retention Rate"],
-      "body": "Analyst Role: How would you calculate Month 1 User Retention Rate in SQL for an e-commerce platform?",
+      "id": "iq-swe-003",
+      "subject": "Computer Science",
+      "chapter": "Database Engineering",
+      "concepts": [
+        "ACID Properties",
+        "Isolation Levels",
+        "Optimistic Locking"
+      ],
+      "body": "Compare Optimistic Concurrency Control (OCC) with Pessimistic Locking. Under what workload profile is OCC clearly superior?",
       "images": [],
-      "tags": ["analyst", "sql", "retention"],
+      "tags": [
+        "databases",
+        "acid",
+        "locking",
+        "concurrency"
+      ],
       "difficulty": "medium",
       "metadata": {
-        "role": "Analyst",
-        "category": "SQL & Business Intelligence",
-        "modelAnswer": "Join user signup date cohort table with active monthly orders table. Filter for users whose active order date month equals signup month + 1. Calculate Retention % = (Count of Active M1 Users / Total Signup Cohort Users) * 100.",
-        "starFramework": null
-      }
+        "category": "Database Systems",
+        "idealAnswer": "OCC assumes conflicts are rare, checking version stamps before commits. It is superior in read-heavy workloads with low write contention."
+      },
+      "kind": "interview-q",
+      "track": "college"
     },
     {
-      "id": "int-star-001",
-      "kind": "interview-q",
-      "track": "college",
-      "subject": "Behavioral Competency",
-      "chapter": "Conflict Resolution",
-      "concepts": ["STAR Method", "Teamwork"],
-      "body": "Behavioral: Describe a situation where you had a technical disagreement with a team member on a project. How did you resolve it?",
+      "id": "iq-beh-001",
+      "subject": "Career & Behavioral",
+      "chapter": "Behavioral Prep",
+      "concepts": [
+        "STAR Method",
+        "Conflict Resolution",
+        "Ownership"
+      ],
+      "body": "Tell me about a time when you strongly disagreed with a senior engineer or teammate on a technical decision. How did you handle it and what was the outcome?",
       "images": [],
-      "tags": ["behavioral", "star", "teamwork"],
+      "tags": [
+        "behavioral",
+        "star-method",
+        "leadership"
+      ],
       "difficulty": "medium",
       "metadata": {
-        "role": "Behavioral (STAR)",
-        "category": "Conflict & Leadership",
-        "modelAnswer": "Demonstrate constructive collaboration, active listening, and empirical benchmarking.",
-        "starFramework": {
-          "situation": "During our final year capstone project, my teammate wanted to use MongoDB while I advocated PostgreSQL for structured relational financial transactions.",
-          "task": "I needed to align our architecture choice without delaying the sprint timeline or harming team dynamics.",
-          "action": "I scheduled a 30-minute benchmarking session where we ran load tests on sample schema for both databases and evaluated ACID compliance requirements.",
-          "result": "The empirical benchmark showed PostgreSQL handled 40% faster transactional queries. We agreed on Postgres, completed the project 2 days ahead of schedule, and achieved an A grade."
-        }
-      }
+        "category": "Behavioral",
+        "framework": "STAR: Situation, Task, Action (data-driven prototyping, respectful dissent), Result."
+      },
+      "kind": "interview-q",
+      "track": "college"
     }
   ]
 }

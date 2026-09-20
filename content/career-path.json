@@ -1,0 +1,74 @@
+{
+  "collection": {
+    "id": "career-path-col",
+    "title": "Career Roadmaps & Skill Milestones",
+    "description": "Comprehensive skill progressions, milestone roadmaps, and salary benchmarks for engineering careers.",
+    "scopeLabel": "2 Tech & Science Career Roadmaps with Industry Milestones",
+    "filters": {
+      "subject": [
+        "Machine Learning & AI",
+        "Software Engineering"
+      ],
+      "difficulty": [
+        "easy",
+        "medium"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "career-ml-001",
+      "subject": "Machine Learning & AI",
+      "chapter": "ML Engineer Path",
+      "concepts": [
+        "Math Foundations",
+        "Model Serving",
+        "MLOps"
+      ],
+      "body": "**Machine Learning Engineer Milestone Tree**: Stage 1: Linear algebra, calculus, probability & PyTorch; Stage 2: Classical ML (Scikit-Learn, XGBoost) & Deep Learning architectures; Stage 3: LLMs, Fine-tuning, Quantization, vLLM; Stage 4: Production MLOps (Docker, CI/CD, Triton, Kubernetes).",
+      "images": [],
+      "tags": [
+        "career",
+        "ml-engineer",
+        "roadmap",
+        "skills"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "role": "Machine Learning Engineer",
+        "avgStartingSalary": "12-25 LPA",
+        "keyCertifications": [
+          "AWS Certified Machine Learning",
+          "DeepLearning.AI Specialization"
+        ]
+      },
+      "kind": "tip",
+      "track": "college"
+    },
+    {
+      "id": "career-fullstack-001",
+      "subject": "Software Engineering",
+      "chapter": "Fullstack Web Engineer Path",
+      "concepts": [
+        "TypeScript",
+        "Distributed Systems",
+        "Cloud Native"
+      ],
+      "body": "**Fullstack Cloud-Native Developer Tree**: Stage 1: TypeScript, React, Next.js, Node.js; Stage 2: Relational (PostgreSQL) & NoSQL databases with indexing & sharding; Stage 3: Distributed messaging (Kafka, Redis), Docker & AWS; Stage 4: High-throughput API gateway & microservices design.",
+      "images": [],
+      "tags": [
+        "career",
+        "fullstack",
+        "swe",
+        "roadmap"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "role": "Fullstack Software Engineer",
+        "avgStartingSalary": "8-18 LPA"
+      },
+      "kind": "tip",
+      "track": "college"
+    }
+  ]
+}

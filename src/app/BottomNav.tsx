@@ -1,11 +1,12 @@
+// src/app/BottomNav.tsx
 import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { REGISTRY } from '@core/registry';
 import type { Track } from '@core/types';
 import { Badge } from '@components/Badge';
 import { DynamicIcon } from '@components/DynamicIcon';
 import { BottomSheet } from '@components/BottomSheet';
-import { Home, Layers, School, GraduationCap } from 'lucide-react';
+import { Home, Layers, School, GraduationCap, LayoutDashboard } from 'lucide-react';
 
 interface BottomNavProps {
   currentTrack: Track;
@@ -14,6 +15,7 @@ interface BottomNavProps {
 
 export function BottomNav({ currentTrack, onTrackChange }: BottomNavProps) {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const filteredModules = REGISTRY.filter(
@@ -30,41 +32,59 @@ export function BottomNav({ currentTrack, onTrackChange }: BottomNavProps) {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `flex flex-col items-center justify-center gap-0.5 text-[11px] font-medium transition-colors ${
+            `flex flex-col items-center justify-center gap-0.5 text-[11px] font-bold transition-colors ${
               isActive && location.pathname === '/'
                 ? 'text-[var(--color-accent)]'
                 : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
             }`
           }
         >
-          <Home className="w-5 h-5" />
+          <Home className="w-4 h-4" />
           <span>Home</span>
+        </NavLink>
+
+        {/* Dashboard */}
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            `flex flex-col items-center justify-center gap-0.5 text-[11px] font-bold transition-colors ${
+              isActive && location.pathname === '/dashboard'
+                ? 'text-[var(--color-accent)]'
+                : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+            }`
+          }
+        >
+          <LayoutDashboard className="w-4 h-4" />
+          <span>Dashboard</span>
         </NavLink>
 
         {/* Modules BottomSheet Trigger */}
         <button
           type="button"
           onClick={() => setIsSheetOpen(true)}
-          className={`flex flex-col items-center justify-center gap-0.5 text-[11px] font-medium transition-colors ${
-            location.pathname !== '/'
+          className={`flex flex-col items-center justify-center gap-0.5 text-[11px] font-bold transition-colors ${
+            location.pathname.startsWith('/school/') || location.pathname.startsWith('/college/')
               ? 'text-[var(--color-accent)]'
               : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
           }`}
         >
-          <Layers className="w-5 h-5" />
+          <Layers className="w-4 h-4" />
           <span>Modules ({filteredModules.length})</span>
         </button>
 
         {/* Track Switcher Button */}
         <button
           type="button"
-          onClick={() => onTrackChange(currentTrack === 'school' ? 'college' : 'school')}
-          className="flex flex-col items-center justify-center gap-0.5 text-[11px] font-medium text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
+          onClick={() => {
+            const next = currentTrack === 'school' ? 'college' : 'school';
+            onTrackChange(next);
+          }}
+          className="flex flex-col items-center justify-center gap-0.5 text-[11px] font-bold text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors"
         >
           {currentTrack === 'school' ? (
-            <School className="w-5 h-5 text-[var(--color-accent)]" />
+            <School className="w-4 h-4 text-blue-500" />
           ) : (
-            <GraduationCap className="w-5 h-5 text-[var(--color-accent)]" />
+            <GraduationCap className="w-4 h-4 text-purple-500" />
           )}
           <span className="capitalize">{currentTrack}</span>
         </button>
@@ -74,7 +94,7 @@ export function BottomNav({ currentTrack, onTrackChange }: BottomNavProps) {
       <BottomSheet
         isOpen={isSheetOpen}
         onClose={() => setIsSheetOpen(false)}
-        title={`Modules (${currentTrack.toUpperCase()})`}
+        title={`All Modules (${currentTrack.toUpperCase()})`}
       >
         <div className="space-y-2 pb-6">
           {filteredModules.map((module) => {
@@ -86,7 +106,7 @@ export function BottomNav({ currentTrack, onTrackChange }: BottomNavProps) {
                 key={module.id}
                 to={path}
                 onClick={() => setIsSheetOpen(false)}
-                className={`flex items-start gap-3 p-3 rounded-lg border transition-all ${
+                className={`flex items-start gap-3 p-3 rounded-xl border transition-all ${
                   isActive
                     ? 'border-[var(--color-accent)] bg-[var(--color-accent-subtle)]'
                     : 'border-[var(--color-border)] hover:bg-[var(--color-surface-hover)]'

@@ -1,520 +1,750 @@
 // src/core/progress.ts
-// Central localStorage-backed, versioned, migration-safe progress store for practice & progress cluster.
-// Computes Elo concept mastery, FSRS due scheduling, accuracy trends, and SWOT profiles 100% deterministically.
+// Shared deterministic progress store backed by versioned localStorage.
+// All derived metrics (Elo concept mastery, FSRS due queue, accuracy/speed trends)
+// are computed purely in TypeScript without any runtime LLM calls.
 
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
+import type { Difficulty, ContentItem } from './types';
 
-export const CURRENT_SCHEMA_VERSION = 1;
-export const STORAGE_KEY = 'ai_edu_progress_store_v1';
+export const CURRENT_SCHEMA_VERSION = 2;
+const STORAGE_KEY = 'ai_edu_progress_store_v2';
+const LEGACY_STORAGE_KEYS = ['ai_edu_progress_store', 'ai_edu_user_progress', 'progress_store'];
+const STORE_CHANGE_EVENT = 'ai_edu_progress_change';
 
-// Tunable Elo & Spaced Repetition Constants
+// ---------------------------------------------------------------------------
+// Elo Configuration (Tunable Constants)
+// ---------------------------------------------------------------------------
 export const ELO_CONFIG = {
-  INITIAL_ELO: 1200,
+  INITIAL_RATING: 1200,
   K_FACTOR: 32,
-  QUESTION_ELO: 1200,
+  MIN_RATING: 600,
+  MAX_RATING: 2000,
+  DIFFICULTY_RATINGS: {
+    easy: 1000,
+    medium: 1200,
+    hard: 1400,
+  } as Record<Difficulty, number>,
 };
+
+// ---------------------------------------------------------------------------
+// FSRS (Free Spaced Repetition Scheduler) Configuration
+// ---------------------------------------------------------------------------
+export const FSRS_CONFIG = {
+  REQUESTED_RETENTION: 0.9,
+  // Initial stability per grade: [Again(1), Hard(2), Good(3), Easy(4)] (in days)
+  INITIAL_STABILITY: [0.4, 1.2, 3.0, 7.5],
+  // Initial difficulty per grade
+  INITIAL_DIFFICULTY: [7.0, 5.5, 4.0, 2.5],
+};
+
+// ---------------------------------------------------------------------------
+// Data Types
+// ---------------------------------------------------------------------------
+
+export type FSRSGrade = 1 | 2 | 3 | 4; // 1: Again (failed), 2: Hard, 3: Good, 4: Easy
 
 export interface AttemptRecord {
   id: string;
   itemId: string;
-  conceptTags: string[];
-  subject?: string;
   correct: boolean;
-  timeTakenSec: number;
-  timestamp: number;
-  sourceModule: string; // 'quiz' | 'split-view' | 'sheet-generator' | etc.
+  timeTaken: number; // in seconds
+  timestamp: number; // epoch ms
+  sourceModule: string;
+  difficulty?: Difficulty;
+  concepts: string[];
+  selectedOption?: string;
+  userNotes?: string;
 }
 
-export interface FsrsItemState {
+export interface ItemReviewState {
   itemId: string;
-  stability: number; // In days
+  lastReviewed: number;
+  dueTimestamp: number;
+  stability: number; // in days
   difficulty: number; // 1 to 10
   reps: number;
   lapses: number;
-  lastReview: number; // timestamp
-  dueTimestamp: number; // timestamp
 }
 
-export interface ProgressStoreData {
-  version: number;
-  attempts: AttemptRecord[];
-  eloRatings: Record<string, number>; // conceptTag -> Elo rating
-  fsrsItems: Record<string, FsrsItemState>; // itemId -> FSRS state
-  activeDates: string[]; // YYYY-MM-DD list for streak tracking
-  lastResetTimestamp: number;
-}
+export type MasteryStatus = 'mastered' | 'learning' | 'struggling' | 'unattempted';
 
-export interface ConceptMasteryInfo {
-  conceptTag: string;
-  elo: number;
+export interface ConceptMastery {
+  concept: string;
+  rating: number; // Elo (600 - 2000)
+  masteryPercent: number; // 0 - 100
   attemptsCount: number;
   correctCount: number;
-  accuracyPct: number;
-  status: 'mastered' | 'learning' | 'weak';
+  lastAttempted: number;
+  stability: number;
+  difficulty: number;
+  reps: number;
+  lapses?: number;
+  dueTimestamp: number;
+  status: MasteryStatus;
 }
 
-export interface SwotNarrativeProfile {
-  summary: string;
-  strengths: string[];
-  weaknesses: string[];
-  opportunities: string[];
-  threats: string[];
-  nextActions: string[];
-}
-
-export interface SwotStatsResult {
-  totalAttempted: number;
+export interface UserStats {
+  totalAttempts: number;
   totalCorrect: number;
-  overallAccuracyPct: number;
-  avgTimePerQuestionSec: number;
-  topSubject: string;
-  weakestSubject: string;
-  currentStreakDays: number;
-  masteredConceptsCount: number;
-  weakConceptsCount: number;
-  narrative: SwotNarrativeProfile;
+  accuracyPercent: number;
+  totalTimeSeconds: number;
+  avgTimePerQuestion: number;
+  currentStreak: number;
+  longestStreak: number;
+  lastActiveDate: string; // YYYY-MM-DD
+  activityHistory: Record<string, number>; // date string -> count of attempts
 }
 
-// Default initial state
-const defaultStoreData: ProgressStoreData = {
-  version: CURRENT_SCHEMA_VERSION,
-  attempts: [],
-  eloRatings: {},
-  fsrsItems: {},
-  activeDates: [],
-  lastResetTimestamp: Date.now(),
-};
-
-// ---------------------------------------------------------------------------
-// Store I/O & Migration Engine
-// ---------------------------------------------------------------------------
-
-function loadRawStore(): ProgressStoreData {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { ...defaultStoreData };
-    const parsed = JSON.parse(raw);
-
-    // Migration Check
-    if (parsed && typeof parsed.version === 'number') {
-      return migrateStoreData(parsed);
-    }
-    return { ...defaultStoreData };
-  } catch {
-    return { ...defaultStoreData };
-  }
-}
-
-function saveRawStore(data: ProgressStoreData): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    // Dispatch custom DOM event for instant multi-component reactivity
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new Event('progress_store_updated'));
-    }
-  } catch (err) {
-    console.error('Failed to save progress store to localStorage:', err);
-  }
-}
-
-/**
- * Migration-safe handler for store version bumps.
- */
-export function migrateStoreData(oldData: any): ProgressStoreData {
-  let data = { ...oldData };
-
-  if (data.version === undefined || data.version < 1) {
-    data.version = 1;
-    data.attempts = Array.isArray(data.attempts) ? data.attempts : [];
-    data.eloRatings = data.eloRatings && typeof data.eloRatings === 'object' ? data.eloRatings : {};
-    data.fsrsItems = data.fsrsItems && typeof data.fsrsItems === 'object' ? data.fsrsItems : {};
-    data.activeDates = Array.isArray(data.activeDates) ? data.activeDates : [];
-    data.lastResetTimestamp = data.lastResetTimestamp || Date.now();
-  }
-
-  // Future schema migration rules (e.g. version 2, 3) can be chained cleanly here
-  data.version = CURRENT_SCHEMA_VERSION;
-  return data as ProgressStoreData;
+export interface ProgressStoreState {
+  version: number;
+  attempts: AttemptRecord[];
+  conceptMasteries: Record<string, ConceptMastery>;
+  itemReviews: Record<string, ItemReviewState>;
+  userStats: UserStats;
 }
 
 // ---------------------------------------------------------------------------
-// Attempt Recorder & Rating Engine
+// Default Initial State (Clean First-Run)
 // ---------------------------------------------------------------------------
 
-export interface RecordAttemptInput {
-  itemId: string;
-  conceptTags: string[];
-  subject?: string;
-  correct: boolean;
-  timeTakenSec: number;
-  sourceModule: string;
-}
-
-/**
- * Records a practice attempt, updates Elo ratings, calculates FSRS due timestamps, and updates streaks.
- */
-export function recordAttempt(input: RecordAttemptInput): AttemptRecord {
-  const store = loadRawStore();
-  const now = Date.now();
-  const dateStr = new Date(now).toISOString().split('T')[0];
-
-  const attempt: AttemptRecord = {
-    id: `att-${now}-${Math.random().toString(36).substr(2, 6)}`,
-    itemId: input.itemId,
-    conceptTags: input.conceptTags.length > 0 ? input.conceptTags : ['General'],
-    subject: input.subject || 'General',
-    correct: input.correct,
-    timeTakenSec: Math.max(1, input.timeTakenSec),
-    timestamp: now,
-    sourceModule: input.sourceModule,
-  };
-
-  // 1. Update Attempts List
-  store.attempts.push(attempt);
-
-  // 2. Update Streak Active Dates
-  if (!store.activeDates.includes(dateStr)) {
-    store.activeDates.push(dateStr);
-  }
-
-  // 3. Update Elo Ratings per Concept Tag
-  attempt.conceptTags.forEach((tag) => {
-    const currentElo = store.eloRatings[tag] ?? ELO_CONFIG.INITIAL_ELO;
-    const expected = 1 / (1 + Math.pow(10, (ELO_CONFIG.QUESTION_ELO - currentElo) / 400));
-    const actual = input.correct ? 1 : 0;
-    const newElo = Math.round(currentElo + ELO_CONFIG.K_FACTOR * (actual - expected));
-    store.eloRatings[tag] = Math.max(800, Math.min(2200, newElo));
-  });
-
-  // 4. Update FSRS Spaced Repetition Due State for Item
-  const prevFsrs = store.fsrsItems[input.itemId] || {
-    itemId: input.itemId,
-    stability: 1.0,
-    difficulty: 5.0,
-    reps: 0,
-    lapses: 0,
-    lastReview: now,
-    dueTimestamp: now,
-  };
-
-  let newReps = prevFsrs.reps + 1;
-  let newLapses = prevFsrs.lapses + (input.correct ? 0 : 1);
-  let newStability = prevFsrs.stability;
-
-  if (input.correct) {
-    newStability = Math.min(365, Number((prevFsrs.stability * (1.5 + (newReps * 0.2))).toFixed(1)));
-  } else {
-    newStability = Math.max(0.5, Number((prevFsrs.stability * 0.4).toFixed(1)));
-  }
-
-  const dueDays = Math.max(1, Math.round(newStability));
-  const newDueTimestamp = now + dueDays * 24 * 60 * 60 * 1000;
-
-  store.fsrsItems[input.itemId] = {
-    itemId: input.itemId,
-    stability: newStability,
-    difficulty: prevFsrs.difficulty,
-    reps: newReps,
-    lapses: newLapses,
-    lastReview: now,
-    dueTimestamp: newDueTimestamp,
-  };
-
-  saveRawStore(store);
-  return attempt;
-}
-
-/**
- * Resets store cleanly to first-run empty state.
- */
-export function resetStore(): void {
-  saveRawStore({
+export function getInitialState(): ProgressStoreState {
+  return {
     version: CURRENT_SCHEMA_VERSION,
     attempts: [],
-    eloRatings: {},
-    fsrsItems: {},
-    activeDates: [],
-    lastResetTimestamp: Date.now(),
-  });
-}
-
-// ---------------------------------------------------------------------------
-// Deterministic Analytics & Derived Data Queries
-// ---------------------------------------------------------------------------
-
-export function getAttemptsHistory(): AttemptRecord[] {
-  return loadRawStore().attempts;
-}
-
-export function getConceptMasteryList(): ConceptMasteryInfo[] {
-  const store = loadRawStore();
-  const conceptStats = new Map<string, { total: number; correct: number }>();
-
-  store.attempts.forEach((att) => {
-    att.conceptTags.forEach((tag) => {
-      const existing = conceptStats.get(tag) || { total: 0, correct: 0 };
-      existing.total += 1;
-      if (att.correct) existing.correct += 1;
-      conceptStats.set(tag, existing);
-    });
-  });
-
-  const result: ConceptMasteryInfo[] = [];
-
-  // Combine tags from attempts & eloRatings dictionary
-  const allTags = Array.from(new Set([...Object.keys(store.eloRatings), ...Array.from(conceptStats.keys())]));
-
-  allTags.forEach((tag) => {
-    const stats = conceptStats.get(tag) || { total: 0, correct: 0 };
-    const elo = store.eloRatings[tag] ?? ELO_CONFIG.INITIAL_ELO;
-    const accuracyPct = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 50;
-
-    let status: ConceptMasteryInfo['status'] = 'learning';
-    if (elo >= 1350 || accuracyPct >= 80) status = 'mastered';
-    else if (elo <= 1100 || accuracyPct <= 50) status = 'weak';
-
-    result.push({
-      conceptTag: tag,
-      elo,
-      attemptsCount: stats.total,
-      correctCount: stats.correct,
-      accuracyPct,
-      status,
-    });
-  });
-
-  return result.sort((a, b) => b.elo - a.elo);
-}
-
-export function getStreakStats(): { currentStreak: number; maxStreak: number; activeDates: string[] } {
-  const store = loadRawStore();
-  const dates = [...store.activeDates].sort();
-  if (dates.length === 0) {
-    return { currentStreak: 0, maxStreak: 0, activeDates: [] };
-  }
-
-  let maxStreak = 1;
-  let currentStreak = 1;
-
-  for (let i = 1; i < dates.length; i++) {
-    const prev = new Date(dates[i - 1]);
-    const curr = new Date(dates[i]);
-    const diffDays = Math.round((curr.getTime() - prev.getTime()) / (1000 * 60 * 60 * 24));
-
-    if (diffDays === 1) {
-      currentStreak++;
-      if (currentStreak > maxStreak) maxStreak = currentStreak;
-    } else if (diffDays > 1) {
-      currentStreak = 1;
-    }
-  }
-
-  // Check if today or yesterday is active for current streak validity
-  const todayStr = new Date().toISOString().split('T')[0];
-  const yesterdayStr = new Date(Date.now() - 86400000).toISOString().split('T')[0];
-
-  const hasRecentActivity = dates.includes(todayStr) || dates.includes(yesterdayStr);
-  if (!hasRecentActivity) currentStreak = 0;
-
-  return { currentStreak, maxStreak, activeDates: dates };
-}
-
-export function getAccuracyTrend(): Array<{ date: string; accuracyPct: number; attempts: number }> {
-  const store = loadRawStore();
-  const buckets = new Map<string, { total: number; correct: number }>();
-
-  store.attempts.forEach((att) => {
-    const dStr = new Date(att.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    const b = buckets.get(dStr) || { total: 0, correct: 0 };
-    b.total += 1;
-    if (att.correct) b.correct += 1;
-    buckets.set(dStr, b);
-  });
-
-  return Array.from(buckets.entries()).map(([date, data]) => ({
-    date,
-    accuracyPct: Math.round((data.correct / data.total) * 100),
-    attempts: data.total,
-  }));
-}
-
-export function getTimePerQuestionTrend(): Array<{ session: string; avgTimeSec: number }> {
-  const store = loadRawStore();
-  if (store.attempts.length === 0) return [];
-
-  const chunks: Array<{ session: string; avgTimeSec: number }> = [];
-  const chunkSize = 5;
-
-  for (let i = 0; i < store.attempts.length; i += chunkSize) {
-    const slice = store.attempts.slice(i, i + chunkSize);
-    const avg = Math.round(slice.reduce((acc, curr) => acc + curr.timeTakenSec, 0) / slice.length);
-    chunks.push({
-      session: `Quiz ${Math.floor(i / chunkSize) + 1}`,
-      avgTimeSec: avg,
-    });
-  }
-
-  return chunks;
-}
-
-export function getDueForRevisionItems(): FsrsItemState[] {
-  const store = loadRawStore();
-  const now = Date.now();
-  const items = Object.values(store.fsrsItems);
-  return items.filter((item) => item.dueTimestamp <= now + 12 * 60 * 60 * 1000).sort((a, b) => a.dueTimestamp - b.dueTimestamp);
-}
-
-/**
- * Deterministically computes SWOT statistics and matches profile narrative without live AI calls.
- */
-export function getSwotAnalysis(): SwotStatsResult {
-  const store = loadRawStore();
-  const attempts = store.attempts;
-
-  const totalAttempted = attempts.length;
-  const totalCorrect = attempts.filter((a) => a.correct).length;
-  const overallAccuracyPct = totalAttempted > 0 ? Math.round((totalCorrect / totalAttempted) * 100) : 0;
-  const avgTimePerQuestionSec =
-    totalAttempted > 0 ? Math.round(attempts.reduce((a, b) => a + b.timeTakenSec, 0) / totalAttempted) : 0;
-
-  // Subject Accuracies
-  const subjectStats = new Map<string, { total: number; correct: number }>();
-  attempts.forEach((a) => {
-    const subj = a.subject || 'General STEM';
-    const s = subjectStats.get(subj) || { total: 0, correct: 0 };
-    s.total += 1;
-    if (a.correct) s.correct += 1;
-    subjectStats.set(subj, s);
-  });
-
-  let topSubject = 'Science & Maths';
-  let weakestSubject = 'Formula Application';
-  let topAcc = -1;
-  let weakAcc = 999;
-
-  subjectStats.forEach((val, key) => {
-    const acc = Math.round((val.correct / val.total) * 100);
-    if (acc > topAcc) {
-      topAcc = acc;
-      topSubject = `${key} (${acc}%)`;
-    }
-    if (acc < weakAcc) {
-      weakAcc = acc;
-      weakestSubject = `${key} (${acc}%)`;
-    }
-  });
-
-  const streak = getStreakStats();
-  const masteryList = getConceptMasteryList();
-
-  const masteredConceptsCount = masteryList.filter((m) => m.status === 'mastered').length;
-  const weakConceptsCount = masteryList.filter((m) => m.status === 'weak').length;
-
-  // Pre-generated Narrative Bucketing Matrix
-  let narrative: SwotNarrativeProfile;
-
-  if (totalAttempted === 0) {
-    narrative = {
-      summary: 'No practice data recorded yet. Take a Daily or Weekly Quiz to generate your real-time SWOT analysis.',
-      strengths: ['First-run workspace ready for practice'],
-      weaknesses: ['No questions attempted yet'],
-      opportunities: ['Complete a 10-question Daily Quiz to index initial strengths'],
-      threats: ['Inactivity leads to knowledge decay'],
-      nextActions: ['Click "Start Practice Quiz" to generate your baseline SWOT profile.'],
-    };
-  } else if (overallAccuracyPct >= 80) {
-    narrative = {
-      summary: `High mastery demonstrated across practice sets with ${overallAccuracyPct}% accuracy. Strong retention in ${topSubject}.`,
-      strengths: [
-        `High precision accuracy (${overallAccuracyPct}%) across ${totalAttempted} questions`,
-        `Strong concept retention in ${topSubject}`,
-        `${streak.currentStreak}-day active study streak`,
-      ],
-      weaknesses: [
-        avgTimePerQuestionSec > 60 ? `Average time per question is slightly slow (${avgTimePerQuestionSec}s)` : 'Minor formula speed gaps under timed conditions',
-      ],
-      opportunities: ['Target hard Board Exam paper derivations to achieve 95%+ rank excellence'],
-      threats: ['Overconfidence in solved chapters without periodic FSRS revision'],
-      nextActions: ['Generate a 25-question Weekly Mock Paper in Sheet Generator.', 'Review FSRS revision queue items.'],
-    };
-  } else if (overallAccuracyPct >= 60) {
-    narrative = {
-      summary: `Steady progress with ${overallAccuracyPct}% overall accuracy. Needs targeted revision in ${weakestSubject}.`,
-      strengths: [
-        `Consistent practice effort across ${totalAttempted} questions`,
-        `Solid accuracy in ${topSubject}`,
-      ],
-      weaknesses: [
-        `Accuracy drop observed in ${weakestSubject}`,
-        `${weakConceptsCount} weak concept tags identified for revision`,
-      ],
-      opportunities: ['Use Formula Mnemonics & Chapter Summaries to bridge concept gaps'],
-      threats: ['Repeated errors on multi-step numerical questions'],
-      nextActions: ['Complete a focused 10-question quiz in weaker chapters.', 'Review step-by-step explanations.'],
-    };
-  } else {
-    narrative = {
-      summary: `Accuracy is currently at ${overallAccuracyPct}%. Focus on fundamental concept reviews before timed practice.`,
-      strengths: [`Active engagement with ${totalAttempted} practice attempts recorded`],
-      weaknesses: [
-        `Low accuracy in ${weakestSubject}`,
-        `Multiple conceptual misunderstandings in recent quizzes`,
-      ],
-      opportunities: ['Revisit step breakdowns and simplified explanations in Split-View Answer Coach'],
-      threats: ['Frustration from attempting hard questions without foundational mastery'],
-      nextActions: ['Switch to Easy difficulty quizzes in Quiz Module.', 'Review foundational mnemonics.'],
-    };
-  }
-
-  return {
-    totalAttempted,
-    totalCorrect,
-    overallAccuracyPct,
-    avgTimePerQuestionSec,
-    topSubject,
-    weakestSubject,
-    currentStreakDays: streak.currentStreak,
-    masteredConceptsCount,
-    weakConceptsCount,
-    narrative,
+    conceptMasteries: {},
+    itemReviews: {},
+    userStats: {
+      totalAttempts: 0,
+      totalCorrect: 0,
+      accuracyPercent: 0,
+      totalTimeSeconds: 0,
+      avgTimePerQuestion: 0,
+      currentStreak: 0,
+      longestStreak: 0,
+      lastActiveDate: '',
+      activityHistory: {},
+    },
   };
 }
 
 // ---------------------------------------------------------------------------
-// React Hook for Reactive UI Updating
+// Deterministic Calculations (Elo & FSRS)
 // ---------------------------------------------------------------------------
 
-export function useProgressStore() {
-  const [store, setStore] = useState<ProgressStoreData>(() => loadRawStore());
+/** Map Elo rating (600..2000) to 0..100% mastery */
+export function ratingToMasteryPercent(rating: number): number {
+  const clamped = Math.max(ELO_CONFIG.MIN_RATING, Math.min(ELO_CONFIG.MAX_RATING, rating));
+  const pct = ((clamped - ELO_CONFIG.MIN_RATING) / (ELO_CONFIG.MAX_RATING - ELO_CONFIG.MIN_RATING)) * 100;
+  return Math.round(pct);
+}
 
-  useEffect(() => {
-    const handleUpdate = () => {
-      setStore(loadRawStore());
+/** Compute updated Elo rating for a concept */
+export function calculateNewElo(
+  currentRating: number,
+  itemDifficulty: Difficulty = 'medium',
+  correct: boolean,
+): number {
+  const opponentRating = ELO_CONFIG.DIFFICULTY_RATINGS[itemDifficulty] ?? ELO_CONFIG.INITIAL_RATING;
+  const expectedScore = 1 / (1 + Math.pow(10, (opponentRating - currentRating) / 400));
+  const actualScore = correct ? 1 : 0;
+  const newRating = currentRating + ELO_CONFIG.K_FACTOR * (actualScore - expectedScore);
+  return Math.round(Math.max(ELO_CONFIG.MIN_RATING, Math.min(ELO_CONFIG.MAX_RATING, newRating)));
+}
+
+/** Determine FSRS grade from correctness and time taken */
+export function determineFSRSGrade(correct: boolean, timeTakenSec: number, targetSec = 60): FSRSGrade {
+  if (!correct) return 1; // Again
+  if (timeTakenSec > targetSec * 1.5) return 2; // Hard (correct but slow)
+  if (timeTakenSec < targetSec * 0.6) return 4; // Easy (fast and correct)
+  return 3; // Good
+}
+
+/** Calculate updated FSRS item/concept review state */
+export function calculateNextReview(
+  currentState: { stability: number; difficulty: number; reps: number; lapses: number } | undefined,
+  grade: FSRSGrade,
+  now = Date.now(),
+): { stability: number; difficulty: number; reps: number; lapses: number; dueTimestamp: number } {
+  if (!currentState || currentState.reps === 0) {
+    const s = FSRS_CONFIG.INITIAL_STABILITY[grade - 1];
+    const d = FSRS_CONFIG.INITIAL_DIFFICULTY[grade - 1];
+    const intervalDays = Math.max(1, Math.round(s));
+    return {
+      stability: s,
+      difficulty: d,
+      reps: 1,
+      lapses: grade === 1 ? 1 : 0,
+      dueTimestamp: now + intervalDays * 24 * 60 * 60 * 1000,
     };
+  }
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('progress_store_updated', handleUpdate);
-      window.addEventListener('storage', handleUpdate);
+  let { stability, difficulty, reps, lapses } = currentState;
+
+  if (grade === 1) {
+    lapses += 1;
+    reps = 0;
+    stability = Math.max(0.4, stability * 0.3);
+    difficulty = Math.min(10, difficulty + 0.8);
+    return {
+      stability,
+      difficulty,
+      reps,
+      lapses,
+      dueTimestamp: now + 1 * 24 * 60 * 60 * 1000, // 1 day retry
+    };
+  }
+
+  // Grade >= 2 (Successful Recall)
+  reps += 1;
+  const diffAdjustment = (3 - grade) * 0.5;
+  difficulty = Math.max(1, Math.min(10, difficulty + diffAdjustment));
+
+  const hardMultiplier = grade === 2 ? 0.8 : 1.0;
+  const easyMultiplier = grade === 4 ? 1.4 : 1.0;
+  const factor = (11 - difficulty) * 0.25 * hardMultiplier * easyMultiplier;
+  stability = Math.max(0.5, stability * (1 + factor));
+
+  const intervalDays = Math.max(1, Math.round(stability));
+  return {
+    stability,
+    difficulty,
+    reps,
+    lapses,
+    dueTimestamp: now + intervalDays * 24 * 60 * 60 * 1000,
+  };
+}
+
+/** Recalculate full user stats and streaks */
+export function recalculateUserStats(
+  attempts: AttemptRecord[],
+  prevStats: UserStats,
+): UserStats {
+  const totalAttempts = attempts.length;
+  if (totalAttempts === 0) {
+    return getInitialState().userStats;
+  }
+
+  let totalCorrect = 0;
+  let totalTimeSeconds = 0;
+  const activityHistory: Record<string, number> = {};
+
+  for (const att of attempts) {
+    if (att.correct) totalCorrect += 1;
+    totalTimeSeconds += att.timeTaken;
+    const dateStr = new Date(att.timestamp).toISOString().slice(0, 10);
+    activityHistory[dateStr] = (activityHistory[dateStr] || 0) + 1;
+  }
+
+  // Compute streaks from activity dates
+  const activeDates = Object.keys(activityHistory).sort();
+  let currentStreak = 0;
+  let longestStreak = prevStats.longestStreak || 0;
+
+  if (activeDates.length > 0) {
+    const today = new Date().toISOString().slice(0, 10);
+    const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+    const lastActive = activeDates[activeDates.length - 1];
+
+    if (lastActive === today || lastActive === yesterday) {
+      currentStreak = 1;
+      let checkDate = new Date(lastActive);
+      for (let i = activeDates.length - 2; i >= 0; i--) {
+        checkDate.setDate(checkDate.getDate() - 1);
+        const expectedDateStr = checkDate.toISOString().slice(0, 10);
+        if (activeDates[i] === expectedDateStr) {
+          currentStreak += 1;
+        } else {
+          break;
+        }
+      }
+    } else {
+      currentStreak = 0;
     }
 
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('progress_store_updated', handleUpdate);
-        window.removeEventListener('storage', handleUpdate);
-      }
-    };
-  }, []);
+    if (currentStreak > longestStreak) {
+      longestStreak = currentStreak;
+    }
+  }
 
   return {
-    store,
-    attempts: store.attempts,
+    totalAttempts,
+    totalCorrect,
+    accuracyPercent: Math.round((totalCorrect / totalAttempts) * 100),
+    totalTimeSeconds,
+    avgTimePerQuestion: Math.round(totalTimeSeconds / totalAttempts),
+    currentStreak,
+    longestStreak,
+    lastActiveDate: activeDates[activeDates.length - 1] || '',
+    activityHistory,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Store Engine & Migration Safety
+// ---------------------------------------------------------------------------
+
+let memoryState: ProgressStoreState | null = null;
+const listeners = new Set<() => void>();
+
+function notifyListeners() {
+  for (const listener of listeners) {
+    listener();
+  }
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent(STORE_CHANGE_EVENT));
+  }
+}
+
+/** Load and safely migrate state from localStorage */
+export function loadStore(): ProgressStoreState {
+  if (memoryState) return memoryState;
+  if (typeof window === 'undefined') return getInitialState();
+
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object') {
+        memoryState = migrateStore(parsed);
+        return memoryState;
+      }
+    }
+
+    // Attempt migration from legacy storage keys
+    for (const legacyKey of LEGACY_STORAGE_KEYS) {
+      const legacyRaw = window.localStorage.getItem(legacyKey);
+      if (legacyRaw) {
+        try {
+          const parsedLegacy = JSON.parse(legacyRaw);
+          memoryState = migrateStore(parsedLegacy);
+          saveStore(memoryState);
+          return memoryState;
+        } catch {
+          // ignore corrupted legacy key
+        }
+      }
+    }
+  } catch (err) {
+    console.warn('[ProgressStore] Failed to load from localStorage:', err);
+  }
+
+  memoryState = getInitialState();
+  return memoryState;
+}
+
+/** Migration logic forward to CURRENT_SCHEMA_VERSION without loss */
+export function migrateStore(data: any): ProgressStoreState {
+  const initial = getInitialState();
+  if (!data || typeof data !== 'object') return initial;
+
+  const version = typeof data.version === 'number' ? data.version : 1;
+  const attempts: AttemptRecord[] = Array.isArray(data.attempts)
+    ? data.attempts.map((a: any) => ({
+        id: a.id || `att-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+        itemId: a.itemId || '',
+        correct: Boolean(a.correct),
+        timeTaken: typeof a.timeTaken === 'number' ? a.timeTaken : 30,
+        timestamp: typeof a.timestamp === 'number' ? a.timestamp : Date.now(),
+        sourceModule: a.sourceModule || 'unknown',
+        difficulty: a.difficulty || 'medium',
+        concepts: Array.isArray(a.concepts) ? a.concepts : [],
+        selectedOption: a.selectedOption,
+        userNotes: a.userNotes,
+      }))
+    : [];
+
+  const conceptMasteries: Record<string, ConceptMastery> = {};
+  if (data.conceptMasteries && typeof data.conceptMasteries === 'object') {
+    for (const [key, val] of Object.entries(data.conceptMasteries as Record<string, any>)) {
+      if (val && typeof val === 'object') {
+        const rating = typeof val.rating === 'number' ? val.rating : ELO_CONFIG.INITIAL_RATING;
+        const pct = ratingToMasteryPercent(rating);
+        const status: MasteryStatus =
+          pct >= 80 ? 'mastered' : pct >= 50 ? 'learning' : 'struggling';
+        conceptMasteries[key] = {
+          concept: key,
+          rating,
+          masteryPercent: pct,
+          attemptsCount: val.attemptsCount || 0,
+          correctCount: val.correctCount || 0,
+          lastAttempted: val.lastAttempted || Date.now(),
+          stability: val.stability || 1,
+          difficulty: val.difficulty || 5,
+          reps: val.reps || 0,
+          dueTimestamp: val.dueTimestamp || Date.now(),
+          status,
+        };
+      }
+    }
+  }
+
+  const itemReviews: Record<string, ItemReviewState> = {};
+  if (data.itemReviews && typeof data.itemReviews === 'object') {
+    for (const [key, val] of Object.entries(data.itemReviews as Record<string, any>)) {
+      if (val && typeof val === 'object') {
+        itemReviews[key] = {
+          itemId: key,
+          lastReviewed: val.lastReviewed || Date.now(),
+          dueTimestamp: val.dueTimestamp || Date.now(),
+          stability: val.stability || 1,
+          difficulty: val.difficulty || 5,
+          reps: val.reps || 0,
+          lapses: val.lapses || 0,
+        };
+      }
+    }
+  }
+
+  const userStats = recalculateUserStats(attempts, initial.userStats);
+
+  return {
+    version: CURRENT_SCHEMA_VERSION,
+    attempts,
+    conceptMasteries,
+    itemReviews,
+    userStats,
+  };
+}
+
+/** Save state to localStorage and notify all components */
+export function saveStore(state: ProgressStoreState) {
+  memoryState = state;
+  if (typeof window !== 'undefined') {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (err) {
+      console.warn('[ProgressStore] Failed to write localStorage:', err);
+    }
+  }
+  notifyListeners();
+}
+
+/** Record a single practice or quiz attempt */
+export function recordAttempt(
+  attempt: Omit<AttemptRecord, 'id' | 'timestamp'> & { timestamp?: number },
+): AttemptRecord {
+  return recordBatchAttempts([attempt])[0];
+}
+
+/** Record multiple attempts atomically */
+export function recordBatchAttempts(
+  newAttempts: Array<Omit<AttemptRecord, 'id' | 'timestamp'> & { timestamp?: number }>,
+): AttemptRecord[] {
+  const current = loadStore();
+  const now = Date.now();
+  const createdRecords: AttemptRecord[] = [];
+
+  const updatedAttempts = [...current.attempts];
+  const updatedConceptMasteries = { ...current.conceptMasteries };
+  const updatedItemReviews = { ...current.itemReviews };
+
+  for (const raw of newAttempts) {
+    const record: AttemptRecord = {
+      ...raw,
+      id: `att-${now}-${Math.random().toString(36).slice(2, 8)}`,
+      timestamp: raw.timestamp || now,
+    };
+    createdRecords.push(record);
+    updatedAttempts.push(record);
+
+    const grade = determineFSRSGrade(record.correct, record.timeTaken);
+
+    // 1. Update Item Review Schedule
+    if (record.itemId) {
+      const prevItemReview = updatedItemReviews[record.itemId];
+      const nextReview = calculateNextReview(prevItemReview, grade, record.timestamp);
+      updatedItemReviews[record.itemId] = {
+        itemId: record.itemId,
+        lastReviewed: record.timestamp,
+        ...nextReview,
+      };
+    }
+
+    // 2. Update Concept Elo Masteries
+    for (const concept of record.concepts) {
+      const cleanConcept = concept.trim();
+      if (!cleanConcept) continue;
+
+      const prev = updatedConceptMasteries[cleanConcept] || {
+        concept: cleanConcept,
+        rating: ELO_CONFIG.INITIAL_RATING,
+        masteryPercent: ratingToMasteryPercent(ELO_CONFIG.INITIAL_RATING),
+        attemptsCount: 0,
+        correctCount: 0,
+        lastAttempted: record.timestamp,
+        stability: 1,
+        difficulty: 5,
+        reps: 0,
+        lapses: 0,
+        dueTimestamp: record.timestamp,
+        status: 'unattempted' as MasteryStatus,
+      };
+
+      const newRating = calculateNewElo(prev.rating, record.difficulty, record.correct);
+      const newMasteryPercent = ratingToMasteryPercent(newRating);
+      const nextConceptReview = calculateNextReview(
+        {
+          stability: prev.stability,
+          difficulty: prev.difficulty,
+          reps: prev.reps,
+          lapses: prev.lapses ?? 0,
+        },
+        grade,
+        record.timestamp
+      );
+
+      const status: MasteryStatus =
+        newMasteryPercent >= 80 ? 'mastered' : newMasteryPercent >= 50 ? 'learning' : 'struggling';
+
+      updatedConceptMasteries[cleanConcept] = {
+        ...prev,
+        rating: newRating,
+        masteryPercent: newMasteryPercent,
+        attemptsCount: prev.attemptsCount + 1,
+        correctCount: prev.correctCount + (record.correct ? 1 : 0),
+        lastAttempted: record.timestamp,
+        ...nextConceptReview,
+        status,
+      };
+    }
+  }
+
+  const updatedStats = recalculateUserStats(updatedAttempts, current.userStats);
+
+  const nextState: ProgressStoreState = {
+    version: CURRENT_SCHEMA_VERSION,
+    attempts: updatedAttempts,
+    conceptMasteries: updatedConceptMasteries,
+    itemReviews: updatedItemReviews,
+    userStats: updatedStats,
+  };
+
+  saveStore(nextState);
+  return createdRecords;
+}
+
+/** Reset all progress state to clean empty initial state */
+export function resetProgressStore() {
+  const initial = getInitialState();
+  saveStore(initial);
+}
+
+// ---------------------------------------------------------------------------
+// Derived Statistics Helpers
+// ---------------------------------------------------------------------------
+
+/** Get items that are due for spaced repetition review */
+export function getDueItems(
+  allItems: ContentItem[],
+  limit = 20,
+): { item: ContentItem; reviewState?: ItemReviewState; isDue: boolean; dueInDays: number }[] {
+  const store = loadStore();
+  const now = Date.now();
+
+  const ratedItems = allItems.map((item) => {
+    const review = store.itemReviews[item.id];
+    if (!review) {
+      // Unattempted items can be included as fresh due
+      return { item, reviewState: undefined, isDue: true, dueInDays: 0 };
+    }
+    const diffMs = review.dueTimestamp - now;
+    const dueInDays = Math.round(diffMs / (24 * 60 * 60 * 1000));
+    return {
+      item,
+      reviewState: review,
+      isDue: review.dueTimestamp <= now,
+      dueInDays,
+    };
+  });
+
+  // Prioritize due items first, then by earliest due timestamp
+  return ratedItems
+    .filter((r) => r.isDue)
+    .sort((a, b) => {
+      const aDue = a.reviewState?.dueTimestamp ?? 0;
+      const bDue = b.reviewState?.dueTimestamp ?? 0;
+      return aDue - bDue;
+    })
+    .slice(0, limit);
+}
+
+/** Get accuracy trend grouped into chronological buckets */
+export function getAccuracyTrend(
+  bucketSize = 5,
+): { index: number; label: string; accuracy: number; count: number }[] {
+  const store = loadStore();
+  const attempts = store.attempts;
+  if (attempts.length === 0) return [];
+
+  const buckets: { index: number; label: string; accuracy: number; count: number }[] = [];
+  const numBuckets = Math.ceil(attempts.length / bucketSize);
+
+  for (let i = 0; i < numBuckets; i++) {
+    const slice = attempts.slice(i * bucketSize, (i + 1) * bucketSize);
+    const correctCount = slice.filter((a) => a.correct).length;
+    const accuracy = Math.round((correctCount / slice.length) * 100);
+    buckets.push({
+      index: i + 1,
+      label: `Q${i * bucketSize + 1}-${i * bucketSize + slice.length}`,
+      accuracy,
+      count: slice.length,
+    });
+  }
+
+  return buckets;
+}
+
+/** Get time-per-question velocity trend */
+export function getTimeTrend(
+  bucketSize = 5,
+): { index: number; label: string; avgTimeSec: number }[] {
+  const store = loadStore();
+  const attempts = store.attempts;
+  if (attempts.length === 0) return [];
+
+  const buckets: { index: number; label: string; avgTimeSec: number }[] = [];
+  const numBuckets = Math.ceil(attempts.length / bucketSize);
+
+  for (let i = 0; i < numBuckets; i++) {
+    const slice = attempts.slice(i * bucketSize, (i + 1) * bucketSize);
+    const totalSec = slice.reduce((sum, a) => sum + a.timeTaken, 0);
+    buckets.push({
+      index: i + 1,
+      label: `Q${i * bucketSize + 1}-${i * bucketSize + slice.length}`,
+      avgTimeSec: Math.round(totalSec / slice.length),
+    });
+  }
+
+  return buckets;
+}
+
+/** SWOT analysis stats structure */
+export interface SwotStats {
+  strengths: ConceptMastery[];
+  weaknesses: ConceptMastery[];
+  opportunities: ConceptMastery[];
+  threats: ConceptMastery[];
+  statProfileKey: 'mastered-speed-fast' | 'high-accuracy-slow-speed' | 'balanced-mastery' | 'weakness-heavy' | 'decaying-retention' | 'unattempted-clean';
+  overallAccuracy: number;
+  totalMastered: number;
+  totalWeak: number;
+  totalDue: number;
+}
+
+/** Compute deterministic SWOT breakdown and stat profile key */
+export function getSwotStatistics(): SwotStats {
+  const store = loadStore();
+  const concepts = Object.values(store.conceptMasteries);
+  const now = Date.now();
+
+  if (concepts.length === 0 || store.attempts.length === 0) {
+    return {
+      strengths: [],
+      weaknesses: [],
+      opportunities: [],
+      threats: [],
+      statProfileKey: 'unattempted-clean',
+      overallAccuracy: 0,
+      totalMastered: 0,
+      totalWeak: 0,
+      totalDue: 0,
+    };
+  }
+
+  // Strengths: High mastery (>=75%) & at least 2 attempts
+  const strengths = concepts
+    .filter((c) => c.masteryPercent >= 75 && c.attemptsCount >= 2)
+    .sort((a, b) => b.masteryPercent - a.masteryPercent);
+
+  // Weaknesses: Low mastery (<50%) or low accuracy (<50%) with at least 1 attempt
+  const weaknesses = concepts
+    .filter((c) => (c.masteryPercent < 50 || (c.correctCount / c.attemptsCount) < 0.5) && c.attemptsCount >= 1)
+    .sort((a, b) => a.masteryPercent - b.masteryPercent);
+
+  // Opportunities: Near-mastery (50% - 74%) or 1 attempt with good promise
+  const opportunities = concepts
+    .filter((c) => c.masteryPercent >= 50 && c.masteryPercent < 75)
+    .sort((a, b) => b.masteryPercent - a.masteryPercent);
+
+  // Threats: Previously reviewed concepts that have lapsed or are overdue for revision
+  const threats = concepts
+    .filter((c) => c.dueTimestamp <= now && c.attemptsCount >= 1)
+    .sort((a, b) => a.dueTimestamp - b.dueTimestamp);
+
+  const overallAccuracy = store.userStats.accuracyPercent;
+  const avgTime = store.userStats.avgTimePerQuestion;
+
+  // Determine Stat Profile Key deterministically
+  let statProfileKey: SwotStats['statProfileKey'] = 'balanced-mastery';
+
+  if (threats.length >= 3 && strengths.length >= 2) {
+    statProfileKey = 'decaying-retention';
+  } else if (weaknesses.length > strengths.length) {
+    statProfileKey = 'weakness-heavy';
+  } else if (overallAccuracy >= 80 && avgTime > 75) {
+    statProfileKey = 'high-accuracy-slow-speed';
+  } else if (overallAccuracy >= 80 && avgTime <= 45) {
+    statProfileKey = 'mastered-speed-fast';
+  }
+
+  return {
+    strengths,
+    weaknesses,
+    opportunities,
+    threats,
+    statProfileKey,
+    overallAccuracy,
+    totalMastered: strengths.length,
+    totalWeak: weaknesses.length,
+    totalDue: threats.length,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// React Hook for Reactive Store Subscription
+// ---------------------------------------------------------------------------
+
+function subscribe(callback: () => void) {
+  listeners.add(callback);
+  const handleStorage = (e: StorageEvent) => {
+    if (e.key === STORAGE_KEY) {
+      memoryState = null;
+      callback();
+    }
+  };
+  const handleCustom = () => {
+    callback();
+  };
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('storage', handleStorage);
+    window.addEventListener(STORE_CHANGE_EVENT, handleCustom);
+  }
+
+  return () => {
+    listeners.delete(callback);
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('storage', handleStorage);
+      window.removeEventListener(STORE_CHANGE_EVENT, handleCustom);
+    }
+  };
+}
+
+export function useProgressStore(): ProgressStoreState & {
+  recordAttempt: typeof recordAttempt;
+  recordBatchAttempts: typeof recordBatchAttempts;
+  resetProgressStore: typeof resetProgressStore;
+} {
+  const state = useSyncExternalStore(
+    subscribe,
+    () => loadStore(),
+    () => getInitialState(),
+  );
+
+  return {
+    ...state,
     recordAttempt,
-    resetStore,
-    conceptMastery: getConceptMasteryList(),
-    streakStats: getStreakStats(),
-    accuracyTrend: getAccuracyTrend(),
-    timeTrend: getTimePerQuestionTrend(),
-    dueItems: getDueForRevisionItems(),
-    swotAnalysis: getSwotAnalysis(),
+    recordBatchAttempts,
+    resetProgressStore,
   };
 }
