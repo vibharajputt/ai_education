@@ -251,6 +251,37 @@ export function SplitViewModule() {
     }
   };
 
+  const handleAskQuickDoubt = async (quickText: string) => {
+    if (!activeQuestion || isAiTyping) return;
+
+    setDoubtMessages((prev) => [...prev, { sender: 'user', text: quickText }]);
+    setIsAiTyping(true);
+
+    try {
+      let mode: GeminiExplainMode = 'ask';
+      if (quickText.toLowerCase().includes('hinglish')) mode = 'hinglish';
+      else if (quickText.toLowerCase().includes('example')) mode = 'example';
+      else if (quickText.toLowerCase().includes('mistake') || quickText.toLowerCase().includes('trap')) mode = 'pitfalls';
+      else if (quickText.toLowerCase().includes('step') || quickText.toLowerCase().includes('mark')) mode = 'steps';
+
+      const aiResponse = await generateGeminiSolution({
+        questionText: activeQuestion.questionText,
+        subject: activePaper.subject,
+        chapter: activeQuestion.chapter,
+        marks: activeQuestion.marks,
+        modelAnswer: activeQuestion.modelAnswer,
+        mode,
+        userPrompt: quickText,
+      });
+
+      setDoubtMessages((prev) => [...prev, { sender: 'ai', text: aiResponse }]);
+    } catch (err) {
+      console.error('Quick doubt error:', err);
+    } finally {
+      setIsAiTyping(false);
+    }
+  };
+
   return (
     <div className="flex flex-col h-[calc(100vh-80px)] min-h-[700px] bg-[var(--color-bg)] text-[var(--color-text)]">
       {/* ── TOP NAV: Class Filter, Subject Tabs, Upload & Official Source ── */}
@@ -843,9 +874,7 @@ export function SplitViewModule() {
                       key={idx}
                       type="button"
                       disabled={isAiTyping}
-                      onClick={() => {
-                        setDoubtInput(quickPrompt);
-                      }}
+                      onClick={() => handleAskQuickDoubt(quickPrompt)}
                       className="px-2.5 py-1 rounded-lg text-[11px] font-medium bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors cursor-pointer"
                     >
                       {quickPrompt}
