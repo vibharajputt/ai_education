@@ -80,8 +80,9 @@ export function QuestionBrowser({
       if (selectedType !== 'all' && cog !== selectedType) return false;
 
       if (mostRepeatedOnly) {
-        const repScore = ((item.metadata || {}) as Record<string, unknown>).repeatedScore as number;
-        if (!repScore || repScore < 5) return false;
+        const meta = (item.metadata || {}) as Record<string, unknown>;
+        const repScore = (meta.repeatScore as number) || (meta.repeatedScore as number) || 0;
+        if (repScore < 6) return false;
       }
 
       if (searchQuery.trim()) {
