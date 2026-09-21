@@ -273,7 +273,7 @@ export const CBSE_PAPERS_DATABASE: CBSESamplePaper[] = [
         chapter: 'Real Numbers',
         questionText:
           'If two positive integers $a$ and $b$ are written as $a = x^3 y^2$ and $b = x y^3$, where $x$ and $y$ are prime numbers, then $\\text{HCF}(a, b)$ is:',
-        options: ['(a) x y', '(b) x y^2', '(c) x^3 y^3', '(d) x^2 y^2'],
+        options: ['(a) $x y$', '(b) $x y^2$', '(c) $x^3 y^3$', '(d) $x^2 y^2$'],
         correctOption: '(b)',
         cbseSourceRef: 'CBSE SQP 2024-25 Mathematics Standard Code 041, Q1',
         modelAnswer:
@@ -387,10 +387,10 @@ export const CBSE_PAPERS_DATABASE: CBSESamplePaper[] = [
         questionText:
           'An electric dipole of dipole moment $\\vec{p}$ is placed in a uniform electric field $\\vec{E}$. The torque acting on the dipole and the potential energy of the dipole are respectively given by:',
         options: [
-          '(a) \\tau = \\vec{p} \\cdot \\vec{E}, \\quad U = \\vec{p} \\times \\vec{E}',
-          '(b) \\tau = \\vec{p} \\times \\vec{E}, \\quad U = -\\vec{p} \\cdot \\vec{E}',
-          '(c) \\tau = -\\vec{p} \\times \\vec{E}, \\quad U = \\vec{p} \\cdot \\vec{E}',
-          '(d) \\tau = \\vec{p} \\times \\vec{E}, \\quad U = \\vec{p} \\cdot \\vec{E}',
+          '(a) $\\vec{\\tau} = \\vec{p} \\cdot \\vec{E}, \\quad U = \\vec{p} \\times \\vec{E}$',
+          '(b) $\\vec{\\tau} = \\vec{p} \\times \\vec{E}, \\quad U = -\\vec{p} \\cdot \\vec{E}$',
+          '(c) $\\vec{\\tau} = -\\vec{p} \\times \\vec{E}, \\quad U = \\vec{p} \\cdot \\vec{E}$',
+          '(d) $\\vec{\\tau} = \\vec{p} \\times \\vec{E}, \\quad U = \\vec{p} \\cdot \\vec{E}$',
         ],
         correctOption: '(b)',
         cbseSourceRef: 'CBSE SQP 2024-25 Physics Code 042, Q1',
