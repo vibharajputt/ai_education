@@ -1,12 +1,13 @@
 // src/app/LandingPage.tsx
 import React, { useState, useMemo, useEffect } from 'react';
-import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext, Link } from 'react-router-dom';
 import { REGISTRY, type ModuleConfig } from '@core/registry';
 import type { Track } from '@core/types';
 import type { AppShellContext } from './AppShell';
 import { Card } from '@components/Card';
 import { Badge } from '@components/Badge';
 import { DynamicIcon } from '@components/DynamicIcon';
+import { useAuth } from '@core/auth';
 import {
   Sparkles,
   ArrowRight,
@@ -26,6 +27,7 @@ import {
   BookMarked,
   ShieldCheck,
   ChevronRight,
+  User as UserIcon,
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -37,6 +39,7 @@ export function LandingPage(props: LandingPageProps) {
   const context = useOutletContext<AppShellContext | undefined>();
   const currentTrack = props.currentTrack ?? context?.currentTrack ?? 'school';
   const onTrackChange = props.onTrackChange ?? context?.setTrack ?? (() => {});
+  const { user } = useAuth();
 
   const [activeTrackFilter, setActiveTrackFilter] = useState<'all' | 'school' | 'college'>(currentTrack);
 
@@ -110,11 +113,22 @@ export function LandingPage(props: LandingPageProps) {
 
           <div className="space-y-2">
             <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
-              {greeting}, <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-sky-300 to-indigo-100">Scholar.</span>
+              {greeting},{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 via-sky-300 to-indigo-100">
+                {user?.name || 'Scholar'}.
+              </span>
             </h1>
-            <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
-              High-yield pre-computed curriculum intelligence, forensic exam marking schemes, and precision step-by-step walkthroughs for CBSE Class 9–12 and undergraduate engineering placements.
-            </p>
+            <div className="flex flex-wrap items-center gap-2 pt-1">
+              {user?.track === 'school' && user?.classLevel ? (
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-200 border border-blue-400/30">
+                  <BookOpen className="w-3.5 h-3.5 text-blue-300" />
+                  <span>Class {user.classLevel}th Student {user.stream && user.stream !== 'general' ? `• ${user.stream.toUpperCase()}` : ''}</span>
+                </span>
+              ) : null}
+              <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
+                High-yield curriculum intelligence, forensic exam marking schemes, and precision step-by-step walkthroughs for CBSE Class 9–12 and engineering placements.
+              </p>
+            </div>
           </div>
 
           {/* Quick Track Switcher Pills in Hero */}

@@ -28,14 +28,17 @@ import {
   LayoutDashboard,
   Home,
   ExternalLink,
+  User as UserIcon,
 } from 'lucide-react';
 import { DynamicIcon } from '@components/DynamicIcon';
 import { Badge } from '@components/Badge';
 import { MarkdownRenderer } from '@components/MarkdownRenderer';
+import { useAuth } from '@core/auth';
 
 export function HomePage() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
+  const { user } = useAuth();
 
   const [activeTrack, setActiveTrack] = useState<'all' | 'school' | 'college'>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -146,7 +149,7 @@ export function HomePage() {
           </nav>
 
           {/* Right Action Items */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             {/* Theme Toggle */}
             <button
               type="button"
@@ -157,6 +160,32 @@ export function HomePage() {
               {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
             </button>
 
+            {user ? (
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => navigate('/dashboard')}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] transition-all"
+                >
+                  <span className="text-sm">{user.avatar || '🎓'}</span>
+                  <span className="text-xs font-bold text-[var(--color-text)]">{user.name}</span>
+                  {user.track === 'school' && user.classLevel && (
+                    <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-950 text-blue-600 dark:text-blue-400">
+                      Class {user.classLevel}th
+                    </span>
+                  )}
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-xs font-bold text-[var(--color-text)] transition-colors"
+              >
+                <UserIcon className="w-3.5 h-3.5 text-indigo-500" />
+                <span>Sign In</span>
+              </Link>
+            )}
+
             {/* Launch Dashboard Button */}
             <button
               type="button"
@@ -164,7 +193,7 @@ export function HomePage() {
               className="flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white text-xs font-bold shadow-md shadow-indigo-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <LayoutDashboard className="w-4 h-4" />
-              <span>Go to Dashboard</span>
+              <span className="hidden sm:inline">Go to Dashboard</span>
             </button>
           </div>
         </div>

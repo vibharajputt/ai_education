@@ -5,4 +5,6 @@ export { BottomNav } from './BottomNav';
 export { LandingPage } from './LandingPage';
 export { ModuleHost } from './ModuleHost';
 export { useTheme } from './useTheme';
+export { HomePage } from './HomePage';
+export { AuthPage } from './AuthPage';
 export { router } from './router';
