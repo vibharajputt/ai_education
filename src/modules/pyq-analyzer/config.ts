@@ -5,10 +5,10 @@ export const pyqAnalyzerConfig: ModuleConfig = {
   id: 'pyq-analyzer',
   title: 'PYQ Forensic Analyzer',
   track: 'school',
-  classLevels: ['10'],
+  classLevels: ['9', '10', '11', '12'],
   icon: 'TrendingUp',
   tier: 'A',
-  scopeLabel: 'Class 10 Science + Maths, 2015-2024, 812 questions',
+  scopeLabel: 'CBSE Science + Maths, 2015-2024 (812 Authentic Questions)',
   dataSource: 'pyq-analyzer.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({
