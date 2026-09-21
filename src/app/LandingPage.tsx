@@ -28,6 +28,7 @@ import {
   ShieldCheck,
   ChevronRight,
   User as UserIcon,
+  Columns,
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -274,11 +275,19 @@ export function LandingPage(props: LandingPageProps) {
           <div className="flex flex-wrap items-center gap-2">
             <button
               type="button"
+              onClick={() => navigate('/school/split-view')}
+              className="px-3 py-1.5 rounded-xl bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 dark:text-blue-400 border border-blue-500/30 text-xs font-bold flex items-center gap-1.5 transition-all shadow-xs"
+            >
+              <Columns className="w-3.5 h-3.5" />
+              <span>CBSE Sample Papers (10th & 12th)</span>
+            </button>
+            <button
+              type="button"
               onClick={() => navigate('/school/question-bank')}
               className="px-3 py-1.5 rounded-xl bg-[var(--color-surface)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-xs font-bold text-[var(--color-text)] flex items-center gap-1.5 transition-all shadow-xs"
             >
               <BookOpen className="w-3.5 h-3.5 text-indigo-500" />
-              Question Bank
+              <span>Question Bank</span>
             </button>
             <button
               type="button"
@@ -286,7 +295,7 @@ export function LandingPage(props: LandingPageProps) {
               className="px-3 py-1.5 rounded-xl bg-[var(--color-surface)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-xs font-bold text-[var(--color-text)] flex items-center gap-1.5 transition-all shadow-xs"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-              Mnemonics
+              <span>Mnemonics</span>
             </button>
             <button
               type="button"
@@ -294,7 +303,7 @@ export function LandingPage(props: LandingPageProps) {
               className="px-3 py-1.5 rounded-xl bg-[var(--color-surface)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-xs font-bold text-[var(--color-text)] flex items-center gap-1.5 transition-all shadow-xs"
             >
               <GraduationCap className="w-3.5 h-3.5 text-purple-500" />
-              Interview Prep
+              <span>Interview Prep</span>
             </button>
           </div>
         </div>
