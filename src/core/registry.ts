@@ -48,26 +48,24 @@ import { swotConfig } from '../modules/weak-topics/config';
 // ---------------------------------------------------------------------------
 
 export const REGISTRY: ModuleConfig[] = [
-  // ── SIGNATURE SPLIT-SCREEN EXAM VIEWER ──────────────────────────────────
+  // ── 1. SIGNATURE EXAM ENGINES (School) ──────────────────────────────────
   splitViewConfig,
-
-  // ── PYQ FORENSIC ANALYZER ──────────────────────────────────────────────────
   pyqAnalyzerConfig,
-  {
-    ...pyqAnalyzerConfig,
-    id: 'past-papers',
-    title: 'PYQ Question Bank & Analyzer',
-  },
+  syllabusPlanConfig,
+  sheetGeneratorConfig,
+  quizConfig,
+  progressReportConfig,
+  swotConfig,
 
-  // ── SCHOOL TRACK (Class 9–12) ─────────────────────────────────────────────
+  // ── 2. CONCEPT & MEMORY ACCELERATORS (School) ───────────────────────────
   {
     id: 'question-bank',
     title: 'Adaptive Question Bank',
     track: 'school',
-    classLevels: ['11', '12'],
+    classLevels: ['9', '10', '11', '12'],
     icon: 'BookOpen',
     tier: 'A',
-    scopeLabel: '8 Board Exam Questions across Physics, Chemistry, Math & Biology — Class 11–12',
+    scopeLabel: 'Physics, Chemistry, Maths & Bio Practice Questions',
     dataSource: 'question-bank.json',
     view: React.lazy(() =>
       Promise.resolve({ default: createModuleViewer('question-bank.json', 'Adaptive Question Bank') })
@@ -80,10 +78,10 @@ export const REGISTRY: ModuleConfig[] = [
     id: 'mnemonics',
     title: 'Formula Mnemonics',
     track: 'school',
-    classLevels: ['11', '12'],
+    classLevels: ['9', '10', '11', '12'],
     icon: 'Sparkles',
     tier: 'A',
-    scopeLabel: '5 High-Yield STEM Mnemonics — Class 11–12',
+    scopeLabel: 'High-Retention Memory Anchors & Formula Hooks',
     dataSource: 'mnemonics.json',
     view: React.lazy(() =>
       Promise.resolve({ default: createModuleViewer('mnemonics.json', 'Formula Mnemonics') })
@@ -94,15 +92,15 @@ export const REGISTRY: ModuleConfig[] = [
   },
   {
     id: 'viva-practice',
-    title: 'Viva Practice',
+    title: 'Board Practical & Viva Prep',
     track: 'school',
-    classLevels: ['12'],
+    classLevels: ['10', '12'],
     icon: 'Mic',
     tier: 'A',
-    scopeLabel: '4 Board Practical Viva Scenarios — Physics & Chemistry Class 12',
+    scopeLabel: 'Physics & Chemistry Practical Lab Viva Scenarios',
     dataSource: 'viva-practice.json',
     view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('viva-practice.json', 'Viva Practice') })
+      Promise.resolve({ default: createModuleViewer('viva-practice.json', 'Board Practical & Viva Prep') })
     ),
     searchable: true,
     description:
@@ -110,15 +108,15 @@ export const REGISTRY: ModuleConfig[] = [
   },
   {
     id: 'flashcards',
-    title: 'Flashcard Deck',
+    title: 'Spaced Recall Flashcards',
     track: 'school',
-    classLevels: ['11', '12'],
+    classLevels: ['9', '10', '11', '12'],
     icon: 'Layers',
     tier: 'B',
-    scopeLabel: '4 Active Recall Flashcards across Physics & Chemistry — Class 12',
+    scopeLabel: 'Active Recall Decks for Key Definitions & Laws',
     dataSource: 'flashcards.json',
     view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('flashcards.json', 'Flashcard Deck') })
+      Promise.resolve({ default: createModuleViewer('flashcards.json', 'Spaced Recall Flashcards') })
     ),
     searchable: true,
     description:
@@ -126,15 +124,15 @@ export const REGISTRY: ModuleConfig[] = [
   },
   {
     id: 'concept-maps',
-    title: 'Concept Maps',
+    title: 'Visual Concept Mind-Maps',
     track: 'school',
-    classLevels: ['11', '12'],
+    classLevels: ['9', '10', '11', '12'],
     icon: 'Network',
     tier: 'B',
-    scopeLabel: '2 Concept Hierarchy Maps for High School STEM',
+    scopeLabel: 'Hierarchical Topic Dependency & Visual Trees',
     dataSource: 'concept-maps.json',
     view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('concept-maps.json', 'Concept Maps') })
+      Promise.resolve({ default: createModuleViewer('concept-maps.json', 'Visual Concept Mind-Maps') })
     ),
     searchable: true,
     description:
@@ -142,59 +140,33 @@ export const REGISTRY: ModuleConfig[] = [
   },
   {
     id: 'chapter-summaries',
-    title: 'Chapter Summaries',
+    title: 'One-Page Chapter Cheat Sheets',
     track: 'school',
-    classLevels: ['12'],
+    classLevels: ['10', '12'],
     icon: 'FileText',
     tier: 'B',
-    scopeLabel: '2 Condensed STEM Chapter Summaries for Class 12 Boards',
+    scopeLabel: 'Condensed Formula Blueprints & Principles',
     dataSource: 'chapter-summaries.json',
     view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('chapter-summaries.json', 'Chapter Summaries') })
+      Promise.resolve({ default: createModuleViewer('chapter-summaries.json', 'One-Page Chapter Cheat Sheets') })
     ),
     searchable: true,
     description:
       'Ultra-dense one-page formula sheets, key principles, and chapter exam blueprints.',
   },
-  syllabusPlanConfig,
-  {
-    ...syllabusPlanConfig,
-    id: 'study-planner',
-    title: 'Study Planner & Adaptive Roadmap',
-  },
-  // ── PRACTICE & PROGRESS CLUSTER ──────────────────────────────────────────
-  sheetGeneratorConfig,
-  quizConfig,
-  progressReportConfig,
-  {
-    ...progressReportConfig,
-    id: 'progress',
-    title: 'Progress & Mastery Matrix',
-  },
-  swotConfig,
-  {
-    ...swotConfig,
-    id: 'swot',
-    title: 'SWOT Diagnostic Matrix',
-  },
-  {
-    ...quizConfig,
-    id: 'aptitude-drill',
-    title: 'Aptitude & Practice Quiz Drill',
-  },
 
-  // ── COLLEGE & PLACEMENT TRACK ─────────────────────────────────────────────
+  // ── 3. COLLEGE & PLACEMENT TRACK ─────────────────────────────────────────
   {
     id: 'interview-prep',
-    title: 'Interview Q&A Prep',
+    title: 'Tech & HR Interview Simulator',
     track: 'college',
     classLevels: [],
     icon: 'GraduationCap',
     tier: 'A',
-    scopeLabel: '4 Tech & Behavioral Interview Scenarios for Engineering Students',
+    scopeLabel: 'DSA, System Design & Behavioral STAR Rubrics',
     dataSource: 'interview-prep.json',
     view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('interview-prep.json', 'Interview Q&A Prep') })
+      Promise.resolve({ default: createModuleViewer('interview-prep.json', 'Tech & HR Interview Simulator') })
     ),
     searchable: true,
     description:
@@ -203,59 +175,19 @@ export const REGISTRY: ModuleConfig[] = [
   resumeAnalyzerConfig,
   {
     id: 'career-path',
-    title: 'Career Path Explorer',
+    title: 'Engineering Career Pathways',
     track: 'college',
     classLevels: [],
     icon: 'Compass',
     tier: 'B',
-    scopeLabel: '2 Tech & Science Career Roadmaps with Industry Milestones',
+    scopeLabel: 'CSE, ECE, Mech, Civil & Tech Milestone Trees',
     dataSource: 'career-path.json',
     view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('career-path.json', 'Career Path Explorer') })
+      Promise.resolve({ default: createModuleViewer('career-path.json', 'Engineering Career Pathways') })
     ),
     searchable: true,
     description:
       'Skill trees, milestone progressions, and compensation benchmarks for ML, Cloud, and Web engineering.',
-  },
-
-
-
-  // ── DEMO / REFERENCE MODULES ──────────────────────────────────────────────
-  {
-    id: 'demo-school',
-    title: 'Demo School Questions',
-    track: 'school',
-    classLevels: ['11', '12'],
-    icon: 'BookMarked',
-    tier: 'C',
-    scopeLabel: '5 sample questions across Physics & Chemistry — Class 11–12',
-    dataSource: 'demo-school.json',
-    view: React.lazy(() =>
-      import('../modules/demo-school/index').then((m) => ({
-        default: m.DemoSchoolModule,
-      }))
-    ),
-    searchable: true,
-    description:
-      'Exemplar questions demonstrating CBSE physics and chemistry step breakdown solutions.',
-  },
-  {
-    id: 'demo-college',
-    title: 'Demo College Prep',
-    track: 'college',
-    classLevels: [],
-    icon: 'Briefcase',
-    tier: 'C',
-    scopeLabel: '5 sample interview questions across CS & Management',
-    dataSource: 'demo-college.json',
-    view: React.lazy(() =>
-      import('../modules/demo-college/index').then((m) => ({
-        default: m.DemoCollegeModule,
-      }))
-    ),
-    searchable: true,
-    description:
-      'Sample tech and management interview questions demonstrating answer framing blueprints.',
   },
 ];
 

@@ -4,12 +4,12 @@ import type { ModuleConfig } from '@core';
 
 export const progressReportConfig: ModuleConfig = {
   id: 'progress-report',
-  title: 'Progress & Mastery Matrix',
+  title: 'Mastery & Progress Analytics',
   track: 'both',
-  classLevels: ['10', '11', '12'],
+  classLevels: ['9', '10', '11', '12'],
   icon: 'TrendingUp',
   tier: 'B',
-  scopeLabel: 'Deterministic Spaced-Repetition Analytics, Elo Mastery Heatmap & FSRS Review Queue',
+  scopeLabel: 'Accuracy & Skill Matrix Tracking',
   dataSource: 'question-bank.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({ default: m.ProgressReportModule })),
