@@ -30,10 +30,18 @@ export function AppShell() {
 
   const handleTrackChange = (nextTrack: Track) => {
     setCurrentTrack(nextTrack);
-    // If on landing page, stay on landing page
-    if (location.pathname === '/') return;
-    // If on a module, switch to track root or navigate to landing page
-    navigate('/');
+    // If already on dashboard or home page, stay there
+    if (location.pathname === '/dashboard' || location.pathname === '/') {
+      return;
+    }
+    // If currently inside a module, check if the module exists in the new track
+    const pathParts = location.pathname.split('/').filter(Boolean);
+    if (pathParts.length >= 2) {
+      const currentModuleId = pathParts[1];
+      navigate(`/${nextTrack}/${currentModuleId}`);
+    } else {
+      navigate('/dashboard');
+    }
   };
 
   return (

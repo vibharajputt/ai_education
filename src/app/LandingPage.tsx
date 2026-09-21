@@ -1,5 +1,5 @@
 // src/app/LandingPage.tsx
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { REGISTRY, type ModuleConfig } from '@core/registry';
 import type { Track } from '@core/types';
@@ -39,6 +39,10 @@ export function LandingPage(props: LandingPageProps) {
   const onTrackChange = props.onTrackChange ?? context?.setTrack ?? (() => {});
 
   const [activeTrackFilter, setActiveTrackFilter] = useState<'all' | 'school' | 'college'>(currentTrack);
+
+  useEffect(() => {
+    setActiveTrackFilter(currentTrack);
+  }, [currentTrack]);
   const [activeCategory, setActiveCategory] = useState<'all' | 'tierA' | 'stem' | 'placement'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const navigate = useNavigate();
