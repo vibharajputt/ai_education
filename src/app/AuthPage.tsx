@@ -16,8 +16,8 @@ import {
   Palette,
   ArrowLeft,
   ChevronDown,
-  Layers,
   Cpu,
+  Layers,
 } from 'lucide-react';
 import {
   useAuth,
@@ -35,11 +35,13 @@ export function AuthPage() {
   const navigate = useNavigate();
   const { login, signup, user } = useAuth();
 
-  // Signup form state
+  // Active track persona: School vs College
+  const [track, setTrack] = useState<'school' | 'college'>('school');
+
+  // Form state
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [track, setTrack] = useState<'school' | 'college'>('school');
   
   // School state
   const [selectedClass, setSelectedClass] = useState<SchoolClassLevel>('10');
@@ -56,10 +58,11 @@ export function AuthPage() {
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Sync demo tab with track selector on change
-  const handleTrackChange = (newTrack: 'school' | 'college') => {
+  // Sync demo tab with track card selection
+  const handleSelectTrack = (newTrack: 'school' | 'college') => {
     setTrack(newTrack);
     setDemoTab(newTrack);
+    setErrorMsg('');
   };
 
   // If already logged in, show logged-in card or let them go to dashboard
@@ -194,12 +197,12 @@ export function AuthPage() {
             </h1>
             <p className="text-xs text-[var(--color-text-muted)]">
               {mode === 'signup'
-                ? 'Join precision curriculum intelligence & track your mastery across school & college tracks.'
-                : 'Sign in to access your personal study planner, FSRS review queue & analytics.'}
+                ? 'Select your student category below to get personalized curriculum modules.'
+                : 'Sign in to access your personal study planner, review queue & analytics.'}
             </p>
           </div>
 
-          {/* Mode Switcher Tabs */}
+          {/* Mode Switcher Tabs: Clean Sign In / Sign Up */}
           <div className="grid grid-cols-2 p-1 rounded-xl bg-[var(--color-surface-subtle)] border border-[var(--color-border)]">
             <button
               type="button"
@@ -231,6 +234,82 @@ export function AuthPage() {
             </button>
           </div>
 
+          {/* ── INTERACTIVE STUDENT CATEGORY CARDS ── */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-[var(--color-text)]">
+                Choose Student Category:
+              </span>
+              <span className="text-[11px] font-semibold text-[var(--color-text-muted)]">
+                {track === 'school' ? 'Classes 9th, 10th, 11th, 12th' : 'Undergraduate & Tech'}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {/* Card 1: School Student */}
+              <button
+                type="button"
+                onClick={() => handleSelectTrack('school')}
+                className={`relative p-4 rounded-2xl border text-left transition-all ${
+                  track === 'school'
+                    ? 'border-blue-500 bg-blue-50/80 dark:bg-blue-950/40 text-blue-900 dark:text-blue-100 shadow-md ring-2 ring-blue-500/20'
+                    : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] text-[var(--color-text)]'
+                }`}
+              >
+                <div className="flex items-start gap-3">
+                  <div className={`p-2.5 rounded-xl ${track === 'school' ? 'bg-blue-600 text-white' : 'bg-[var(--color-surface)] text-blue-500 border border-[var(--color-border)]'}`}>
+                    <School className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-black">School Student</span>
+                      {track === 'school' && (
+                        <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                      )}
+                    </div>
+                    <p className="text-xs font-semibold text-blue-600 dark:text-blue-300 mt-0.5">
+                      Class 9th, 10th, 11th, 12th
+                    </p>
+                    <p className="text-[11px] text-[var(--color-text-muted)] mt-1">
+                      CBSE / State Boards & Foundation
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              {/* Card 2: College Student */}
+              <button
+                type="button"
+                onClick={() => handleSelectTrack('college')}
+                className={`relative p-4 rounded-2xl border text-left transition-all ${
+                  track === 'college'
+                    ? 'border-purple-500 bg-purple-50/80 dark:bg-purple-950/40 text-purple-900 dark:text-purple-100 shadow-md ring-2 ring-purple-500/20'
+                    : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] text-[var(--color-text)]'
+                }`}
+              >
+                <div className="flex items-start gap-3">
+                  <div className={`p-2.5 rounded-xl ${track === 'college' ? 'bg-purple-600 text-white' : 'bg-[var(--color-surface)] text-purple-500 border border-[var(--color-border)]'}`}>
+                    <GraduationCap className="w-5 h-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-black">College Student</span>
+                      {track === 'college' && (
+                        <CheckCircle2 className="w-4 h-4 text-purple-600 dark:text-purple-400 shrink-0" />
+                      )}
+                    </div>
+                    <p className="text-xs font-semibold text-purple-600 dark:text-purple-300 mt-0.5">
+                      Engineering & Tech Streams
+                    </p>
+                    <p className="text-[11px] text-[var(--color-text-muted)] mt-1">
+                      CSE, Mech, Civil, ECE, EEE & Placements
+                    </p>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+
           {errorMsg && (
             <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-xs text-red-600 dark:text-red-400 font-medium text-center">
               {errorMsg}
@@ -238,7 +317,7 @@ export function AuthPage() {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 pt-1">
             {mode === 'signup' && (
               <div>
                 <label className="block text-xs font-bold text-[var(--color-text)] mb-1.5">
@@ -292,51 +371,18 @@ export function AuthPage() {
               </div>
             </div>
 
-            {/* Track & Academic Profile Selection (for Signup) */}
+            {/* Dynamic Fields for Sign Up based on Active Category Card */}
             {mode === 'signup' && (
-              <div className="space-y-4 pt-2 border-t border-[var(--color-border)]">
-                {/* Track Selector */}
-                <div>
-                  <label className="block text-xs font-bold text-[var(--color-text)] mb-1.5">
-                    Select Track
-                  </label>
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => handleTrackChange('school')}
-                      className={`flex items-center justify-center gap-2 p-2.5 rounded-xl text-xs font-bold border transition-all ${
-                        track === 'school'
-                          ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 shadow-xs'
-                          : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
-                      }`}
-                    >
-                      <School className="w-4 h-4" />
-                      <span>School (Class 9–12)</span>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleTrackChange('college')}
-                      className={`flex items-center justify-center gap-2 p-2.5 rounded-xl text-xs font-bold border transition-all ${
-                        track === 'college'
-                          ? 'border-purple-500 bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 shadow-xs'
-                          : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
-                      }`}
-                    >
-                      <GraduationCap className="w-4 h-4" />
-                      <span>College Track</span>
-                    </button>
-                  </div>
-                </div>
-
-                {/* --- 1. SCHOOL TRACK: Class Selection strictly Class 9, 10, 11, 12 --- */}
+              <div className="pt-2 border-t border-[var(--color-border)] space-y-3.5">
+                {/* 1. School Student Fields: Class 9, 10, 11, 12 */}
                 {track === 'school' && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
                       <label className="block text-xs font-bold text-[var(--color-text)]">
-                        Select Your Class <span className="text-[var(--color-accent)]">*</span>
+                        Select Your School Class <span className="text-blue-500">*</span>
                       </label>
-                      <span className="text-[10px] font-semibold text-[var(--color-text-muted)]">
-                        CBSE / State Curriculum
+                      <span className="text-[10px] font-semibold text-blue-600 dark:text-blue-400">
+                        Class 9th – 12th
                       </span>
                     </div>
 
@@ -354,8 +400,8 @@ export function AuthPage() {
                             }}
                             className={`flex flex-col items-center justify-center p-3 rounded-2xl border text-center transition-all ${
                               isSelected
-                                ? 'border-[var(--color-accent)] bg-[var(--color-accent-subtle)] text-[var(--color-accent)] shadow-md ring-2 ring-[var(--color-accent)]/20'
-                                : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-[var(--color-text)] hover:border-[var(--color-accent)]'
+                                ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-300 shadow-md ring-2 ring-blue-500/20'
+                                : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-[var(--color-text)] hover:border-blue-400'
                             }`}
                           >
                             <span className="text-lg font-black">{cls}th</span>
@@ -416,7 +462,7 @@ export function AuthPage() {
                   </div>
                 )}
 
-                {/* --- 2. COLLEGE TRACK: Stream Dropdown, Custom Other input, and Year Selection --- */}
+                {/* 2. College Student Fields: Stream Dropdown, Custom Other Input, Year of Study */}
                 {track === 'college' && (
                   <div className="space-y-3.5">
                     {/* Stream / Branch Dropdown */}
@@ -499,9 +545,9 @@ export function AuthPage() {
               type="submit"
               disabled={loading}
               className={`w-full py-3 px-4 rounded-xl text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 mt-4 ${
-                track === 'college' && mode === 'signup'
+                track === 'college'
                   ? 'bg-purple-600 hover:bg-purple-700 shadow-purple-500/25'
-                  : 'bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] shadow-indigo-500/25'
+                  : 'bg-blue-600 hover:bg-blue-700 shadow-blue-500/25'
               }`}
             >
               <span>
@@ -509,13 +555,15 @@ export function AuthPage() {
                   ? track === 'school'
                     ? `Sign Up as Class ${selectedClass}th Student`
                     : `Sign Up as College Student (${effectiveCollegeBranch.length > 25 ? effectiveCollegeBranch.slice(0, 22) + '...' : effectiveCollegeBranch})`
-                  : 'Sign In to Dashboard'}
+                  : track === 'school'
+                  ? 'Sign In as School Student'
+                  : 'Sign In as College Student'}
               </span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
-          {/* Quick 1-Click Demo Profiles (Toggleable between School & College) */}
+          {/* Quick 1-Click Demo Profiles (Synced with active track card) */}
           <div className="pt-4 border-t border-[var(--color-border)] space-y-3">
             <div className="flex items-center justify-between">
               <span className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
