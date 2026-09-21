@@ -15,10 +15,15 @@ import {
   Building2,
   Palette,
   ArrowLeft,
+  ChevronDown,
+  Layers,
+  Cpu,
 } from 'lucide-react';
 import {
   useAuth,
-  DEMO_PROFILES,
+  SCHOOL_DEMO_PROFILES,
+  COLLEGE_DEMO_PROFILES,
+  COLLEGE_BRANCH_OPTIONS,
   type SchoolClassLevel,
   type UserProfile,
 } from '@core/auth';
@@ -35,10 +40,27 @@ export function AuthPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [track, setTrack] = useState<'school' | 'college'>('school');
+  
+  // School state
   const [selectedClass, setSelectedClass] = useState<SchoolClassLevel>('10');
   const [selectedStream, setSelectedStream] = useState<'science' | 'commerce' | 'arts' | 'general'>('general');
+  
+  // College state
+  const [selectedCollegeBranch, setSelectedCollegeBranch] = useState<string>('Computer Science and Engineering (CSE)');
+  const [customBranch, setCustomBranch] = useState('');
+  const [collegeYear, setCollegeYear] = useState<string>('3rd Year');
+
+  // Demo active tab
+  const [demoTab, setDemoTab] = useState<'school' | 'college'>('school');
+
   const [errorMsg, setErrorMsg] = useState('');
   const [loading, setLoading] = useState(false);
+
+  // Sync demo tab with track selector on change
+  const handleTrackChange = (newTrack: 'school' | 'college') => {
+    setTrack(newTrack);
+    setDemoTab(newTrack);
+  };
 
   // If already logged in, show logged-in card or let them go to dashboard
   if (user) {
@@ -54,7 +76,9 @@ export function AuthPage() {
             </h2>
             <p className="text-xs text-[var(--color-text-muted)]">
               Logged in as <strong className="text-[var(--color-text)]">{user.email}</strong> •{' '}
-              {user.track === 'school' ? `Class ${user.classLevel}th` : 'College Track'}
+              {user.track === 'school'
+                ? `Class ${user.classLevel}th Student`
+                : `${user.collegeBranch || 'College Track'}${user.collegeYear ? ` (${user.collegeYear})` : ''}`}
             </p>
           </div>
 
@@ -79,6 +103,11 @@ export function AuthPage() {
     );
   }
 
+  const effectiveCollegeBranch =
+    selectedCollegeBranch === 'Other'
+      ? customBranch.trim() || 'Custom Technical Stream'
+      : selectedCollegeBranch;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
@@ -98,13 +127,21 @@ export function AuthPage() {
           return;
         }
 
+        if (track === 'college' && selectedCollegeBranch === 'Other' && !customBranch.trim()) {
+          setErrorMsg('Please enter your custom degree or branch name.');
+          setLoading(false);
+          return;
+        }
+
         signup({
           name: name.trim(),
           email: email.trim().toLowerCase(),
           track,
           classLevel: track === 'school' ? selectedClass : undefined,
           stream: track === 'school' && (selectedClass === '11' || selectedClass === '12') ? selectedStream : 'general',
-          avatar: track === 'school' ? '👨‍🎓' : '🎓',
+          collegeBranch: track === 'college' ? effectiveCollegeBranch : undefined,
+          collegeYear: track === 'college' ? collegeYear : undefined,
+          avatar: track === 'school' ? '👨‍🎓' : '👨‍💻',
         });
       } else {
         login(email.trim().toLowerCase(), password);
@@ -157,7 +194,7 @@ export function AuthPage() {
             </h1>
             <p className="text-xs text-[var(--color-text-muted)]">
               {mode === 'signup'
-                ? 'Join precision curriculum intelligence & track your mastery across classes.'
+                ? 'Join precision curriculum intelligence & track your mastery across school & college tracks.'
                 : 'Sign in to access your personal study planner, FSRS review queue & analytics.'}
             </p>
           </div>
@@ -190,7 +227,7 @@ export function AuthPage() {
                   : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
               }`}
             >
-              Sign Up (Class 9–12)
+              Sign Up
             </button>
           </div>
 
@@ -212,7 +249,7 @@ export function AuthPage() {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Aarav Sharma"
+                    placeholder={track === 'school' ? 'e.g. Aarav Sharma' : 'e.g. Rahul Mehta'}
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[var(--color-surface-subtle)] border border-[var(--color-border)] text-xs text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-all"
@@ -255,7 +292,7 @@ export function AuthPage() {
               </div>
             </div>
 
-            {/* Track & Class Selection (for Signup) */}
+            {/* Track & Academic Profile Selection (for Signup) */}
             {mode === 'signup' && (
               <div className="space-y-4 pt-2 border-t border-[var(--color-border)]">
                 {/* Track Selector */}
@@ -266,7 +303,7 @@ export function AuthPage() {
                   <div className="grid grid-cols-2 gap-2">
                     <button
                       type="button"
-                      onClick={() => setTrack('school')}
+                      onClick={() => handleTrackChange('school')}
                       className={`flex items-center justify-center gap-2 p-2.5 rounded-xl text-xs font-bold border transition-all ${
                         track === 'school'
                           ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/50 text-blue-600 dark:text-blue-400 shadow-xs'
@@ -278,7 +315,7 @@ export function AuthPage() {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setTrack('college')}
+                      onClick={() => handleTrackChange('college')}
                       className={`flex items-center justify-center gap-2 p-2.5 rounded-xl text-xs font-bold border transition-all ${
                         track === 'college'
                           ? 'border-purple-500 bg-purple-50 dark:bg-purple-950/50 text-purple-600 dark:text-purple-400 shadow-xs'
@@ -291,7 +328,7 @@ export function AuthPage() {
                   </div>
                 </div>
 
-                {/* Class Selection — strictly Class 9, 10, 11, 12 */}
+                {/* --- 1. SCHOOL TRACK: Class Selection strictly Class 9, 10, 11, 12 --- */}
                 {track === 'school' && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
@@ -378,6 +415,82 @@ export function AuthPage() {
                     )}
                   </div>
                 )}
+
+                {/* --- 2. COLLEGE TRACK: Stream Dropdown, Custom Other input, and Year Selection --- */}
+                {track === 'college' && (
+                  <div className="space-y-3.5">
+                    {/* Stream / Branch Dropdown */}
+                    <div>
+                      <div className="flex items-center justify-between mb-1.5">
+                        <label className="block text-xs font-bold text-[var(--color-text)]">
+                          Choose Stream / Engineering Branch <span className="text-purple-500">*</span>
+                        </label>
+                        <span className="text-[10px] font-semibold text-purple-600 dark:text-purple-400">
+                          Degree & Placements
+                        </span>
+                      </div>
+                      
+                      <div className="relative">
+                        <Cpu className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)] pointer-events-none" />
+                        <select
+                          value={selectedCollegeBranch}
+                          onChange={(e) => setSelectedCollegeBranch(e.target.value)}
+                          className="w-full pl-10 pr-8 py-2.5 rounded-xl bg-[var(--color-surface-subtle)] border border-[var(--color-border)] text-xs font-medium text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all cursor-pointer appearance-none"
+                        >
+                          {COLLEGE_BRANCH_OPTIONS.map((branch) => (
+                            <option key={branch} value={branch} className="bg-[var(--color-surface)] text-[var(--color-text)]">
+                              {branch}
+                            </option>
+                          ))}
+                        </select>
+                        <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)] pointer-events-none" />
+                      </div>
+                    </div>
+
+                    {/* Custom Input Field when "Other" is selected */}
+                    {selectedCollegeBranch === 'Other' && (
+                      <div className="p-3 rounded-2xl bg-purple-50/50 dark:bg-purple-950/30 border border-purple-200 dark:border-purple-800/40 space-y-1.5 animate-in fade-in duration-200">
+                        <label className="block text-xs font-bold text-purple-700 dark:text-purple-300">
+                          Enter Your Degree / Branch Name <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          required
+                          placeholder="e.g. BCA, MCA, AI & Data Science, Chemical Engg, B.Sc IT..."
+                          value={customBranch}
+                          onChange={(e) => setCustomBranch(e.target.value)}
+                          className="w-full px-3.5 py-2 rounded-xl bg-[var(--color-surface)] border border-purple-300 dark:border-purple-700 text-xs text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all placeholder:text-[var(--color-text-muted)]"
+                        />
+                        <p className="text-[10px] text-[var(--color-text-muted)]">
+                          Type your custom specialization to personalize your placement and interview modules.
+                        </p>
+                      </div>
+                    )}
+
+                    {/* College Year Selection */}
+                    <div>
+                      <label className="block text-xs font-bold text-[var(--color-text)] mb-1.5">
+                        Year of Study
+                      </label>
+                      <div className="grid grid-cols-4 gap-2">
+                        {['1st Year', '2nd Year', '3rd Year', '4th Year'].map((yr) => (
+                          <button
+                            key={yr}
+                            type="button"
+                            onClick={() => setCollegeYear(yr)}
+                            className={`py-2 px-1 rounded-xl text-xs font-bold border transition-all text-center ${
+                              collegeYear === yr
+                                ? 'border-purple-500 bg-purple-600 text-white shadow-xs'
+                                : 'border-[var(--color-border)] bg-[var(--color-surface-subtle)] text-[var(--color-text)] hover:border-purple-400'
+                            }`}
+                          >
+                            {yr}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
 
@@ -385,47 +498,110 @@ export function AuthPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 rounded-xl bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white text-xs font-bold transition-all shadow-md shadow-indigo-500/25 flex items-center justify-center gap-2 mt-4"
+              className={`w-full py-3 px-4 rounded-xl text-white text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 mt-4 ${
+                track === 'college' && mode === 'signup'
+                  ? 'bg-purple-600 hover:bg-purple-700 shadow-purple-500/25'
+                  : 'bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] shadow-indigo-500/25'
+              }`}
             >
-              <span>{mode === 'signup' ? `Sign Up as Class ${selectedClass}th Student` : 'Sign In to Dashboard'}</span>
+              <span>
+                {mode === 'signup'
+                  ? track === 'school'
+                    ? `Sign Up as Class ${selectedClass}th Student`
+                    : `Sign Up as College Student (${effectiveCollegeBranch.length > 25 ? effectiveCollegeBranch.slice(0, 22) + '...' : effectiveCollegeBranch})`
+                  : 'Sign In to Dashboard'}
+              </span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
-          {/* Quick 1-Click Demo Profiles */}
-          <div className="pt-4 border-t border-[var(--color-border)] space-y-2.5">
+          {/* Quick 1-Click Demo Profiles (Toggleable between School & College) */}
+          <div className="pt-4 border-t border-[var(--color-border)] space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-[var(--color-text-muted)] uppercase tracking-wider">
                 ⚡ Quick 1-Click Demo Logins:
               </span>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {DEMO_PROFILES.map((profile) => (
+              {/* Tab selector for demo accounts */}
+              <div className="flex items-center gap-1 p-0.5 rounded-lg bg-[var(--color-surface-subtle)] border border-[var(--color-border)]">
                 <button
-                  key={profile.id}
                   type="button"
-                  onClick={() => handleDemoLogin(profile)}
-                  className="p-2.5 rounded-xl bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] hover:border-[var(--color-accent)] text-left transition-all group"
+                  onClick={() => setDemoTab('school')}
+                  className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
+                    demoTab === 'school'
+                      ? 'bg-blue-600 text-white shadow-xs'
+                      : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+                  }`}
                 >
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-sm">{profile.avatar}</span>
-                    <span className="text-xs font-bold text-[var(--color-text)] group-hover:text-[var(--color-accent)]">
-                      Class {profile.classLevel}th
-                    </span>
-                  </div>
-                  <p className="text-[10px] text-[var(--color-text-muted)] truncate mt-0.5">
-                    {profile.name}
-                  </p>
+                  School (9–12)
                 </button>
-              ))}
+                <button
+                  type="button"
+                  onClick={() => setDemoTab('college')}
+                  className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
+                    demoTab === 'college'
+                      ? 'bg-purple-600 text-white shadow-xs'
+                      : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+                  }`}
+                >
+                  College (CSE/ECE/Mech...)
+                </button>
+              </div>
             </div>
+
+            {/* School Demos */}
+            {demoTab === 'school' ? (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {SCHOOL_DEMO_PROFILES.map((profile) => (
+                  <button
+                    key={profile.id}
+                    type="button"
+                    onClick={() => handleDemoLogin(profile)}
+                    className="p-2.5 rounded-xl bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] hover:border-blue-500 text-left transition-all group"
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-sm">{profile.avatar}</span>
+                      <span className="text-xs font-bold text-[var(--color-text)] group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                        Class {profile.classLevel}th
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-[var(--color-text-muted)] truncate mt-0.5">
+                      {profile.name}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              /* College Demos */
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                {COLLEGE_DEMO_PROFILES.map((profile) => (
+                  <button
+                    key={profile.id}
+                    type="button"
+                    onClick={() => handleDemoLogin(profile)}
+                    className="p-2.5 rounded-xl bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] hover:border-purple-500 text-left transition-all group"
+                  >
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-sm">{profile.avatar}</span>
+                      <span className="text-xs font-bold text-[var(--color-text)] group-hover:text-purple-600 dark:group-hover:text-purple-400 truncate">
+                        {profile.collegeBranch?.includes('(')
+                          ? profile.collegeBranch.match(/\(([^)]+)\)/)?.[1] || profile.collegeBranch.split(' ')[0]
+                          : profile.collegeBranch?.split(' ')[0]}
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-[var(--color-text-muted)] truncate mt-0.5">
+                      {profile.name} • {profile.collegeYear}
+                    </p>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
 
       {/* Footer */}
       <footer className="p-4 text-center text-xs text-[var(--color-text-muted)] border-t border-[var(--color-border)]">
-        © 2026 Ai EduEngine • CBSE Class 9, 10, 11, 12 & Undergraduate Success
+        © 2026 Ai EduEngine • CBSE Class 9, 10, 11, 12 & Undergraduate Engineering Programs
       </footer>
     </div>
   );

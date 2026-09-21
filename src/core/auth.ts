@@ -4,6 +4,17 @@ import type { Track } from './types';
 
 export type SchoolClassLevel = '9' | '10' | '11' | '12';
 
+export const COLLEGE_BRANCH_OPTIONS = [
+  'Computer Science and Engineering (CSE)',
+  'Mechanical Engineering',
+  'Civil Engineering',
+  'Electronics and Communication Engineering (ECE)',
+  'Electrical and Electronics Engineering (EEE)',
+  'Other',
+] as const;
+
+export type CollegeBranch = typeof COLLEGE_BRANCH_OPTIONS[number] | string;
+
 export interface UserProfile {
   id: string;
   name: string;
@@ -11,6 +22,8 @@ export interface UserProfile {
   track: Track;
   classLevel?: SchoolClassLevel;
   stream?: 'science' | 'commerce' | 'arts' | 'general';
+  collegeBranch?: string;
+  collegeYear?: '1st Year' | '2nd Year' | '3rd Year' | '4th Year' | string;
   avatar?: string;
   createdAt: number;
 }
@@ -19,7 +32,7 @@ const AUTH_STORAGE_KEY = 'ai_edu_current_user';
 const USERS_DB_KEY = 'ai_edu_registered_users';
 
 // Demo Default Profiles for quick testing
-export const DEMO_PROFILES: UserProfile[] = [
+export const SCHOOL_DEMO_PROFILES: UserProfile[] = [
   {
     id: 'demo-9',
     name: 'Aarav Sharma',
@@ -60,6 +73,54 @@ export const DEMO_PROFILES: UserProfile[] = [
     avatar: '👩‍🔬',
     createdAt: Date.now(),
   },
+];
+
+export const COLLEGE_DEMO_PROFILES: UserProfile[] = [
+  {
+    id: 'demo-cse',
+    name: 'Rahul Mehta',
+    email: 'rahul.cse@demo.edu',
+    track: 'college',
+    collegeBranch: 'Computer Science and Engineering (CSE)',
+    collegeYear: '3rd Year',
+    avatar: '👨‍💻',
+    createdAt: Date.now(),
+  },
+  {
+    id: 'demo-ece',
+    name: 'Sneha Reddy',
+    email: 'sneha.ece@demo.edu',
+    track: 'college',
+    collegeBranch: 'Electronics and Communication Engineering (ECE)',
+    collegeYear: '2nd Year',
+    avatar: '👩‍💻',
+    createdAt: Date.now(),
+  },
+  {
+    id: 'demo-mech',
+    name: 'Vikram Singh',
+    email: 'vikram.mech@demo.edu',
+    track: 'college',
+    collegeBranch: 'Mechanical Engineering',
+    collegeYear: '4th Year',
+    avatar: '⚙️',
+    createdAt: Date.now(),
+  },
+  {
+    id: 'demo-civil',
+    name: 'Pooja Sharma',
+    email: 'pooja.civil@demo.edu',
+    track: 'college',
+    collegeBranch: 'Civil Engineering',
+    collegeYear: '1st Year',
+    avatar: '🏗️',
+    createdAt: Date.now(),
+  },
+];
+
+export const DEMO_PROFILES: UserProfile[] = [
+  ...SCHOOL_DEMO_PROFILES,
+  ...COLLEGE_DEMO_PROFILES,
 ];
 
 export function getStoredUser(): UserProfile | null {
@@ -151,6 +212,18 @@ export function updateClassLevel(newClass: SchoolClassLevel, newStream?: 'scienc
   }
 }
 
+export function updateCollegeBranch(newBranch: string, newYear?: string) {
+  const current = getStoredUser();
+  if (current) {
+    const updated: UserProfile = {
+      ...current,
+      collegeBranch: newBranch,
+      collegeYear: newYear || current.collegeYear,
+    };
+    setStoredUser(updated);
+  }
+}
+
 export function useAuth() {
   const [user, setUser] = useState<UserProfile | null>(() => getStoredUser());
 
@@ -175,5 +248,6 @@ export function useAuth() {
     signup: registerUser,
     logout: logoutUser,
     updateClass: updateClassLevel,
+    updateBranch: updateCollegeBranch,
   };
 }

@@ -125,6 +125,14 @@ export function LandingPage(props: LandingPageProps) {
                   <span>Class {user.classLevel}th Student {user.stream && user.stream !== 'general' ? `• ${user.stream.toUpperCase()}` : ''}</span>
                 </span>
               ) : null}
+              {user?.track === 'college' ? (
+                <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-purple-500/20 text-purple-200 border border-purple-400/30">
+                  <GraduationCap className="w-3.5 h-3.5 text-purple-300" />
+                  <span>
+                    {user.collegeBranch || 'College Scholar'} {user.collegeYear ? `• ${user.collegeYear}` : ''}
+                  </span>
+                </span>
+              ) : null}
               <p className="text-sm sm:text-base text-slate-300 font-normal leading-relaxed max-w-2xl">
                 High-yield curriculum intelligence, forensic exam marking schemes, and precision step-by-step walkthroughs for CBSE Class 9–12 and engineering placements.
               </p>

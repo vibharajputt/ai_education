@@ -227,6 +227,13 @@ export function TopBar() {
                       Class {user.classLevel}th
                     </span>
                   )}
+                  {user.track === 'college' && (
+                    <span className="text-[10px] font-bold text-purple-600 dark:text-purple-400 truncate max-w-[100px]">
+                      {user.collegeBranch?.includes('(')
+                        ? user.collegeBranch.match(/\(([^)]+)\)/)?.[1] || user.collegeBranch.split(' ')[0]
+                        : user.collegeBranch || 'College Track'}
+                    </span>
+                  )}
                 </div>
                 <ChevronDown className="w-3.5 h-3.5 text-[var(--color-text-muted)]" />
               </button>
@@ -237,14 +244,24 @@ export function TopBar() {
                   <div className="p-2 rounded-xl bg-[var(--color-surface-subtle)] border border-[var(--color-border)]">
                     <p className="text-xs font-bold text-[var(--color-text)]">{user.name}</p>
                     <p className="text-[11px] text-[var(--color-text-muted)] truncate">{user.email}</p>
-                    <div className="mt-1 flex items-center gap-1.5">
+                    <div className="mt-1 flex flex-wrap items-center gap-1.5">
                       <span className="text-[10px] uppercase font-bold px-2 py-0.5 rounded bg-[var(--color-accent-subtle)] text-[var(--color-accent)]">
                         {user.track === 'school' ? `Class ${user.classLevel || '10'}th` : 'College Track'}
                       </span>
+                      {user.track === 'college' && user.collegeYear && (
+                        <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                          {user.collegeYear}
+                        </span>
+                      )}
                     </div>
+                    {user.track === 'college' && user.collegeBranch && (
+                      <p className="text-[10px] font-medium text-[var(--color-text-muted)] mt-1 truncate">
+                        {user.collegeBranch}
+                      </p>
+                    )}
                   </div>
 
-                  {/* Class Switcher (Class 9, 10, 11, 12) */}
+                  {/* Class Switcher (Class 9, 10, 11, 12) for School */}
                   {user.track === 'school' && (
                     <div className="space-y-1.5">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-text-muted)] block px-1">
