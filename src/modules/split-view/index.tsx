@@ -9,6 +9,10 @@ import {
 import { UploadPaperModal } from './components/UploadPaperModal';
 import { MarkdownRenderer } from '@components/MarkdownRenderer';
 import {
+  generateGeminiSolution,
+  type GeminiExplainMode,
+} from '@core/geminiService';
+import {
   Columns,
   ExternalLink,
   Sparkles,
@@ -105,6 +109,15 @@ export function SplitViewModule() {
   const [doubtInput, setDoubtInput] = useState('');
   const [isAiTyping, setIsAiTyping] = useState(false);
 
+  // Active Explanation Mode & Cache
+  const [activeExplainTab, setActiveExplainTab] = useState<
+    'official' | 'hinglish' | 'example' | 'steps' | 'pitfalls'
+  >('official');
+  const [aiExplanationsCache, setAiExplanationsCache] = useState<
+    Record<string, string>
+  >({});
+  const [isLoadingAiTab, setIsLoadingAiTab] = useState(false);
+
   // Filtered questions in active paper
   const filteredQuestions = useMemo(() => {
     return activePaper.questions.filter((q) => {
@@ -128,6 +141,7 @@ export function SplitViewModule() {
   const handleOpenSolution = (questionId: string) => {
     setActiveQuestionId(questionId);
     setIsSplitOpen(true);
+    setActiveExplainTab('official');
     setDoubtMessages([]);
     // Smoothly scroll active question into view on left pane
     setTimeout(() => {
@@ -142,6 +156,7 @@ export function SplitViewModule() {
     if (activeIndex < activePaper.questions.length - 1) {
       const nextId = activePaper.questions[activeIndex + 1].id;
       setActiveQuestionId(nextId);
+      setActiveExplainTab('official');
       setDoubtMessages([]);
       document.getElementById(`q-${nextId}`)?.scrollIntoView({
         behavior: 'smooth',
@@ -154,6 +169,7 @@ export function SplitViewModule() {
     if (activeIndex > 0) {
       const prevId = activePaper.questions[activeIndex - 1].id;
       setActiveQuestionId(prevId);
+      setActiveExplainTab('official');
       setDoubtMessages([]);
       document.getElementById(`q-${prevId}`)?.scrollIntoView({
         behavior: 'smooth',
@@ -169,26 +185,70 @@ export function SplitViewModule() {
     setIsSplitOpen(true);
   };
 
-  const handleSendDoubt = (e: React.FormEvent) => {
+  // Switch Explanation Tab with Gemini AI on demand
+  const handleSelectExplainTab = async (
+    tab: 'official' | 'hinglish' | 'example' | 'steps' | 'pitfalls'
+  ) => {
+    setActiveExplainTab(tab);
+    if (tab === 'official' || !activeQuestion) return;
+
+    const cacheKey = `${activeQuestion.id}_${tab}`;
+    if (aiExplanationsCache[cacheKey]) return;
+
+    setIsLoadingAiTab(true);
+    try {
+      const result = await generateGeminiSolution({
+        questionText: activeQuestion.questionText,
+        subject: activePaper.subject,
+        chapter: activeQuestion.chapter,
+        marks: activeQuestion.marks,
+        modelAnswer: activeQuestion.modelAnswer,
+        mode: tab as GeminiExplainMode,
+      });
+      setAiExplanationsCache((prev) => ({
+        ...prev,
+        [cacheKey]: result,
+      }));
+    } catch (err) {
+      console.error('Failed to generate AI explanation:', err);
+    } finally {
+      setIsLoadingAiTab(false);
+    }
+  };
+
+  // Ask AI Doubt with Live Gemini Integration
+  const handleSendDoubt = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!doubtInput.trim()) return;
+    if (!doubtInput.trim() || !activeQuestion) return;
 
     const userText = doubtInput.trim();
     setDoubtMessages((prev) => [...prev, { sender: 'user', text: userText }]);
     setDoubtInput('');
     setIsAiTyping(true);
 
-    setTimeout(() => {
-      let aiResponse = `According to CBSE Marking Scheme for **${activeQuestion?.chapter}**: Keep in mind that evaluators award step-marks for stating the initial formula and correct SI units. ${
-        activeQuestion?.examinerPitfall ||
-        'Avoid skipping intermediate algebraic steps.'
-      }`;
-      if (userText.toLowerCase().includes('why') || userText.toLowerCase().includes('how')) {
-        aiResponse = `Great doubt! In this question (${activeQuestion?.competency}), CBSE tests your conceptual mastery. ${activeQuestion?.aiExplanation}`;
-      }
+    try {
+      const aiResponse = await generateGeminiSolution({
+        questionText: activeQuestion.questionText,
+        subject: activePaper.subject,
+        chapter: activeQuestion.chapter,
+        marks: activeQuestion.marks,
+        modelAnswer: activeQuestion.modelAnswer,
+        mode: 'ask',
+        userPrompt: userText,
+      });
+
       setDoubtMessages((prev) => [...prev, { sender: 'ai', text: aiResponse }]);
+    } catch (err) {
+      setDoubtMessages((prev) => [
+        ...prev,
+        {
+          sender: 'ai',
+          text: `**CBSE Quick Answer:** In **${activeQuestion.chapter}**, evaluators check for standard formula definitions, unit consistency, and step-wise intermediate derivations. Check the Step-Wise Mark Distribution above for details!`,
+        },
+      ]);
+    } finally {
       setIsAiTyping(false);
-    }, 600);
+    }
   };
 
   return (
@@ -533,8 +593,128 @@ export function SplitViewModule() {
               </div>
             </div>
 
+            {/* Mode Switcher Tabs (Official, Hinglish, Real-World Example, Steps, Pitfalls) */}
+            <div className="px-4 pt-3 pb-2 border-b border-[var(--color-border)] bg-[var(--color-surface-subtle)] overflow-x-auto flex items-center gap-2">
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-[var(--color-text-muted)] shrink-0 flex items-center gap-1">
+                <Sparkles className="w-3 h-3 text-blue-500" /> Mode:
+              </span>
+
+              <button
+                type="button"
+                onClick={() => handleSelectExplainTab('official')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer flex items-center gap-1.5 ${
+                  activeExplainTab === 'official'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)]'
+                }`}
+              >
+                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Official Scheme</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSelectExplainTab('hinglish')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer flex items-center gap-1.5 ${
+                  activeExplainTab === 'hinglish'
+                    ? 'bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-xs'
+                    : 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)]'
+                }`}
+              >
+                <span>🇮🇳 Hinglish me Samjhao</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSelectExplainTab('example')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer flex items-center gap-1.5 ${
+                  activeExplainTab === 'example'
+                    ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-xs'
+                    : 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)]'
+                }`}
+              >
+                <span>💡 Example se Samjhao</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSelectExplainTab('steps')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer flex items-center gap-1.5 ${
+                  activeExplainTab === 'steps'
+                    ? 'bg-blue-600 text-white shadow-xs'
+                    : 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)]'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Step Marks</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => handleSelectExplainTab('pitfalls')}
+                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all shrink-0 cursor-pointer flex items-center gap-1.5 ${
+                  activeExplainTab === 'pitfalls'
+                    ? 'bg-amber-600 text-white shadow-xs'
+                    : 'bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)] hover:bg-[var(--color-surface-hover)]'
+                }`}
+              >
+                <HelpCircle className="w-3.5 h-3.5" />
+                <span>Common Mistakes</span>
+              </button>
+            </div>
+
             {/* Solution Scroll Content */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
+              {/* Dynamic AI Tab Content if non-official mode is active */}
+              {activeExplainTab !== 'official' && (
+                <div className="p-5 rounded-2xl bg-[var(--color-surface)] border-2 border-indigo-500/30 space-y-3 shadow-md animate-in fade-in duration-200">
+                  <div className="flex items-center justify-between border-b border-[var(--color-border)] pb-2.5">
+                    <div className="flex items-center gap-2">
+                      <div className="p-1 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                        <Sparkles className="w-4 h-4 animate-pulse" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs sm:text-sm font-black text-[var(--color-text)]">
+                          {activeExplainTab === 'hinglish' && '🇮🇳 Gemini Hinglish Conceptual Explanation'}
+                          {activeExplainTab === 'example' && '💡 Real-World Visual Analogy & Example'}
+                          {activeExplainTab === 'steps' && '📝 Step-Wise CBSE Marking Breakdown'}
+                          {activeExplainTab === 'pitfalls' && '⚠️ Examiner Pitfalls & Student Blunders'}
+                        </h4>
+                        <p className="text-[10px] text-[var(--color-text-muted)]">
+                          Powered by Google Gemini 1.5 Flash • Tailored for Class {selectedClass}th
+                        </p>
+                      </div>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => handleSelectExplainTab('official')}
+                      className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-bold"
+                    >
+                      View Official Scheme
+                    </button>
+                  </div>
+
+                  {isLoadingAiTab ? (
+                    <div className="py-8 flex flex-col items-center justify-center gap-3 text-center">
+                      <div className="w-8 h-8 border-3 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+                      <p className="text-xs font-bold text-[var(--color-text-muted)]">
+                        Gemini AI is generating high-accuracy pedagogical explanation...
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="text-xs sm:text-sm text-[var(--color-text)] leading-relaxed prose dark:prose-invert max-w-none">
+                      <MarkdownRenderer
+                        content={
+                          aiExplanationsCache[`${activeQuestion.id}_${activeExplainTab}`] ||
+                          'Generating explanation...'
+                        }
+                      />
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* 1. Official CBSE Model Answer (Green Card) */}
               <div className="p-5 rounded-2xl bg-[var(--color-surface)] border border-emerald-500/30 space-y-3 shadow-xs">
                 <div className="flex items-center justify-between">
@@ -651,20 +831,46 @@ export function SplitViewModule() {
                   </div>
                 )}
 
-                <form onSubmit={handleSendDoubt} className="flex gap-2">
+                {/* Quick 1-Click Doubt Prompts */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  {[
+                    '🇮🇳 Hinglish me samjhao',
+                    '💡 Example se samjhao',
+                    '⚠️ Common mistakes kya hoti h?',
+                    '📝 Step marking kaise milti h?',
+                  ].map((quickPrompt, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      disabled={isAiTyping}
+                      onClick={() => {
+                        setDoubtInput(quickPrompt);
+                      }}
+                      className="px-2.5 py-1 rounded-lg text-[11px] font-medium bg-[var(--color-surface-subtle)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] transition-colors cursor-pointer"
+                    >
+                      {quickPrompt}
+                    </button>
+                  ))}
+                </div>
+
+                <form onSubmit={handleSendDoubt} className="flex gap-2 pt-1">
                   <input
                     type="text"
                     value={doubtInput}
                     onChange={(e) => setDoubtInput(e.target.value)}
-                    placeholder="Have a doubt in this step? Ask here..."
+                    placeholder="Have a doubt? Ask in English or Hinglish (e.g., example se samjhao)..."
                     className="flex-1 px-3.5 py-2 text-xs rounded-xl bg-[var(--color-surface-subtle)] border border-[var(--color-border)] text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <button
                     type="submit"
                     disabled={!doubtInput.trim() || isAiTyping}
-                    className="p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 transition-colors cursor-pointer"
+                    className="p-2 rounded-xl bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 transition-colors cursor-pointer flex items-center justify-center min-w-[36px]"
                   >
-                    <Send className="w-4 h-4" />
+                    {isAiTyping ? (
+                      <Sparkles className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
                   </button>
                 </form>
               </div>
