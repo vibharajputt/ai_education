@@ -1,0 +1,114 @@
+{
+  "collection": {
+    "id": "viva-practice-col",
+    "title": "Practical Lab Viva Voce Coach",
+    "description": "Comprehensive lab viva examiner questions, expected key phrases, and common student traps.",
+    "scopeLabel": "4 Board Practical Viva Scenarios — Physics & Chemistry Class 12",
+    "filters": {
+      "subject": [
+        "Physics",
+        "Chemistry"
+      ],
+      "difficulty": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "viva-phy-001",
+      "subject": "Physics",
+      "chapter": "Current Electricity Practicals",
+      "concepts": [
+        "Metre Bridge",
+        "Null Point Sensitivity"
+      ],
+      "body": "Why is the null point in a metre bridge experiment preferred near the middle (50 cm mark) of the wire?",
+      "images": [],
+      "tags": [
+        "practicals",
+        "metre-bridge",
+        "galvanometer"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "examinerIntent": "Tests understanding of Wheatstone bridge sensitivity and percentage error minimisation.",
+        "idealAnswer": "The sensitivity of a Wheatstone bridge is maximum when all four resistances are of comparable magnitude (ratio arms equal). Near 50 cm, percentage error in measurement of lengths l and (100 - l) is minimum.",
+        "examinerTrap": "Students often forget to mention end resistance and fractional error."
+      },
+      "kind": "viva",
+      "track": "school"
+    },
+    {
+      "id": "viva-phy-002",
+      "subject": "Physics",
+      "chapter": "Optics Practicals",
+      "concepts": [
+        "Convex Lens",
+        "Parallax Removal"
+      ],
+      "body": "What is parallax in optical bench experiments and how do you remove it?",
+      "images": [],
+      "tags": [
+        "optics",
+        "parallax",
+        "focal-length"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "examinerIntent": "Verification of practical alignment technique.",
+        "idealAnswer": "Parallax is the apparent shift in the relative position of two objects viewed from different angles. It is removed when the tips of the object needle and inverted image needle coincide and do not separate upon moving the eye sideways."
+      },
+      "kind": "viva",
+      "track": "school"
+    },
+    {
+      "id": "viva-chem-001",
+      "subject": "Chemistry",
+      "chapter": "Volumetric Analysis",
+      "concepts": [
+        "KMnO4 Titration",
+        "Redox Indicator"
+      ],
+      "body": "Why is dilute H2SO4 used in KMnO4 vs Oxalic Acid titration instead of HCl or HNO3?",
+      "images": [],
+      "tags": [
+        "titration",
+        "kmno4",
+        "redox"
+      ],
+      "difficulty": "hard",
+      "metadata": {
+        "examinerIntent": "Tests understanding of side redox reactions in volumetric titrations.",
+        "idealAnswer": "Dilute H2SO4 supplies H+ ions without undergoing redox reactions. HCl cannot be used because KMnO4 oxidises Cl- to Cl2 gas. HNO3 cannot be used because it is a strong oxidising agent itself and would oxidise oxalic acid."
+      },
+      "kind": "viva",
+      "track": "school"
+    },
+    {
+      "id": "viva-chem-002",
+      "subject": "Chemistry",
+      "chapter": "Salt Analysis",
+      "concepts": [
+        "Qualitative Analysis",
+        "Group Reagents"
+      ],
+      "body": "Why is concentrated HNO3 added before testing for Group III cations (Fe3+, Al3+, Cr3+)?",
+      "images": [],
+      "tags": [
+        "salt-analysis",
+        "cations",
+        "group-reagents"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "examinerIntent": "Understanding oxidation states in qualitative separation.",
+        "idealAnswer": "In original solution, iron may exist as Fe2+. Concentrated HNO3 oxidises Fe2+ to Fe3+, because Fe(OH)2 is not completely precipitated by NH4OH in the presence of NH4Cl, whereas Fe(OH)3 is completely precipitated."
+      },
+      "kind": "viva",
+      "track": "school"
+    }
+  ]
+}

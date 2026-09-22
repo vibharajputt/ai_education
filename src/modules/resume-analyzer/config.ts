@@ -3,12 +3,12 @@ import type { ModuleConfig } from '@core/registry';
 
 export const resumeAnalyzerConfig: ModuleConfig = {
   id: 'resume-analyzer',
-  title: 'AI Resume & ATS Optimizer',
+  title: 'Resume & ATS Forensic Auditor',
   track: 'college',
   classLevels: [],
   icon: 'FileCheck2',
   tier: 'A',
-  scopeLabel: 'ATS Scoring & Line-by-Line Rewrites',
+  scopeLabel: 'Forensic Resume & ATS Audit with Line-by-Line Rewrites',
   dataSource: 'resume-analyzer.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({

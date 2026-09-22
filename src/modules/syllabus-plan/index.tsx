@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { DocumentUploadZone, type DocumentUploadResult } from '@components/DocumentUploadZone';
 import type { SyllabusUnit, SyllabusPlanResult } from './types';
 import { extractSyllabusUnitsFromText, generateStudyPlan } from './services/planEngine';
@@ -19,7 +20,18 @@ const LS_CURRENT_PLAN = 'syllabus_plan_current_v1';
 
 export function SyllabusPlanModule() {
   const [stage, setStage] = useState<'upload' | 'parameters' | 'schedule'>('upload');
-  const [goal, setGoal] = useState('CBSE Board Exam Mastery & Full Syllabus Revision');
+  const [searchParams] = useSearchParams();
+  const focusConcept = searchParams.get('focus');
+  const [goal, setGoal] = useState(
+    focusConcept ? `Master ${focusConcept} before board exams` : 'CBSE Board Exam Mastery & Full Syllabus Revision'
+  );
+
+  // Update goal if focus param changes (e.g. navigating from SWOT with different concept)
+  useEffect(() => {
+    if (focusConcept) {
+      setGoal(`Master ${focusConcept} before board exams`);
+    }
+  }, [focusConcept]);
   const [deadline, setDeadline] = useState(() => {
     const d = new Date();
     d.setDate(d.getDate() + 30);

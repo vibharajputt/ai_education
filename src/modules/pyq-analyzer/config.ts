@@ -3,13 +3,13 @@ import type { ModuleConfig } from '@core/registry';
 
 export const pyqAnalyzerConfig: ModuleConfig = {
   id: 'pyq-analyzer',
-  title: '10-Yr PYQ Forensic Analyzer',
+  title: 'PYQ Forensic Analyzer',
   track: 'school',
-  classLevels: ['9', '10', '11', '12'],
+  classLevels: ['10'],
   icon: 'TrendingUp',
   tier: 'A',
-  scopeLabel: '2015–2024 Exam Frequency & Heatmaps',
-  dataSource: 'pyq-analyzer.json',
+  scopeLabel: 'Class 10 Science + Maths, 2015-2024, 812 questions',
+  dataSource: 'pyq-10th.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({
       default: m.PyqAnalyzerModule,

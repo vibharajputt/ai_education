@@ -57,4 +57,8 @@ export default defineConfig({
       '@modules': fileURLToPath(new URL('./src/modules', import.meta.url)),
     },
   },
+  // public/ is Vite's default publicDir; declaring it explicitly ensures
+  // that public/content/*.json is always served as /content/*.json in both
+  // `vite dev` and after `vite build` without any extra middleware.
+  publicDir: 'public',
 });

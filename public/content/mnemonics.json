@@ -1,0 +1,134 @@
+{
+  "collection": {
+    "id": "mnemonics-col",
+    "title": "Formula Mnemonics & Memory Anchors",
+    "description": "High-retention memory anchors, acronyms, and visual hooks for physics formulas and chemistry rules.",
+    "scopeLabel": "5 High-Yield STEM Mnemonics — Class 11–12",
+    "filters": {
+      "subject": [
+        "Physics",
+        "Chemistry",
+        "Mathematics"
+      ],
+      "difficulty": [
+        "easy",
+        "medium"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "mnem-chem-001",
+      "subject": "Chemistry",
+      "chapter": "Periodic Table",
+      "concepts": [
+        "Electronegativity Order",
+        "Periodic Trends"
+      ],
+      "body": "**FONClBrISCCH**: Fluorine > Oxygen > Nitrogen > Chlorine > Bromine > Iodine > Sulfur > Carbon > Carbon > Hydrogen. Memory Hook: *\"Phone Call Brought I-S-C-C-H\"*.",
+      "images": [],
+      "tags": [
+        "electronegativity",
+        "periodic-trends",
+        "bonding"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "hook": "Phone Call Brought ISCCH",
+        "application": "Determining bond polarity and hydrogen bonding eligibility (F, O, N only)."
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-phy-001",
+      "subject": "Physics",
+      "chapter": "Electromagnetic Waves",
+      "concepts": [
+        "Electromagnetic Spectrum",
+        "Frequency Order"
+      ],
+      "body": "**R-M-I-V-U-X-G**: Radio > Microwave > Infrared > Visible > Ultraviolet > X-ray > Gamma ray (Increasing Frequency). Hook: *\"Raging Martians Invaded Venus Using X-ray Guns\"*.",
+      "latex": "E = h\\nu = \\frac{hc}{\\lambda}",
+      "images": [],
+      "tags": [
+        "em-waves",
+        "spectrum",
+        "wavelength"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "hook": "Raging Martians Invaded Venus Using X-ray Guns"
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-math-001",
+      "subject": "Mathematics",
+      "chapter": "Trigonometry",
+      "concepts": [
+        "Trigonometric Signs in Quadrants",
+        "CAST Rule"
+      ],
+      "body": "**ASTC (All Silver Tea Cups / All Students Take Calculus)**: Quadrant I: All positive; Quadrant II: Sin & Csc; Quadrant III: Tan & Cot; Quadrant IV: Cos & Sec.",
+      "images": [],
+      "tags": [
+        "trigonometry",
+        "quadrants",
+        "angles"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "hook": "All Silver Tea Cups"
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-chem-002",
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry",
+      "concepts": [
+        "Ortho/Para Directors",
+        "Electrophilic Aromatic Substitution"
+      ],
+      "body": "**EDG = Ortho/Para, EWG = Meta**: Electron Donating Groups direct to Ortho & Para; Electron Withdrawing Groups (containing multiple bonds or positive charge on atom attached to ring) direct to Meta. Exception: Halogens (deactivating but o/p directing).",
+      "images": [],
+      "tags": [
+        "organic-chemistry",
+        "benzene",
+        "directing-groups"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "hook": "Donors Love Outside (Ortho/Para), Withdrawers Stay Middle (Meta)"
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-phy-002",
+      "subject": "Physics",
+      "chapter": "Current Electricity",
+      "concepts": [
+        "Resistor Color Code",
+        "Resistance Value"
+      ],
+      "body": "**BB ROY of Great Britain had a Very Good Wife**: Black (0), Brown (1), Red (2), Orange (3), Yellow (4), Green (5), Blue (6), Violet (7), Grey (8), White (9). Gold (±5%), Silver (±10%).",
+      "latex": "R = (AB \\times 10^C \\pm D)\\,\\Omega",
+      "images": [],
+      "tags": [
+        "resistors",
+        "color-code",
+        "circuits"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "hook": "BB ROY of Great Britain had a Very Good Wife"
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    }
+  ]
+}

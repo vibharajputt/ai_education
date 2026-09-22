@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import type { ContentItem } from '@core/types';
 import { ConceptRanking, getItemYear, getItemMarks } from '../types';
 import { Card } from '@components/Card';
@@ -124,6 +125,14 @@ export function RepeatRankingView({
                     <h3 className="text-sm font-bold text-[var(--color-text)]">
                       {rank.concept}
                     </h3>
+                    {index === 0 && (
+                      <Link
+                        to={`/school/sheet-generator?chapter=${encodeURIComponent(rank.chapter)}&concept=${encodeURIComponent(rank.concept)}`}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-[var(--color-accent)] hover:underline"
+                      >
+                        Generate a worksheet on this →
+                      </Link>
+                    )}
 
                     {isCoreHighYield && (
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">

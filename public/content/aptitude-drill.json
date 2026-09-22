@@ -1,0 +1,68 @@
+{
+  "collection": {
+    "id": "aptitude-drill-col",
+    "title": "Campus Placement Aptitude Drill",
+    "description": "High-speed quantitative aptitude, logical reasoning, and data interpretation practice questions.",
+    "scopeLabel": "2 Aptitude & Reasoning Drills for Placement Exams",
+    "filters": {
+      "subject": [
+        "Quantitative Aptitude",
+        "Logical Reasoning"
+      ],
+      "difficulty": [
+        "easy",
+        "medium"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "apt-quant-001",
+      "subject": "Quantitative Aptitude",
+      "chapter": "Time and Work",
+      "concepts": [
+        "Work Efficiency",
+        "Pipes and Cisterns"
+      ],
+      "body": "A can complete a piece of work in 12 days, and B can complete it in 18 days. If they work on alternate days with A starting on the first day, in how many days will the work be completed?",
+      "images": [],
+      "tags": [
+        "aptitude",
+        "time-and-work",
+        "placements"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "metadata": {
+        "solutionShort": "LCM(12, 18) = 36 units. A does 3 u/day, B does 2 u/day. In 2 days, 5 units done. In 14 days, 35 units done. Remaining 1 unit completed by A in 1/3 day. Total: 14 1/3 days."
+      },
+      "kind": "question",
+      "track": "college"
+    },
+    {
+      "id": "apt-logic-001",
+      "subject": "Logical Reasoning",
+      "chapter": "Blood Relations",
+      "concepts": [
+        "Family Tree",
+        "Coded Relations"
+      ],
+      "body": "Pointing to a photograph of a boy, Suresh said, \"He is the son of the only son of my mother.\" How is Suresh related to that boy?",
+      "images": [],
+      "tags": [
+        "reasoning",
+        "blood-relations",
+        "campus-recruitment"
+      ],
+      "difficulty": "easy",
+      "marks": 1,
+      "questionType": "mcq",
+      "metadata": {
+        "solutionShort": "Mother’s only son = Suresh himself. The boy is the son of Suresh -> Suresh is the Father."
+      },
+      "kind": "question",
+      "track": "college"
+    }
+  ]
+}

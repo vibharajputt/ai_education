@@ -1,0 +1,112 @@
+{
+  "collection": {
+    "id": "flashcards-col",
+    "title": "High-Yield STEM Flashcard Deck",
+    "description": "Spaced repetition flashcards for rapid board exam recall and definition mastery.",
+    "scopeLabel": "4 Active Recall Flashcards across Physics & Chemistry — Class 12",
+    "filters": {
+      "subject": [
+        "Physics",
+        "Chemistry"
+      ],
+      "difficulty": [
+        "easy",
+        "medium"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "fc-phy-001",
+      "subject": "Physics",
+      "chapter": "Current Electricity",
+      "concepts": [
+        "Kirchhoff’s Current Law",
+        "Charge Conservation"
+      ],
+      "body": "What physical conservation principle underlies Kirchhoff’s First Law (Junction Rule)?",
+      "images": [],
+      "tags": [
+        "flashcard",
+        "circuits",
+        "conservation"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "front": "Kirchhoff’s Current Law (KCL) is based on the conservation of which quantity?",
+        "back": "Conservation of Charge ($\\sum I_{\\text{in}} = \\sum I_{\\text{out}}$)."
+      },
+      "kind": "concept",
+      "track": "school"
+    },
+    {
+      "id": "fc-phy-002",
+      "subject": "Physics",
+      "chapter": "Current Electricity",
+      "concepts": [
+        "Kirchhoff’s Voltage Law",
+        "Energy Conservation"
+      ],
+      "body": "What physical conservation principle underlies Kirchhoff’s Second Law (Loop Rule)?",
+      "images": [],
+      "tags": [
+        "flashcard",
+        "circuits",
+        "conservation"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "front": "Kirchhoff’s Voltage Law (KVL) is based on the conservation of which quantity?",
+        "back": "Conservation of Energy ($\\sum \\Delta V = 0$ in a closed loop)."
+      },
+      "kind": "concept",
+      "track": "school"
+    },
+    {
+      "id": "fc-chem-001",
+      "subject": "Chemistry",
+      "chapter": "Solutions",
+      "concepts": [
+        "Raoult’s Law",
+        "Vapour Pressure"
+      ],
+      "body": "State Raoult’s Law for a solution containing volatile liquids.",
+      "latex": "P_A = P_A^\\circ x_A",
+      "images": [],
+      "tags": [
+        "flashcard",
+        "solutions",
+        "raoult"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "front": "State Raoult’s Law for a volatile solute-solvent binary mixture.",
+        "back": "The partial vapour pressure of each component in the solution is directly proportional to its mole fraction: $P_i = P_i^\\circ x_i$."
+      },
+      "kind": "concept",
+      "track": "school"
+    },
+    {
+      "id": "fc-chem-002",
+      "subject": "Chemistry",
+      "chapter": "Chemical Kinetics",
+      "concepts": [
+        "Order vs Molecularity"
+      ],
+      "body": "Can the molecularity of an elementary reaction be zero or a fraction?",
+      "images": [],
+      "tags": [
+        "flashcard",
+        "kinetics",
+        "molecularity"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "front": "Can reaction molecularity be 0, fractional, or negative?",
+        "back": "NO. Molecularity is always a positive integer (1, 2, or 3) representing colliding species in an elementary step. Order of reaction, however, can be 0 or fractional."
+      },
+      "kind": "concept",
+      "track": "school"
+    }
+  ]
+}

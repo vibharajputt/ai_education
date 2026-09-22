@@ -17,7 +17,7 @@ export function Skeleton({
     return (
       <div
         aria-hidden
-        className={`animate-pulse bg-surface-raised rounded ${height} ${className}`}
+        className={`animate-shimmer rounded ${height} ${className}`}
       />
     );
   }
@@ -28,7 +28,7 @@ export function Skeleton({
         <div
           key={i}
           aria-hidden
-          className={`animate-pulse bg-surface-raised rounded ${height} ${
+          className={`animate-shimmer rounded ${height} ${
             i === lines - 1 ? 'w-2/3' : 'w-full'
           }`}
         />

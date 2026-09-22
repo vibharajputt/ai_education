@@ -1,5 +1,5 @@
 // src/modules/quiz/components/QuizSetup.tsx
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import type { QuizMode, QuizConfigState } from '../types';
 import type { Difficulty } from '@core';
 import { Play, Calendar, Zap, Award, Sliders, BookOpen, Clock, CheckCircle2 } from 'lucide-react';
@@ -12,6 +12,16 @@ interface QuizSetupProps {
   totalQuestionsAvailable: number;
 }
 
+type SubjectFilter = 'Both' | 'Science' | 'Mathematics';
+
+const SCIENCE_CHAPTERS = [
+  'Acids, Bases and Salts','Carbon and its Compounds','Chemical Reactions and Equations',
+  'Control and Coordination','Electricity','Heredity and Evolution','How do Organisms Reproduce?',
+  'Life Processes','Light Reflection and Refraction','Magnetic Effects of Electric Current',
+  'Management of Natural Resources','Metals and Non-metals','Our Environment',
+  'Periodic Classification of Elements','Sources of Energy','Human Eye and Colourful World',
+];
+
 export function QuizSetup({
   config,
   availableChapters,
@@ -19,6 +29,15 @@ export function QuizSetup({
   onStart,
   totalQuestionsAvailable,
 }: QuizSetupProps) {
+  const [subjectFilter, setSubjectFilter] = useState<SubjectFilter>('Both');
+
+  const filteredChapters = useMemo(() => {
+    if (subjectFilter === 'Both') return availableChapters;
+    if (subjectFilter === 'Science')
+      return availableChapters.filter((ch) => SCIENCE_CHAPTERS.includes(ch));
+    return availableChapters.filter((ch) => !SCIENCE_CHAPTERS.includes(ch));
+  }, [availableChapters, subjectFilter]);
+
   const modes: Array<{
     id: QuizMode;
     label: string;
@@ -68,31 +87,13 @@ export function QuizSetup({
 
   const handleSelectMode = (mode: QuizMode) => {
     if (mode === 'daily') {
-      onChange({
-        ...config,
-        mode: 'daily',
-        questionCount: 10,
-        timeLimitSec: 10 * 60,
-      });
+      onChange({ ...config, mode: 'daily', questionCount: 10, timeLimitSec: 10 * 60 });
     } else if (mode === 'weekly') {
-      onChange({
-        ...config,
-        mode: 'weekly',
-        questionCount: 25,
-        timeLimitSec: 30 * 60,
-      });
+      onChange({ ...config, mode: 'weekly', questionCount: 25, timeLimitSec: 30 * 60 });
     } else if (mode === 'monthly') {
-      onChange({
-        ...config,
-        mode: 'monthly',
-        questionCount: 50,
-        timeLimitSec: 60 * 60,
-      });
+      onChange({ ...config, mode: 'monthly', questionCount: 50, timeLimitSec: 60 * 60 });
     } else {
-      onChange({
-        ...config,
-        mode: 'custom',
-      });
+      onChange({ ...config, mode: 'custom' });
     }
   };
 
@@ -164,7 +165,7 @@ export function QuizSetup({
         })}
       </div>
 
-      {/* Custom Options Panel (visible when custom is selected) */}
+      {/* Custom Options Panel */}
       {config.mode === 'custom' && (
         <div className="p-5 rounded-xl bg-[var(--color-surface)] border border-[var(--color-border)] space-y-5 animate-in fade-in-50">
           <div className="flex items-center gap-2 border-b border-[var(--color-border)] pb-3">
@@ -245,6 +246,32 @@ export function QuizSetup({
             </div>
           </div>
 
+          {/* Subject Filter */}
+          <div>
+            <label className="block text-xs font-semibold text-[var(--color-text)] mb-1.5">
+              Subject
+            </label>
+            <div className="flex gap-2">
+              {(['Both', 'Science', 'Mathematics'] as SubjectFilter[]).map((s) => (
+                <button
+                  key={s}
+                  type="button"
+                  onClick={() => {
+                    setSubjectFilter(s);
+                    onChange({ ...config, selectedChapters: [] });
+                  }}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
+                    subjectFilter === s
+                      ? 'bg-[var(--color-accent)] text-white border-[var(--color-accent)]'
+                      : 'bg-[var(--color-bg)] border-[var(--color-border)] text-[var(--color-text-muted)]'
+                  }`}
+                >
+                  {s}
+                </button>
+              ))}
+            </div>
+          </div>
+
           {/* Chapters */}
           <div className="space-y-2">
             <label className="text-xs font-semibold text-[var(--color-text)] flex items-center gap-1.5">
@@ -252,7 +279,7 @@ export function QuizSetup({
               Focus Chapters ({config.selectedChapters.length > 0 ? config.selectedChapters.length : 'All'})
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-40 overflow-y-auto p-2 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)]">
-              {availableChapters.map((ch) => {
+              {filteredChapters.map((ch) => {
                 const selected = config.selectedChapters.includes(ch);
                 return (
                   <label

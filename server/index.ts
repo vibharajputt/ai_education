@@ -5,6 +5,7 @@ import { errorHandler } from './middleware/errorHandler.js';
 import { assistRateLimiter } from './middleware/rateLimiter.js';
 import { assistRouter } from './routes/assist.js';
 import { resumeRouter } from './routes/analyzeResume.js';
+import { geminiExplainRouter } from './routes/geminiExplain.js';
 
 export const app = express();
 
@@ -44,6 +45,7 @@ app.use(requestLogger);
 app.use(assistRateLimiter);
 app.use(assistRouter);
 app.use(resumeRouter);
+app.use(geminiExplainRouter);
 
 // ---------------------------------------------------------------------------
 // 404 & Global Error Handling
@@ -52,7 +54,7 @@ app.use((_req, res) => {
   res.status(404).json({
     error: {
       code: 'NOT_FOUND',
-      message: 'The requested route does not exist. Only /api/assist and /api/analyze-resume are permitted.',
+      message: 'The requested route does not exist. Only /api/assist, /api/analyze-resume, and /api/gemini-explain are permitted.',
     },
   });
 });

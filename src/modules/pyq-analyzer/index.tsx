@@ -215,7 +215,7 @@ export function PyqAnalyzerModule() {
   const status = loading ? 'loading' : error ? 'error' : items.length === 0 ? 'empty' : 'success';
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6">
+    <div className="animate-slide-up max-w-7xl mx-auto space-y-6">
       {/* Top Level Diagnostic Scope Header */}
       <div className="p-5 rounded-2xl bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-transparent border border-[var(--color-border)] flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="space-y-1">

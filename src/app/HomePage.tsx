@@ -1,8 +1,9 @@
 // src/app/HomePage.tsx
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { REGISTRY, type ModuleConfig } from '@core/registry';
 import { useTheme } from './useTheme';
+import { loadDemoData, checkAndAutoSeedDemo } from '@core';
 import {
   Sparkles,
   ArrowRight,
@@ -43,6 +44,10 @@ export function HomePage() {
   const [activeTrack, setActiveTrack] = useState<'all' | 'school' | 'college'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [demoStep, setDemoStep] = useState<number>(0);
+
+  useEffect(() => {
+    checkAndAutoSeedDemo(navigate);
+  }, [navigate]);
 
   const filteredModules = useMemo(() => {
     return REGISTRY.filter((m) => {
@@ -213,7 +218,7 @@ export function HomePage() {
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-[var(--color-text)] leading-[1.15]">
+            <h1 className="animate-fade-in text-4xl sm:text-6xl font-black tracking-tight text-[var(--color-text)] leading-[1.15]">
               Master STEM & Placements with{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-sky-500">
                 AI Precision.
@@ -221,12 +226,12 @@ export function HomePage() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[var(--color-text-muted)] font-normal leading-relaxed max-w-2xl mx-auto">
+            <p className="animate-slide-up stagger-1 text-base sm:text-lg text-[var(--color-text-muted)] font-normal leading-relaxed max-w-2xl mx-auto">
               Syllabus-bounded exam solutions for <strong>CBSE Class 9–12</strong> and forensic interview coaching for <strong>College Tech Placements</strong>. Zero latency, zero guesswork.
             </p>
 
             {/* Primary Action Buttons */}
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+            <div className="animate-slide-up stagger-2 pt-4 flex flex-col sm:flex-row items-center justify-center gap-3.5">
               <button
                 type="button"
                 onClick={() => navigate('/dashboard')}
@@ -235,6 +240,15 @@ export function HomePage() {
                 <LayoutDashboard className="w-4 h-4" />
                 <span>Open Student Dashboard</span>
                 <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => loadDemoData(navigate)}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-bold shadow-lg shadow-orange-500/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Load Demo Data</span>
               </button>
 
               <a

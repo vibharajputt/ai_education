@@ -62,10 +62,19 @@ export {
   recordAttempt,
   recordBatchAttempts,
   resetProgressStore,
+  clearStore,
   getDueItems,
   getAccuracyTrend,
   getTimeTrend,
   getSwotStatistics,
   useProgressStore,
 } from './progress';
+
+export {
+  DEMO_SEED_ITEMS,
+  generateDemoAttempts,
+  loadDemoData,
+  clearDemoData,
+  checkAndAutoSeedDemo,
+} from './demoSeed';
 

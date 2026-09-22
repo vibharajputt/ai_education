@@ -1,0 +1,76 @@
+{
+  "collection": {
+    "id": "weak-topics-col",
+    "title": "Diagnostic Weak-Topic Detector",
+    "description": "Pinpointed topic weaknesses with deterministically computed score metrics and tailored intervention plans.",
+    "scopeLabel": "2 High-Priority Remedial Interventions — Physics Class 12",
+    "filters": {
+      "subject": [
+        "Physics"
+      ],
+      "difficulty": [
+        "medium",
+        "hard"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "wt-optics-001",
+      "subject": "Physics",
+      "chapter": "Wave Optics",
+      "concepts": [
+        "Interference",
+        "Diffraction",
+        "Fringe Width"
+      ],
+      "body": "**Diagnostic Alert (Accuracy: 38%)**: Wave Optics requires immediate remedial intervention. \n\nTargeted diagnostic shows critical vulnerabilities in Wave & Ray Optics, where accuracy is below 50%. High accuracy in Electrostatics can be leveraged to accelerate revision.",
+      "images": [],
+      "tags": [
+        "diagnostic",
+        "weak-topic",
+        "optics"
+      ],
+      "difficulty": "hard",
+      "metadata": {
+        "currentAccuracy": 38,
+        "priority": "CRITICAL",
+        "prescribedActions": [
+          "Devote 90 minutes to Young’s Double Slit derivation and fringe width numericals.",
+          "Practice 5 optical bench lens combination problems.",
+          "Review LCR circuit impedance phasor diagrams."
+        ]
+      },
+      "kind": "tip",
+      "track": "school"
+    },
+    {
+      "id": "wt-ac-001",
+      "subject": "Physics",
+      "chapter": "Alternating Current",
+      "concepts": [
+        "LCR Series Resonance",
+        "Quality Factor"
+      ],
+      "body": "**Diagnostic Alert (Accuracy: 50%)**: LCR circuit impedance and phasor calculations show inconsistent accuracy under time pressure.",
+      "latex": "Z = \\sqrt{R^2 + (X_L - X_C)^2}, \\quad f_r = \\frac{1}{2\\pi\\sqrt{LC}}",
+      "images": [],
+      "tags": [
+        "diagnostic",
+        "weak-topic",
+        "ac-circuits"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "currentAccuracy": 50,
+        "priority": "HIGH",
+        "prescribedActions": [
+          "Solve 10 numericals on resonant frequency and Q-factor.",
+          "Draw voltage and current phasor diagrams for lagging and leading circuits."
+        ]
+      },
+      "kind": "tip",
+      "track": "school"
+    }
+  ]
+}

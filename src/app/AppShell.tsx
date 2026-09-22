@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import type { Track } from '@core/types';
+import { checkAndAutoSeedDemo } from '@core';
 import { TopBar } from './TopBar';
 import { Sidebar } from './Sidebar';
 import { BottomNav } from './BottomNav';
@@ -45,7 +46,7 @@ export function AppShell() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] antialiased">
+    <div className="h-screen h-[100dvh] flex flex-col bg-[var(--color-bg)] text-[var(--color-text)] antialiased overflow-hidden">
       {/* Top Header */}
       <TopBar />
 

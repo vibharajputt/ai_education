@@ -22,7 +22,7 @@ export function Card({
 
   return (
     <Tag
-      className={`bg-surface border border-line rounded-md p-4 ${interactiveClasses} ${className}`}
+      className={`bg-surface border border-line rounded-md p-4 card-hover ${interactiveClasses} ${className}`}
       onClick={onClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick ? 0 : undefined}

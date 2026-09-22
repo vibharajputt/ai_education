@@ -144,7 +144,7 @@ export function ResumeAnalyzerModule() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-4 sm:p-6 space-y-8">
+    <div className="animate-slide-up max-w-5xl mx-auto p-4 sm:p-6 space-y-8">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[var(--color-border)]">
         <div>
           <div className="flex items-center gap-2">

@@ -1,0 +1,66 @@
+{
+  "collection": {
+    "id": "study-planner-col",
+    "title": "Board Exam Study Planner & Roadmaps",
+    "description": "Structured revision sprints, topic dependency graphs, and daily study allocations.",
+    "scopeLabel": "2 Curated Prep Roadmaps and Study Protocols — Class 12",
+    "filters": {
+      "subject": [
+        "Study Strategy",
+        "Physics"
+      ],
+      "difficulty": [
+        "easy",
+        "medium"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "plan-strat-001",
+      "subject": "Study Strategy",
+      "chapter": "Exam Strategy",
+      "concepts": [
+        "Spaced Repetition",
+        "Active Recall"
+      ],
+      "body": "**The 2-3-7 Spaced Revision Framework**: Review challenging derivations 2 days after first learning, test via blank sheet active recall on Day 3, and solve past 5-year board questions on Day 7.",
+      "images": [],
+      "tags": [
+        "strategy",
+        "revision",
+        "spaced-repetition"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "category": "Revision Protocol",
+        "recommendedHours": 3.5
+      },
+      "kind": "tip",
+      "track": "school"
+    },
+    {
+      "id": "plan-strat-002",
+      "subject": "Physics",
+      "chapter": "Class 12 Sprint Plan",
+      "concepts": [
+        "Electromagnetism Sprint",
+        "Derivations Priority"
+      ],
+      "body": "**4-Day Physics Electromagnetism Sprint**: Day 1: Electrostatics Gauss Law & Dipole derivations; Day 2: Kirchhoff laws & potentiometer problems; Day 3: Biot-Savart & Ampere loop problems; Day 4: AC generator & LCR resonance numericals.",
+      "images": [],
+      "tags": [
+        "physics",
+        "sprint",
+        "cbse-12"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "category": "Subject Sprint",
+        "estimatedDays": 4
+      },
+      "kind": "tip",
+      "track": "school"
+    }
+  ]
+}

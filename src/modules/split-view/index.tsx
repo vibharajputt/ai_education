@@ -283,7 +283,7 @@ export function SplitViewModule() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-80px)] min-h-[700px] bg-[var(--color-bg)] text-[var(--color-text)]">
+    <div className="animate-slide-up flex flex-col h-[calc(100vh-80px)] min-h-[700px] bg-[var(--color-bg)] text-[var(--color-text)]">
       {/* ── TOP NAV: Class Filter, Subject Tabs, Upload & Official Source ── */}
       <div className="p-4 border-b border-[var(--color-border)] bg-[var(--color-surface)] shrink-0 space-y-3 shadow-xs">
         <div className="flex flex-wrap items-center justify-between gap-3">

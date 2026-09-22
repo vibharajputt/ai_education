@@ -1,0 +1,61 @@
+{
+  "collection": {
+    "id": "chemistry-3d",
+    "title": "3D Molecule Viewer & Mechanisms",
+    "description": "Interactive 3D molecules and organic reaction mechanisms for Class 11-12 Chemistry",
+    "scopeLabel": "15 molecules + 4 organic mechanisms — Class 11–12 Chemistry",
+    "filters": {}
+  },
+  "molecules": [
+    { "name": "Water", "formula": "H₂O", "cid": 962 },
+    { "name": "Glucose", "formula": "C₆H₁₂O₆", "cid": 5793 },
+    { "name": "Ethanol", "formula": "C₂H₅OH", "cid": 702 },
+    { "name": "Benzene", "formula": "C₆H₆", "cid": 241 },
+    { "name": "Acetic Acid", "formula": "CH₃COOH", "cid": 176 },
+    { "name": "Ammonia", "formula": "NH₃", "cid": 222 },
+    { "name": "Methane", "formula": "CH₄", "cid": 297 },
+    { "name": "CO₂", "formula": "CO₂", "cid": 280 },
+    { "name": "Aspirin", "formula": "C₉H₈O₄", "cid": 2244 },
+    { "name": "Caffeine", "formula": "C₈H₁₀N₄O₂", "cid": 2519 },
+    { "name": "Urea", "formula": "CH₄N₂O", "cid": 1176 },
+    { "name": "Ethylene", "formula": "C₂H₄", "cid": 6325 },
+    { "name": "Acetone", "formula": "C₃H₆O", "cid": 180 },
+    { "name": "HCl", "formula": "HCl", "cid": 313 },
+    { "name": "NaCl", "formula": "NaCl", "cid": 5234657 }
+  ],
+  "mechanisms": [
+    {
+      "title": "Markovnikov Addition (HBr + Propene)",
+      "steps": [
+        { "cid": 6325, "label": "Propene (Reactant)", "annotation": "H–Br approaches the C=C π bond", "explanation": "Markovnikov's Rule: H⁺ from HBr adds to the carbon with more hydrogens (C1). The π electrons attract the electrophile." },
+        { "cid": 702, "label": "2° Carbocation Intermediate", "annotation": "Secondary carbocation forms at C2", "explanation": "H⁺ adds to C1, forming a more stable secondary carbocation at C2. Stability order: 3° > 2° > 1°." },
+        { "cid": 6344, "label": "2-Bromopropane (Product)", "annotation": "Br⁻ attacks the carbocation at C2", "explanation": "Bromide ion attacks the electrophilic C2, giving the Markovnikov product 2-bromopropane. Anti-Markovnikov addition would give 1-bromopropane." }
+      ]
+    },
+    {
+      "title": "SN2 Reaction (CH₃Br + OH⁻)",
+      "steps": [
+        { "cid": 6323, "label": "Bromomethane (Reactant)", "annotation": "Nucleophile OH⁻ approaches back of C–Br bond (180°)", "explanation": "SN2 is concerted — bond formation and breaking happen simultaneously. Favoured by primary substrates and strong nucleophiles in polar aprotic solvents." },
+        { "cid": 887, "label": "Transition State", "annotation": "Pentacoordinate C, trigonal bipyramidal geometry", "explanation": "At the transition state, carbon is simultaneously bonded to both OH and Br. Configuration inverts — Walden Inversion." },
+        { "cid": 887, "label": "Methanol + Br⁻ (Product)", "annotation": "C–OH bond forms, Br⁻ departs", "explanation": "Product methanol forms with complete inversion of configuration. SN2 shows second-order kinetics: rate = k[substrate][nucleophile]." }
+      ]
+    },
+    {
+      "title": "Esterification (Acetic Acid + Ethanol)",
+      "steps": [
+        { "cid": 176, "label": "Acetic Acid + H⁺ Catalyst", "annotation": "Carbonyl oxygen gets protonated", "explanation": "H⁺ (acid catalyst) protonates the C=O oxygen, making the carbonyl carbon highly electrophilic. Reaction is reversible — Le Chatelier's principle applies." },
+        { "cid": 702, "label": "Nucleophilic Addition of Ethanol", "annotation": "O of ethanol attacks activated carbonyl C", "explanation": "Ethanol oxygen attacks the electrophilic carbonyl carbon, forming a tetrahedral intermediate. A proton transfer follows." },
+        { "cid": 8857, "label": "Ethyl Acetate + H₂O (Product)", "annotation": "Water eliminated, ester bond formed", "explanation": "Loss of water (dehydration) gives ethyl acetate. Removing water or using excess alcohol drives the equilibrium toward product (Fischer esterification)." }
+      ]
+    },
+    {
+      "title": "Aldol Condensation (Acetaldehyde + NaOH)",
+      "steps": [
+        { "cid": 177, "label": "Acetaldehyde + NaOH", "annotation": "Base removes α-hydrogen to form enolate", "explanation": "NaOH removes an α-hydrogen from acetaldehyde, forming a resonance-stabilised enolate ion. The α-carbon becomes nucleophilic." },
+        { "cid": 177, "label": "Enolate Attacks Second Carbonyl", "annotation": "C–C bond forms (nucleophilic addition)", "explanation": "The enolate attacks the carbonyl of a second acetaldehyde molecule, forming a β-hydroxy aldehyde (the 'aldol' — aldehyde + alcohol)." },
+        { "cid": 5365891, "label": "Crotonaldehyde (Condensation Product)", "annotation": "Dehydration gives α,β-unsaturated aldehyde on heating", "explanation": "On heating, the aldol loses water to give crotonaldehyde (but-2-enal). Aldol condensation is key in biosynthesis of complex carbon skeletons." }
+      ]
+    }
+  ],
+  "items": []
+}

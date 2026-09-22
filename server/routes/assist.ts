@@ -57,7 +57,7 @@ assistRouter.post('/api/assist', async (req: Request, res: Response): Promise<an
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     const msg = 'You have reached the maximum limit of 6 turns for this discussion thread. Please start a fresh thread for new questions.';
-    res.write(`data: ${JSON.stringify({ chunk: msg })}\n\n`);
+    res.write(`data: ${JSON.stringify({ delta: msg })}\n\n`);
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     return res.end();
   }
@@ -79,7 +79,7 @@ assistRouter.post('/api/assist', async (req: Request, res: Response): Promise<an
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     const refusal = `I am strictly specialized in explaining this problem (${context.item.chapter || ''} - ${context.item.subject || ''}). Please ask a question related to this specific topic.`;
-    res.write(`data: ${JSON.stringify({ chunk: refusal })}\n\n`);
+    res.write(`data: ${JSON.stringify({ delta: refusal })}\n\n`);
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     return res.end();
   }
@@ -95,19 +95,25 @@ assistRouter.post('/api/assist', async (req: Request, res: Response): Promise<an
     // Stream cached response in chunks
     const words = cachedResponse.split(' ');
     for (const word of words) {
-      res.write(`data: ${JSON.stringify({ chunk: word + ' ' })}\n\n`);
+      res.write(`data: ${JSON.stringify({ delta: word + ' ' })}\n\n`);
     }
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     return res.end();
   }
 
   // 5. Build Strictly Bounded System & User Prompts
+  const hindiModeInstruction = mode === 'hindi'
+    ? `- "hindi": Respond in natural, friendly **Hinglish** (conversational Hindi written in English script mixed with English terms). \
+Example style: "Dekho is question mein sabse pehle given values note karte hain... Ab is formula mein values put karenge...". \
+Break the solution down step-by-step. MANDATORY: Preserve EVERY numeric value, unit, and formula exactly as written in the source.`
+    : `- "hindi": Translate into clear Hindi/Hinglish. MANDATORY: Preserve EVERY numeric value, unit, and formula from the original text!`;
+
   const systemPrompt = `You are a dedicated tutor assisting a student with a specific problem.
 CRITICAL BOUNDARY MANDATES:
 1. STRICT CONTEXT LIMIT: Your knowledge is strictly limited to the provided Item and Solution source chunks below. Do NOT use open-world knowledge outside this context.
 2. Mode "${mode}":
    - "simplify": Explain in simple, intuitive steps.
-   - "hindi": Translate into clear Hindi/Hinglish. MANDATORY: Preserve EVERY numeric value, unit, and formula from the original text!
+   ${hindiModeInstruction}
    - "why": Explain the conceptual rationale behind why this solution approach works.
    - "ask": Answer the student's specific question based strictly on the source chunks.`;
 
@@ -170,7 +176,7 @@ Please provide a clear, step-by-step response. Return JSON matching: { "response
 
     const words = finalResponseText.split(' ');
     for (const word of words) {
-      res.write(`data: ${JSON.stringify({ chunk: word + ' ' })}\n\n`);
+      res.write(`data: ${JSON.stringify({ delta: word + ' ' })}\n\n`);
     }
     res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
     res.end();

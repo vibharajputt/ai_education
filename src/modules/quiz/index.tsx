@@ -9,7 +9,7 @@ import type { QuizConfigState, QuizQuestion, QuizSessionSummary } from './types'
 import type { Difficulty, ContentItem } from '@core';
 
 export function QuizModule() {
-  const { collection, items: rawItems, loading, error, reload } = useCollection('question-bank.json');
+  const { collection, items: rawItems, loading, error, reload } = useCollection('pyq-10th.json');
 
   // Available unique chapters
   const allChapters = useMemo(() => {
@@ -203,7 +203,7 @@ export function QuizModule() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+    <div className="animate-slide-up max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
       {/* Scope Header */}
       <div className="border-b border-[var(--color-border)] pb-4">
         <span className="text-xs font-bold text-[var(--color-accent)] uppercase tracking-wider">

@@ -1,0 +1,217 @@
+{
+  "collection": {
+    "id": "question-bank-col",
+    "title": "Adaptive Question Bank",
+    "description": "Comprehensive CBSE Class 11 & 12 STEM Question Bank with step-by-step solutions and marking schemes.",
+    "scopeLabel": "8 Board Exam Questions across Physics, Chemistry, Math & Biology — Class 11–12",
+    "filters": {
+      "subject": [
+        "Physics",
+        "Chemistry",
+        "Mathematics",
+        "Biology"
+      ],
+      "difficulty": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "qb-phy-11-001",
+      "subject": "Physics",
+      "chapter": "Units and Measurements",
+      "concepts": [
+        "Dimensional Analysis",
+        "Significant Figures"
+      ],
+      "body": "Find the dimensions of $a/b$ in the equation $P = \\frac{a - t^2}{bx}$, where $P$ is pressure, $x$ is distance and $t$ is time.",
+      "latex": "[a/b] = [M L T^{-2}]",
+      "images": [],
+      "tags": [
+        "cbse",
+        "class11",
+        "dimensions",
+        "kinematics"
+      ],
+      "difficulty": "medium",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {
+        "markingCriteria": "1 mark for dimension of a, 1 mark for dimension of b, 1 mark for final ratio."
+      },
+      "kind": "question",
+      "track": "school"
+    },
+    {
+      "id": "qb-phy-11-002",
+      "subject": "Physics",
+      "chapter": "Motion in a Straight Line",
+      "concepts": [
+        "Instantaneous Velocity",
+        "Calculus Kinematics"
+      ],
+      "body": "The position of an object moving along x-axis is given by $x = a + bt^2$ where $a = 8.5\\text{ m}$, $b = 2.5\\text{ m s}^{-2}$ and $t$ is in seconds. What is its velocity at $t = 0\\text{ s}$ and $t = 2.0\\text{ s}$? What is average velocity between $t = 2.0\\text{ s}$ and $t = 4.0\\text{ s}$?",
+      "latex": "v(t) = \\frac{dx}{dt} = 2bt",
+      "images": [],
+      "tags": [
+        "kinematics",
+        "differentiation",
+        "average-velocity"
+      ],
+      "difficulty": "easy",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2022,
+      "metadata": {},
+      "kind": "question",
+      "track": "school"
+    },
+    {
+      "id": "qb-phy-11-003",
+      "subject": "Physics",
+      "chapter": "Laws of Motion",
+      "concepts": [
+        "Friction",
+        "Free Body Diagram"
+      ],
+      "body": "A block of mass $2\\text{ kg}$ is placed on an inclined plane making an angle of $30^\\circ$ with the horizontal. If the coefficient of static friction $\\mu_s = 0.7$, determine the frictional force exerted on the block.",
+      "latex": "f_s = mg \\sin\\theta \\le \\mu_s mg \\cos\\theta",
+      "images": [],
+      "tags": [
+        "mechanics",
+        "friction",
+        "fbd"
+      ],
+      "difficulty": "medium",
+      "marks": 2,
+      "questionType": "short",
+      "year": 2021,
+      "metadata": {},
+      "kind": "question",
+      "track": "school"
+    },
+    {
+      "id": "qb-chem-11-001",
+      "subject": "Chemistry",
+      "chapter": "Structure of Atom",
+      "concepts": [
+        "Photoelectric Effect",
+        "Work Function"
+      ],
+      "body": "When electromagnetic radiation of wavelength $300\\text{ nm}$ falls on the surface of sodium, electrons are emitted with a kinetic energy of $1.68 \\times 10^5\\text{ J mol}^{-1}$. What is the minimum energy needed to remove an electron from sodium? What is the maximum wavelength that will cause a photoelectron emission?",
+      "latex": "h\\nu = h\\nu_0 + K.E.",
+      "images": [],
+      "tags": [
+        "quantum-mechanics",
+        "photoelectric",
+        "cbse"
+      ],
+      "difficulty": "hard",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2024,
+      "metadata": {},
+      "kind": "question",
+      "track": "school"
+    },
+    {
+      "id": "qb-chem-12-001",
+      "subject": "Chemistry",
+      "chapter": "Electrochemistry",
+      "concepts": [
+        "Nernst Equation",
+        "EMF of Cell"
+      ],
+      "body": "Calculate the EMF of the cell at $298\\text{ K}$ for $\\text{Mg}(s) | \\text{Mg}^{2+}(0.001\\text{ M}) || \\text{Cu}^{2+}(0.0001\\text{ M}) | \\text{Cu}(s)$. Given $E^\\circ(\\text{Mg}^{2+}/\\text{Mg}) = -2.37\\text{ V}$ and $E^\\circ(\\text{Cu}^{2+}/\\text{Cu}) = +0.34\\text{ V}$.",
+      "latex": "E_{\\text{cell}} = E^\\circ_{\\text{cell}} - \\frac{0.0591}{n} \\log\\frac{[\\text{Mg}^{2+}]}{[\\text{Cu}^{2+}]}",
+      "images": [],
+      "tags": [
+        "electrochemistry",
+        "nernst",
+        "numericals"
+      ],
+      "difficulty": "medium",
+      "marks": 3,
+      "questionType": "short",
+      "year": 2023,
+      "metadata": {},
+      "kind": "question",
+      "track": "school"
+    },
+    {
+      "id": "qb-math-12-001",
+      "subject": "Mathematics",
+      "chapter": "Integrals",
+      "concepts": [
+        "Definite Integrals",
+        "Properties of Definite Integrals"
+      ],
+      "body": "Evaluate the definite integral: $\\int_0^{\\pi/2} \\frac{\\sqrt{\\sin x}}{\\sqrt{\\sin x} + \\sqrt{\\cos x}} \\, dx$.",
+      "latex": "I = \\int_0^a f(x)dx = \\int_0^a f(a-x)dx \\implies 2I = \\frac{\\pi}{2} \\implies I = \\frac{\\pi}{4}",
+      "images": [],
+      "tags": [
+        "calculus",
+        "integration",
+        "properties"
+      ],
+      "difficulty": "easy",
+      "marks": 4,
+      "questionType": "short",
+      "year": 2022,
+      "metadata": {},
+      "kind": "question",
+      "track": "school"
+    },
+    {
+      "id": "qb-math-12-002",
+      "subject": "Mathematics",
+      "chapter": "Differential Equations",
+      "concepts": [
+        "Linear Differential Equations",
+        "Integrating Factor"
+      ],
+      "body": "Find the general solution of the differential equation: $\\frac{dy}{dx} + y \\cot x = 2x + x^2 \\cot x \\quad (x \\neq 0)$.",
+      "latex": "I.F. = e^{\\int \\cot x dx} = \\sin x",
+      "images": [],
+      "tags": [
+        "calculus",
+        "differential-equations",
+        "cbse-standard"
+      ],
+      "difficulty": "hard",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2023,
+      "metadata": {},
+      "kind": "question",
+      "track": "school"
+    },
+    {
+      "id": "qb-bio-12-001",
+      "subject": "Biology",
+      "chapter": "Molecular Basis of Inheritance",
+      "concepts": [
+        "DNA Replication",
+        "Semi-Conservative Model"
+      ],
+      "body": "Describe the experiment conducted by Meselson and Stahl that proved DNA replicates semi-conservatively. Why did they use $^{15}\\text{NH}_4\\text{Cl}$?",
+      "images": [],
+      "tags": [
+        "genetics",
+        "dna",
+        "meselson-stahl"
+      ],
+      "difficulty": "medium",
+      "marks": 5,
+      "questionType": "long",
+      "year": 2023,
+      "metadata": {},
+      "kind": "question",
+      "track": "school"
+    }
+  ]
+}

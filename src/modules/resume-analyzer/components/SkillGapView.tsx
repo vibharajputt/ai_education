@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Tag, AlertTriangle, Lightbulb, Code2 } from 'lucide-react';
 
 interface SkillGapViewProps {
@@ -99,6 +100,17 @@ export function SkillGapView({
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {(missingKeywords.length > 0 || extractedEntities.length > 0) && (
+        <div className="pt-4 border-t border-[var(--color-border)]">
+          <Link
+            to="/college/interview-prep"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] hover:underline"
+          >
+            Practice interview questions for these skills →
+          </Link>
         </div>
       )}
     </div>

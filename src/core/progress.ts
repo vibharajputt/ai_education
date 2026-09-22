@@ -529,6 +529,8 @@ export function resetProgressStore() {
   saveStore(initial);
 }
 
+export const clearStore = resetProgressStore;
+
 // ---------------------------------------------------------------------------
 // Derived Statistics Helpers
 // ---------------------------------------------------------------------------
@@ -651,9 +653,9 @@ export function getSwotStatistics(): SwotStats {
     };
   }
 
-  // Strengths: High mastery (>=75%) & at least 2 attempts
+  // Strengths: High mastery (>=75%) or high accuracy (>=75%) & at least 2 attempts
   const strengths = concepts
-    .filter((c) => c.masteryPercent >= 75 && c.attemptsCount >= 2)
+    .filter((c) => (c.masteryPercent >= 75 || (c.attemptsCount >= 2 && (c.correctCount / c.attemptsCount) >= 0.75)) && c.attemptsCount >= 2)
     .sort((a, b) => b.masteryPercent - a.masteryPercent);
 
   // Weaknesses: Low mastery (<50%) or low accuracy (<50%) with at least 1 attempt

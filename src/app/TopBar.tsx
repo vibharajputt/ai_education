@@ -71,7 +71,7 @@ export function TopBar() {
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[var(--color-border)] bg-[var(--color-surface)]/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 w-full shrink-0 border-b border-[var(--color-border)] bg-[var(--color-surface)]/80 backdrop-blur-sm">
       <div className="flex h-14 items-center justify-between px-4 sm:px-6">
         {/* Left: Brand / Logo & Primary Top Navigation Links */}
         <div className="flex items-center gap-3 sm:gap-4">

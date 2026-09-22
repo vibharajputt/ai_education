@@ -1,0 +1,121 @@
+{
+  "collection": {
+    "id": "interview-prep-col",
+    "title": "College Placement Interview Coach",
+    "description": "Targeted technical & behavioral interview questions with answer framing blueprints and rubric breakdown.",
+    "scopeLabel": "4 Tech & Behavioral Interview Scenarios for Engineering Students",
+    "filters": {
+      "subject": [
+        "Computer Science",
+        "Career & Behavioral"
+      ],
+      "difficulty": [
+        "easy",
+        "medium",
+        "hard"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "iq-swe-001",
+      "subject": "Computer Science",
+      "chapter": "System Design",
+      "concepts": [
+        "Rate Limiting",
+        "Token Bucket",
+        "Distributed Systems"
+      ],
+      "body": "How would you design a scalable distributed rate limiter supporting millions of requests per second with microsecond latencies?",
+      "images": [],
+      "tags": [
+        "system-design",
+        "rate-limiter",
+        "redis",
+        "concurrency"
+      ],
+      "difficulty": "hard",
+      "metadata": {
+        "category": "System Design",
+        "framework": "Token Bucket / Sliding Window Counter with Redis and Lua scripts",
+        "evalCriteria": "Evaluates concurrency handling, clock drift, redis clustering, and fail-open policies."
+      },
+      "kind": "interview-q",
+      "track": "college"
+    },
+    {
+      "id": "iq-swe-002",
+      "subject": "Computer Science",
+      "chapter": "Data Structures & Algorithms",
+      "concepts": [
+        "LRU Cache",
+        "Doubly Linked List",
+        "Hash Map"
+      ],
+      "body": "Explain how you implement an LRU (Least Recently Used) cache with $O(1)$ get and put time complexity.",
+      "images": [],
+      "tags": [
+        "dsa",
+        "lru-cache",
+        "hashmap",
+        "linked-list"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "category": "Data Structures",
+        "idealAnswer": "Combine a Hash Map (for O(1) key lookups) with a Doubly Linked List (for O(1) node eviction and head-promotions)."
+      },
+      "kind": "interview-q",
+      "track": "college"
+    },
+    {
+      "id": "iq-swe-003",
+      "subject": "Computer Science",
+      "chapter": "Database Engineering",
+      "concepts": [
+        "ACID Properties",
+        "Isolation Levels",
+        "Optimistic Locking"
+      ],
+      "body": "Compare Optimistic Concurrency Control (OCC) with Pessimistic Locking. Under what workload profile is OCC clearly superior?",
+      "images": [],
+      "tags": [
+        "databases",
+        "acid",
+        "locking",
+        "concurrency"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "category": "Database Systems",
+        "idealAnswer": "OCC assumes conflicts are rare, checking version stamps before commits. It is superior in read-heavy workloads with low write contention."
+      },
+      "kind": "interview-q",
+      "track": "college"
+    },
+    {
+      "id": "iq-beh-001",
+      "subject": "Career & Behavioral",
+      "chapter": "Behavioral Prep",
+      "concepts": [
+        "STAR Method",
+        "Conflict Resolution",
+        "Ownership"
+      ],
+      "body": "Tell me about a time when you strongly disagreed with a senior engineer or teammate on a technical decision. How did you handle it and what was the outcome?",
+      "images": [],
+      "tags": [
+        "behavioral",
+        "star-method",
+        "leadership"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "category": "Behavioral",
+        "framework": "STAR: Situation, Task, Action (data-driven prototyping, respectful dissent), Result."
+      },
+      "kind": "interview-q",
+      "track": "college"
+    }
+  ]
+}

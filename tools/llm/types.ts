@@ -9,6 +9,7 @@ export interface LLMCompletionOptions {
   maxTokens?: number;
   providerPriority?: ProviderName[];
   forceRefresh?: boolean;
+  profile?: string;
 }
 
 export interface LLMReport {

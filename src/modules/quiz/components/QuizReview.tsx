@@ -108,6 +108,18 @@ export function QuizReview({ summary, onRetake }: QuizReviewProps) {
         </div>
 
         {/* Concept Elo Updates */}
+
+        {/* SWOT cross-link: only shown when there are incorrect answers */}
+        {(summary.totalQuestions - summary.correctCount) > 0 && (
+          <div className="pt-3 border-t border-[var(--color-border)]">
+            <Link
+              to="/school/weak-topics"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--color-accent)] hover:underline"
+            >
+              See how this affects your SWOT →
+            </Link>
+          </div>
+        )}
         {summary.conceptChanges.length > 0 && (
           <div className="space-y-3 pt-2">
             <h4 className="text-xs font-bold text-[var(--color-text)] uppercase tracking-wider flex items-center gap-1.5">

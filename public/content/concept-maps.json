@@ -1,0 +1,116 @@
+{
+  "collection": {
+    "id": "concept-maps-col",
+    "title": "STEM Concept Maps & Topic Hierarchies",
+    "description": "Visual knowledge trees and conceptual dependencies across Physics and Chemistry.",
+    "scopeLabel": "2 Concept Hierarchy Maps for High School STEM",
+    "filters": {
+      "subject": [
+        "Physics",
+        "Chemistry"
+      ],
+      "difficulty": [
+        "medium",
+        "hard"
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "cmap-phy-001",
+      "subject": "Physics",
+      "chapter": "Optics",
+      "concepts": [
+        "Wave Optics",
+        "Huygens Principle",
+        "Diffraction",
+        "Interference"
+      ],
+      "body": "Wave Optics Concept Map: Begins with Huygens Wavefront construction -> branches into Interference (Young’s Double Slit, Coherent Sources, Fringe Width $\\beta = \\frac{\\lambda D}{d}$) and Diffraction (Single Slit Central Maximum $2\\lambda D / a$).",
+      "latex": "\\beta = \\frac{\\lambda D}{d}",
+      "images": [],
+      "tags": [
+        "optics",
+        "wave-optics",
+        "concept-map"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "nodes": [
+          {
+            "id": "n1",
+            "label": "Huygens Wavefront Principle",
+            "level": 1
+          },
+          {
+            "id": "n2",
+            "label": "Interference (Coherent Sources)",
+            "level": 2,
+            "parent": "n1"
+          },
+          {
+            "id": "n3",
+            "label": "Young’s Double Slit Experiment",
+            "level": 3,
+            "parent": "n2"
+          },
+          {
+            "id": "n4",
+            "label": "Diffraction (Single Slit)",
+            "level": 2,
+            "parent": "n1"
+          }
+        ]
+      },
+      "kind": "concept",
+      "track": "school"
+    },
+    {
+      "id": "cmap-chem-001",
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry Reactions",
+      "concepts": [
+        "Aldehydes and Ketones",
+        "Nucleophilic Addition",
+        "Aldol Condensation"
+      ],
+      "body": "Carbonyl Chemistry Map: Nucleophilic Addition Mechanism -> Aldol Condensation (requires $\\alpha$-hydrogen) vs Cannizzaro Reaction (no $\\alpha$-hydrogen) -> Oxidation/Reduction pathways (Clemmensen, Wolff-Kishner).",
+      "images": [],
+      "tags": [
+        "organic",
+        "carbonyl",
+        "concept-map"
+      ],
+      "difficulty": "hard",
+      "metadata": {
+        "nodes": [
+          {
+            "id": "c1",
+            "label": "Carbonyl Group (>C=O)",
+            "level": 1
+          },
+          {
+            "id": "c2",
+            "label": "Nucleophilic Addition",
+            "level": 2,
+            "parent": "c1"
+          },
+          {
+            "id": "c3",
+            "label": "Alpha-Hydrogen Reactions (Aldol)",
+            "level": 3,
+            "parent": "c2"
+          },
+          {
+            "id": "c4",
+            "label": "Non-Alpha Hydrogen Reactions (Cannizzaro)",
+            "level": 3,
+            "parent": "c2"
+          }
+        ]
+      },
+      "kind": "concept",
+      "track": "school"
+    }
+  ]
+}

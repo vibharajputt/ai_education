@@ -56,7 +56,7 @@ class CircuitBreaker {
   constructor(
     private failureThreshold: number = 3,
     private resetTimeoutMs: number = 30000
-  ) {}
+  ) { }
 
   canExecute(): boolean {
     if (this.state === 'CLOSED' || this.state === 'HALF-OPEN') {
@@ -102,6 +102,9 @@ class KeyRotator {
     if (envSingle && envSingle.trim()) {
       keys.push(envSingle.trim());
     }
+    if (provider === 'google' && process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim()) {
+      keys.push(process.env.GEMINI_API_KEY.trim());
+    }
     if (envPlural && envPlural.trim()) {
       const splitKeys = envPlural.split(',').map((k) => k.trim()).filter(Boolean);
       keys.push(...splitKeys);
@@ -143,9 +146,9 @@ export class LLMGateway {
   };
 
   private providerConfigs: Record<ProviderName, AdapterConfig> = {
-    google: { name: 'google', model: 'gemini-1.5-flash' },
-    groq: { name: 'groq', model: 'llama-3.3-70b-versatile' },
-    cerebras: { name: 'cerebras', model: 'llama3.1-8b' },
+    google: { name: 'google', model: 'gemini-3.6-flash' },
+    groq: { name: 'groq', model: 'openai/gpt-oss-120b' },
+    cerebras: { name: 'cerebras', model: 'llama3-8b-8192' },
     openrouter: { name: 'openrouter', model: 'google/gemini-2.0-flash-001' },
     mock: { name: 'mock', model: 'mock-model' },
   };
@@ -305,7 +308,7 @@ export class LLMGateway {
       if (handler) {
         return await handler(options.userPrompt);
       }
-      
+
       let responseText = "Here is a step-by-step breakdown based on the verified solution chunk:\n\n1. **Identify Given Values**: Note the key measurements and parameters provided in the problem.\n2. **Apply Core Principle**: Use the standard formula applicable to this topic.\n3. **Calculate Result**: Substitute the values carefully to arrive at the exact final answer.";
 
       if (options.systemPrompt.includes('"hindi"')) {

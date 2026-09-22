@@ -1,10 +1,7 @@
 // src/core/geminiService.ts
-// Official Google AI (Gemini & Gemma) Integration for Live AI Explanations & Doubt Solving
-
-const GEMINI_API_KEY =
-  import.meta.env.VITE_GEMINI_API_KEY ||
-  import.meta.env.GEMINI_API_KEY ||
-  '';
+// Client-side Gemini integration — proxies through /api/gemini-explain so
+// the API key is NEVER exposed in the browser bundle (AGENTS.md: no secrets
+// in client code). import.meta.env is not used here.
 
 export type GeminiExplainMode = 'hinglish' | 'example' | 'steps' | 'pitfalls' | 'ask';
 
@@ -19,119 +16,32 @@ export interface GeminiExplainRequest {
   chatHistory?: { role: 'user' | 'model'; parts: { text: string }[] }[];
 }
 
-// Ordered list of candidate models supported by this Google API key
-const CANDIDATE_MODELS = [
-  'models/gemma-4-26b-a4b-it',
-  'models/gemma-4-31b-it',
-  'models/gemini-flash-latest',
-  'models/gemini-2.5-flash',
-  'models/gemini-pro-latest',
-];
-
 export async function generateGeminiSolution(
   req: GeminiExplainRequest
 ): Promise<string> {
-  const { questionText, subject, chapter, marks, modelAnswer, mode, userPrompt } = req;
+  // 1. Try the server-side Gemini proxy — key stays on the server
+  try {
+    const response = await fetch('/api/gemini-explain', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req),
+    });
 
-  // Build specialized pedagogical system prompt based on mode
-  let systemInstruction = `You are a top CBSE Senior Board Evaluator and Master Teacher in ${subject} for Class 10 & 12.
-Provide a clear, accurate, and structured response using LaTeX formatting for all formulas ($...$ or $$...$$).`;
-
-  if (mode === 'hinglish') {
-    systemInstruction += `
-Task: Explain the solution to this specific question in natural, friendly **Hinglish** (conversational Hindi in English script + English terms).
-Example style: "Dekho is question me sabse pehle given parameters note karte hain... Ab is formula me values put karenge..."
-Break it down step-by-step so any student can understand instantly.`;
-  } else if (mode === 'example') {
-    systemInstruction += `
-Task: Explain the fundamental concept of this question using **vivid, practical real-world daily life examples and analogies** (e.g., household items, sports, vehicles, cooking, water flow, sunlight).
-Connect the intuition directly to solving this exact CBSE problem.`;
-  } else if (mode === 'steps') {
-    systemInstruction += `
-Task: Provide an exact **CBSE Step-Wise Mark Distribution Breakdown** for this question (${marks ? marks + ' Marks' : ''}).
-Label each step with allocated marks:
-- [Step 1: Formula / Law Statement] (+Marks)
-- [Step 2: Substitution of Given Data] (+Marks)
-- [Step 3: Algebraic / Chemical Derivation] (+Marks)
-- [Step 4: Boxed Final Answer with Proper S.I. Units] (+Marks)`;
-  } else if (mode === 'pitfalls') {
-    systemInstruction += `
-Task: Identify the **Common Mistakes & Examiner Traps** for this exact question.
-Explain where CBSE evaluators cut marks (e.g. missing units, wrong sign conventions, omitting intermediate steps).`;
-  } else {
-    systemInstruction += `
-Task: Answer the student's doubt directly regarding this CBSE problem.
-If the student asks "example se samjhao", give real world examples.
-If the student asks "Hinglish me", answer in clear Hinglish.
-Be concise, clear, and encouraging.`;
-  }
-
-  const promptContent = `
-[CONTEXT]
-Subject: ${subject}
-Chapter: ${chapter}
-Question (${marks ? marks + ' Marks' : ''}):
-${questionText}
-
-${modelAnswer ? `[CBSE Official Solution Reference]:\n${modelAnswer}\n` : ''}
-
-[STUDENT QUERY / INSTRUCTION]:
-${userPrompt || (mode === 'hinglish' ? 'Is question ko step-by-step Hinglish me explain karo.' : mode === 'example' ? 'Is concept ko ek practical real-life example ke saath samjhao.' : 'Please provide a detailed step solution.')}
-`;
-
-  // 1. Try Live Google AI Models via API Key
-  if (GEMINI_API_KEY && GEMINI_API_KEY.trim().length > 0) {
-    for (const model of CANDIDATE_MODELS) {
-      try {
-        const endpoint = `https://generativelanguage.googleapis.com/v1beta/${model}:generateContent?key=${GEMINI_API_KEY}`;
-
-        const payload = {
-          contents: [
-            {
-              role: 'user',
-              parts: [{ text: `${systemInstruction}\n\n${promptContent}` }],
-            },
-          ],
-          generationConfig: {
-            temperature: 0.4,
-            maxOutputTokens: 2048,
-          },
-        };
-
-        const response = await fetch(endpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          let generatedText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (generatedText && generatedText.trim().length > 0) {
-            // Clean up any internal thinking header tokens if present
-            generatedText = cleanAiOutput(generatedText.trim());
-            return generatedText;
-          }
-        }
-      } catch (err) {
-        console.warn(`Attempt with ${model} failed, trying next...`, err);
+    if (response.ok) {
+      const data = await response.json() as { text?: string };
+      if (data.text && data.text.trim().length > 0) {
+        return data.text;
       }
     }
+    // Non-2xx or empty body → fall through to offline fallback
+    console.warn('[geminiService] Server returned non-OK or empty response, using fallback.');
+  } catch (err) {
+    // Network failure (server offline) → fall through to offline fallback
+    console.warn('[geminiService] Server unreachable, using fallback.', err);
   }
 
-  // 2. Intelligent Dynamic Context-Aware Fallback
+  // 2. Offline dynamic fallback — renders without any API key
   return generateDynamicContextualExplanation(req);
-}
-
-function cleanAiOutput(text: string): string {
-  // If the model output contains a thought trace at the beginning, extract the main response
-  if (text.includes('*   *Greeting:*') || text.includes('*   *The Science')) {
-    const parts = text.split(/\n\s*\*\s+\*Greeting:\*\s*/i);
-    if (parts.length > 1) {
-      return parts[1].replace(/^\s*"/, '').replace(/"\s*$/, '');
-    }
-  }
-  return text;
 }
 
 // Dynamic generator tailored to the exact question text, subject, chapter, and prompt
@@ -156,8 +66,7 @@ Is question me humein **${chapter}** (${subject}) ke core principles ko apply ka
 
 **2. Solve karne ka Step-by-Step Tarika:**
 - **Step 1 (Given & Formula):** Sabse pehle question me diye gaye values ko standard S.I. units me likhein. Formula mention karein (CBSE examiner formula ke direct **+0.5 se +1.0 Mark** deta hai!).
-- **Step 2 (Calculation):** Ab values substitute karke calculation karein:
-${modelAnswer ? `  ${modelAnswer.split('\n').slice(0, 3).join('\n  ')}` : '  Formula me values dhyan se substitute karein aur algebraic steps dikhayein.'}
+- **Step 2 (Calculation):** Ab values substitute karke calculation karein:\n${modelAnswer ? `  ${modelAnswer.split('\n').slice(0, 3).join('\n  ')}` : '  Formula me values dhyan se substitute karein aur algebraic steps dikhayein.'}
 - **Step 3 (Final Answer):** Answer aane ke baad unit zaroor likhein (jaise $\\text{V, A, } \\Omega\\text{, J, N, m/s, mol/L}$).
 
 💡 **Board Exam Pro-Tip:** Direct answer mat likhna, intermediate calculation ke 2-3 lines zaroor dikhana!`;

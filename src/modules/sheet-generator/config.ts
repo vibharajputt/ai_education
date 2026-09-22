@@ -4,12 +4,12 @@ import type { ModuleConfig } from '@core';
 
 export const sheetGeneratorConfig: ModuleConfig = {
   id: 'sheet-generator',
-  title: 'Worksheet & Test Generator',
+  title: 'Practice Worksheet Generator',
   track: 'both',
-  classLevels: ['9', '10', '11', '12'],
+  classLevels: ['10', '11', '12'],
   icon: 'Printer',
   tier: 'B',
-  scopeLabel: 'Printable A4 Mock Question Sheets',
+  scopeLabel: 'Custom Printable Exam Worksheets with A4 Print Layout & Separate Solution Keys',
   dataSource: 'pyq/class10.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({ default: m.SheetGeneratorModule })),
