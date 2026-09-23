@@ -44,6 +44,7 @@ import { swotConfig } from '../modules/weak-topics/config';
 import { chemistry3dConfig } from '../modules/chemistry-3d/config';
 import { conceptVideosConfig } from '../modules/concept-videos/config';
 import { interviewPrepConfig } from '../modules/interview-prep/config';
+import { careerPathConfig } from '../modules/career-path/config';
 
 // ---------------------------------------------------------------------------
 // Authoritative Registry of Available Platform Modules
@@ -166,22 +167,7 @@ export const REGISTRY: ModuleConfig[] = [
   // ── 5. COLLEGE & CAREER PLACEMENTS ──────────────────────────────────────
   resumeAnalyzerConfig,
   interviewPrepConfig,
-  {
-    id: 'career-path',
-    title: 'Engineering Career Pathways',
-    track: 'college',
-    classLevels: [],
-    icon: 'Compass',
-    tier: 'B',
-    scopeLabel: 'CSE, ECE, Mech, Civil & Tech Milestone Trees',
-    dataSource: 'career-path.json',
-    view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('career-path.json', 'Engineering Career Pathways') })
-    ),
-    searchable: true,
-    description:
-      'Skill trees, milestone progressions, and compensation benchmarks for ML, Cloud, and Web engineering.',
-  },
+  careerPathConfig,
 ];
 
 // ---------------------------------------------------------------------------

@@ -18,4 +18,6 @@ export { progressReportConfig } from './progress-report/config';
 export { ProgressReportModule } from './progress-report/index';
 export { swotConfig } from './weak-topics/config';
 export { WeakTopicsModule } from './weak-topics/index';
+export { careerPathConfig } from './career-path/config';
+export { CareerPathModule } from './career-path/index';
 
