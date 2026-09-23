@@ -3,12 +3,12 @@ import type { ModuleConfig } from '@core/registry';
 
 export const splitViewConfig: ModuleConfig = {
   id: 'split-view',
-  title: 'CBSE Sample Papers & Split-Screen Solutions',
+  title: 'CBSE Board Sample Papers',
   track: 'school',
   classLevels: ['10', '12'],
   icon: 'Columns',
   tier: 'A',
-  scopeLabel: 'Official CBSE Class 10 & 12 Board Sample Papers with Step-by-Step Solutions (cbseacademic.nic.in)',
+  scopeLabel: 'Official Class 10 & 12 Papers + AI Step Solutions',
   dataSource: 'pyq-10th.json',
   view: React.lazy(() =>
     import('./index.tsx').then((m) => ({

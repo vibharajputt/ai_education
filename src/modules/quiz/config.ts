@@ -4,12 +4,12 @@ import type { ModuleConfig } from '@core';
 
 export const quizConfig: ModuleConfig = {
   id: 'quiz',
-  title: 'Adaptive Practice Quiz',
+  title: 'Speed Drills & Mock Quizzes',
   track: 'both',
   classLevels: ['10', '11', '12'],
   icon: 'Zap',
   tier: 'B',
-  scopeLabel: 'Daily, weekly & monthly quizzes — 812 questions, Class 10 Science + Maths',
+  scopeLabel: 'Timed Quizzes & Step Solutions',
   dataSource: 'question-bank.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({ default: m.QuizModule })),

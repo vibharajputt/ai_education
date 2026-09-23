@@ -3,12 +3,12 @@ import type { ModuleConfig } from '@core/registry';
 
 export const syllabusPlanConfig: ModuleConfig = {
   id: 'syllabus-plan',
-  title: 'Syllabus Parser & Adaptive Study Plan',
+  title: 'AI Adaptive Study Planner',
   track: 'both',
   classLevels: ['10', '11', '12'],
   icon: 'Calendar',
   tier: 'B',
-  scopeLabel: 'AI Syllabus Parser & Day-Wise Adaptive Study Plan',
+  scopeLabel: 'Day-Wise Board Exam Roadmap & Targets',
   dataSource: 'study-planner.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({

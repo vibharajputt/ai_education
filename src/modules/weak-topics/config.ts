@@ -4,12 +4,12 @@ import type { ModuleConfig } from '@core';
 
 export const swotConfig: ModuleConfig = {
   id: 'weak-topics',
-  title: 'SWOT Diagnostic Matrix',
+  title: 'SWOT & Weak Area Diagnosis',
   track: 'both',
   classLevels: ['10', '11', '12'],
   icon: 'Target',
   tier: 'B',
-  scopeLabel: 'Deterministic Strengths, Weaknesses, Opportunities & Threats with Pre-computed Remedial Narratives',
+  scopeLabel: 'Targeted Weakness Overhaul Plan',
   dataSource: 'weak-topics.json',
   view: React.lazy(() =>
     import('./index').then((m) => ({ default: m.WeakTopicsModule })),
