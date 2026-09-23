@@ -43,6 +43,7 @@ import { progressReportConfig } from '../modules/progress-report/config';
 import { swotConfig } from '../modules/weak-topics/config';
 import { chemistry3dConfig } from '../modules/chemistry-3d/config';
 import { conceptVideosConfig } from '../modules/concept-videos/config';
+import { interviewPrepConfig } from '../modules/interview-prep/config';
 
 // ---------------------------------------------------------------------------
 // Authoritative Registry of Available Platform Modules
@@ -164,22 +165,7 @@ export const REGISTRY: ModuleConfig[] = [
 
   // ── 5. COLLEGE & CAREER PLACEMENTS ──────────────────────────────────────
   resumeAnalyzerConfig,
-  {
-    id: 'interview-prep',
-    title: 'Tech & HR Interview Simulator',
-    track: 'college',
-    classLevels: [],
-    icon: 'GraduationCap',
-    tier: 'A',
-    scopeLabel: 'DSA, System Design & Behavioral STAR Rubrics',
-    dataSource: 'interview-prep.json',
-    view: React.lazy(() =>
-      Promise.resolve({ default: createModuleViewer('interview-prep.json', 'Tech & HR Interview Simulator') })
-    ),
-    searchable: true,
-    description:
-      'Technical system design, DSA, and STAR-method behavioral questions with rubric scoring.',
-  },
+  interviewPrepConfig,
   {
     id: 'career-path',
     title: 'Engineering Career Pathways',
