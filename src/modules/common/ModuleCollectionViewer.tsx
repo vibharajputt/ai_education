@@ -160,17 +160,11 @@ export function ModuleCollectionViewer({ dataSource, moduleTitle }: ModuleCollec
 
           {/* Modern Facet Filters Bar */}
           {filterOptions.length > 0 && (
-            <div className="p-4 rounded-2xl bg-[var(--color-surface)] border border-[var(--color-border)] shadow-xs space-y-2.5">
-              <div className="flex items-center gap-2 text-xs font-bold text-[var(--color-text-muted)]">
-                <SlidersHorizontal className="w-3.5 h-3.5 text-blue-500" />
-                <span>Filter By Facet</span>
-              </div>
-              <Filters
-                options={filterOptions}
-                selected={selectedFilters}
-                onChange={setSelectedFilters}
-              />
-            </div>
+            <Filters
+              options={filterOptions}
+              selected={selectedFilters}
+              onChange={setSelectedFilters}
+            />
           )}
         </div>
       )}
