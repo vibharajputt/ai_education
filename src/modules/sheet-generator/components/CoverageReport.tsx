@@ -2,7 +2,7 @@
 import React from 'react';
 import type { CoverageReportData } from '../types';
 import { Badge } from '@components/Badge';
-import { Layers, CheckCircle2, Award, Clock } from 'lucide-react';
+import { Layers, CheckCircle2, Award, Clock, BarChart2 } from 'lucide-react';
 
 interface CoverageReportProps {
   coverage: CoverageReportData;
@@ -43,44 +43,62 @@ export function CoverageReport({ coverage, timeLimitMinutes }: CoverageReportPro
         </div>
       </div>
 
-      {/* Stat Tiles */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
-        <div className="p-3 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col">
-          <span className="text-xs text-[var(--color-text-muted)] flex items-center gap-1">
-            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-            Questions
-          </span>
-          <span className="text-lg font-bold text-[var(--color-text)] mt-1">
-            {coverage.selectedCount}
-          </span>
+      {/* Stat Tiles (2-Column Grid for Sidebar) */}
+      <div className="grid grid-cols-2 gap-2.5 pt-1">
+        <div className="p-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col justify-between">
+          <div className="flex items-center gap-1.5 text-[11px] text-[var(--color-text-muted)] font-medium truncate">
+            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+            <span className="truncate">Questions</span>
+          </div>
+          <div className="mt-2 flex items-baseline gap-1">
+            <span className="text-lg font-bold text-[var(--color-text)]">
+              {coverage.selectedCount}
+            </span>
+            <span className="text-[11px] text-[var(--color-text-muted)]">items</span>
+          </div>
         </div>
 
-        <div className="p-3 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col">
-          <span className="text-xs text-[var(--color-text-muted)] flex items-center gap-1">
-            <Award className="w-3.5 h-3.5 text-amber-500" />
-            Total Marks
-          </span>
-          <span className="text-lg font-bold text-[var(--color-text)] mt-1">
-            {coverage.totalMarks} Marks
-          </span>
+        <div className="p-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col justify-between">
+          <div className="flex items-center gap-1.5 text-[11px] text-[var(--color-text-muted)] font-medium truncate">
+            <Award className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+            <span className="truncate">Total Marks</span>
+          </div>
+          <div className="mt-2 flex items-baseline gap-1">
+            <span className="text-lg font-bold text-[var(--color-text)]">
+              {coverage.totalMarks}
+            </span>
+            <span className="text-[11px] text-[var(--color-text-muted)]">Marks</span>
+          </div>
         </div>
 
-        <div className="p-3 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col">
-          <span className="text-xs text-[var(--color-text-muted)] flex items-center gap-1">
-            <Clock className="w-3.5 h-3.5 text-blue-500" />
-            Suggested Time
-          </span>
-          <span className="text-lg font-bold text-[var(--color-text)] mt-1">
-            {timeLimitMinutes} Mins
-          </span>
+        <div className="p-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col justify-between">
+          <div className="flex items-center gap-1.5 text-[11px] text-[var(--color-text-muted)] font-medium truncate">
+            <Clock className="w-3.5 h-3.5 text-blue-500 shrink-0" />
+            <span className="truncate">Suggested Time</span>
+          </div>
+          <div className="mt-2 flex items-baseline gap-1">
+            <span className="text-lg font-bold text-[var(--color-text)]">
+              {timeLimitMinutes}
+            </span>
+            <span className="text-[11px] text-[var(--color-text-muted)]">Mins</span>
+          </div>
         </div>
 
-        <div className="p-3 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col">
-          <span className="text-xs text-[var(--color-text-muted)]">Difficulty Mix</span>
-          <div className="flex items-center gap-1.5 mt-1.5 text-xs font-semibold">
-            <span className="text-emerald-500">{coverage.difficultyCounts.easy || 0}E</span>
-            <span className="text-amber-500">{coverage.difficultyCounts.medium || 0}M</span>
-            <span className="text-rose-500">{coverage.difficultyCounts.hard || 0}H</span>
+        <div className="p-3 rounded-xl bg-[var(--color-bg)] border border-[var(--color-border)] flex flex-col justify-between">
+          <div className="flex items-center gap-1.5 text-[11px] text-[var(--color-text-muted)] font-medium truncate">
+            <BarChart2 className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+            <span className="truncate">Difficulty Mix</span>
+          </div>
+          <div className="mt-2 flex items-center gap-1.5 flex-wrap">
+            <span className="px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[11px] font-bold">
+              {coverage.difficultyCounts.easy || 0}E
+            </span>
+            <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[11px] font-bold">
+              {coverage.difficultyCounts.medium || 0}M
+            </span>
+            <span className="px-1.5 py-0.5 rounded bg-rose-500/10 text-rose-600 dark:text-rose-400 text-[11px] font-bold">
+              {coverage.difficultyCounts.hard || 0}H
+            </span>
           </div>
         </div>
       </div>
