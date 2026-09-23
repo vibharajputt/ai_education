@@ -10,7 +10,6 @@ import type { SheetConfig, WorksheetData, CoverageReportData } from './types';
 import type { Difficulty, QuestionType, ContentItem } from '@core';
 import {
   FileText,
-  Sliders,
   Eye,
   Sparkles,
   GraduationCap,
@@ -22,7 +21,9 @@ import {
   Cpu,
   Brain,
   Award,
-  Zap,
+  ArrowLeft,
+  ArrowRight,
+  SlidersHorizontal,
 } from 'lucide-react';
 import {
   COLLEGE_QUESTION_POOL,
@@ -66,6 +67,7 @@ export function SheetGeneratorModule() {
 
   const [activePresetId, setActivePresetId] = useState<string>('campus-placement');
   const [showAllSolutions, setShowAllSolutions] = useState<boolean>(false);
+  const [viewStep, setViewStep] = useState<'configure' | 'sheet'>('configure');
 
   // Worksheet configuration state
   const [config, setConfig] = useState<SheetConfig>(() => ({
@@ -96,8 +98,6 @@ export function SheetGeneratorModule() {
     setHasInitializedChapters(true);
   }
 
-  // Active view tab on mobile/desktop: 'controls' | 'preview'
-  const [activeTab, setActiveTab] = useState<'preview' | 'controls'>('preview');
   const [seed, setSeed] = useState(1);
 
   // Apply college template preset
@@ -211,6 +211,11 @@ export function SheetGeneratorModule() {
     window.print();
   }, []);
 
+  const handleContinueToSheet = useCallback(() => {
+    setViewStep('sheet');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const getPresetIcon = (id: string) => {
     switch (id) {
       case 'campus-placement':
@@ -256,141 +261,190 @@ export function SheetGeneratorModule() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6 animate-fadeIn">
       {/* ========================================================================= */}
-      {/* 1. HERO HEADER WITH QUICK ACTION TOOLBAR                                  */}
+      {/* STEP 1: CONFIGURATION & SELECTION VIEW                                     */}
       {/* ========================================================================= */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-8 shadow-xl border border-indigo-500/20 print:hidden">
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold uppercase tracking-wider">
-              {isCollege ? (
-                <>
-                  <GraduationCap className="w-3.5 h-3.5" />
-                  Engineering & Campus Assessment Studio
-                </>
-              ) : (
-                'CBSE Board Practice Engine'
-              )}
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              {isCollege ? 'College Technical & Placement Test Generator' : 'Practice Worksheet Generator'}
-            </h1>
-            <p className="text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed">
-              {isCollege
-                ? 'Generate realistic campus placement test sheets (TCS NQT / Infosys / Amazon), university semester papers, or GATE mock drills with step marking rubrics and A4 printable formatting.'
-                : 'Custom question set generator with multi-chapter coverage, A4 printable styling, and detached solution keys.'}
-            </p>
-          </div>
+      {viewStep === 'configure' ? (
+        <div className="space-y-6 animate-fadeIn">
+          {/* Hero Header */}
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-8 shadow-xl border border-indigo-500/20">
+            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 text-xs font-bold uppercase tracking-wider">
+                  {isCollege ? (
+                    <>
+                      <GraduationCap className="w-3.5 h-3.5" />
+                      Engineering & Campus Assessment Studio
+                    </>
+                  ) : (
+                    'CBSE Board Practice Engine'
+                  )}
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+                  {isCollege ? 'College Technical & Placement Test Generator' : 'Practice Worksheet Generator'}
+                </h1>
+                <p className="text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed">
+                  {isCollege
+                    ? 'Configure your campus placement test (TCS NQT / Infosys / Amazon), university semester papers, or GATE mock drills. Choose syllabus chapters, question counts, and difficulty balance.'
+                    : 'Select syllabus chapters, difficulty mix, and question types to generate customized practice papers with detached solution keys.'}
+                </p>
+              </div>
 
-          {/* Action Toolbar */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <button
-              onClick={() => setShowAllSolutions(!showAllSolutions)}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-700 bg-white/5 hover:bg-white/10 text-slate-200 text-xs font-semibold transition-all cursor-pointer"
-            >
-              {showAllSolutions ? <EyeOff className="w-4 h-4 text-indigo-400" /> : <Eye className="w-4 h-4 text-indigo-400" />}
-              <span>{showAllSolutions ? 'Hide All Solutions' : 'Show All Solutions'}</span>
-            </button>
-
-            <button
-              onClick={handleRegenerate}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-700 bg-white/5 hover:bg-white/10 text-slate-200 text-xs font-semibold transition-all cursor-pointer"
-            >
-              <RefreshCw className="w-4 h-4 text-cyan-400" />
-              <span>Shuffle Questions</span>
-            </button>
-
-            <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm font-bold shadow-lg shadow-indigo-500/25 transition-all cursor-pointer"
-            >
-              <Printer className="w-4 h-4" />
-              <span>Print A4 / Save PDF</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* 2. 1-CLICK COLLEGE PRESETS SELECTOR BAR                                   */}
-      {/* ========================================================================= */}
-      {isCollege && (
-        <div className="space-y-2.5 print:hidden">
-          <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
-            <Sparkles className="w-4 h-4 text-indigo-500" />
-            <span>Select Test Format & Question Paper Template:</span>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-            {COLLEGE_PRESETS.map((preset) => {
-              const isSelected = activePresetId === preset.id;
-              return (
+              <div>
                 <button
                   type="button"
-                  key={preset.id}
-                  onClick={() => handleApplyPreset(preset)}
-                  className={`p-3.5 rounded-xl border-2 text-left transition-all duration-200 flex flex-col justify-between cursor-pointer ${
-                    isSelected
-                      ? 'border-indigo-600 dark:border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/40 shadow-md ring-2 ring-indigo-500/20'
-                      : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-900/60'
-                  }`}
+                  onClick={handleContinueToSheet}
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-sm sm:text-base font-bold shadow-lg shadow-indigo-500/25 transition-all cursor-pointer transform hover:-translate-y-0.5"
                 >
-                  <div className="space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <div className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800">
-                        {getPresetIcon(preset.id)}
-                      </div>
-                      {isSelected && (
-                        <CheckCircle2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
-                      )}
-                    </div>
-                    <div className="font-bold text-xs text-slate-800 dark:text-slate-100 line-clamp-1">
-                      {preset.name}
-                    </div>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
-                      {preset.subtitle}
-                    </p>
-                  </div>
-
-                  <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400 font-mono">
-                    <span>{preset.defaultCount} Qs</span>
-                    <span>{preset.defaultTimeMinutes}m</span>
-                    <span>{preset.defaultMarks} Marks</span>
-                  </div>
+                  <span>Generate Question Paper</span>
+                  <ArrowRight className="w-5 h-5" />
                 </button>
-              );
-            })}
+              </div>
+            </div>
+          </div>
+
+          {/* 1-Click College Presets */}
+          {isCollege && (
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
+                <Sparkles className="w-4 h-4 text-indigo-500" />
+                <span>Select Test Format & Question Paper Template:</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+                {COLLEGE_PRESETS.map((preset) => {
+                  const isSelected = activePresetId === preset.id;
+                  return (
+                    <button
+                      type="button"
+                      key={preset.id}
+                      onClick={() => handleApplyPreset(preset)}
+                      className={`p-3.5 rounded-xl border-2 text-left transition-all duration-200 flex flex-col justify-between cursor-pointer ${
+                        isSelected
+                          ? 'border-indigo-600 dark:border-indigo-500 bg-indigo-50/70 dark:bg-indigo-950/40 shadow-md ring-2 ring-indigo-500/20'
+                          : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 bg-white dark:bg-slate-900/60'
+                      }`}
+                    >
+                      <div className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <div className="p-1.5 rounded-lg bg-slate-100 dark:bg-slate-800">
+                            {getPresetIcon(preset.id)}
+                          </div>
+                          {isSelected && (
+                            <CheckCircle2 className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                          )}
+                        </div>
+                        <div className="font-bold text-xs text-slate-800 dark:text-slate-100 line-clamp-1">
+                          {preset.name}
+                        </div>
+                        <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-2 leading-relaxed">
+                          {preset.subtitle}
+                        </p>
+                      </div>
+
+                      <div className="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                        <span>{preset.defaultCount} Qs</span>
+                        <span>{preset.defaultTimeMinutes}m</span>
+                        <span>{preset.defaultMarks} Marks</span>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Configuration Form & Coverage Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <div className="lg:col-span-8">
+              <SheetControls
+                config={config}
+                availableChapters={allChapters}
+                onChange={setConfig}
+                onGenerate={handleRegenerate}
+                onPrint={handlePrint}
+                onContinue={handleContinueToSheet}
+                totalMatching={matchingPool.length}
+                isCollege={isCollege}
+                presets={COLLEGE_PRESETS}
+                onApplyPreset={handleApplyPreset}
+              />
+            </div>
+
+            <div className="lg:col-span-4 space-y-6">
+              <CoverageReport coverage={worksheetData.coverage} timeLimitMinutes={config.timeLimitMinutes} />
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* ========================================================================= */
+        /* STEP 2: FULL-WIDTH ASSESSMENT SHEET VIEW                                   */
+        /* ========================================================================= */
+        <div className="space-y-6 animate-fadeIn">
+          {/* Top Sticky/Floating Action Bar */}
+          <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-2xl p-4 shadow-md flex flex-wrap items-center justify-between gap-4 print:hidden">
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  setViewStep('configure');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] hover:bg-slate-100 dark:hover:bg-slate-800 text-[var(--color-text)] text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+              >
+                <ArrowLeft className="w-4 h-4 text-indigo-500" />
+                <span>Edit Configuration</span>
+              </button>
+
+              <div className="hidden sm:flex items-center gap-2 text-xs text-[var(--color-text-muted)] font-medium">
+                <span className="h-4 w-px bg-[var(--color-border)]" />
+                <span className="font-semibold text-[var(--color-text)]">{config.title}</span>
+                <span>•</span>
+                <span>{worksheetData.items.length} Questions</span>
+                <span>•</span>
+                <span>{config.timeLimitMinutes} Mins</span>
+              </div>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <button
+                type="button"
+                onClick={() => setShowAllSolutions(!showAllSolutions)}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] hover:bg-slate-100 dark:hover:bg-slate-800 text-[var(--color-text)] text-xs font-semibold transition-all cursor-pointer"
+              >
+                {showAllSolutions ? <EyeOff className="w-3.5 h-3.5 text-indigo-500" /> : <Eye className="w-3.5 h-3.5 text-indigo-500" />}
+                <span>{showAllSolutions ? 'Hide Solutions' : 'Show Solutions'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleRegenerate}
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg)] hover:bg-slate-100 dark:hover:bg-slate-800 text-[var(--color-text)] text-xs font-semibold transition-all cursor-pointer"
+              >
+                <RefreshCw className="w-3.5 h-3.5 text-cyan-500" />
+                <span>Shuffle Questions</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handlePrint}
+                className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-indigo-500/25 transition-all cursor-pointer"
+              >
+                <Printer className="w-4 h-4" />
+                <span>Print A4 / Save PDF</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Full-width Question Paper Sheet */}
+          <div className="max-w-4xl mx-auto">
+            <WorksheetPrintView
+              worksheet={worksheetData}
+              showSolutionsGlobal={showAllSolutions}
+            />
           </div>
         </div>
       )}
-
-      {/* ========================================================================= */}
-      {/* 3. MAIN STUDIO DUAL-PANEL LAYOUT                                          */}
-      {/* ========================================================================= */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-        {/* Left Column: Configuration Controls & Coverage */}
-        <div className={`lg:col-span-4 space-y-6 print:hidden ${activeTab === 'preview' ? 'hidden lg:block' : 'block'}`}>
-          <CoverageReport coverage={worksheetData.coverage} timeLimitMinutes={config.timeLimitMinutes} />
-          <SheetControls
-            config={config}
-            availableChapters={allChapters}
-            onChange={setConfig}
-            onGenerate={handleRegenerate}
-            onPrint={handlePrint}
-            totalMatching={matchingPool.length}
-            isCollege={isCollege}
-            presets={COLLEGE_PRESETS}
-            onApplyPreset={handleApplyPreset}
-          />
-        </div>
-
-        {/* Right Column: Live Printable Sheet Preview */}
-        <div className={`lg:col-span-8 space-y-4 ${activeTab === 'controls' ? 'hidden lg:block' : 'block'}`}>
-          <WorksheetPrintView
-            worksheet={worksheetData}
-            showSolutionsGlobal={showAllSolutions}
-          />
-        </div>
-      </div>
     </div>
   );
 }

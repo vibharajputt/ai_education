@@ -2,7 +2,7 @@
 import React from 'react';
 import type { SheetConfig } from '../types';
 import type { Difficulty, QuestionType } from '@core';
-import { Settings, RefreshCw, Printer, BookOpen, Filter, Sparkles } from 'lucide-react';
+import { Settings, RefreshCw, Printer, BookOpen, Filter, Sparkles, ArrowRight } from 'lucide-react';
 import type { CollegeTemplatePreset } from '../services/collegeQuestions';
 
 interface SheetControlsProps {
@@ -11,6 +11,7 @@ interface SheetControlsProps {
   onChange: (updated: SheetConfig) => void;
   onGenerate: () => void;
   onPrint: () => void;
+  onContinue?: () => void;
   totalMatching: number;
   isCollege?: boolean;
   presets?: CollegeTemplatePreset[];
@@ -23,6 +24,7 @@ export function SheetControls({
   onChange,
   onGenerate,
   onPrint,
+  onContinue,
   totalMatching,
   isCollege,
   presets,
@@ -339,21 +341,32 @@ export function SheetControls({
         <div className="text-xs text-[var(--color-text-muted)] flex items-center justify-between gap-1.5 px-0.5">
           <span className="flex items-center gap-1.5">
             <Filter className="w-3.5 h-3.5 text-[var(--color-accent)]" />
-            <span>Candidate questions in pool:</span>
+            <span>Candidate questions matching filters:</span>
           </span>
-          <span className="font-bold text-[var(--color-text)] bg-[var(--color-bg)] px-2 py-0.5 rounded border border-[var(--color-border)]">
-            {totalMatching}
+          <span className="font-bold text-[var(--color-text)] bg-[var(--color-bg)] px-2.5 py-0.5 rounded border border-[var(--color-border)]">
+            {totalMatching} in pool
           </span>
         </div>
 
-        <button
-          type="button"
-          onClick={onPrint}
-          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
-        >
-          <Printer className="w-4 h-4" />
-          <span>Print / Save A4 PDF</span>
-        </button>
+        {onContinue ? (
+          <button
+            type="button"
+            onClick={onContinue}
+            className="w-full inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 hover:from-indigo-700 hover:to-purple-700 text-white text-sm sm:text-base font-bold shadow-lg shadow-indigo-600/25 transition-all cursor-pointer transform hover:-translate-y-0.5"
+          >
+            <span>Generate & View Assessment Sheet</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={onPrint}
+            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
+          >
+            <Printer className="w-4 h-4" />
+            <span>Print / Save A4 PDF</span>
+          </button>
+        )}
       </div>
     </div>
   );
