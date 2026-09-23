@@ -1,3 +1,7 @@
+// src/components/Filters.tsx
+import React from 'react';
+import { X } from 'lucide-react';
+
 interface FilterOption {
   key: string;
   label: string;
@@ -28,37 +32,42 @@ export function Filters({ options, selected, onChange, className = '' }: Filters
   };
 
   return (
-    <div className={`flex flex-wrap items-start gap-4 ${className}`} role="group" aria-label="Filters">
+    <div className={`flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3.5 ${className}`} role="group" aria-label="Filters">
       {options.map((opt) => (
         <div key={opt.key} className="flex flex-wrap items-center gap-1.5">
-          <span className="text-xs font-medium text-ink-muted uppercase tracking-wide mr-1">
-            {opt.label}
+          <span className="text-[11px] font-black text-[var(--color-text-muted)] uppercase tracking-wider mr-1">
+            {opt.label}:
           </span>
-          {opt.values.map((val) => {
-            const isActive = (selected[opt.key] ?? []).includes(val);
-            return (
-              <button
-                key={val}
-                onClick={() => toggle(opt.key, val)}
-                aria-pressed={isActive}
-                className={`px-2.5 py-1 rounded text-xs font-medium border transition-colors ${
-                  isActive
-                    ? 'bg-accent text-white border-accent'
-                    : 'bg-surface text-ink-muted border-line hover:border-line-strong hover:text-ink'
-                }`}
-              >
-                {val}
-              </button>
-            );
-          })}
+          <div className="flex flex-wrap gap-1">
+            {opt.values.map((val) => {
+              const isActive = (selected[opt.key] ?? []).includes(val);
+              return (
+                <button
+                  key={val}
+                  type="button"
+                  onClick={() => toggle(opt.key, val)}
+                  aria-pressed={isActive}
+                  className={`px-3 py-1 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    isActive
+                      ? 'bg-blue-600 text-white shadow-xs scale-105'
+                      : 'bg-[var(--color-surface-subtle)] text-[var(--color-text-muted)] hover:text-[var(--color-text)] hover:bg-[var(--color-surface-hover)] border border-[var(--color-border)]'
+                  }`}
+                >
+                  {val}
+                </button>
+              );
+            })}
+          </div>
         </div>
       ))}
       {hasAny && (
         <button
+          type="button"
           onClick={clearAll}
-          className="text-xs text-ink-muted hover:text-danger underline ml-auto self-center"
+          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-bold text-red-600 dark:text-red-400 bg-red-500/10 hover:bg-red-500/20 transition-colors sm:ml-auto cursor-pointer"
         >
-          Clear filters
+          <X className="w-3.5 h-3.5" />
+          <span>Reset Filters</span>
         </button>
       )}
     </div>

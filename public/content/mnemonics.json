@@ -2,17 +2,19 @@
   "collection": {
     "id": "mnemonics-col",
     "title": "Formula Mnemonics & Memory Anchors",
-    "description": "High-retention memory anchors, acronyms, and visual hooks for physics formulas and chemistry rules.",
-    "scopeLabel": "5 High-Yield STEM Mnemonics — Class 11–12",
+    "description": "High-retention memory anchors, acronyms, and visual hooks for CBSE physics formulas, chemistry trends, and mathematical identities.",
+    "scopeLabel": "High-Yield STEM Mnemonics — Class 9–12",
     "filters": {
       "subject": [
-        "Physics",
         "Chemistry",
-        "Mathematics"
+        "Physics",
+        "Mathematics",
+        "Biology"
       ],
       "difficulty": [
         "easy",
-        "medium"
+        "medium",
+        "hard"
       ]
     }
   },
@@ -20,22 +22,24 @@
     {
       "id": "mnem-chem-001",
       "subject": "Chemistry",
-      "chapter": "Periodic Table",
+      "chapter": "Classification of Elements & Periodic Trends",
       "concepts": [
         "Electronegativity Order",
-        "Periodic Trends"
+        "Pauling Scale",
+        "Hydrogen Bonding Eligibility"
       ],
-      "body": "**FONClBrISCCH**: Fluorine > Oxygen > Nitrogen > Chlorine > Bromine > Iodine > Sulfur > Carbon > Carbon > Hydrogen. Memory Hook: *\"Phone Call Brought I-S-C-C-H\"*.",
+      "body": "### 🎯 Pauling Electronegativity Hierarchy\n\n**Electronegativity Order:**\n$$\\text{F (4.0)} > \\text{O (3.5)} > \\text{N (3.0)} \\approx \\text{Cl (3.16)} > \\text{Br (2.8)} > \\text{I (2.5)} \\approx \\text{S (2.5)} \\approx \\text{C (2.5)} > \\text{P (2.1)} \\approx \\text{H (2.1)}$$\n\n> 💡 **Memory Hook:** **\"FONCl Br I S C H\"** — *\"Phone Call Brought Ice, Sugar, Chocolate & Honey\"*\n\n**Key Exam Application:**\n1. **Hydrogen Bonding:** Occurs strictly when Hydrogen is covalently bonded to the top 3 electronegative atoms (**F, O, N**).\n2. **Inductive & Dipole Moments:** Predicts direction of electron pull in organic reaction mechanisms.",
       "images": [],
       "tags": [
         "electronegativity",
-        "periodic-trends",
-        "bonding"
+        "periodic-table",
+        "chemical-bonding",
+        "class-11"
       ],
       "difficulty": "easy",
       "metadata": {
-        "hook": "Phone Call Brought ISCCH",
-        "application": "Determining bond polarity and hydrogen bonding eligibility (F, O, N only)."
+        "hook": "FONCl Br I S C H (Phone Call Brought Ice, Sugar, Chocolate & Honey)",
+        "application": "Hydrogen bonding (FON only), dipole moments & oxidation state assignment."
       },
       "kind": "mnemonic",
       "track": "school"
@@ -46,41 +50,23 @@
       "chapter": "Electromagnetic Waves",
       "concepts": [
         "Electromagnetic Spectrum",
-        "Frequency Order"
+        "Frequency vs Wavelength",
+        "Photon Energy"
       ],
-      "body": "**R-M-I-V-U-X-G**: Radio > Microwave > Infrared > Visible > Ultraviolet > X-ray > Gamma ray (Increasing Frequency). Hook: *\"Raging Martians Invaded Venus Using X-ray Guns\"*.",
+      "body": "### ⚡ Complete Electromagnetic Spectrum Order\n\n**Order of Increasing Frequency ($f$) & Energy ($E$), Decreasing Wavelength ($\\lambda$):**\n$$\\text{Radio} < \\text{Microwave} < \\text{Infrared} < \\text{Visible} < \\text{Ultraviolet} < \\text{X-Ray} < \\text{\\gamma-Ray}$$\n\n> 💡 **Memory Hook (R-M-I-V-U-X-G):** *\"**R**aging **M**artians **I**nvaded **V**enus **U**sing **X**-ray **G**uns\"*\n\n**Fundamental Formula:**\n$$E = h\\nu = \\frac{hc}{\\lambda} \\quad (c = 3 \\times 10^8\\text{ m/s})$$\n- **Radio Waves:** Lowest frequency ($\\sim 10^4\\text{ Hz}$), longest wavelength ($\\sim 10^3\\text{ m}$)\n- **Gamma Rays ($\\gamma$):** Highest frequency ($\\sim 10^{20}\\text{ Hz}$), highest penetrating energy",
       "latex": "E = h\\nu = \\frac{hc}{\\lambda}",
       "images": [],
       "tags": [
         "em-waves",
         "spectrum",
-        "wavelength"
+        "frequency",
+        "wavelength",
+        "class-12"
       ],
       "difficulty": "easy",
       "metadata": {
-        "hook": "Raging Martians Invaded Venus Using X-ray Guns"
-      },
-      "kind": "mnemonic",
-      "track": "school"
-    },
-    {
-      "id": "mnem-math-001",
-      "subject": "Mathematics",
-      "chapter": "Trigonometry",
-      "concepts": [
-        "Trigonometric Signs in Quadrants",
-        "CAST Rule"
-      ],
-      "body": "**ASTC (All Silver Tea Cups / All Students Take Calculus)**: Quadrant I: All positive; Quadrant II: Sin & Csc; Quadrant III: Tan & Cot; Quadrant IV: Cos & Sec.",
-      "images": [],
-      "tags": [
-        "trigonometry",
-        "quadrants",
-        "angles"
-      ],
-      "difficulty": "easy",
-      "metadata": {
-        "hook": "All Silver Tea Cups"
+        "hook": "R-M-I-V-U-X-G (Raging Martians Invaded Venus Using X-ray Guns)",
+        "application": "Board exam questions on EM wave frequency matching, wavelength ranges & energy comparisons."
       },
       "kind": "mnemonic",
       "track": "school"
@@ -88,21 +74,25 @@
     {
       "id": "mnem-chem-002",
       "subject": "Chemistry",
-      "chapter": "Organic Chemistry",
+      "chapter": "Metals & Non-Metals",
       "concepts": [
-        "Ortho/Para Directors",
-        "Electrophilic Aromatic Substitution"
+        "Reactivity Series of Metals",
+        "Displacement Reactions",
+        "Electrochemical Series"
       ],
-      "body": "**EDG = Ortho/Para, EWG = Meta**: Electron Donating Groups direct to Ortho & Para; Electron Withdrawing Groups (containing multiple bonds or positive charge on atom attached to ring) direct to Meta. Exception: Halogens (deactivating but o/p directing).",
+      "body": "### 🧪 Activity / Reactivity Series of Metals\n\n**Order from Most Reactive to Least Reactive:**\n$$\\text{K} > \\text{Na} > \\text{Ca} > \\text{Mg} > \\text{Al} > \\text{Zn} > \\text{Fe} > \\text{Pb} > \\text{[H]} > \\text{Cu} > \\text{Hg} > \\text{Ag} > \\text{Au}$$\n\n> 💡 **Memory Hook:** *\"**P**lease **S**top **C**alling **M**e **A** **C**areless **Z**ebra, **I**nstead **T**ry **L**earning **H**ow **C**opper **S**aves **G**old\"*\n- **P**otassium (K), **S**odium (Na), **C**alcium (Ca), **M**agnesium (Mg), **A**luminium (Al), **C**arbon, **Z**inc (Zn), **I**ron (Fe), **T**in (Sn), **L**ead (Pb), **H**ydrogen (H), **C**opper (Cu), **S**ilver (Ag), **G**old (Au).\n\n**Key Rule:** Any metal placed *above* Hydrogen displaces $H_2$ gas from dilute acids (e.g. $HCl, H_2SO_4$).",
       "images": [],
       "tags": [
-        "organic-chemistry",
-        "benzene",
-        "directing-groups"
+        "reactivity-series",
+        "metals",
+        "displacement",
+        "class-10",
+        "class-12"
       ],
-      "difficulty": "medium",
+      "difficulty": "easy",
       "metadata": {
-        "hook": "Donors Love Outside (Ortho/Para), Withdrawers Stay Middle (Meta)"
+        "hook": "Please Stop Calling Me A Careless Zebra Instead Try Learning How Copper Saves Gold",
+        "application": "Predicting spontaneous single displacement reactions and galvanic cell potentials."
       },
       "kind": "mnemonic",
       "track": "school"
@@ -113,19 +103,124 @@
       "chapter": "Current Electricity",
       "concepts": [
         "Resistor Color Code",
-        "Resistance Value"
+        "Resistance Value Calculation",
+        "Tolerance Bands"
       ],
-      "body": "**BB ROY of Great Britain had a Very Good Wife**: Black (0), Brown (1), Red (2), Orange (3), Yellow (4), Green (5), Blue (6), Violet (7), Grey (8), White (9). Gold (±5%), Silver (±10%).",
+      "body": "### 🌈 4-Band Carbon Resistor Color Code\n\n$$\\text{Color Digit Mapping: } 0 \\text{ to } 9$$\n\n> 💡 **Memory Hook:** *\"**B** **B** **ROY** of **G**reat **B**ritain had a **V**ery **G**ood **W**ife wearing **G**old & **S**ilver\"*\n- **B**lack (0), **B**rown (1), **R**ed (2), **O**range (3), **Y**ellow (4), **G**reen (5), **B**lue (6), **V**iolet (7), **G**rey (8), **W**hite (9)\n- **Tolerance Bands:** Gold ($\\pm 5\\%$), Silver ($\\pm 10\\%$), No Band ($\\pm 20\\%$)\n\n**Standard Equation:**\n$$R = (AB \\times 10^C \\pm D)\\,\\Omega$$",
       "latex": "R = (AB \\times 10^C \\pm D)\\,\\Omega",
       "images": [],
       "tags": [
+        "current-electricity",
         "resistors",
         "color-code",
-        "circuits"
+        "class-12"
       ],
       "difficulty": "easy",
       "metadata": {
-        "hook": "BB ROY of Great Britain had a Very Good Wife"
+        "hook": "BB ROY of Great Britain had a Very Good Wife (Gold & Silver)",
+        "application": "Quick color code reading for 1-mark and practical lab viva questions."
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-math-001",
+      "subject": "Mathematics",
+      "chapter": "Trigonometric Functions",
+      "concepts": [
+        "CAST Rule",
+        "Signs of Trigonometric Ratios",
+        "Quadrant Geometry"
+      ],
+      "body": "### 📐 Signs of Trigonometric Ratios in Quadrants (ASTC / CAST Rule)\n\n> 💡 **Memory Hook (Quadrants I \\to IV):** *\"**A**ll **S**ilver **T**ea **C**ups\"* or *\"**A**ll **S**tudents **T**ake **C**alculus\"*\n\n- **Quadrant I ($0^\\circ - 90^\\circ$):** **A**ll ratios ($\\sin, \\cos, \\tan, \\cot, \\sec, \\csc$) are **Positive (+)**\n- **Quadrant II ($90^\\circ - 180^\\circ$):** **S**ine & Cosecant are **Positive (+)**\n- **Quadrant III ($180^\\circ - 270^\\circ$):** **T**angent & Cotangent are **Positive (+)**\n- **Quadrant IV ($270^\\circ - 360^\\circ$):** **C**osine & Secant are **Positive (+)**\n\n$$\\sin(180^\\circ - \\theta) = +\\sin\\theta, \\quad \\cos(180^\\circ - \\theta) = -\\cos\\theta, \\quad \\tan(180^\\circ - \\theta) = -\\tan\\theta$$",
+      "latex": "\\sin(\\pi - \\theta) = \\sin\\theta, \\quad \\cos(\\pi - \\theta) = -\\cos\\theta",
+      "images": [],
+      "tags": [
+        "trigonometry",
+        "quadrants",
+        "cast-rule",
+        "class-11"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "hook": "All Silver Tea Cups (ASTC Rule)",
+        "application": "Determining sign changes for allied angles: (90 ± θ), (180 ± θ), (270 ± θ), (360 ± θ)."
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-chem-003",
+      "subject": "Chemistry",
+      "chapter": "Organic Chemistry — Haloalkanes & Arenes",
+      "concepts": [
+        "Aromatic Electrophilic Substitution",
+        "Ortho/Para vs Meta Directors",
+        "Activating & Deactivating Groups"
+      ],
+      "body": "### 🔬 Directive Influence in Monosubstituted Benzene\n\n> 💡 **Memory Hook:** *\"**D**onors Love **O**utside (Ortho/Para), **W**ithdrawers Stay in **M**iddle (Meta)\"*\n\n- **+M / +I (Electron Donating Groups):** Activate the ring and direct electrophiles to **Ortho & Para** positions.\n  - Examples: $-\\text{OH}, -\\text{NH}_2, -\\text{OCH}_3, -\\text{CH}_3$.\n- **-M / -I (Electron Withdrawing Groups):** Deactivate the ring and direct to **Meta** position.\n  - Examples: $-\\text{NO}_2, -\\text{CHO}, -\\text{COOH}, -\\text{CN}, -\\text{SO}_3\\text{H}$.\n- ⚠️ **Key CBSE Board Exception:** Halogens ($-\\text{Cl}, -\\text{Br}, -\\text{I}$) are *deactivating* (-I effect dominates) but *ortho/para directing* due to +M resonance!",
+      "images": [],
+      "tags": [
+        "organic-chemistry",
+        "benzene",
+        "electrophilic-substitution",
+        "class-12"
+      ],
+      "difficulty": "medium",
+      "metadata": {
+        "hook": "Donors = Ortho/Para (Activators), Withdrawers = Meta (Deactivators)",
+        "application": "Directing products in Nitration, Halogenation, Sulfonation & Friedel-Crafts reactions."
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-phy-003",
+      "subject": "Physics",
+      "chapter": "Magnetic Effects of Electric Current",
+      "concepts": [
+        "Fleming's Left Hand Rule",
+        "Lorentz Magnetic Force",
+        "DC Motor Working Principle"
+      ],
+      "body": "### 🧲 Fleming's Left-Hand Rule (Electric Motors)\n\n> 💡 **Memory Hook:** **\"FBI\"** — Federal Bureau of Investigation\n\nStretch thumb, forefinger, and middle finger mutually perpendicular to each other:\n1. **F** (Thumb) $\\rightarrow$ Direction of **F**orce / Motion on the conductor ($F = I(L \\times B)$)\n2. **B** (Forefinger / First Finger) $\\rightarrow$ Direction of Magnetic **F**ield ($B$)\n3. **I** (Middle Finger / Center) $\\rightarrow$ Direction of Electric **C**urrent ($I$)\n\n$$\\vec{F} = I(\\vec{L} \\times \\vec{B}) \\implies F = I L B \\sin\\theta$$",
+      "latex": "F = I L B \\sin\\theta",
+      "images": [],
+      "tags": [
+        "magnetism",
+        "lorentz-force",
+        "motor-rule",
+        "class-10",
+        "class-12"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "hook": "FBI (Force = Thumb, B-Field = Forefinger, I-Current = Middle Finger)",
+        "application": "Determining force direction on current-carrying conductors in magnetic fields."
+      },
+      "kind": "mnemonic",
+      "track": "school"
+    },
+    {
+      "id": "mnem-bio-001",
+      "subject": "Biology",
+      "chapter": "Diversity in Living World & Genetics",
+      "concepts": [
+        "Taxonomic Hierarchy",
+        "Biological Classification"
+      ],
+      "body": "### 🧬 Linnaean Taxonomic Hierarchy\n\n**Order from Broadest to Most Specific Category:**\n$$\\text{Domain} \\rightarrow \\text{Kingdom} \\rightarrow \\text{Phylum} \\rightarrow \\text{Class} \\rightarrow \\text{Order} \\rightarrow \\text{Family} \\rightarrow \\text{Genus} \\rightarrow \\text{Species}$$\n\n> 💡 **Memory Hook:** *\"**D**ear **K**ing **P**hilip **C**ame **O**ver **F**or **G**ood **S**oup\"*\n- **D**omain, **K**ingdom, **P**hylum (Division for plants), **C**lass, **O**rder, **F**amily, **G**enus, **S**pecies.",
+      "images": [],
+      "tags": [
+        "biology",
+        "taxonomy",
+        "classification",
+        "class-11"
+      ],
+      "difficulty": "easy",
+      "metadata": {
+        "hook": "Dear King Philip Came Over For Good Soup",
+        "application": "Order of biological classification ranks in board exam MCQs."
       },
       "kind": "mnemonic",
       "track": "school"
