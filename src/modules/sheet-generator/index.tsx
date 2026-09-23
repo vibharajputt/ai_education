@@ -385,16 +385,6 @@ export function SheetGeneratorModule() {
 
         {/* Right Column: Live Printable Sheet Preview */}
         <div className={`lg:col-span-8 space-y-4 ${activeTab === 'controls' ? 'hidden lg:block' : 'block'}`}>
-          <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-medium print:hidden">
-            <span className="flex items-center gap-1.5 font-semibold text-slate-700 dark:text-slate-300">
-              <FileText className="w-4 h-4 text-indigo-500" />
-              Live Examination Paper Preview (A4 Formatted)
-            </span>
-            <span className="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-mono">
-              {worksheetData.items.length} questions loaded
-            </span>
-          </div>
-
           <WorksheetPrintView
             worksheet={worksheetData}
             showSolutionsGlobal={showAllSolutions}
