@@ -85,6 +85,8 @@ export function ModuleCollectionViewer({ dataSource, moduleTitle }: ModuleCollec
       for await (const chunk of explainItem({
         itemId: item.id,
         itemBody: item.body,
+        subject: item.subject,
+        chapter: item.chapter,
         track: item.track,
       })) {
         setActiveExplanation((prev) =>

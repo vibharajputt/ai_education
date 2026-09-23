@@ -1,5 +1,28 @@
 import express from 'express';
 import cors from 'cors';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// ---------------------------------------------------------------------------
+// Load Environment Variables (.env)
+// ---------------------------------------------------------------------------
+const envPath = path.resolve(process.cwd(), '.env');
+if (fs.existsSync(envPath)) {
+  const envContent = fs.readFileSync(envPath, 'utf-8');
+  for (const line of envContent.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eqIdx = trimmed.indexOf('=');
+    if (eqIdx !== -1) {
+      const key = trimmed.slice(0, eqIdx).trim();
+      const val = trimmed.slice(eqIdx + 1).trim();
+      if (!process.env[key]) {
+        process.env[key] = val;
+      }
+    }
+  }
+}
+
 import { requestLogger } from './middleware/logger.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import { assistRateLimiter } from './middleware/rateLimiter.js';
@@ -40,7 +63,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(requestLogger);
 
 // ---------------------------------------------------------------------------
-// Exactly Two Permitted AI Routes
+// AI Routes
 // ---------------------------------------------------------------------------
 app.use(assistRateLimiter);
 app.use(assistRouter);

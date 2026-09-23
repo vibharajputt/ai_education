@@ -30,6 +30,8 @@ export class GatewayError extends Error {
 export interface AssistRequest {
   itemId: string;
   itemBody?: string;
+  subject?: string;
+  chapter?: string;
   track?: Track;
   mode?: 'simplify' | 'hindi' | 'why' | 'ask';
   question?: string;
@@ -56,6 +58,9 @@ export async function* explainItem(
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         itemId: request.itemId,
+        itemBody: request.itemBody,
+        subject: request.subject,
+        chapter: request.chapter,
         mode: request.mode ?? 'simplify',
         question: request.question,
         history: request.history ?? [],
@@ -126,7 +131,6 @@ export async function* explainItem(
     );
   }
 }
-
 
 /**
  * Helper to collect full explanation stream into a single string.

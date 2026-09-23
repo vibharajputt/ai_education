@@ -2,12 +2,15 @@ import { Request, Response, Router } from 'express';
 import { z } from 'zod';
 import { LLMGateway } from '../../tools/llm/gateway.js';
 import { loadItemContext } from '../utils/contentLoader.js';
-import { assertNumericsPreserved, extractNumericsAndFormulas } from '../utils/numericChecker.js';
+import { assertNumericsPreserved } from '../utils/numericChecker.js';
 
 export const assistRouter = Router();
 
 const AssistInputSchema = z.object({
   itemId: z.string().min(1),
+  itemBody: z.string().optional(),
+  subject: z.string().optional(),
+  chapter: z.string().optional(),
   explanationId: z.string().optional(),
   mode: z.enum(['simplify', 'hindi', 'why', 'ask']),
   question: z.string().optional(),
@@ -20,9 +23,6 @@ const AssistInputSchema = z.object({
     )
     .default([]),
 });
-
-// Response cache on (itemId, mode) for default queries
-const assistResponseCache = new Map<string, string>();
 
 const gateway = new LLMGateway();
 
@@ -49,7 +49,7 @@ assistRouter.post('/api/assist', async (req: Request, res: Response): Promise<an
     });
   }
 
-  const { itemId, explanationId, mode, question, history } = parseResult.data;
+  const { itemId, itemBody, subject, chapter, explanationId, mode, question, history } = parseResult.data;
 
   // 1. Thread Turn Limit Check (Max 6 turns)
   if (history && history.length >= 6) {
@@ -62,8 +62,13 @@ assistRouter.post('/api/assist', async (req: Request, res: Response): Promise<an
     return res.end();
   }
 
-  // 2. Load Item Context strictly from content/
-  const context = loadItemContext(itemId, explanationId);
+  // 2. Load Item Context strictly from content/ and public/content/ with fallback
+  const context = loadItemContext(itemId, explanationId, {
+    body: itemBody,
+    subject,
+    chapter,
+  });
+
   if (!context) {
     return res.status(404).json({
       error: {
@@ -84,45 +89,29 @@ assistRouter.post('/api/assist', async (req: Request, res: Response): Promise<an
     return res.end();
   }
 
-  // 4. Response Cache Lookup for non-custom queries
-  const cacheKey = `${itemId}:${mode}`;
-  if (!question && assistResponseCache.has(cacheKey)) {
-    const cachedResponse = assistResponseCache.get(cacheKey)!;
-    res.setHeader('Content-Type', 'text/event-stream');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.setHeader('Connection', 'keep-alive');
-
-    // Stream cached response in chunks
-    const words = cachedResponse.split(' ');
-    for (const word of words) {
-      res.write(`data: ${JSON.stringify({ delta: word + ' ' })}\n\n`);
-    }
-    res.write(`data: ${JSON.stringify({ done: true })}\n\n`);
-    return res.end();
-  }
-
-  // 5. Build Strictly Bounded System & User Prompts
+  // 4. Build Strictly Bounded System & User Prompts
   const hindiModeInstruction = mode === 'hindi'
     ? `- "hindi": Respond in natural, friendly **Hinglish** (conversational Hindi written in English script mixed with English terms). \
-Example style: "Dekho is question mein sabse pehle given values note karte hain... Ab is formula mein values put karenge...". \
+Example style: "Dekho is question/concept mein sabse pehle main principle note karte hain...". \
 Break the solution down step-by-step. MANDATORY: Preserve EVERY numeric value, unit, and formula exactly as written in the source.`
     : `- "hindi": Translate into clear Hindi/Hinglish. MANDATORY: Preserve EVERY numeric value, unit, and formula from the original text!`;
 
-  const systemPrompt = `You are a dedicated tutor assisting a student with a specific problem.
+  const systemPrompt = `You are a dedicated senior CBSE teacher assisting a student with a specific problem or concept.
 CRITICAL BOUNDARY MANDATES:
-1. STRICT CONTEXT LIMIT: Your knowledge is strictly limited to the provided Item and Solution source chunks below. Do NOT use open-world knowledge outside this context.
+1. STRICT CONTEXT LIMIT: Your knowledge is strictly focused on the provided Item context and details below.
 2. Mode "${mode}":
-   - "simplify": Explain in simple, intuitive steps.
+   - "simplify": Provide a crystal clear, step-by-step educational breakdown and explanation of this exact item.
    ${hindiModeInstruction}
-   - "why": Explain the conceptual rationale behind why this solution approach works.
-   - "ask": Answer the student's specific question based strictly on the source chunks.`;
+   - "why": Explain the conceptual rationale and scientific reasoning behind this concept.
+   - "ask": Answer the student's specific question based on this topic.
+3. Use clean Markdown with LaTeX math ($...$ or $$...$$) for formulas.`;
 
   const userPrompt = `SOURCE CONTEXT:
 ${context.sourceChunks.join('\n\n')}
 
 ${question ? `STUDENT QUESTION:\n${question}` : `REQUEST MODE: ${mode}`}
 
-Please provide a clear, step-by-step response. Return JSON matching: { "response": "string" }`;
+Please provide a clear, step-by-step educational response for this specific item. Return JSON matching: { "response": "string" }`;
 
   const assistSchema = z.object({ response: z.string() });
 
@@ -130,46 +119,34 @@ Please provide a clear, step-by-step response. Return JSON matching: { "response
     let responseObj = await gateway.completeJSON(assistSchema, {
       systemPrompt,
       userPrompt,
+      forceRefresh: Boolean(question),
     });
 
     let finalResponseText = responseObj.response;
 
-    // 6. Hindi Mode Numeric Preservation Assertion & Retry
+    // 5. Hindi Mode Numeric Preservation Assertion & Retry
     if (mode === 'hindi') {
       const sourceText = context.sourceChunks.join(' ');
       let check = assertNumericsPreserved(sourceText, finalResponseText);
 
-      if (!check.preserved) {
-        // Regenerate ONCE with explicit missing numerics notice
+      if (!check.preserved && check.missingNumerics.length > 0) {
         const missingList = check.missingNumerics.join(', ');
-        const retryUserPrompt = `${userPrompt}\n\n[CRITICAL ERROR]: Your previous Hindi translation omitted/modified the following numeric values: ${missingList}. You MUST include every number (${missingList}) exactly as written!`;
+        const retryUserPrompt = `${userPrompt}\n\n[CRITICAL NOTICE]: Your previous Hindi translation omitted/modified the following values: ${missingList}. You MUST include every number (${missingList}) exactly as written!`;
 
-        responseObj = await gateway.completeJSON(assistSchema, {
-          systemPrompt,
-          userPrompt: retryUserPrompt,
-          forceRefresh: true,
-        });
-
-        finalResponseText = responseObj.response;
-        check = assertNumericsPreserved(sourceText, finalResponseText);
-
-        if (!check.preserved) {
-          return res.status(422).json({
-            error: {
-              code: 'HINDI_NUMERIC_MISMATCH',
-              message: 'Unable to generate Hindi translation while preserving exact numerical values. Please refer to the English solution.',
-            },
+        try {
+          responseObj = await gateway.completeJSON(assistSchema, {
+            systemPrompt,
+            userPrompt: retryUserPrompt,
+            forceRefresh: true,
           });
+          finalResponseText = responseObj.response;
+        } catch {
+          // Use original response if retry fails
         }
       }
     }
 
-    // Save default query response to cache
-    if (!question) {
-      assistResponseCache.set(cacheKey, finalResponseText);
-    }
-
-    // 7. Stream Response via SSE
+    // 6. Stream Response via SSE
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');

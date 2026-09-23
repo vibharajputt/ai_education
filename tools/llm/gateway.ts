@@ -105,6 +105,9 @@ class KeyRotator {
     if (provider === 'google' && process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY.trim()) {
       keys.push(process.env.GEMINI_API_KEY.trim());
     }
+    if (provider === 'google' && process.env.VITE_GEMINI_API_KEY && process.env.VITE_GEMINI_API_KEY.trim()) {
+      keys.push(process.env.VITE_GEMINI_API_KEY.trim());
+    }
     if (envPlural && envPlural.trim()) {
       const splitKeys = envPlural.split(',').map((k) => k.trim()).filter(Boolean);
       keys.push(...splitKeys);
@@ -146,7 +149,7 @@ export class LLMGateway {
   };
 
   private providerConfigs: Record<ProviderName, AdapterConfig> = {
-    google: { name: 'google', model: 'gemini-3.6-flash' },
+    google: { name: 'google', model: 'gemini-2.5-flash' },
     groq: { name: 'groq', model: 'openai/gpt-oss-120b' },
     cerebras: { name: 'cerebras', model: 'llama3-8b-8192' },
     openrouter: { name: 'openrouter', model: 'google/gemini-2.0-flash-001' },
@@ -309,14 +312,24 @@ export class LLMGateway {
         return await handler(options.userPrompt);
       }
 
-      let responseText = "Here is a step-by-step breakdown based on the verified solution chunk:\n\n1. **Identify Given Values**: Note the key measurements and parameters provided in the problem.\n2. **Apply Core Principle**: Use the standard formula applicable to this topic.\n3. **Calculate Result**: Substitute the values carefully to arrive at the exact final answer.";
+      // Context-aware dynamic fallback generator: extracts text from options.userPrompt
+      const promptText = options.userPrompt;
+      let topic = 'Concept';
+      let bodyText = promptText;
+
+      const bodyMatch = promptText.match(/\[Question Body\]:\s*([^\n]+)/);
+      if (bodyMatch) {
+        bodyText = bodyMatch[1].replace(/[*#]/g, '').trim();
+      }
+      const chapterMatch = promptText.match(/\[Chapter\]:\s*([^\n]+)/);
+      if (chapterMatch) {
+        topic = chapterMatch[1].trim();
+      }
+
+      let responseText = `### 💡 Step-by-Step Educational Breakdown (${topic})\n\n1. **Core Concept Principle:**\n   - **Topic:** ${topic}\n   - **Context:** ${bodyText.slice(0, 180)}...\n\n2. **Detailed Analysis:**\n   - Apply the governing scientific relations and memory anchors systematically.\n   - Ensure all parameters and units are aligned with CBSE board criteria.\n\n3. **Key Exam Takeaway:**\n   - Always state the standard definitions and formulas clearly to secure maximum step marks!`;
 
       if (options.systemPrompt.includes('"hindi"')) {
-        responseText = "यह सत्यापित समाधान पर आधारित सरल व्याख्या है:\n\n1. **मुख्य नियम**: उत्तल लेंस $2f = 50\\text{ cm}$ पर वास्तविक एवं उल्टा प्रतिबिंब $50\\text{ cm}$ दूरी पर बनाता है।\n2. **फोकस दूरी**: $f = 25\\text{ cm} = 0.25\\text{ m}$।\n3. **क्षमता**: $P = +4.0\\text{ D}$ (डायोप्टर)।";
-      } else if (options.systemPrompt.includes('"why"')) {
-        responseText = "### Conceptual Rationale\n\n- **Sign Convention**: Distances measured in the direction of incident light are positive.\n- **Magnification Factor**: Equal size real image implies magnification $m = -1$.\n- **Power Relationship**: Power $P = 1/f$ is positive for converging (convex) lenses.";
-      } else if (options.systemPrompt.includes('"simplify"')) {
-        responseText = "### Simplified Step-by-Step\n\n1. **Understand the Setup**: A convex lens forms an image equal to object size when placed at $2f$.\n2. **Find Focal Length**: Since $2f = 50\\text{ cm}$, focal length $f = 25\\text{ cm} = 0.25\\text{ m}$.\n3. **Find Lens Power**: Power $P = 1 / 0.25 = +4.0\\text{ D}$.";
+        responseText = `### 🇮🇳 Step-by-Step Hinglish Explanation (${topic})\n\n1. **Core Concept:**\n   - Is topic (**${topic}**) me: ${bodyText.slice(0, 160)}...\n\n2. **Kaise Solve / Yaad Karein:**\n   - Diye gaye values ko note karein aur governing formula apply karein.\n   - Steps ko step-by-step likhein taaki board exam me full marks milein.\n\n3. **Key Tip:** Unit aur formula zaroor mention karein!`;
       }
 
       return JSON.stringify({ response: responseText });
@@ -325,41 +338,50 @@ export class LLMGateway {
     const apiKey = this.keyRotator.getNextKey(provider);
     if (!apiKey) throw new LLMError(`No API key available for ${provider}`);
 
-    const config = this.providerConfigs[provider];
-
     if (provider === 'google') {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/${config.model}:generateContent?key=${apiKey}`;
-      const payload = {
-        contents: [
-          {
-            role: 'user',
-            parts: [
-              { text: `${options.systemPrompt}\n\n${options.userPrompt}` },
+      const candidateModels = [
+        'gemini-2.5-flash',
+        'gemini-2.0-flash',
+        'gemini-1.5-flash',
+        'gemini-1.5-pro',
+      ];
+
+      for (const modelName of candidateModels) {
+        try {
+          const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+          const payload = {
+            contents: [
+              {
+                role: 'user',
+                parts: [
+                  { text: `${options.systemPrompt}\n\n${options.userPrompt}` },
+                ],
+              },
             ],
-          },
-        ],
-        generationConfig: {
-          temperature: options.temperature ?? 0.2,
-          maxOutputTokens: options.maxTokens ?? 4096,
-          responseMimeType: 'application/json',
-        },
-      };
+            generationConfig: {
+              temperature: options.temperature ?? 0.2,
+              maxOutputTokens: options.maxTokens ?? 4096,
+              responseMimeType: 'application/json',
+            },
+          };
 
-      const res = await fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
 
-      if (!res.ok) {
-        const errText = await res.text();
-        throw new LLMError(`Google Gemini API error ${res.status}: ${errText}`, provider);
+          if (res.ok) {
+            const data = await res.json();
+            const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+            if (text) return text;
+          }
+        } catch {
+          // Try next candidate model
+        }
       }
 
-      const data = await res.json();
-      const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-      if (!text) throw new LLMError('Google Gemini response empty', provider);
-      return text;
+      throw new LLMError('All Google Gemini candidate models failed', provider);
     }
 
     // OpenAI-Compatible Endpoints: Groq, Cerebras, OpenRouter
@@ -369,6 +391,7 @@ export class LLMGateway {
       openrouter: 'https://openrouter.ai/api/v1/chat/completions',
     };
 
+    const config = this.providerConfigs[provider];
     const url = endpointMap[provider];
     const payload = {
       model: config.model,
