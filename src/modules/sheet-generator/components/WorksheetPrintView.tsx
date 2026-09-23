@@ -23,67 +23,37 @@ export function WorksheetPrintView({ worksheet, showSolutionsGlobal = false }: W
   return (
     <div className="space-y-8 bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100 p-6 sm:p-10 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-xl print:p-0 print:border-none print:shadow-none print:bg-white print:text-black">
       {/* ========================================================================= */}
-      {/* SECTION 1: QUESTION PAPER HEADER                                          */}
+      {/* SECTION 1: CLEAN MODERN TEST HEADER & QUESTIONS                            */}
       {/* ========================================================================= */}
       <div className="space-y-6">
-        {/* Academic Institutional Header */}
-        <div className="border-b-2 border-slate-900 dark:border-slate-200 pb-5 text-center space-y-2 print:border-black">
-          {config.institutionName && (
-            <div className="flex items-center justify-center gap-1.5 text-xs uppercase tracking-widest font-bold text-indigo-600 dark:text-indigo-400 print:text-slate-800">
-              <Building2 className="w-3.5 h-3.5 print:hidden" />
-              <span>{config.institutionName}</span>
+        {/* Modern Test Title & Stats Header */}
+        <div className="border-b border-slate-200 dark:border-slate-800 pb-5 space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            {config.institutionName && (
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800 text-xs font-bold uppercase tracking-wide">
+                <Building2 className="w-3.5 h-3.5 text-indigo-500" />
+                <span>{config.institutionName}</span>
+              </div>
+            )}
+            <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 dark:text-slate-400">
+              <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <Clock className="w-3.5 h-3.5 text-indigo-500" />
+                <span>{config.timeLimitMinutes} Mins</span>
+              </span>
+              <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <Award className="w-3.5 h-3.5 text-amber-500" />
+                <span>{coverage.totalMarks} Marks</span>
+              </span>
+              <span className="flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+                <FileText className="w-3.5 h-3.5 text-blue-500" />
+                <span>{items.length} Questions</span>
+              </span>
             </div>
-          )}
-          <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white print:text-black">
-            {config.title || 'Technical Examination & Placement Paper'}
-          </h1>
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-xs font-semibold text-slate-600 dark:text-slate-400 pt-1 print:text-black">
-            <span className="flex items-center gap-1">
-              <Clock className="w-3.5 h-3.5 text-indigo-500 print:text-black" />
-              <span>Time Allowed: {config.timeLimitMinutes} Mins</span>
-            </span>
-            <span className="opacity-40">•</span>
-            <span className="flex items-center gap-1">
-              <Award className="w-3.5 h-3.5 text-amber-500 print:text-black" />
-              <span>Maximum Marks: {coverage.totalMarks} Marks</span>
-            </span>
-            <span className="opacity-40">•</span>
-            <span className="flex items-center gap-1">
-              <FileText className="w-3.5 h-3.5 text-blue-500 print:text-black" />
-              <span>Total Questions: {items.length}</span>
-            </span>
           </div>
 
-          {/* Student Fill-in Box */}
-          {config.studentNameRequired && (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-4 text-left text-xs text-slate-700 dark:text-slate-300 print:text-black">
-              <div className="border border-slate-300 dark:border-slate-700 p-2.5 rounded-lg bg-slate-50/50 dark:bg-slate-850 print:bg-transparent print:border-black">
-                <span className="font-bold text-slate-900 dark:text-slate-100 print:text-black">Student Name:</span>
-                <div className="border-b border-dotted border-slate-400 mt-3" />
-              </div>
-              <div className="border border-slate-300 dark:border-slate-700 p-2.5 rounded-lg bg-slate-50/50 dark:bg-slate-850 print:bg-transparent print:border-black">
-                <span className="font-bold text-slate-900 dark:text-slate-100 print:text-black">Roll / Registration No:</span>
-                <div className="border-b border-dotted border-slate-400 mt-3" />
-              </div>
-              <div className="border border-slate-300 dark:border-slate-700 p-2.5 rounded-lg bg-slate-50/50 dark:bg-slate-850 print:bg-transparent print:border-black">
-                <span className="font-bold text-slate-900 dark:text-slate-100 print:text-black">Date / Branch Section:</span>
-                <div className="border-b border-dotted border-slate-400 mt-3" />
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Instructions */}
-        <div className="bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700 text-xs space-y-1.5 print:border-slate-400 print:bg-slate-50 print:text-black">
-          <p className="font-bold uppercase tracking-wide text-slate-900 dark:text-slate-100 print:text-black flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-500 print:hidden" />
-            General Examination Instructions:
-          </p>
-          <ol className="list-decimal list-inside space-y-1 text-slate-600 dark:text-slate-300 print:text-slate-800 leading-relaxed">
-            <li>Read all questions thoroughly. All questions carry marks as specified in brackets.</li>
-            <li>For programming & algorithmic questions, write neat pseudocode or standard C++/Java/Python syntax with time complexity.</li>
-            <li>For numerical and derivations, provide clear step-by-step intermediate calculations for step evaluation.</li>
-          </ol>
+          <h1 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+            {config.title || 'Technical Assessment & Practice Test'}
+          </h1>
         </div>
 
         {/* Questions List */}
@@ -136,10 +106,10 @@ export function WorksheetPrintView({ worksheet, showSolutionsGlobal = false }: W
                       <button
                         type="button"
                         onClick={() => toggleSolution(item.id)}
-                        className="print:hidden inline-flex items-center gap-1 px-2 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 text-[11px] font-semibold text-slate-600 dark:text-slate-300 transition-colors cursor-pointer"
+                        className="print:hidden inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-indigo-950 text-[11px] font-semibold text-slate-600 dark:text-slate-300 transition-colors cursor-pointer"
                       >
                         {isSolutionOpen ? <EyeOff className="w-3 h-3 text-indigo-500" /> : <Eye className="w-3 h-3 text-indigo-500" />}
-                        <span>{isSolutionOpen ? 'Hide' : 'Solution'}</span>
+                        <span>{isSolutionOpen ? 'Hide Solution' : 'View Solution'}</span>
                       </button>
                     )}
                   </div>
@@ -166,20 +136,6 @@ export function WorksheetPrintView({ worksheet, showSolutionsGlobal = false }: W
                         </div>
                       </div>
                     ))}
-                  </div>
-                )}
-
-                {/* Answer Blank Lines if enabled */}
-                {config.includeAnswerSpace && questionType !== 'mcq' && (
-                  <div className="pl-10 pt-2 space-y-2.5">
-                    <div className="border-b border-dashed border-slate-300 dark:border-slate-700 h-4 print:border-slate-400" />
-                    <div className="border-b border-dashed border-slate-300 dark:border-slate-700 h-4 print:border-slate-400" />
-                    {marks >= 3 && (
-                      <>
-                        <div className="border-b border-dashed border-slate-300 dark:border-slate-700 h-4 print:border-slate-400" />
-                        <div className="border-b border-dashed border-slate-300 dark:border-slate-700 h-4 print:border-slate-400" />
-                      </>
-                    )}
                   </div>
                 )}
 
