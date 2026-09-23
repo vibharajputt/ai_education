@@ -2,7 +2,8 @@
 import React from 'react';
 import type { SheetConfig } from '../types';
 import type { Difficulty, QuestionType } from '@core';
-import { Settings, RefreshCw, Printer, BookOpen, Filter } from 'lucide-react';
+import { Settings, RefreshCw, Printer, BookOpen, Filter, Sparkles } from 'lucide-react';
+import type { CollegeTemplatePreset } from '../services/collegeQuestions';
 
 interface SheetControlsProps {
   config: SheetConfig;
@@ -11,6 +12,9 @@ interface SheetControlsProps {
   onGenerate: () => void;
   onPrint: () => void;
   totalMatching: number;
+  isCollege?: boolean;
+  presets?: CollegeTemplatePreset[];
+  onApplyPreset?: (preset: CollegeTemplatePreset) => void;
 }
 
 export function SheetControls({
@@ -20,6 +24,9 @@ export function SheetControls({
   onGenerate,
   onPrint,
   totalMatching,
+  isCollege,
+  presets,
+  onApplyPreset,
 }: SheetControlsProps) {
   const toggleChapter = (chapter: string) => {
     if (config.selectedChapters.includes(chapter)) {
@@ -77,6 +84,28 @@ export function SheetControls({
         </button>
       </div>
 
+      {/* College Presets Quick Picker */}
+      {isCollege && presets && presets.length > 0 && onApplyPreset && (
+        <div className="p-3.5 rounded-xl bg-indigo-50/70 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 space-y-2">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-900 dark:text-indigo-200">
+            <Sparkles className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span>1-Click College & Placement Test Templates:</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {presets.map((preset) => (
+              <button
+                type="button"
+                key={preset.id}
+                onClick={() => onApplyPreset(preset)}
+                className="px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 hover:bg-indigo-600 hover:text-white dark:hover:bg-indigo-600 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 text-xs font-semibold transition-all shadow-xs"
+              >
+                {preset.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Basic Settings */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
@@ -88,7 +117,7 @@ export function SheetControls({
             value={config.title}
             onChange={(e) => onChange({ ...config, title: e.target.value })}
             className="w-full px-3 py-2 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] text-sm text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
-            placeholder="e.g. CBSE Class 10 Science Practice Test"
+            placeholder={isCollege ? 'e.g. National Campus Placement Assessment & Technical Drill' : 'e.g. CBSE Class 10 Science Practice Test'}
           />
         </div>
 
@@ -101,7 +130,7 @@ export function SheetControls({
             value={config.institutionName}
             onChange={(e) => onChange({ ...config, institutionName: e.target.value })}
             className="w-full px-3 py-2 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)] text-sm text-[var(--color-text)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]"
-            placeholder="e.g. Department of Physics & Mathematics"
+            placeholder={isCollege ? 'e.g. Department of Computer Science & Engineering' : 'e.g. Department of Physics & Mathematics'}
           />
         </div>
       </div>

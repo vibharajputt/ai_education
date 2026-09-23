@@ -1,5 +1,6 @@
 // src/modules/sheet-generator/index.tsx
 import React, { useState, useMemo, useCallback } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import { useCollection } from '@core';
 import { StateShell } from '@components/StateShell';
 import { SheetControls } from './components/SheetControls';
@@ -7,10 +8,38 @@ import { CoverageReport } from './components/CoverageReport';
 import { WorksheetPrintView } from './components/WorksheetPrintView';
 import type { SheetConfig, WorksheetData, CoverageReportData } from './types';
 import type { Difficulty, QuestionType, ContentItem } from '@core';
-import { FileText, Sliders, Eye } from 'lucide-react';
+import { FileText, Sliders, Eye, Sparkles, GraduationCap } from 'lucide-react';
+import {
+  COLLEGE_QUESTION_POOL,
+  COLLEGE_PRESETS,
+  CollegeTemplatePreset,
+} from './services/collegeQuestions';
 
 export function SheetGeneratorModule() {
-  const { collection, items: rawItems, loading, error, reload } = useCollection('pyq/class10.json');
+  const { track } = useParams<{ track?: string }>();
+  const location = useLocation();
+  const isCollege = track === 'college' || location.pathname.includes('/college');
+
+  // Load school collection if on school track; otherwise use college pool
+  const { collection, items: schoolRawItems, loading, error, reload } = useCollection(
+    isCollege ? 'demo-college.json' : 'pyq/class10.json'
+  );
+
+  const rawItems: ContentItem[] = useMemo(() => {
+    if (isCollege) {
+      // Merge in-code college question pool with any loaded college items
+      const combined = [...COLLEGE_QUESTION_POOL];
+      if (schoolRawItems && schoolRawItems.length > 0) {
+        for (const it of schoolRawItems) {
+          if (!combined.some((c) => c.id === it.id)) {
+            combined.push(it);
+          }
+        }
+      }
+      return combined;
+    }
+    return schoolRawItems;
+  }, [isCollege, schoolRawItems]);
 
   // Available unique chapters from pool
   const allChapters = useMemo(() => {
@@ -23,15 +52,19 @@ export function SheetGeneratorModule() {
 
   // Worksheet configuration state
   const [config, setConfig] = useState<SheetConfig>(() => ({
-    title: 'CBSE Board Examination Practice Sheet',
-    institutionName: 'Apex Science & Mathematics Academy',
+    title: isCollege
+      ? 'National Campus Placement Assessment & Technical Drill'
+      : 'CBSE Board Examination Practice Sheet',
+    institutionName: isCollege
+      ? 'Department of Computer Science & Placement Cell'
+      : 'Apex Science & Mathematics Academy',
     studentNameRequired: true,
-    timeLimitMinutes: 45,
-    totalMarks: 25,
+    timeLimitMinutes: isCollege ? 60 : 45,
+    totalMarks: isCollege ? 50 : 25,
     selectedChapters: [],
     difficulties: ['easy', 'medium', 'hard'] as Difficulty[],
     questionTypes: ['mcq', 'short', 'long', 'fill-in', 'assertion-reason'] as QuestionType[],
-    questionCount: 10,
+    questionCount: isCollege ? 10 : 10,
     includeAnswerSpace: true,
     includeAnswerKey: true,
   }));
@@ -41,7 +74,7 @@ export function SheetGeneratorModule() {
   if (!hasInitializedChapters && allChapters.length > 0) {
     setConfig((prev) => ({
       ...prev,
-      selectedChapters: allChapters.slice(0, 5),
+      selectedChapters: allChapters.slice(0, 6),
     }));
     setHasInitializedChapters(true);
   }
@@ -50,17 +83,33 @@ export function SheetGeneratorModule() {
   const [activeTab, setActiveTab] = useState<'controls' | 'preview'>('controls');
   const [seed, setSeed] = useState(1);
 
+  // Apply college template preset
+  const handleApplyPreset = useCallback((preset: CollegeTemplatePreset) => {
+    setConfig((prev) => ({
+      ...prev,
+      title: preset.defaultTitle,
+      institutionName: preset.defaultInstitution,
+      timeLimitMinutes: preset.defaultTimeMinutes,
+      totalMarks: preset.defaultMarks,
+      questionCount: preset.defaultCount,
+      selectedChapters: preset.chapters.filter((ch) => allChapters.includes(ch)),
+      difficulties: preset.difficulties,
+      questionTypes: preset.questionTypes,
+    }));
+    setSeed((s) => s + 1);
+  }, [allChapters]);
+
   // Filter pool based on selected options
   const matchingPool = useMemo(() => {
     return rawItems.filter((item) => {
-      if (item.kind !== 'question') return false;
+      if (item.kind !== 'question' && item.kind !== 'interview-q') return false;
       if (config.selectedChapters.length > 0 && item.chapter && !config.selectedChapters.includes(item.chapter)) {
         return false;
       }
       if (item.difficulty && !config.difficulties.includes(item.difficulty)) {
         return false;
       }
-      const qType = (item as any).questionType;
+      const qType = (item as any).questionType || ((item as any).metadata?.questionType);
       if (qType && !config.questionTypes.includes(qType)) {
         return false;
       }
@@ -101,15 +150,15 @@ export function SheetGeneratorModule() {
     const coveredChaptersSet = new Set<string>();
     const diffCounts: Record<Difficulty, number> = { easy: 0, medium: 0, hard: 0 };
     const typeCounts: Record<string, number> = {};
-    let totalMarks = 0;
+    let calculatedTotalMarks = 0;
 
     for (const it of selectedItems) {
       if (it.chapter) coveredChaptersSet.add(it.chapter);
       if (it.difficulty) diffCounts[it.difficulty] = (diffCounts[it.difficulty] || 0) + 1;
-      const t = (it as any).questionType || 'general';
+      const t = (it as any).questionType || (it as any).metadata?.questionType || 'general';
       typeCounts[t] = (typeCounts[t] || 0) + 1;
-      const marks = (it as any).marks || (it.difficulty === 'hard' ? 5 : it.difficulty === 'medium' ? 3 : 1);
-      totalMarks += marks;
+      const marks = (it as any).marks || (it as any).metadata?.marks || (it.difficulty === 'hard' ? 5 : it.difficulty === 'medium' ? 3 : 2);
+      calculatedTotalMarks += marks;
     }
 
     const coveredChapters = Array.from(coveredChaptersSet);
@@ -125,7 +174,7 @@ export function SheetGeneratorModule() {
       coveragePercent,
       difficultyCounts: diffCounts,
       typeCounts,
-      totalMarks,
+      totalMarks: calculatedTotalMarks,
     };
 
     return {
@@ -144,11 +193,11 @@ export function SheetGeneratorModule() {
     window.print();
   }, []);
 
-  if (loading) {
+  if (loading && !isCollege) {
     return <StateShell state="loading" title="Loading Question Pool..." message="Indexing questions for worksheet compilation." />;
   }
 
-  if (error) {
+  if (error && !isCollege) {
     return (
       <StateShell
         state="error"
@@ -174,11 +223,20 @@ export function SheetGeneratorModule() {
       {/* Scope Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[var(--color-border)] pb-4 print:hidden">
         <div>
-          <span className="text-xs font-bold text-[var(--color-accent)] uppercase tracking-wider">
-            {collection?.scopeLabel || 'Printable Practice Worksheet Engine'}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-bold text-[var(--color-accent)] uppercase tracking-wider flex items-center gap-1.5">
+              {isCollege ? (
+                <>
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  Engineering & Campus Placement Test Generator
+                </>
+              ) : (
+                collection?.scopeLabel || 'Printable Practice Worksheet Engine'
+              )}
+            </span>
+          </div>
           <h1 className="text-2xl font-black text-[var(--color-text)] tracking-tight mt-0.5">
-            Practice Worksheet Generator
+            {isCollege ? 'College Technical & Placement Test Generator' : 'Practice Worksheet Generator'}
           </h1>
         </div>
 
@@ -186,7 +244,7 @@ export function SheetGeneratorModule() {
         <div className="flex items-center gap-1 bg-[var(--color-surface)] p-1 rounded-lg border border-[var(--color-border)]">
           <button
             onClick={() => setActiveTab('controls')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
               activeTab === 'controls'
                 ? 'bg-[var(--color-accent)] text-white shadow-xs'
                 : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
@@ -197,7 +255,7 @@ export function SheetGeneratorModule() {
           </button>
           <button
             onClick={() => setActiveTab('preview')}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold transition-colors cursor-pointer ${
               activeTab === 'preview'
                 ? 'bg-[var(--color-accent)] text-white shadow-xs'
                 : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
@@ -221,6 +279,9 @@ export function SheetGeneratorModule() {
             onGenerate={handleRegenerate}
             onPrint={handlePrint}
             totalMatching={matchingPool.length}
+            isCollege={isCollege}
+            presets={COLLEGE_PRESETS}
+            onApplyPreset={handleApplyPreset}
           />
         </div>
 

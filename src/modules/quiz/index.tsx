@@ -1,5 +1,6 @@
 // src/modules/quiz/index.tsx
 import React, { useState, useMemo, useCallback } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import { useCollection, recordBatchAttempts, loadStore, ratingToMasteryPercent } from '@core';
 import { StateShell } from '@components/StateShell';
 import { QuizSetup } from './components/QuizSetup';
@@ -7,9 +8,31 @@ import { QuizActive } from './components/QuizActive';
 import { QuizReview } from './components/QuizReview';
 import type { QuizConfigState, QuizQuestion, QuizSessionSummary } from './types';
 import type { Difficulty, ContentItem } from '@core';
+import { COLLEGE_QUESTION_POOL } from '../sheet-generator/services/collegeQuestions';
 
 export function QuizModule() {
-  const { collection, items: rawItems, loading, error, reload } = useCollection('pyq-10th.json');
+  const { track } = useParams<{ track?: string }>();
+  const location = useLocation();
+  const isCollege = track === 'college' || location.pathname.includes('/college');
+
+  const { collection, items: schoolRawItems, loading, error, reload } = useCollection(
+    isCollege ? 'demo-college.json' : 'pyq-10th.json'
+  );
+
+  const rawItems: ContentItem[] = useMemo(() => {
+    if (isCollege) {
+      const combined = [...COLLEGE_QUESTION_POOL];
+      if (schoolRawItems && schoolRawItems.length > 0) {
+        for (const it of schoolRawItems) {
+          if (!combined.some((c) => c.id === it.id)) {
+            combined.push(it);
+          }
+        }
+      }
+      return combined;
+    }
+    return schoolRawItems;
+  }, [isCollege, schoolRawItems]);
 
   // Available unique chapters
   const allChapters = useMemo(() => {
