@@ -28,6 +28,7 @@ import {
   RoleRoadmap,
   DomainId,
 } from '../services/roadmapData';
+import { CareerRoadmapDiagram } from './CareerRoadmapDiagram';
 
 interface CareerRoadmapViewProps {
   roadmap: RoleRoadmap;
@@ -48,6 +49,7 @@ export const CareerRoadmapView: React.FC<CareerRoadmapViewProps> = ({
 }) => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<'roadmap' | 'projects' | 'certifications' | 'insights'>('roadmap');
+  const [roadmapMode, setRoadmapMode] = useState<'diagram' | 'list'>('diagram');
   const [completedMilestones, setCompletedMilestones] = useState<Record<string, boolean>>({});
   const [expandedMilestones, setExpandedMilestones] = useState<Record<string, boolean>>({
     [roadmap.phases[0]?.milestones[0]?.id || '']: true,
@@ -276,12 +278,53 @@ ${roadmap.capstoneProjects
 
       {/* Tab 1: Milestone Roadmap */}
       {activeTab === 'roadmap' && (
-        <div className="space-y-8 animate-fadeIn">
-          {roadmap.phases.map((phase) => (
-            <div
-              key={phase.phaseNumber}
-              className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm space-y-4"
-            >
+        <div className="space-y-6 animate-fadeIn">
+          {/* Sub-view Switcher: Diagram Flowchart vs List View */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div className="text-xs text-slate-500 dark:text-slate-400">
+              Select display format:
+            </div>
+            <div className="flex items-center gap-1.5 p-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <button
+                onClick={() => setRoadmapMode('diagram')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                  roadmapMode === 'diagram'
+                    ? 'bg-indigo-600 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                }`}
+              >
+                <Layers className="w-3.5 h-3.5" />
+                <span>Diagram Flowchart</span>
+              </button>
+
+              <button
+                onClick={() => setRoadmapMode('list')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-bold transition-all cursor-pointer ${
+                  roadmapMode === 'list'
+                    ? 'bg-indigo-600 text-white shadow-sm'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                }`}
+              >
+                <Briefcase className="w-3.5 h-3.5" />
+                <span>Detailed Checklist Tree</span>
+              </button>
+            </div>
+          </div>
+
+          {roadmapMode === 'diagram' ? (
+            <CareerRoadmapDiagram
+              roadmap={roadmap}
+              userProfile={userProfile}
+              completedMilestones={completedMilestones}
+              onToggleCompleted={toggleMilestoneCompleted}
+            />
+          ) : (
+            <div className="space-y-8 animate-fadeIn">
+              {roadmap.phases.map((phase) => (
+                <div
+                  key={phase.phaseNumber}
+                  className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm space-y-4"
+                >
               {/* Phase Header */}
               <div className="p-5 md:p-6 bg-slate-50/70 dark:bg-slate-800/40 border-b border-slate-200 dark:border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div className="flex items-center gap-3">
@@ -444,6 +487,8 @@ ${roadmap.capstoneProjects
           ))}
         </div>
       )}
+    </div>
+  )}
 
       {/* Tab 2: Capstone Projects */}
       {activeTab === 'projects' && (
