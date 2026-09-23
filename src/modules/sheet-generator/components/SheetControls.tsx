@@ -309,13 +309,13 @@ export function SheetControls({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 max-h-48 overflow-y-auto p-2 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)]">
+        <div className="grid grid-cols-1 gap-1.5 max-h-48 overflow-y-auto p-2 rounded-lg bg-[var(--color-bg)] border border-[var(--color-border)]">
           {availableChapters.map((chapter) => {
             const selected = config.selectedChapters.includes(chapter);
             return (
               <label
                 key={chapter}
-                className={`flex items-start gap-2 p-2 rounded-md border text-xs cursor-pointer transition-colors ${
+                className={`flex items-center gap-2.5 p-2 rounded-md border text-xs cursor-pointer transition-colors ${
                   selected
                     ? 'bg-[var(--color-surface)] border-[var(--color-accent)] text-[var(--color-text)] font-medium shadow-xs'
                     : 'border-transparent text-[var(--color-text-muted)] hover:bg-[var(--color-surface-hover)]'
@@ -325,9 +325,9 @@ export function SheetControls({
                   type="checkbox"
                   checked={selected}
                   onChange={() => toggleChapter(chapter)}
-                  className="mt-0.5 rounded text-[var(--color-accent)] focus:ring-[var(--color-accent)]"
+                  className="rounded text-[var(--color-accent)] focus:ring-[var(--color-accent)]"
                 />
-                <span className="leading-tight line-clamp-2">{chapter}</span>
+                <span className="leading-tight">{chapter}</span>
               </label>
             );
           })}
@@ -335,21 +335,25 @@ export function SheetControls({
       </div>
 
       {/* Actions */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-3 border-t border-[var(--color-border)]">
-        <div className="text-xs text-[var(--color-text-muted)] flex items-center gap-1.5">
-          <Filter className="w-3.5 h-3.5" />
-          <span>{totalMatching} candidate questions available in bank</span>
+      <div className="space-y-3 pt-3 border-t border-[var(--color-border)]">
+        <div className="text-xs text-[var(--color-text-muted)] flex items-center justify-between gap-1.5 px-0.5">
+          <span className="flex items-center gap-1.5">
+            <Filter className="w-3.5 h-3.5 text-[var(--color-accent)]" />
+            <span>Candidate questions in pool:</span>
+          </span>
+          <span className="font-bold text-[var(--color-text)] bg-[var(--color-bg)] px-2 py-0.5 rounded border border-[var(--color-border)]">
+            {totalMatching}
+          </span>
         </div>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={onPrint}
-            className="flex-1 sm:flex-none inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition-colors"
-          >
-            <Printer className="w-4 h-4" />
-            Print / Save A4 PDF
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={onPrint}
+          className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-600/20 transition-all cursor-pointer"
+        >
+          <Printer className="w-4 h-4" />
+          <span>Print / Save A4 PDF</span>
+        </button>
       </div>
     </div>
   );
