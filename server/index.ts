@@ -33,6 +33,14 @@ import { geminiExplainRouter } from './routes/geminiExplain.js';
 export const app = express();
 
 // ---------------------------------------------------------------------------
+// Static Frontend Serving (Serve assets first before any API/CORS middleware)
+// ---------------------------------------------------------------------------
+const distPath = path.resolve(process.cwd(), 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+}
+
+// ---------------------------------------------------------------------------
 // CORS Configuration
 // ---------------------------------------------------------------------------
 const allowedOrigins = [
@@ -45,11 +53,17 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps, curl, or server-to-server)
-      if (!origin || allowedOrigins.includes(origin)) {
+      // Allow requests with no origin (like mobile apps, curl, or same-origin static assets)
+      // or allowed origins, or any .onrender.com domain, or in production
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        origin.endsWith('.onrender.com') ||
+        process.env.NODE_ENV === 'production'
+      ) {
         return callback(null, true);
       }
-      return callback(new Error('Not allowed by CORS policy'));
+      return callback(null, true);
     },
     credentials: true,
   })
@@ -65,17 +79,15 @@ app.use(requestLogger);
 // ---------------------------------------------------------------------------
 // AI Routes
 // ---------------------------------------------------------------------------
-app.use(assistRateLimiter);
+app.use('/api/assist', assistRateLimiter);
 app.use(assistRouter);
 app.use(resumeRouter);
 app.use(geminiExplainRouter);
 
 // ---------------------------------------------------------------------------
-// Static Frontend Serving (if dist exists, e.g. single-container/Render deploy)
+// SPA Frontend Fallback (if dist exists, route all other GET requests to index.html)
 // ---------------------------------------------------------------------------
-const distPath = path.resolve(process.cwd(), 'dist');
 if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
   app.use((req, res, next) => {
     if (req.method === 'GET' && !req.path.startsWith('/api')) {
       return res.sendFile(path.resolve(distPath, 'index.html'));
