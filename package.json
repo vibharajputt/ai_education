@@ -12,6 +12,7 @@
     "validate": "tsx tools/validate.ts",
     "test:gateway": "tsx tools/llm/gateway.test.ts",
     "server": "tsx server/index.ts",
+    "start": "tsx server/index.ts",
     "test:server": "tsx server/test/server.test.ts && tsx server/test/logScan.test.ts"
   },
   "dependencies": {

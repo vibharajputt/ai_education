@@ -71,6 +71,20 @@ app.use(resumeRouter);
 app.use(geminiExplainRouter);
 
 // ---------------------------------------------------------------------------
+// Static Frontend Serving (if dist exists, e.g. single-container/Render deploy)
+// ---------------------------------------------------------------------------
+const distPath = path.resolve(process.cwd(), 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.resolve(distPath, 'index.html'));
+  });
+}
+
+// ---------------------------------------------------------------------------
 // 404 & Global Error Handling
 // ---------------------------------------------------------------------------
 app.use((_req, res) => {

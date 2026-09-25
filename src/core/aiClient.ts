@@ -51,7 +51,7 @@ export async function* explainItem(
   request: AssistRequest,
   signal?: AbortSignal,
 ): AsyncGenerator<ExplainStreamChunk> {
-  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+  const apiBase = import.meta.env.VITE_API_BASE_URL ?? (import.meta.env.PROD ? '' : 'http://localhost:3001');
   try {
     const response = await fetch(`${apiBase}/api/assist`, {
       method: 'POST',
@@ -154,7 +154,7 @@ export async function analyzeResumeFile(
   jobDescription?: string,
   signal?: AbortSignal,
 ): Promise<Record<string, unknown>> {
-  const apiBase = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+  const apiBase = import.meta.env.VITE_API_BASE_URL ?? (import.meta.env.PROD ? '' : 'http://localhost:3001');
   const formData = new FormData();
   formData.append('resume', file);
   if (jobDescription) {
