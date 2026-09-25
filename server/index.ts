@@ -76,11 +76,11 @@ app.use(geminiExplainRouter);
 const distPath = path.resolve(process.cwd(), 'dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
-  app.get('*', (req, res, next) => {
-    if (req.path.startsWith('/api')) {
-      return next();
+  app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+      return res.sendFile(path.resolve(distPath, 'index.html'));
     }
-    res.sendFile(path.resolve(distPath, 'index.html'));
+    next();
   });
 }
 
